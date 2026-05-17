@@ -55,7 +55,22 @@ shape = SubResource("BoxShape3D_0xm2m")
 [node name="Moveables" type="Node" parent="."]
 
 [node name="baseBox" parent="Moveables" instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2319355, 1.282855, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 1.2828546, -3.163687)
+
+[node name="baseBox3" parent="Moveables" instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 1.2828546, -4.5954475)
+
+[node name="baseBox4" parent="Moveables" instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 2.8882756, -3.9326196)
+
+[node name="baseBox5" parent="Moveables" instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 2.8882756, -2.5514069)
+
+[node name="baseBox7" parent="Moveables" instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 4.3119183, -3.299101)
+
+[node name="baseBox6" parent="Moveables" instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 1.3825588, -1.8601251)
 
 [node name="baseBox2" parent="Moveables" instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4546847, 1.4093539, 7.2748995)

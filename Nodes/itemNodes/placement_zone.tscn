@@ -20,7 +20,7 @@ _surfaces = [{
 [sub_resource type="BoxMesh" id="BoxMesh_ixfsw"]
 
 [node name="PlacementZone" type="StaticBody3D"]
-collision_layer = 9
+collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_rxd71")
 
