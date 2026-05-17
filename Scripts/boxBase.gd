@@ -17,6 +17,8 @@ func _input(event: InputEvent) -> void:
 		
 		if player.pickedObject == self:
 			freeze = false
+			lock_rotation = false
+			
 
 
 func _ready():

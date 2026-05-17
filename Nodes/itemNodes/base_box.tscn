@@ -22,6 +22,8 @@ _surfaces = [{
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="baseBox" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_geg4b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

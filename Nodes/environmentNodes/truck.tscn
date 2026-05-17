@@ -15,9 +15,12 @@ size = Vector3(10.404602, 0.29919434, 5.7337646)
 size = Vector3(4.0532227, 6.3169556, 5.7470093)
 
 [node name="Node3D" type="StaticBody3D"]
+transform = Transform3D(0.5655327, 0, 0, 0, 0.5655327, 0, 0, 0, 0.5655327, 0, 0, 0)
+collision_layer = 2
+collision_mask = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = ExtResource("1_ysele")
 skeleton = NodePath("")
 

@@ -53,6 +53,13 @@ interaction={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Players"
+3d_physics/layer_2="Environments"
+3d_physics/layer_3="Pickupables"
+3d_physics/layer_4="Interactables"
+
 [physics]
 
 common/max_fps=0

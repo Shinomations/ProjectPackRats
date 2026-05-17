@@ -14,7 +14,7 @@ const SENSITIVITY = 0.005
 var pickedObject
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
 var holdingobject = false
-
+var collider
 
 func _ready():
 	add_to_group("player")
@@ -30,16 +30,19 @@ func _unhandled_input(event):
 
 func _input(event):
 	if event.is_action_pressed("interaction") and pickedObject:	
-		pickedObject.reparent(get_tree().current_scene)
+		if collider is store_object:
+			collider.add_object(pickedObject)
+		else:
+			pickedObject.reparent(get_tree().current_scene)
 		pickedObject = null
-		
 		holdingobject = false
 		
+	
 
 func _process(_delta):
 	
 	if rayCast.is_colliding():
-		var collider = rayCast.get_collider()
+		collider = rayCast.get_collider()
 		interact_object.emit(collider)
 	else: interact_object.emit(null)
 

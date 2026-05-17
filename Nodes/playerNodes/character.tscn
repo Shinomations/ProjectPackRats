@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wa5vi"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_mask = 3
 script = ExtResource("1_umwsb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -24,7 +25,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21401632, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -3)
+collision_mask = 12
 
 [node name="boxCarryMarker" type="Marker3D" parent="Head/Camera3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37577707, -1.1748598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6489047, -1.1748598)
