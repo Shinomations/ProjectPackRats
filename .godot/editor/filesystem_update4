@@ -1,0 +1,8 @@
+res://Nodes/playerNodes/character.tscn
+res://models/Truck.tres
+res://Scripts/character.gd
+res://Nodes/itemNodes/base_box.tscn
+res://Scripts/boxBase.gd
+res://scenes/main.tscn
+res://Nodes/environmentNodes/truck.tscn
+res://Nodes/itemNodes/placement_zone.tscn

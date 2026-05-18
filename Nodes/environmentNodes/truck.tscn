@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxleafd5i6bci"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctpypuwvxlxhh" path="res://models/Truck.tres" id="1_ysele"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fcar"]
+size = Vector3(28.49791, 6.8084717, 11.48587)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21kel"]
+size = Vector3(10.417847, 6.609131, 0.2265625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnsmv"]
+size = Vector3(10.404602, 0.29919434, 5.7337646)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3ksr"]
+size = Vector3(4.0532227, 6.3169556, 5.7470093)
+
+[node name="Node3D" type="StaticBody3D"]
+transform = Transform3D(0.5655327, 0, 0, 0, 0.5655327, 0, 0, 0, 0.5655327, 0, 0, 0)
+collision_layer = 2
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = ExtResource("1_ysele")
+skeleton = NodePath("")
+
+[node name="FloorCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.49999997, 0, 0, 0, 0.49999997, 0, 0, 0, 0.49999997, -2.0021935, -3.5705264, 0.0006484985)
+shape = SubResource("BoxShape3D_3fcar")
+
+[node name="LeftwallCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10052872, 0.58166504, 2.739859)
+shape = SubResource("BoxShape3D_21kel")
+
+[node name="RightWallCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10134864, 0.596532, -2.749289)
+shape = SubResource("BoxShape3D_21kel")
+
+[node name="RoofCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10598755, 3.7320423, -0.0095825195)
+shape = SubResource("BoxShape3D_rnsmv")
+
+[node name="BackWallCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.064056, 0.72439575, 0.04824829)
+shape = SubResource("BoxShape3D_h3ksr")
