@@ -5,10 +5,12 @@ signal interact_object
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.005
-
+@onready var player: CharacterBody3D = $"."
 
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
+@onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
+
 @onready var rayCast = $Head/Camera3D/RayCast3D
 
 var pickedObject
@@ -29,25 +31,58 @@ func _unhandled_input(event):
 		cam.rotation.x = clamp(cam.rotation.x,deg_to_rad(-40),deg_to_rad(60))
 
 func _input(event):
-	if event.is_action_pressed("interaction") and pickedObject:	
-		if collider is store_object:
-			collider.add_object(pickedObject)
-		else:
-			pickedObject.reparent(get_tree().current_scene)
-		pickedObject = null
-		holdingobject = false
+	if event.is_action_pressed("interaction"):	
+		if(pickedObject != null): # if u have item
+			print(collider)
+			if collider is store_object:
+				if collider.isEmpty():
+					pickedObject.set_collision_layer_value(1, true)
+					pickedObject.set_collision_layer_value(3, true)
+					pickedObject.freeze = true
+					collider.add_object(pickedObject)
+					
+					pickedObject = null
+					holdingobject = false
+				else:
+					#pickedObject.reparent(get_tree().current_scene)
+					collider._on_objects_child_exiting_tree(pickedObject)
+			
+			else:
+				pickedObject.reparent(get_tree().current_scene)
+				pickedObject.lock_rotation = false
+				
+				
+				pickedObject.set_collision_layer_value(1, true)
+				pickedObject.set_collision_layer_value(3, true)
+				pickedObject = null
+				holdingobject = false
+				
+		else: # if u dont have item
+			if collider is store_object:
+				if collider.isEmpty():
+					
+					pass
+				else:
+					collider._on_objects_child_exiting_tree(pickedObject)
+			elif collider is RigidBody3D:
+				print("isowrking")
+				player.pick_up_object(collider)
 		
 	
 
 func _process(_delta):
-	
+	print(collider)
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)
 	else: interact_object.emit(null)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	#print(pickedObject)
+	if (pickedObject != null):
+		pickedObject.rotation_degrees = Vector3(0,90,0)
+		pickedObject.position = Vector3(0,0,0)
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -71,10 +106,14 @@ func _physics_process(delta: float) -> void:
 func pick_up_object(object):
 	
 	if not holdingobject:
-		object.reparent(cam)
-		object.global_position = %boxCarryMarker.global_position
-		await get_tree().create_timer(0.1).timeout
-		object.freeze = true
+		
+		object.reparent(box_carry_marker)
+		#object.position = Vector3(0,0,0)
+		#object.rotation_degrees = Vector3(0,90,0)
+		#object.freeze = true
+		object.set_collision_layer_value(1, false)
+		object.set_collision_layer_value(3, false)
 		object.lock_rotation = true
 		pickedObject = object
 		holdingobject = true
+		

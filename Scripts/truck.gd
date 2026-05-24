@@ -5,34 +5,42 @@ const PROJECTILE_SCENE = preload("res://Nodes/itemNodes/placement_zone.tscn")
 @onready var objects: Node3D = $Objects
 @onready var object_places: Node3D = $ObjectPlaces
 
-var itemsPlaced = []
+
 
 func _ready() -> void:
-	for i in object_places.get_child_count():
-		itemsPlaced.append(null)
-		self.set_collision_layer_value(1, false)
+
+	self.set_collision_layer_value(1, false)
 		
+
+
 func add_object(object):
-	if not itemsPlaced.has(null): return false
-	
+
 	object.reparent(objects)
 	
-	for i in len(itemsPlaced):
-		if itemsPlaced[i]: continue
-		self.set_collision_layer_value(1, true)
-		object.global_position = object_places.get_children()[i].global_position
-		itemsPlaced[i] = object
-		object.rotation_degrees = Vector3(0,90,0)
-		var new_obj = PROJECTILE_SCENE.instantiate()
-		new_obj.position = object.position + Vector3(0,1.05,0)
-		add_child(new_obj)
-		break
+
+	self.set_collision_layer_value(1, true)
+	object.global_position = object_places.get_children()[0].global_position
+
+	object.rotation_degrees = Vector3(0,90,0)
+	var new_obj = PROJECTILE_SCENE.instantiate()
+	new_obj.name = "PlacementZone"
+	new_obj.position = object.position + Vector3(0,1.05,0)
+	add_child(new_obj, true)
+	#print(itemsPlaced)
+	
+
+func isEmpty() -> bool:
+	if objects.get_child_count() == 0: 
+		
+		return true
+	
+	return false;
+
+func _on_objects_child_exiting_tree(_node: Node) -> void:
 		
 	
+	self.set_collision_layer_value(1, false)
+	#if is_instance_valid(find_child("PlacementZone")):
+	#	self.find_child("PlacementZone").queue_free()
 	
-func _on_objects_child_exiting_tree(node: Node) -> void:
-	
-	var index = itemsPlaced.find(node)
-	
-	itemsPlaced[index] = null
-	
+	#print(itemsPlaced)

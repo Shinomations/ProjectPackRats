@@ -11,15 +11,6 @@ var outlineWidth = 0.05
 # Called when the node enters the scene tree for the first time.
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interaction") and selected:
-		player.pick_up_object(self)
-		
-		if player.pickedObject == self:
-			freeze = false
-			lock_rotation = false
-			
-
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -29,7 +20,7 @@ func _ready():
 
 func _process(_delta):
 	
-	%CollisionShape3D.disabled = player == get_parent()
+	#%CollisionShape3D.disabled = player == get_parent()
 	meshOutline.visible = selected and not player == get_parent()
 	
 	if selected:
