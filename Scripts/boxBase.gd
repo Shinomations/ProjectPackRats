@@ -3,7 +3,6 @@ extends RigidBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $CollisionShape3D/MeshInstance3D
 
-
 var selected = false
 var player
 var outlineWidth = 0.05
@@ -25,10 +24,9 @@ func _process(_delta):
 	
 	if selected:
 		boxbasic1.position.y = outlineWidth
+		player.boxTypeDetector = 1 #change to set what 
 	else:
 		boxbasic1.position.y = 0
-		
-
 
 func _set_selected(object):
 	selected = self == object

@@ -17,6 +17,7 @@ var pickedObject
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
 var holdingobject = false
 var collider
+var boxTypeDetector: int
 
 func _ready():
 	add_to_group("player")
@@ -33,7 +34,7 @@ func _unhandled_input(event):
 func _input(event):
 	if event.is_action_pressed("interaction"):	
 		if(pickedObject != null): # if u have item
-			print(collider)
+			#print(collider)
 			if collider is store_object:
 				if collider.isEmpty():
 					pickedObject.set_collision_layer_value(1, true)
@@ -58,6 +59,7 @@ func _input(event):
 				holdingobject = false
 				
 		else: # if u dont have item
+			
 			if collider is store_object:
 				if collider.isEmpty():
 					
@@ -65,13 +67,13 @@ func _input(event):
 				else:
 					collider._on_objects_child_exiting_tree(pickedObject)
 			elif collider is RigidBody3D:
-				print("isowrking")
+				#print("isowrking")
 				player.pick_up_object(collider)
 		
 	
 
 func _process(_delta):
-	print(collider)
+	#print(collider)
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)

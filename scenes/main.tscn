@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcmx3d8ixguc2"]
+[gd_scene load_steps=11 format=3 uid="uid://bcmx3d8ixguc2"]
 
 [ext_resource type="PackedScene" uid="uid://bx2fot2sqqx1w" path="res://Nodes/playerNodes/character.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/base_box.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cxleafd5i6bci" path="res://Nodes/environmentNodes/truck.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bmd8vug242po0" path="res://Nodes/itemNodes/placement_zone.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bxjwdvberks8u" path="res://zone_calculator.tscn" id="5_tbgi4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,6 +39,9 @@ environment = SubResource("Environment_7mycd")
 
 [node name="Node3D" parent="Environments" instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.276798, 1.8968475, 0)
+
+[node name="Node3D2" parent="Environments" instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.276798, 1.8968475, 6.55855)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environments"]
 transform = Transform3D(30.337406, 0, 0, 0, 0.25765255, 0, 0, 0, 22.761772, 0, 0, 0)
@@ -86,3 +90,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.829498, 0.6006658, -0.416
 
 [node name="PlacementZone5" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.829498, 0.6006658, -1.4329824)
+
+[node name="ZoneCalculator" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.64844, 1.088637, 8.05709)
