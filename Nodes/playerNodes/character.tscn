@@ -1,32 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx2fot2sqqx1w"]
+[gd_scene format=3 uid="uid://bx2fot2sqqx1w"]
 
 [ext_resource type="Script" uid="uid://btc2onsn5ii4" path="res://Scripts/character.gd" id="1_umwsb"]
+[ext_resource type="PackedScene" uid="uid://bmd8vug242po0" path="res://Nodes/itemNodes/placement_zone.tscn" id="2_hl33g"]
+[ext_resource type="Script" uid="uid://c3rmujl4sejsu" path="res://Nodes/itemNodes/gridPlacement.gd" id="3_8tt6j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wa5vi"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=589850279]
 collision_mask = 3
 script = ExtResource("1_umwsb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1517198120]
 shape = SubResource("CapsuleShape3D_vu45j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1835946759]
 mesh = SubResource("CapsuleMesh_wa5vi")
 skeleton = NodePath("../..")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="." unique_id=1873127406]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9327415, -0.27148712)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=910976230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21401632, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1804282328]
 target_position = Vector3(0, 0, -3)
-collision_mask = 12
+collision_mask = 2
 
-[node name="boxCarryMarker" type="Marker3D" parent="Head/Camera3D"]
+[node name="boxCarryMarker" type="Marker3D" parent="Head/Camera3D" unique_id=1372912403]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6489047, -1.1748598)
+
+[node name="PlacementZone" parent="." unique_id=1807250413 instance=ExtResource("2_hl33g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0960747, 0.49439907, -3.9559226)
+script = ExtResource("3_8tt6j")

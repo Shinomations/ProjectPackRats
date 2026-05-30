@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcmx3d8ixguc2"]
+[gd_scene format=3 uid="uid://bcmx3d8ixguc2"]
 
 [ext_resource type="PackedScene" uid="uid://bx2fot2sqqx1w" path="res://Nodes/playerNodes/character.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/base_box.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cxleafd5i6bci" path="res://Nodes/environmentNodes/truck.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://bmd8vug242po0" path="res://Nodes/itemNodes/placement_zone.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://bxjwdvberks8u" path="res://zone_calculator.tscn" id="5_tbgi4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,73 +21,58 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1633370959]
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_0wfyh")]
+[node name="CharacterBody3D" parent="." unique_id=2059645712 instance=ExtResource("1_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6020014, 2, 0)
 
-[node name="Environments" type="Node" parent="."]
+[node name="Environments" type="Node" parent="." unique_id=715754160]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environments"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environments" unique_id=1066101776]
 transform = Transform3D(-0.21036941, 0.84664553, -0.48881093, 2.7805946e-08, 0.49999997, 0.86602545, 0.977622, 0.18218525, -0.10518471, 0, 8.312233, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environments"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environments" unique_id=1924992076]
 environment = SubResource("Environment_7mycd")
 
-[node name="Node3D" parent="Environments" instance=ExtResource("3_sugp2")]
+[node name="Node3D" parent="Environments" unique_id=1131489001 instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.276798, 1.8968475, 0)
 
-[node name="Node3D2" parent="Environments" instance=ExtResource("3_sugp2")]
+[node name="Node3D2" parent="Environments" unique_id=642029762 instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.276798, 1.8968475, 6.55855)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environments"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environments" unique_id=387206810]
 transform = Transform3D(30.337406, 0, 0, 0, 0.25765255, 0, 0, 0, 22.761772, 0, 0, 0)
 layers = 2
 mesh = SubResource("BoxMesh_0xm2m")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environments/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environments/MeshInstance3D" unique_id=1884671961]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environments/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environments/MeshInstance3D/StaticBody3D" unique_id=245998881]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0)
 shape = SubResource("BoxShape3D_0xm2m")
 
-[node name="Moveables" type="Node" parent="."]
+[node name="Moveables" type="Node" parent="." unique_id=1676812572]
 
-[node name="baseBox" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox" parent="Moveables" unique_id=1053126355 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 1.2828546, -3.163687)
 
-[node name="baseBox3" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox3" parent="Moveables" unique_id=1244451501 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 1.2828546, -4.5954475)
 
-[node name="baseBox4" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox4" parent="Moveables" unique_id=1071996671 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 2.8882756, -3.9326196)
 
-[node name="baseBox5" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox5" parent="Moveables" unique_id=768432369 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 2.8882756, -2.5514069)
 
-[node name="baseBox7" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox7" parent="Moveables" unique_id=1449507091 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 4.3119183, -3.299101)
 
-[node name="baseBox6" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox6" parent="Moveables" unique_id=2119798488 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.629304, 1.3825588, -1.8601251)
 
-[node name="baseBox2" parent="Moveables" instance=ExtResource("2_sugp2")]
+[node name="baseBox2" parent="Moveables" unique_id=203071856 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4546847, 1.4093539, 7.2748995)
-
-[node name="PlacementZone2" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.829498, 0.6006658, 1.6167506)
-
-[node name="PlacementZone3" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.829498, 0.6006658, 0.60042906)
-
-[node name="PlacementZone4" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.829498, 0.6006658, -0.4166609)
-
-[node name="PlacementZone5" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.829498, 0.6006658, -1.4329824)
-
-[node name="ZoneCalculator" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.64844, 1.088637, 8.05709)
