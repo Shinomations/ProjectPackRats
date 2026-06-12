@@ -10,7 +10,7 @@ const SENSITIVITY = 0.005
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
-
+@onready var placementZ = $PlacementZone 
 @onready var rayCast = $Head/Camera3D/RayCast3D
 
 var pickedObject
@@ -77,6 +77,8 @@ func _process(_delta):
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)
+		if pickedObject != null:
+			pickedObject.global_transform = placementZ.global_transform
 	else: interact_object.emit(null)
 
 func _physics_process(delta: float) -> void:
@@ -96,6 +98,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * Vector3(input_dir.x,0,input_dir.y))
+	
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
