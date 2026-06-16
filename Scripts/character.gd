@@ -18,14 +18,35 @@ var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
 var holdingobject = false
 var collider
 var boxTypeDetector: int
+var isFirstPress: bool = true
+
+#stats
+var Name: String
+var weight: int
+var material: String
+var quality: int
+var health: int
+var ability: String
+
 
 func _ready():
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("quit"): get_tree().quit()
 	
+	if event.is_action_pressed("quit"): 
+		get_tree().quit()
+	
+	if event.is_action_pressed("Freedom"):
+		if isFirstPress == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			print("Mouse on")
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			print("Mouse off")
+		isFirstPress = !isFirstPress
+		
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
