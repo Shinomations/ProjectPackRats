@@ -24,9 +24,9 @@ var isFirstPress: bool = true
 var Name: String
 var weight: int
 var material: String
-var quality: int
-var health: int
+var Income: int
 var ability: String
+
 
 
 func _ready():
@@ -142,4 +142,12 @@ func pick_up_object(object):
 		object.lock_rotation = true
 		pickedObject = object
 		holdingobject = true
+		print(pickedObject)
 		
+		#stat updater
+		Name = pickedObject.get_child(2).GivenName
+		weight = pickedObject.get_child(2).GivenWeight
+		material = pickedObject.get_child(2).GivenType
+		Income = pickedObject.get_child(2).GivenIncome
+		ability = pickedObject.get_child(2).GivenAbility
+	

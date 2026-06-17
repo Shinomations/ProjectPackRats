@@ -5,16 +5,16 @@ var abilityList = [
 	"Books", 
 	"Clothing",
 	"Glassware",
-	"Tech"
+	"Wire"
 	]
 var chosen
-
+var player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	chosen = "res://Scripts/abilityScripts/abilityList/" + abilityList.pick_random() + ".gd"
+	player = get_tree().get_first_node_in_group("player")
+	chosen = "res://Scripts/abilityScripts/abilityList/z_" + abilityList.pick_random() + ".gd"
 	
-	self.name = chosen
+	#player.Name = chosen
 	
 	self.set_script(load(chosen))
 	if self.has_method("_init"):
