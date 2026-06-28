@@ -6,21 +6,30 @@ extends Control
 @onready var UnitIncome = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Income
 @onready var UnitAbility = $MarginContainer/VBoxContainer/Ability
 
-@onready var player = get_parent()
+var player: CharacterBody3D = null
 
 func _ready() -> void:
-	
-	pass
+	player = get_tree().get_first_node_in_group("player")
 
 func _process(_delta: float) -> void:
+	# Backup check: If player group failed in _ready, try to find it now
+	if not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("player")
 	
-	if player and is_instance_valid(player.pickedObject):
+	# The validation check
+	if is_instance_valid(player) and is_instance_valid(player.pickedObject):
 		UnitName.text = player.Name
 		UnitWeight.text = str(player.weight)
 		UnitMaterial.text = player.material
 		UnitIncome.text = str(player.Income)
 		UnitAbility.text = player.ability
-	else: 
+	else:
+		# DIAGNOSTIC PRINTS: Look at your Godot console when you pick something up!
+		if not is_instance_valid(player):
+			print_rich("[color=red]UI ERROR: Player node is NULL![/color]")
+		elif not is_instance_valid(player.pickedObject):
+			print_rich("[color=yellow]UI WARNING: Player found, but pickedObject is NULL![/color]")
+			
 		UnitName.text = "none"
 		UnitWeight.text = str(0)
 		UnitMaterial.text = "none"

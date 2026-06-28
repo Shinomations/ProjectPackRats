@@ -1,25 +1,34 @@
 extends Node3D
 
 var abilityList = [
-	"Anvils",
-	"Books", 
+	"anvil",
+	"books",
 	"Clothing",
 	"Glassware",
-	"Wire"
-	]
+	"Wire" 
+]
 var chosen
 var player
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	chosen = "res://Scripts/abilityScripts/abilityList/z_" + abilityList.pick_random() + ".gd"
+	chosen = "res://Nodes/itemNodes/z_" + abilityList.pick_random() + ".tscn"
 	
-	#player.Name = chosen
 	
-	self.set_script(load(chosen))
-	if self.has_method("_init"):
-		self._init()
+	var myLocation = self.global_position 
+	
+	spawn_without_preloading(chosen, myLocation)
+	# REMOVED: queue_free() is gone so this randomizer stays in the scene
+
+func spawn_without_preloading(scene_path: String, spawn_point: Vector3) -> void:
+	var loaded_scene = load(scene_path) as PackedScene
+	
+	if loaded_scene:
+		var instance = loaded_scene.instantiate()
 		
-	if self.has_method("_ready"):
-		self._ready()
-	
+		add_child(instance)
+		
+		instance.global_position = spawn_point
+		
+	else:
+		push_error("Failed to load scene at path: " + scene_path)

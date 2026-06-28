@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://761cxwcdllpt"]
+
+[ext_resource type="Script" uid="uid://dlw11w20cnhat" path="res://Scripts/boxBase.gd" id="1_8bmho"]
+[ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/crate.glb" id="2_ghi18"]
+[ext_resource type="Script" uid="uid://dqcc20udub0ll" path="res://Scripts/abilityScripts/abilityList/z_Anvils.gd" id="3_ghi18"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rglkb"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7eqvs"]
+_surfaces = [{
+"aabb": AABB(-0.5288675, -0.5288675, -0.5288675, 1.057735, 1.057735, 1.057735),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio/AAAAAKuqqj4AAAAAAACAPwAAAAAAAAAAAAAAP6uqKj8AAAA/q6qqPgAAAD8AAIA/AAAAP6uqqj4AAAAAAAAAAAAAAD+rqio/AAAAAKuqqj4AAAA/q6qqPgAAAD8AAAAAAACAP6uqKj8AAAA/q6qqPgAAgD+rqqo+AAAAP6uqKj8AAAA/q6oqPwAAAD8AAIA/AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AACAPwAAgD8AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAAEAAIAAgAEAAYAAQAFAAMAAwAFAAcACAAMAAoACgAMAA4ACQANAAsACwANAA8AEAAUABIAEgAUABYAEQAVABMAEwAVABcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("3GMHv9xjBz/cYwc/3GMHP9xjBz/cYwe/3GMHP9xjBz/cYwc/3GMHv9xjBz/cYwe/3GMHv9xjB7/cYwc/3GMHP9xjB7/cYwe/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwe/3GMHP9xjBz/cYwc/3GMHv9xjBz/cYwe/3GMHP9xjBz/cYwe/3GMHv9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwe/3GMHP9xjB7/cYwe/3GMHv9xjB7/cYwc/3GMHP9xjBz/cYwc/3GMHv9xjB7/cYwc/3GMHv9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHP9xjBz/cYwe/3GMHv9xjB7/cYwe/3GMHv9xjBz/cYwe/3GMHP9xjB7/cYwe//3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
+}]
+
+[node name="baseBox" type="CharacterBody3D" unique_id=1912439468]
+process_mode = 3
+physics_interpolation_mode = 1
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_8bmho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1340627232]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.942)
+shape = SubResource("BoxShape3D_rglkb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1726511899]
+mesh = SubResource("ArrayMesh_7eqvs")
+skeleton = NodePath("")
+
+[node name="crate" parent="." unique_id=924331453 instance=ExtResource("2_ghi18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.942)
+
+[node name="abilityHolder" type="Node3D" parent="." unique_id=1613521322]
+script = ExtResource("3_ghi18")

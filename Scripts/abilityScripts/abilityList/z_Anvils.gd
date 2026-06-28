@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +14,8 @@ var scaling = 1.1
 
 func _ready() -> void:
 	
-	self.get_parent().get_child(1).scale = Vector3.ONE * scaling
-	
-	self.get_parent().get_child(2).scale = Vector3.ONE * scaling
 	print(GivenName)
+	
+func _process(delta: float) -> void:
+
 	pass
