@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://cbjn72ks0i2t3"]
 
-[ext_resource type="Script" uid="uid://dlw11w20cnhat" path="res://Scripts/boxBase.gd" id="1_iqen4"]
 [ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_bsvri"]
 [ext_resource type="Script" uid="uid://dgy05ttgix1b5" path="res://Scripts/abilityScripts/abilityList/z_Glassware.gd" id="3_iqen4"]
 
@@ -25,7 +24,7 @@ albedo_color = Color(0, 0, 0, 1)
 [node name="baseBox" type="CharacterBody3D" unique_id=1524988393]
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_iqen4")
+script = ExtResource("3_iqen4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
@@ -38,6 +37,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
 [node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_bsvri")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
-[node name="abilityHolder" type="Node3D" parent="." unique_id=1613521322]
-script = ExtResource("3_iqen4")

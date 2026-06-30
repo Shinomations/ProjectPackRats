@@ -133,7 +133,7 @@ func pick_up_object(object):
 			
 		pickedObject = object
 		holdingobject = true
-		print(pickedObject)
+		
 		
 		var stats_node = null
 		if "GivenName" in object:
@@ -150,6 +150,4 @@ func pick_up_object(object):
 			material = str(stats_node.GivenType)
 			Income = stats_node.GivenIncome
 			ability = str(stats_node.GivenAbility)
-			print("Stats loaded successfully! Name: ", Name)
-		else:
-			push_error("Could not find variables on root or children of: " + object.name)
+			

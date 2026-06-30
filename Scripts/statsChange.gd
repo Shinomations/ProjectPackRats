@@ -24,12 +24,10 @@ func _process(_delta: float) -> void:
 		UnitIncome.text = str(player.Income)
 		UnitAbility.text = player.ability
 	else:
-		# DIAGNOSTIC PRINTS: Look at your Godot console when you pick something up!
 		if not is_instance_valid(player):
-			print_rich("[color=red]UI ERROR: Player node is NULL![/color]")
+			pass
 		elif not is_instance_valid(player.pickedObject):
-			print_rich("[color=yellow]UI WARNING: Player found, but pickedObject is NULL![/color]")
-			
+			pass
 		UnitName.text = "none"
 		UnitWeight.text = str(0)
 		UnitMaterial.text = "none"

@@ -37,12 +37,3 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-func _ability():
-	var i = 0
-	var collision = get_slide_collision(0)
-	
-	move_and_slide()
-	
-	if get_slide_collision_count() > 0 and i > 0:
-		print(collision.get_position())
-	pass

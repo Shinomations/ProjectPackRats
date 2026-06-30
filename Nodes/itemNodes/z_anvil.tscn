@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://761cxwcdllpt"]
 
-[ext_resource type="Script" uid="uid://dlw11w20cnhat" path="res://Scripts/boxBase.gd" id="1_8bmho"]
 [ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/crate.glb" id="2_ghi18"]
 [ext_resource type="Script" uid="uid://dqcc20udub0ll" path="res://Scripts/abilityScripts/abilityList/z_Anvils.gd" id="3_ghi18"]
 
@@ -20,22 +19,24 @@ _surfaces = [{
 }]
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1912439468]
-process_mode = 3
-physics_interpolation_mode = 1
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_8bmho")
+script = ExtResource("3_ghi18")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1340627232]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.942)
 shape = SubResource("BoxShape3D_rglkb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1726511899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022355318, 0.0016022921, -0.00053042173)
 mesh = SubResource("ArrayMesh_7eqvs")
 skeleton = NodePath("")
 
 [node name="crate" parent="." unique_id=924331453 instance=ExtResource("2_ghi18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.942)
 
-[node name="abilityHolder" type="Node3D" parent="." unique_id=1613521322]
-script = ExtResource("3_ghi18")
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=81718463]
+transform = Transform3D(28, 0, 0, 0, -1, 2.4478377e-06, 0, -8.742278e-08, -28, -0.0012250543, -1.6324466, -0.9413527)
+exclude_parent = false
+collision_mask = 4
+debug_shape_thickness = 5
