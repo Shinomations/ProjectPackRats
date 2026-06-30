@@ -57,7 +57,7 @@ func _input(event):
 				if collider.isEmpty():
 					pickedObject.set_collision_layer_value(1, true)
 					pickedObject.set_collision_layer_value(3, true)
-					if pickedObject is RigidBody3D:
+					if pickedObject is Area3D:
 						pickedObject.freeze = true
 					collider.add_object(pickedObject)
 					
@@ -68,9 +68,6 @@ func _input(event):
 			
 			else: # Drop item normally into the world
 				pickedObject.reparent(get_tree().current_scene)
-				if pickedObject is RigidBody3D:
-					pickedObject.lock_rotation = false
-				
 				pickedObject.set_collision_layer_value(1, true)
 				pickedObject.set_collision_layer_value(3, true)
 				pickedObject = null
@@ -86,7 +83,7 @@ func _input(event):
 				else:
 					collider._on_objects_child_exiting_tree(pickedObject)
 			# FIXED: Now checks for BOTH RigidBody3D and CharacterBody3D types
-			elif collider is RigidBody3D or collider is CharacterBody3D:
+			elif collider is Area3D:
 				player.pick_up_object(collider)
 		
 	
@@ -128,13 +125,9 @@ func pick_up_object(object):
 		object.set_collision_layer_value(1, false)
 		object.set_collision_layer_value(3, false)
 		
-		if object is RigidBody3D:
-			object.lock_rotation = true
-			
 		pickedObject = object
 		holdingobject = true
-		
-		
+			
 		var stats_node = null
 		if "GivenName" in object:
 			stats_node = object

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bgtqlsg82kpm7" path="res://Scripts/abilityScripts/ability_handler.gd" id="3_ietqa"]
 
-[node name="baseBox" type="CharacterBody3D" unique_id=683288515]
+[node name="baseBox" type="Node3D" unique_id=1457221616]
 script = ExtResource("3_ietqa")
