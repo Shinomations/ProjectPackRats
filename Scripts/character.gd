@@ -33,9 +33,11 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
+#close game
 	if event.is_action_pressed("quit"): 
 		get_tree().quit()
 	
+#Show Mouse Toggle
 	if event.is_action_pressed("Freedom"):
 		if isFirstPress == true:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -45,19 +47,26 @@ func _unhandled_input(event):
 			print("Mouse off")
 		isFirstPress = !isFirstPress
 		
+#Movement
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
 		cam.rotation.x = clamp(cam.rotation.x,deg_to_rad(-40),deg_to_rad(60))
 
+#Refresh all boxes
+	if event.is_action_pressed("Reset"):
+		var allboxes:Array[Node] = []
+		find_allboxes(get_tree().root, allboxes)
+		pass
 func _input(event):
+#grab object
 	if event.is_action_pressed("interaction"):	
 		if(pickedObject != null): # IF HOLDING AN ITEM (DROP/PLACE IT)
 			if collider is store_object:
 				if collider.isEmpty():
 					pickedObject.set_collision_layer_value(1, true)
 					pickedObject.set_collision_layer_value(3, true)
-					if pickedObject is Area3D:
+					if pickedObject is CharacterBody3D:
 						pickedObject.freeze = true
 					collider.add_object(pickedObject)
 					
@@ -82,8 +91,8 @@ func _input(event):
 					pass
 				else:
 					collider._on_objects_child_exiting_tree(pickedObject)
-			# FIXED: Now checks for BOTH RigidBody3D and CharacterBody3D types
-			elif collider is Area3D:
+			
+			elif collider is CharacterBody3D:
 				player.pick_up_object(collider)
 		
 	
@@ -93,11 +102,11 @@ func _process(_delta):
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)
 	else: 
-		collider = null # FIXED: Clears reference so you aren't pointing at old nodes
+		collider = null 
 		interact_object.emit(null)
 
 func _physics_process(delta: float) -> void:
-	# Keep held object tracking smooth without conflicting transforms
+	
 	if (pickedObject != null):
 		pickedObject.global_transform = placementZ.global_transform
 	
@@ -144,3 +153,15 @@ func pick_up_object(object):
 			Income = stats_node.GivenIncome
 			ability = str(stats_node.GivenAbility)
 			
+func find_allboxes(current_node: Node, results: Array[Node]) -> void:
+	if current_node == player:
+		return
+	
+	if "collision_layer" in current_node:
+		if current_node.collision_layer & 4:
+			results.append(current_node)
+			current_node.queue_free()
+			
+	for child in current_node.get_children():
+		find_allboxes(child, results)
+		

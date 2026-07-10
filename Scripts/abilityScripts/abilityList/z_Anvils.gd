@@ -1,16 +1,16 @@
-extends Area3D
+extends CharacterBody3D
 
 
 # Called when the node enters the scene tree for the first time.
 
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $CollisionShape3D/MeshInstance3D2
-
+@onready var area = $Area3D
 var GivenName = "Box With Anvils"
 var GivenWeight = 500
 var GivenType = "Wooden"
 var GivenIncome = 1000
-var GivenAbility = "First Placement: Destroy everything underneath this"
+var GivenAbility = "First Placement: Destroy everything underneath this (Not other Anvil boxes)"
 
 var scaling = 1.1
 
@@ -19,8 +19,8 @@ var player
 var outlineWidth = 0.05
 
 #ability specific variables
-@onready var cast: Area3D = $"."
 var bodies
+var gravity = 9.8
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -31,8 +31,6 @@ func _ready():
 func _process(_delta):
 	
 	meshOutline.visible = selected and not player == get_parent()
-	if not body_entered.is_connected(_ability):
-		body_entered.connect(_ability)
 	
 	if selected:
 		boxbasic1.position.y = outlineWidth
@@ -41,15 +39,21 @@ func _process(_delta):
 		boxbasic1.position.y = 0
 		
 func _physics_process(delta: float) -> void:
-	
-		global_position.y -= gravity * delta
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		velocity.y = 0 
+	move_and_slide()
+
 
 func _set_selected(object):
 	selected = self == object
 	
 
-func _ability(body: Node3D) -> void:
-	if body is CharacterBody3D and not player.pickedObject == self:
-		bodies = body
-		body.queue_free()
-		
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body != self and body is CharacterBody3D or body is RigidBody3D:
+		if not body.is_in_group("player") and not player.pickedObject and body.GivenName != "Box With Anvils":
+			if "Destroyer" in body:
+				body.Destroyer = self
+				body.ability()
+			body.queue_free()

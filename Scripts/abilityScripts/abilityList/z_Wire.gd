@@ -19,6 +19,8 @@ var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var Destroyer
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	player.interact_object.connect(_set_selected)
@@ -47,7 +49,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-func _ability():
-	var i = 0
-	
+func ability() -> void:
+	Destroyer.GivenIncome *= 2
 	pass
