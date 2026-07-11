@@ -5,7 +5,8 @@ var abilityList = [
 	"books",
 	"Clothing",
 	"Glassware",
-	"Wire" 
+	"Wire",
+	"Nails" 
 ]
 var chosen
 var player
@@ -13,7 +14,7 @@ var player
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	chosen = "res://Nodes/itemNodes/z_" + abilityList.pick_random() + ".tscn"
-	
+	print(chosen)
 	
 	var myLocation = self.global_position 
 	

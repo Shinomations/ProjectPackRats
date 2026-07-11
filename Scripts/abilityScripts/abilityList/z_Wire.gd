@@ -11,6 +11,7 @@ var GivenWeight = 25
 var GivenType = "Cardboard"
 var GivenIncome = 200
 var GivenAbility = "When Destroyed: Double the Income of the Box that destroyed this"
+var GivenHealth = 50
 
 var scaling = 1.1
 
@@ -37,6 +38,8 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
+	if GivenHealth <= 0:
+		self.queue_free()
 
 func _set_selected(object):
 	selected = self == object

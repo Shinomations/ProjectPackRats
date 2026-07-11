@@ -5,12 +5,13 @@ extends CharacterBody3D
 
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $CollisionShape3D/MeshInstance3D
-
+@onready var area = $CollisionShape3D/Area3D
 var GivenName = "Box of Glassware"
 var GivenWeight = 10
 var GivenType = "Wooden"
 var GivenIncome = 500
 var GivenAbility = "Passive: destroy this when a box with more weight is placed above this one"
+var GivenHealth = 70
 
 var scaling = 1.1
 
@@ -35,6 +36,8 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
+	if GivenHealth <= 0:
+		self.queue_free()
 
 func _set_selected(object):
 	selected = self == object
@@ -47,3 +50,9 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body != self and body is CharacterBody3D or body is RigidBody3D:
+		if not body.is_in_group("player") and not player.pickedObject:
+			self.queue_free()

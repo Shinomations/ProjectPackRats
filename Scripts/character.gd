@@ -26,6 +26,7 @@ var weight: int
 var material: String
 var Income: int
 var ability: String
+var health: int
 
 
 func _ready():
@@ -51,7 +52,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
-		cam.rotation.x = clamp(cam.rotation.x,deg_to_rad(-40),deg_to_rad(60))
+		cam.rotation.x = clamp(cam.rotation.x,deg_to_rad(-80),deg_to_rad(85))
 
 #Refresh all boxes
 	if event.is_action_pressed("Reset"):
@@ -152,6 +153,7 @@ func pick_up_object(object):
 			material = str(stats_node.GivenType)
 			Income = stats_node.GivenIncome
 			ability = str(stats_node.GivenAbility)
+			health = stats_node.GivenHealth
 			
 func find_allboxes(current_node: Node, results: Array[Node]) -> void:
 	if current_node == player:

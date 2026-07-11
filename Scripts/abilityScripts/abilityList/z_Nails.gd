@@ -6,12 +6,12 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $CollisionShape3D/MeshInstance3D
 
-var GivenName = "Book Box"
-var GivenWeight = 100
+var GivenName = "Box of Nails"
+var GivenWeight = 20
 var GivenType = "Cardboard"
-var GivenIncome = 250
-var GivenAbility = "Passive: boxes next to this have -10 weight (Can't be 0)"
-var GivenHealth = 50
+var GivenIncome = 200
+var GivenAbility = "Passive: Deal 10 Damage to all boxes directly adjacent to this by "
+var GivenHealth = 10
 
 var scaling = 1.1
 
@@ -19,7 +19,7 @@ var selected = false
 var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var BoxesNotToAffect: Array = []
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	player.interact_object.connect(_set_selected)
@@ -50,3 +50,14 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body != self and body is CharacterBody3D or body is RigidBody3D:
+		if not body.is_in_group("player") and not player.pickedObject:
+			if not BoxesNotToAffect.has(body):
+				body.GivenHealth -= 10
+				BoxesNotToAffect.append(body)
+				print(BoxesNotToAffect)
+				if "Destroyer" in body and body.GivenHealth <= 0:
+					print("added")
+					body.Destroyer = self
+					body.ability()

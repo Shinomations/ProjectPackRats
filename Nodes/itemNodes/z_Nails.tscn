@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://cpitx7172rlex"]
+[gd_scene format=4 uid="uid://icmriptgv56u"]
 
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_ul4bk"]
-[ext_resource type="Script" uid="uid://b486e2stl3u7i" path="res://Scripts/abilityScripts/abilityList/z_Books.gd" id="3_0vg5f"]
+[ext_resource type="Script" uid="uid://dbqroj8cg2qbi" path="res://Scripts/abilityScripts/abilityList/z_Nails.gd" id="1_n5tul"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_fu26b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -21,10 +21,13 @@ _surfaces = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="baseBox" type="CharacterBody3D" unique_id=1791562658]
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5tul"]
+size = Vector3(1.2561035, 0.84542847, 0.90374756)
+
+[node name="baseBox" type="CharacterBody3D" unique_id=1305476861]
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("3_0vg5f")
+script = ExtResource("1_n5tul")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
@@ -35,5 +38,23 @@ mesh = SubResource("ArrayMesh_3mi5x")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
-[node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_ul4bk")]
+[node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_fu26b")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1210300561]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1220739927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026000977, -0.018539429, -0.003753662)
+shape = SubResource("BoxShape3D_n5tul")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=900293223]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.026000977, -0.018539429, -0.003753662)
+shape = SubResource("BoxShape3D_n5tul")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D" unique_id=1842616038]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.026000977, -0.018539429, -0.003753662)
+shape = SubResource("BoxShape3D_n5tul")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

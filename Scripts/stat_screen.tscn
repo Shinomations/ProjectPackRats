@@ -55,6 +55,11 @@ layout_mode = 2
 text = "Income"
 alignment = 1
 
+[node name="Health" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=530774917]
+layout_mode = 2
+text = "Health"
+alignment = 1
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1842698576]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -75,6 +80,11 @@ text = "None"
 alignment = 1
 
 [node name="Income" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1610197220]
+layout_mode = 2
+text = "None"
+alignment = 1
+
+[node name="Health" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=703299744]
 layout_mode = 2
 text = "None"
 alignment = 1

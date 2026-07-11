@@ -5,7 +5,7 @@ extends Control
 @onready var UnitMaterial = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Material
 @onready var UnitIncome = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Income
 @onready var UnitAbility = $MarginContainer/VBoxContainer/Ability
-
+@onready var UnitHealth = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Health
 var player: CharacterBody3D = null
 
 func _ready() -> void:
@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 		UnitMaterial.text = player.material
 		UnitIncome.text = str(player.Income)
 		UnitAbility.text = player.ability
+		UnitHealth.text = str(player.health)
 	else:
 		if not is_instance_valid(player):
 			pass
@@ -33,3 +34,4 @@ func _process(_delta: float) -> void:
 		UnitMaterial.text = "none"
 		UnitIncome.text = str(0)
 		UnitAbility.text = "none"
+		UnitHealth.text = str(0)

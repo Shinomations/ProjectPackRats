@@ -11,6 +11,7 @@ var GivenWeight = 20
 var GivenType = "Bag"
 var GivenIncome = 50
 var GivenAbility = "First Placement: Merge with a box/Furniture, it has +10 Income"
+var GivenHealth = 30
 
 var scaling = 1.1
 
@@ -35,6 +36,8 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
+	if GivenHealth <= 0:
+		self.queue_free()
 
 func _set_selected(object):
 	selected = self == object

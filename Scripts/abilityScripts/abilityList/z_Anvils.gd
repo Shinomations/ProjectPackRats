@@ -5,12 +5,13 @@ extends CharacterBody3D
 
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $CollisionShape3D/MeshInstance3D2
-@onready var area = $Area3D
+@onready var area = $CollisionShape3D/Area3D
 var GivenName = "Box With Anvils"
 var GivenWeight = 500
 var GivenType = "Wooden"
 var GivenIncome = 1000
 var GivenAbility = "First Placement: Destroy everything underneath this (Not other Anvil boxes)"
+var GivenHealth = 100
 
 var scaling = 1.1
 
@@ -38,6 +39,8 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
+	if GivenHealth <= 0:
+		self.queue_free()
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta

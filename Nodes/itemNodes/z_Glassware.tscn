@@ -5,6 +5,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8k8tf"]
+size = Vector3(1, 0.052612305, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_3mi5x"]
 _surfaces = [{
 "aabb": AABB(-0.5288675, -0.5288675, -0.5288675, 1.057735, 1.057735, 1.057735),
@@ -30,6 +33,15 @@ script = ExtResource("3_iqen4")
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_tblqd")
 
+[node name="Area3D" type="Area3D" parent="CollisionShape3D" unique_id=729696703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059497833, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D/Area3D" unique_id=1105937106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47369385, 0)
+shape = SubResource("BoxShape3D_8k8tf")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=935560228]
 mesh = SubResource("ArrayMesh_3mi5x")
 skeleton = NodePath("")
@@ -37,3 +49,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
 [node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_bsvri")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[connection signal="body_entered" from="CollisionShape3D/Area3D" to="." method="_on_area_3d_body_entered"]
