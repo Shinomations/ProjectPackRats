@@ -96,3 +96,4 @@ text = "None"
 placeholder_text = "none"
 wrap_mode = 1
 indent_wrapped_lines = true
+scroll_fit_content_height = true
