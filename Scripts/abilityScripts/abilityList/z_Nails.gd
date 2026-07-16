@@ -20,6 +20,18 @@ var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var BoxesNotToAffect: Array = []
+
+#Ability Specific editing
+
+var canBeDestroyed: bool = true
+var incomeCanChange:bool = true
+var weightCanChange:bool = true
+var healthCanChange:bool = true
+var abilityCanChange:bool = true
+var materialCanChange:bool = true
+var canBeMoved:bool = true
+var canMove:bool = true
+var canReroll:bool = true
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	player.interact_object.connect(_set_selected)

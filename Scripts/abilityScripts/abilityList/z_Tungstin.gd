@@ -6,11 +6,11 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $CollisionShape3D/MeshInstance3D
 
-var GivenName = "Book Box"
+var GivenName = "Tungstin"
 var GivenWeight = 100
-var GivenType = "Cardboard"
+var GivenType = "Metal"
 var GivenIncome = 250
-var GivenAbility = "Passive: boxes next to this have -10 weight (Can't be 0)"
+var GivenAbility = "Passive:This cant be destroyed"
 var GivenHealth = 50
 
 var scaling = 1.1
@@ -19,6 +19,19 @@ var selected = false
 var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+#Ability Specific editing
+
+var canBeDestroyed: bool = false
+var incomeCanChange:bool = true
+var weightCanChange:bool = true
+var healthCanChange:bool = true
+var abilityCanChange:bool = true
+var materialCanChange:bool = true
+var canBeMoved:bool = true
+var canMove:bool = true
+var canReroll:bool = true
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")

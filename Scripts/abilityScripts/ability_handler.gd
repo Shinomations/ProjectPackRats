@@ -2,11 +2,10 @@ extends Node3D
 
 var abilityList = [
 	"anvil",
-	"books",
-	"Clothing",
 	"Glassware",
 	"Wire",
-	"Nails" 
+	"Nails",
+	"Tungstin" 
 ]
 var chosen
 var player

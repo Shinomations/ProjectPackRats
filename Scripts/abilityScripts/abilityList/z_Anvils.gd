@@ -23,6 +23,16 @@ var outlineWidth = 0.05
 var bodies
 var gravity = 9.8
 
+#Ability Specific editing
+var canBeDestroyed: bool = true
+var incomeCanChange:bool = true
+var weightCanChange:bool = true
+var healthCanChange:bool = true
+var abilityCanChange:bool = true
+var materialCanChange:bool = true
+var canBeMoved:bool = true
+var canMove:bool = true
+var canReroll:bool = true
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	player.interact_object.connect(_set_selected)
@@ -56,7 +66,8 @@ func _set_selected(object):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self and body is CharacterBody3D or body is RigidBody3D:
 		if not body.is_in_group("player") and not player.pickedObject and body.GivenName != "Box With Anvils":
-			if "Destroyer" in body:
-				body.Destroyer = self
-				body.ability()
-			body.queue_free()
+			if body.canBeDestroyed == true:
+				if "Destroyer" in body:
+					body.Destroyer = self
+					body.ability()
+				body.queue_free()
