@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 		var hit = player.rayCast.get_collision_point()
 		var normal = player.rayCast.get_collision_normal()
 		
-		var offset = 0.5
+		var offset = player.pickedObject.offset
 		newP = hit + (normal * offset)
 		
 		self.global_position = newP.snapped(Vector3(grid,grid,grid))

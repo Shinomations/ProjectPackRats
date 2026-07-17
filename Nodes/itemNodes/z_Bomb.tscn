@@ -5,6 +5,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntypx"]
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_3mi5x"]
 _surfaces = [{
 "aabb": AABB(-0.5288675, -0.5288675, -0.5288675, 1.057735, 1.057735, 1.057735),
@@ -21,28 +23,29 @@ _surfaces = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ntypx"]
-
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_ntypx")
+size = Vector2(1, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_tblqd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=935560228]
-mesh = SubResource("ArrayMesh_3mi5x")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
-
 [node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_u4plu")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=360825656]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1048805561]
 shape = SubResource("BoxShape3D_ntypx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=935560228]
+mesh = SubResource("ArrayMesh_3mi5x")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

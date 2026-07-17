@@ -1,11 +1,13 @@
 extends CharacterBody3D
 
 
-# Called when the node enters the scene tree for the first time.
-
+#calling of children
 @onready var boxbasic1 = $CollisionShape3D
-@onready var meshOutline = $CollisionShape3D/MeshInstance3D2
-@onready var area = $CollisionShape3D/Area3D
+@onready var meshOutline = $MeshInstance3D2
+@onready var area = $Area3D
+
+
+#Per box Stats
 var GivenName = "Box With Anvils"
 var GivenWeight = 500
 var GivenType = "Wooden"
@@ -13,15 +15,17 @@ var GivenIncome = 1000
 var GivenAbility = "First Placement: Destroy everything underneath this (Not other Anvil boxes)"
 var GivenHealth = 100
 
-var scaling = 1.1
-
+#all box variables
 var selected = false
 var player
 var outlineWidth = 0.05
 
-#ability specific variables
+
+#box specific variables
 var bodies
 var gravity = 9.8
+@export var size: Vector2 = Vector2(2,2)
+@export var offset: Vector3 = Vector3.ZERO
 
 #Ability Specific editing
 var canBeDestroyed: bool = true
@@ -39,6 +43,9 @@ func _ready():
 	player.interact_object.connect(_set_selected)
 	
 	meshOutline.visible = false
+	
+	for child in get_children():
+		child.position -= offset
 
 func _process(_delta):
 	
@@ -53,10 +60,14 @@ func _process(_delta):
 	if GivenHealth <= 0:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
+	if player.pickedObject == self:
+		velocity = Vector3.ZERO
+		 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
-		velocity.y = 0 
+		velocity.y = 0
+		
 	move_and_slide()
 
 
@@ -65,10 +76,32 @@ func _set_selected(object):
 	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body != self and body is CharacterBody3D or body is RigidBody3D:
-		if not body.is_in_group("player") and not player.pickedObject and body.GivenName != "Box With Anvils":
-			if body.canBeDestroyed == true:
-				if "Destroyer" in body and body.canBeDestroyed:
-					body.Destroyer = self
+	print(body)
+	if body == self or body.is_in_group("player"):
+		return
+		
+	if player.pickedObject == self:
+		return
+	
+	if "GivenName" in body:
+		if body.GivenName == "Box With Anvils":
+			return 
+			
+		
+		var dynamic_can_destroy = body.get("canBeDestroyed") if "canBeDestroyed" in body else true
+		
+		if dynamic_can_destroy:
+			if "Destroyer" in body:
+				body.Destroyer = self
+				if body.has_method("ability"):
 					body.ability()
-				body.queue_free()
+			
+			body.queue_free()
+
+
+func get_rect():
+	var objectPosition = Vector2(
+		global_position.x - int(size.x / 2),
+		global_position.z - int(size.y / 2)
+	)
+	return Rect2(objectPosition, size)

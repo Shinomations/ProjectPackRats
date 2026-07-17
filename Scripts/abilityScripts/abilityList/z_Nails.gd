@@ -4,7 +4,7 @@ extends CharacterBody3D
 # Called when the node enters the scene tree for the first time.
 
 @onready var boxbasic1 = $CollisionShape3D
-@onready var meshOutline = $CollisionShape3D/MeshInstance3D
+@onready var meshOutline = $MeshInstance3D
 
 var GivenName = "Box of Nails"
 var GivenWeight = 20
@@ -13,14 +13,13 @@ var GivenIncome = 200
 var GivenAbility = "Passive: Deal 10 Damage to all boxes directly adjacent to this by "
 var GivenHealth = 10
 
-var scaling = 1.1
-
 var selected = false
 var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var BoxesNotToAffect: Array = []
-
+@export var size: Vector2 = Vector2(2,2)
+@export var offset: Vector3 = Vector3.ZERO
 #Ability Specific editing
 
 var canBeDestroyed: bool = true
@@ -57,11 +56,15 @@ func _set_selected(object):
 
 func _physics_process(delta):
 	# Add the gravity to velocity each frame if not on the floor
+	if player.pickedObject == self:
+		velocity = Vector3.ZERO
+		 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	
+	else:
+		velocity.y = 0
+		
 	move_and_slide()
-	
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self and body is CharacterBody3D or body is RigidBody3D:
 		if not body.is_in_group("player") and not player.pickedObject:
@@ -73,3 +76,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 					print("added")
 					body.Destroyer = self
 					body.ability()
+
+func get_rect():
+	var objectPosition = Vector2(
+		global_position.x - int(size.x / 2),
+		global_position.z - int(size.y / 2)
+	)
+	return Rect2(objectPosition, size)

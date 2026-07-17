@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://bx2fot2sqqx1w"]
 
 [ext_resource type="Script" uid="uid://btc2onsn5ii4" path="res://Scripts/character.gd" id="1_umwsb"]
-[ext_resource type="PackedScene" uid="uid://bmd8vug242po0" path="res://Nodes/itemNodes/placement_zone.tscn" id="2_hl33g"]
-[ext_resource type="Script" uid="uid://c3rmujl4sejsu" path="res://Scripts/gridPlacement.gd" id="3_8tt6j"]
 [ext_resource type="PackedScene" uid="uid://bmg8q2yr6vsm3" path="res://Scripts/stat_screen.tscn" id="4_43fmg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
@@ -10,7 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wa5vi"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=589850279]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_umwsb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1517198120]
@@ -27,16 +25,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9327415, -0.27148712)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21401632, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1804282328]
-target_position = Vector3(0, 0, -3)
-collision_mask = 7
-collide_with_areas = true
+target_position = Vector3(0, 0, -10)
+collision_mask = 6
 
 [node name="boxCarryMarker" type="Marker3D" parent="Head/Camera3D" unique_id=1372912403]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6489047, -1.1748598)
-
-[node name="PlacementZone" parent="." unique_id=1807250413 instance=ExtResource("2_hl33g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0960747, 0.49439907, -3.9559226)
-script = ExtResource("3_8tt6j")
 
 [node name="StatScreen" parent="." unique_id=1881396743 instance=ExtResource("4_43fmg")]

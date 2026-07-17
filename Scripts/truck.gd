@@ -40,7 +40,4 @@ func _on_objects_child_exiting_tree(_node: Node) -> void:
 		
 	
 	self.set_collision_layer_value(1, false)
-	#if is_instance_valid(find_child("PlacementZone")):
-	#	self.find_child("PlacementZone").queue_free()
 	
-	#print(itemsPlaced)

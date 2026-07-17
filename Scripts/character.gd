@@ -10,8 +10,8 @@ const SENSITIVITY = 0.005
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
-@onready var placementZ = $PlacementZone 
-@onready var rayCast = $Head/Camera3D/RayCast3D
+
+@onready var rayCast: RayCast3D = $Head/Camera3D/RayCast3D
 
 var pickedObject
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
@@ -28,7 +28,8 @@ var Income: int
 var ability: String
 var health: int
 
-
+var cell_size = 1
+var gridPos: Vector3 = Vector3.ZERO
 func _ready():
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -54,11 +55,6 @@ func _unhandled_input(event):
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
 		cam.rotation.x = clamp(cam.rotation.x,deg_to_rad(-80),deg_to_rad(85))
 
-#Refresh all boxes
-	if event.is_action_pressed("Reset"):
-		var allboxes:Array[Node] = []
-		find_allboxes(get_tree().root, allboxes)
-		pass
 func _input(event):
 #grab object
 	if event.is_action_pressed("interaction"):	
@@ -74,7 +70,13 @@ func _input(event):
 					pickedObject = null
 					holdingobject = false
 				else:
-					collider._on_objects_child_exiting_tree(pickedObject)
+					pickedObject.reparent(get_tree().current_scene)
+					pickedObject.set_collision_layer_value(1, true)
+					pickedObject.set_collision_layer_value(3, true)
+					
+					
+					pickedObject = null
+					holdingobject = false
 			
 			else: # Drop item normally into the world
 				pickedObject.reparent(get_tree().current_scene)
@@ -102,14 +104,21 @@ func _process(_delta):
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)
+		if pickedObject:
+			var collisionPoint = rayCast.get_collision_point()
+			var collisionNormal = rayCast.get_collision_normal()
+			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2))
+			gridPos = snap2grid(targetPos)
 	else: 
 		collider = null 
 		interact_object.emit(null)
 
 func _physics_process(delta: float) -> void:
 	
-	if (pickedObject != null):
-		pickedObject.global_transform = placementZ.global_transform
+	if pickedObject != null and rayCast.is_colliding():
+		previewBox(gridPos)
+	elif pickedObject != null:
+		pickedObject.global_position = box_carry_marker.global_position
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -131,7 +140,7 @@ func _physics_process(delta: float) -> void:
 
 func pick_up_object(object):
 	if not holdingobject:
-		object.reparent(placementZ) # FIXED: Changed parent directly to the placement zone
+		 
 		object.set_collision_layer_value(1, false)
 		object.set_collision_layer_value(3, false)
 		
@@ -167,3 +176,19 @@ func find_allboxes(current_node: Node, results: Array[Node]) -> void:
 	for child in current_node.get_children():
 		find_allboxes(child, results)
 		
+func snap2grid(world_position: Vector3) -> Vector3:
+	if "size" in pickedObject:
+		if pickedObject.size is Vector2 or pickedObject.size is Vector3:
+			cell_size = pickedObject.size.x 
+		else:
+			cell_size = pickedObject.size 
+	else:
+		cell_size = 1.0 # Default backup size if no property is found
+	var x = round(world_position.x / cell_size) * cell_size
+	var y = round(world_position.y / cell_size) * cell_size
+	var z = round(world_position.z / cell_size) * cell_size
+	return Vector3(x,y,z)
+
+func previewBox(gridPos):
+	pickedObject.global_position = gridPos
+	#pickedObject.visibility = true

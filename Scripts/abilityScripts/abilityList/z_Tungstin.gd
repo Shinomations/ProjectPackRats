@@ -4,7 +4,7 @@ extends CharacterBody3D
 # Called when the node enters the scene tree for the first time.
 
 @onready var boxbasic1 = $CollisionShape3D
-@onready var meshOutline = $CollisionShape3D/MeshInstance3D
+@onready var meshOutline = $MeshInstance3D
 
 var GivenName = "Tungstin"
 var GivenWeight = 100
@@ -13,13 +13,13 @@ var GivenIncome = 250
 var GivenAbility = "Passive:This cant be destroyed"
 var GivenHealth = 50
 
-var scaling = 1.1
 
 var selected = false
 var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+@export var size: Vector2 = Vector2(2,2)
+@export var offset: Vector3 = Vector3.ZERO
 #Ability Specific editing
 
 var canBeDestroyed: bool = false
@@ -50,7 +50,7 @@ func _process(_delta):
 		boxbasic1.position.y = 0
 		
 	if GivenHealth <= 0:
-		self.queue_free()
+		GivenHealth = 10
 
 func _set_selected(object):
 	selected = self == object
@@ -58,8 +58,19 @@ func _set_selected(object):
 
 func _physics_process(delta):
 	# Add the gravity to velocity each frame if not on the floor
+	if player.pickedObject == self:
+		velocity = Vector3.ZERO
+		 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	
+	else:
+		velocity.y = 0
+		
 	move_and_slide()
-	
+
+func get_rect():
+	var objectPosition = Vector2(
+		global_position.x - int(size.x / 2),
+		global_position.z - int(size.y / 2)
+	)
+	return Rect2(objectPosition, size)
