@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalGrid="*uid://dj2r845vp1oqx"
+
 [display]
 
 window/stretch/mode="viewport"
