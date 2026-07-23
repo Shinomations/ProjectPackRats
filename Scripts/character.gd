@@ -31,10 +31,12 @@ var cell_size: float = 1.0
 var gridPos: Vector3 = Vector3.ZERO
 var original_grid_pos: Vector3 = Vector3.ZERO # Tracks where an item came from
 
+## player is a group so this class is referencable in other scripts
 func _ready():
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+## handles close, mouse movement
 func _unhandled_input(event):
 	# Close game
 	if event.is_action_pressed("quit"): 
@@ -56,29 +58,43 @@ func _unhandled_input(event):
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
 		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-80), deg_to_rad(85))
 
+## input handler
 func _input(event):
-	# Grab / Place Object Interaction
+
+	# interaction button -> left click
 	if event.is_action_pressed("interaction"):	
-		if pickedObject != null: # IF HOLDING AN ITEM (TRYING TO DROP/PLACE IT)
-			
+
+		# if holding item 
+		if pickedObject != null:
+
+			# if object is a store_object 
 			if collider is store_object:
+
+				# if truck && collider empty
 				if collider.isEmpty():
-					pickedObject.set_collision_layer_value(1, true)
-					pickedObject.set_collision_layer_value(3, true)
+
+					# if truck && collider empty && whatever object holding is characterbody
 					if pickedObject is CharacterBody3D:
 						pickedObject.freeze = true
+					
+					# puts object onto collider, then empty hand and empty picked object 
 					collider.add_object(pickedObject)
 					pickedObject = null
 					holdingobject = false
+					
+				# whatever 
 				else:
+					#
 					pickedObject.reparent(get_tree().current_scene)
-					pickedObject.set_collision_layer_value(1, true)
-					pickedObject.set_collision_layer_value(3, true)
 					pickedObject = null
 					holdingobject = false
-			
-			else: # Dynamic Grid System Drop Logic
+
+			# Dynamic Grid System Drop Logic
+			else: 
+
+				#
 				if rayCast.is_colliding():
+				
 					# Block placement if the target grid coordinates are already occupied
 					if not GlobalGrid.is_cell_vacant(gridPos):
 						print("Cannot place: Grid position ", gridPos, " is occupied!")
@@ -88,6 +104,8 @@ func _input(event):
 					pickedObject.reparent(get_tree().current_scene)
 					pickedObject.global_position = gridPos
 					GlobalGrid.register_cell(gridPos, pickedObject)
+				
+				#
 				else:
 					# Fallback drop if pointing completely out into the open sky
 					pickedObject.reparent(get_tree().current_scene)
@@ -97,25 +115,32 @@ func _input(event):
 				pickedObject.set_collision_layer_value(3, true)
 				pickedObject = null
 				holdingobject = false
-				
-		else: # IF NOT HOLDING AN ITEM (TRY TO PICK UP)
+		
+		# if not holding item	
+		else: 
+
+			# looking at nothing
 			if collider == null:
 				return 
 				
+			# if looking at truck
 			if collider is store_object:
-				if collider.isEmpty():
-					pass
-				else:
-					collider._on_objects_child_exiting_tree(pickedObject)
-			
+				collider._on_objects_child_exiting_tree(pickedObject)
+
+			# if looking at something its a node & either a character or rigid
 			elif collider is Node3D and (collider is CharacterBody3D or collider is RigidBody3D):
-				# Clean up old position database entries before lifting the item
+
+				# saves x y z
 				var lifted_grid_pos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
+				
+				# if theres something there delete the thing
 				GlobalGrid.unregister_cell(lifted_grid_pos)
 				
+				# put in player hand
 				player.pick_up_object(collider)
 
 func _process(_delta):
+	
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)
@@ -158,30 +183,36 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+
+## saves the object 
 func pick_up_object(object):
-	if not holdingobject:
-		object.set_collision_layer_value(1, false)
-		object.set_collision_layer_value(3, false)
+
+	if not holdingobject:		
 		
+		# save the holding object and marks the player as holding an object
 		pickedObject = object
 		holdingobject = true
-			
 		var stats_node = null
+
+		# if parent has stats
 		if "GivenName" in object:
 			stats_node = object
+		# check every child to see if has stats
 		else:
 			for child in object.get_children():
 				if "GivenName" in child:
 					stats_node = child
 					break
-				
+		
+		# if stats was found store the values
 		if stats_node != null:
-			Name = str(stats_node.GivenName)
-			weight = stats_node.GivenWeight
-			material = str(stats_node.GivenType)
-			Income = stats_node.GivenIncome
-			ability = str(stats_node.GivenAbility)
-			health = stats_node.GivenHealth
+			Name 		= str(stats_node.GivenName)
+			material 	= str(stats_node.GivenType)
+			ability 	= str(stats_node.GivenAbility)
+			weight 		= stats_node.GivenWeight			
+			Income		= stats_node.GivenIncome
+			health 		= stats_node.GivenHealth
+		# might be good to fix this by emptying values after
 
 func get_object_cell_size(obj: Node3D) -> float:
 	if "size" in obj:

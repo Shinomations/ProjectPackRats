@@ -5,6 +5,7 @@ const PROJECTILE_SCENE = preload("res://Nodes/itemNodes/placement_zone.tscn")
 @onready var objects: Node3D = $Objects
 @onready var object_places: Node3D = $ObjectPlaces
 
+const MAX_COUNT: int = 10
 
 
 func _ready() -> void:
@@ -29,15 +30,22 @@ func add_object(object):
 	#print(itemsPlaced)
 	
 
+## check if theres space for objects
 func isEmpty() -> bool:
+
 	if objects.get_child_count() == 0: 
-		
 		return true
 	
 	return false;
 
-func _on_objects_child_exiting_tree(_node: Node) -> void:
-		
+## check if theres space for objects
+func isFull() -> bool:	
+	if objects.get_child_count() == MAX_COUNT: 
+		return true
 	
+	return false;
+
+## 
+func _on_objects_child_exiting_tree(_node: Node) -> void:
 	self.set_collision_layer_value(1, false)
 	
