@@ -72,7 +72,9 @@ func _input(event):
 
 				# if truck && collider empty
 				if collider.isEmpty():
-
+					
+					collision_set()
+					
 					# if truck && collider empty && whatever object holding is characterbody
 					if pickedObject is CharacterBody3D:
 						pickedObject.freeze = true
@@ -86,6 +88,9 @@ func _input(event):
 				else:
 					#
 					pickedObject.reparent(get_tree().current_scene)
+
+					collision_set()
+
 					pickedObject = null
 					holdingobject = false
 
@@ -189,6 +194,8 @@ func pick_up_object(object):
 
 	if not holdingobject:		
 		
+		collision_set()
+
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
 		holdingobject = true
@@ -235,3 +242,9 @@ func find_allboxes(current_node: Node, results: Array[Node]) -> void:
 			
 	for child in current_node.get_children():
 		find_allboxes(child, results)
+
+
+## sets collision layer value
+func collision_set():
+	pickedObject.set_collision_layer_value(1, true)
+	pickedObject.set_collision_layer_value(3, true)
