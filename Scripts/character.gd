@@ -67,59 +67,28 @@ func _input(event):
 		# if holding item 
 		if pickedObject != null:
 
-			# if object is a store_object 
-			if collider is store_object:
-
-				# if truck && collider empty
-				if collider.isEmpty():
-					
-					collision_set()
-					
-					# if truck && collider empty && whatever object holding is characterbody
-					if pickedObject is CharacterBody3D:
-						pickedObject.freeze = true
-					
-					# puts object onto collider, then empty hand and empty picked object 
-					collider.add_object(pickedObject)
-					pickedObject = null
-					holdingobject = false
-					
-				# whatever 
-				else:
-					#
-					pickedObject.reparent(get_tree().current_scene)
-
-					collision_set()
-
-					pickedObject = null
-					holdingobject = false
-
 			# Dynamic Grid System Drop Logic
-			else: 
-
-				#
-				if rayCast.is_colliding():
+			if rayCast.is_colliding():
+			
+				# Block placement if the target grid coordinates are already occupied
+				if not GlobalGrid.is_cell_vacant(gridPos):
+					print("Cannot place: Grid position ", gridPos, " is occupied!")
+					return 
 				
-					# Block placement if the target grid coordinates are already occupied
-					if not GlobalGrid.is_cell_vacant(gridPos):
-						print("Cannot place: Grid position ", gridPos, " is occupied!")
-						return 
-					
-					# Finalize structural drop into grid space
-					pickedObject.reparent(get_tree().current_scene)
-					pickedObject.global_position = gridPos
-					GlobalGrid.register_cell(gridPos, pickedObject)
-				
-				#
-				else:
-					# Fallback drop if pointing completely out into the open sky
-					pickedObject.reparent(get_tree().current_scene)
-					pickedObject.global_position = box_carry_marker.global_position
-				
-				pickedObject.set_collision_layer_value(1, true)
-				pickedObject.set_collision_layer_value(3, true)
-				pickedObject = null
-				holdingobject = false
+				# Finalize structural drop into grid space
+				pickedObject.reparent(get_tree().current_scene)
+				pickedObject.global_position = gridPos
+				GlobalGrid.register_cell(gridPos, pickedObject)
+			
+			# Fallback drop if pointing completely out into the open sky
+			else:
+				pickedObject.reparent(get_tree().current_scene)
+				pickedObject.global_position = box_carry_marker.global_position
+			
+			pickedObject.set_collision_layer_value(1, true)
+			pickedObject.set_collision_layer_value(3, true)
+			pickedObject = null
+			holdingobject = false
 		
 		# if not holding item	
 		else: 
@@ -127,13 +96,9 @@ func _input(event):
 			# looking at nothing
 			if collider == null:
 				return 
-				
-			# if looking at truck
-			if collider is store_object:
-				collider._on_objects_child_exiting_tree(pickedObject)
 
 			# if looking at something its a node & either a character or rigid
-			elif collider is Node3D and (collider is CharacterBody3D or collider is RigidBody3D):
+			if collider is Node3D and (collider is CharacterBody3D or collider is RigidBody3D):
 
 				# saves x y z
 				var lifted_grid_pos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
@@ -219,7 +184,6 @@ func pick_up_object(object):
 			weight 		= stats_node.GivenWeight			
 			Income		= stats_node.GivenIncome
 			health 		= stats_node.GivenHealth
-		# might be good to fix this by emptying values after
 
 func get_object_cell_size(obj: Node3D) -> float:
 	if "size" in obj:
@@ -246,5 +210,6 @@ func find_allboxes(current_node: Node, results: Array[Node]) -> void:
 
 ## sets collision layer value
 func collision_set():
-	pickedObject.set_collision_layer_value(1, true)
-	pickedObject.set_collision_layer_value(3, true)
+	if pickedObject != null:
+		pickedObject.set_collision_layer_value(1, true)
+		pickedObject.set_collision_layer_value(3, true)
