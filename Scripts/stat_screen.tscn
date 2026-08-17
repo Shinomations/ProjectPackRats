@@ -1,99 +1,29 @@
 [gd_scene format=3 uid="uid://bmg8q2yr6vsm3"]
 
-[ext_resource type="Texture2D" uid="uid://c7lvi5g4ue0jy" path="res://15891118.png" id="1_fm1yg"]
 [ext_resource type="Script" uid="uid://cm7rqw11n821g" path="res://Scripts/statsChange.gd" id="1_win1s"]
 
 [node name="StatScreen" type="Control" unique_id=1881396743]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 899.0
-offset_bottom = -439.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
 script = ExtResource("1_win1s")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=886880311]
-layout_mode = 0
-offset_right = 248.00012
-offset_bottom = 248.00023
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -215.0
+offset_bottom = 210.0
+grow_horizontal = 0
 
-[node name="15891118" type="Sprite2D" parent="MarginContainer" unique_id=1954085142]
-visible = false
-position = Vector2(124, 124.00001)
-texture = ExtResource("1_fm1yg")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1861430241]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1122676216]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1526895731]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=749676426]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.54
-
-[node name="NameLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=305516585]
-layout_mode = 2
-text = "Name:"
-alignment = 1
-
-[node name="WeightLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1421947537]
-layout_mode = 2
-text = "Weight:"
-alignment = 1
-
-[node name="Material" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1053851502]
-layout_mode = 2
-text = "Material:"
-alignment = 1
-
-[node name="Income" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=817289542]
-layout_mode = 2
-text = "Income"
-alignment = 1
-
-[node name="Health" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=530774917]
-layout_mode = 2
-text = "Health"
-alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1842698576]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NameLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1950319981]
-layout_mode = 2
-text = "None"
-alignment = 1
-
-[node name="WeightLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1539617261]
-layout_mode = 2
-text = "None"
-alignment = 1
-
-[node name="Material" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=468430149]
-layout_mode = 2
-text = "None"
-alignment = 1
-
-[node name="Income" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1610197220]
-layout_mode = 2
-text = "None"
-alignment = 1
-
-[node name="Health" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=703299744]
-layout_mode = 2
-text = "None"
-alignment = 1
-
-[node name="Ability" type="TextEdit" parent="MarginContainer/VBoxContainer" unique_id=1470586412]
-layout_mode = 2
-size_flags_vertical = 3
-text = "None"
-placeholder_text = "none"
-wrap_mode = 1
-indent_wrapped_lines = true
-scroll_fit_content_height = true
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

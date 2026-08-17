@@ -83,6 +83,7 @@ Reset={
 3d_physics/layer_3="Pickupables"
 3d_physics/layer_4="Interactables"
 3d_physics/layer_5="containers"
+3d_physics/layer_32="Disabled"
 
 [physics]
 

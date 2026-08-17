@@ -85,10 +85,7 @@ func _input(event):
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = box_carry_marker.global_position
 			
-			pickedObject.set_collision_layer_value(1, true)
-			pickedObject.set_collision_layer_value(3, true)
-			pickedObject = null
-			holdingobject = false
+			collision_set()
 		
 		# if not holding item	
 		else: 
@@ -153,7 +150,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
 ## saves the object 
 func pick_up_object(object):
 
@@ -207,9 +203,10 @@ func find_allboxes(current_node: Node, results: Array[Node]) -> void:
 	for child in current_node.get_children():
 		find_allboxes(child, results)
 
-
 ## sets collision layer value
 func collision_set():
 	if pickedObject != null:
 		pickedObject.set_collision_layer_value(1, true)
 		pickedObject.set_collision_layer_value(3, true)
+		pickedObject = null
+		holdingobject = false
