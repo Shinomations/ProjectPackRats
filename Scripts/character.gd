@@ -85,7 +85,7 @@ func _input(event):
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = box_carry_marker.global_position
 			
-			collision_set()
+			collisionSet()
 		
 		# if not holding item	
 		else: 
@@ -138,8 +138,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	var input_dir := Input.get_vector("left", "right", "up", "down")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y))
+	var inputDir := Input.get_vector("left", "right", "up", "down")
+	var direction = (head.transform.basis * Vector3(inputDir.x, 0, inputDir.y))
 	
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -154,32 +154,34 @@ func _physics_process(delta: float) -> void:
 func pick_up_object(object):
 
 	if not holdingobject:		
+		# 1. Disable collision shapes before updating parent links
+		_toggleCollision(object, true)
 		
-		collision_set()
+		collisionSet()
 
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
 		holdingobject = true
-		var stats_node = null
+		var statsNode = null
 
 		# if parent has stats
 		if "GivenName" in object:
-			stats_node = object
+			statsNode = object
 		# check every child to see if has stats
 		else:
 			for child in object.get_children():
 				if "GivenName" in child:
-					stats_node = child
+					statsNode = child
 					break
 		
 		# if stats was found store the values
-		if stats_node != null:
-			Name 		= str(stats_node.GivenName)
-			material 	= str(stats_node.GivenType)
-			ability 	= str(stats_node.GivenAbility)
-			weight 		= stats_node.GivenWeight			
-			Income		= stats_node.GivenIncome
-			health 		= stats_node.GivenHealth
+		if statsNode != null:
+			Name 		= str(statsNode.GivenName)
+			material 	= str(statsNode.GivenType)
+			ability 	= str(statsNode.GivenAbility)
+			weight 		= statsNode.GivenWeight			
+			Income		= statsNode.GivenIncome
+			health 		= statsNode.GivenHealth
 
 func get_object_cell_size(obj: Node3D) -> float:
 	if "size" in obj:
@@ -188,25 +190,48 @@ func get_object_cell_size(obj: Node3D) -> float:
 		return obj.size
 	return GlobalGrid.DEFAULT_CELL_SIZE
 
-func previewBox(visual_grid_pos: Vector3):
-	pickedObject.global_position = visual_grid_pos
+func previewBox(visualGridPos: Vector3):
+	pickedObject.global_position = visualGridPos
 
-func find_allboxes(current_node: Node, results: Array[Node]) -> void:
-	if current_node == player:
+func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
+	if currentNode == player:
 		return
 	
-	if "collision_layer" in current_node:
-		if current_node.collision_layer & 4:
-			results.append(current_node)
-			current_node.queue_free()
+	if "collision_layer" in currentNode:
+		if currentNode.collision_layer & 4:
+			results.append(currentNode)
+			currentNode.queue_free()
 			
-	for child in current_node.get_children():
+	for child in currentNode.get_children():
 		find_allboxes(child, results)
 
 ## sets collision layer value
-func collision_set():
+func collisionSet():
+	
 	if pickedObject != null:
+		#Turns back on Collider
+		_toggleCollision(pickedObject, false)
+		
 		pickedObject.set_collision_layer_value(1, true)
 		pickedObject.set_collision_layer_value(3, true)
 		pickedObject = null
 		holdingobject = false
+
+## Safely checks for and updates any internal CollisionShape3D component
+func _toggleCollision(targetNode: Node, shouldDisable: bool) -> void:
+	if targetNode == null:
+		return
+	
+	#Getting by name
+	var colliderNode = targetNode.find_child("CollisionShape3D", true, false)
+	
+	# loop too check all childs for being collision shapes
+	if colliderNode == null:
+		for child in targetNode.get_children():
+			if child is CollisionShape3D:
+				colliderNode = child
+				break
+				
+	# If collider is found disable it
+	if colliderNode != null:
+		colliderNode.set_deferred("disabled", shouldDisable)
