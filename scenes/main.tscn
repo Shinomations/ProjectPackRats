@@ -25,6 +25,8 @@ glow_enabled = true
 
 [node name="CharacterBody3D" parent="." unique_id=2059645712 instance=ExtResource("1_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3287735, 2, 0)
+collision_layer = 7
+collision_mask = 6
 
 [node name="Environments" type="Node" parent="." unique_id=715754160]
 
@@ -53,6 +55,9 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environments/MeshInstance3D/StaticBody3D" unique_id=245998881]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0)
 shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="Truck" parent="Environments" unique_id=826025435 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5655327, 0, 0, 0, 0.5655327, 0, 0, 0, 0.5655327, -8.516374, 2.5279958, -3.8068075)
 
 [node name="Moveables" type="Node" parent="." unique_id=1676812572]
 

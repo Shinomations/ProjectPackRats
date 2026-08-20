@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmg8q2yr6vsm3"]
 
 [ext_resource type="Script" uid="uid://cm7rqw11n821g" path="res://Scripts/statsChange.gd" id="1_win1s"]
+[ext_resource type="Texture2D" uid="uid://65fed58cfu21" path="res://tempLabel.png" id="2_win1s"]
 
 [node name="StatScreen" type="Control" unique_id=1881396743]
 layout_mode = 3
@@ -25,5 +26,25 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 bbcode_enabled = true
 fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2110068035]
+texture_filter = 1
+layout_mode = 0
+offset_left = -1154.0
+offset_top = 2.0
+offset_right = -960.0
+offset_bottom = 194.0
+texture = ExtResource("2_win1s")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect" unique_id=1775342023]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 30.0
+offset_right = 138.0
+offset_bottom = 74.0
+text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1

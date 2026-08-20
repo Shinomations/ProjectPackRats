@@ -34,6 +34,7 @@ offset = Vector3(1, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("BoxShape3D_tblqd")
 
 [node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_fu26b")]

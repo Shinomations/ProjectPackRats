@@ -30,6 +30,7 @@ script = ExtResource("3_ghi18")
 offset = Vector3(0.5, 0, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=816599633]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("BoxShape3D_16lcu")
 
 [node name="crate" parent="." unique_id=585976142 instance=ExtResource("2_ghi18")]

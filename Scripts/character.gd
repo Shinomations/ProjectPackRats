@@ -12,6 +12,7 @@ const SENSITIVITY = 0.005
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
 @onready var rayCast: RayCast3D = $Head/Camera3D/RayCast3D
 
+
 var pickedObject: Node3D = null
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
 var holdingobject = false
