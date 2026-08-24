@@ -6,12 +6,12 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var meshOutline = $MeshInstance3D
 
-var GivenName = "Gasoline Tank"
-var GivenWeight = 30
-var GivenType = "Item"
-var GivenIncome = 120
-var GivenAbility = "When Damaged Twice: Destroy all adjacent Units and self"
-var GivenHealth = 20
+var GivenName = "Clothing Bag"
+var GivenWeight = 20
+var GivenType = "Bag"
+var GivenIncome = 50
+var GivenAbility = "First Placement: Merge with a box/Furniture, it has +10 Income"
+var GivenHealth = 30
 
 
 

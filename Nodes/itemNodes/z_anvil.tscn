@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://761cxwcdllpt"]
 
+[ext_resource type="Script" uid="uid://dqcc20udub0ll" path="res://Scripts/abilityScripts/abilityList/z_Anvils.gd" id="1_16lcu"]
 [ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/crate.glb" id="2_ghi18"]
-[ext_resource type="Script" uid="uid://dqcc20udub0ll" path="res://Scripts/abilityScripts/abilityList/z_Anvils.gd" id="3_ghi18"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_16lcu"]
 size = Vector3(2, 2, 2)
@@ -26,7 +26,7 @@ _surfaces = [{
 disable_mode = 2
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("3_ghi18")
+script = ExtResource("1_16lcu")
 offset = Vector3(0.5, 0, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=816599633]
