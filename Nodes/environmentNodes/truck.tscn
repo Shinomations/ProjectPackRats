@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tslorwmqmgls" path="res://Scripts/truck.gd" id="1_rnsmv"]
 [ext_resource type="ArrayMesh" uid="uid://ctpypuwvxlxhh" path="res://models/Truck.tres" id="1_ysele"]
+[ext_resource type="Script" uid="uid://c6ue13rhvl3d8" path="res://Nodes/environmentNodes/label_3d.gd" id="3_rnsmv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3fcar"]
 size = Vector3(8.209991, 4.67749, 4.229248)
@@ -30,6 +31,13 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Truck" unique_id=1983224044]
 transform = Transform3D(0.39999992, 0, 0, 0, 0.39999992, 0, 0, 0, 0.39999992, -0.27899975, 0.30237147, -0.6277754)
 shape = SubResource("ConcavePolygonShape3D_3fcar")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1234720177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7443405, 1.7284691)
+text = "Income: $0
+Weight Capacity: 5000
+"
+script = ExtResource("3_rnsmv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

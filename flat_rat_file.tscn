@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bc3lggrf0wc68"]
+
+[ext_resource type="PackedScene" uid="uid://cpe28dy050724" path="res://models/Clients/flatRatFile.glb" id="1_scr3q"]
+
+[node name="flatRatFile" unique_id=296991103 instance=ExtResource("1_scr3q")]
