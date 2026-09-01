@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bmg8q2yr6vsm3" path="res://Scripts/stat_screen.tscn" id="4_43fmg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
+radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wa5vi"]
 
@@ -813,18 +814,18 @@ floor_max_angle = 1.3089969
 script = ExtResource("1_umwsb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1517198120]
-visible = false
 shape = SubResource("CapsuleShape3D_vu45j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1835946759]
+visible = false
 mesh = SubResource("CapsuleMesh_wa5vi")
 skeleton = NodePath("../..")
 
 [node name="Head" type="Node3D" parent="." unique_id=1873127406]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9327415, -0.27148712)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=910976230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21401632, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21401632, -0.21355897)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1804282328]
 target_position = Vector3(0, 0, -10)
@@ -835,7 +836,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6489047, -1.1748598)
 
 [node name="rig" type="Node3D" parent="Head" unique_id=1465423726]
-transform = Transform3D(-0.095, 0, -8.305164e-09, 0, 0.095, 0, 8.305164e-09, 0, -0.095, 0, -0.9327415, 0.27148712)
+transform = Transform3D(-0.095, 0, -8.305164e-09, 0, 0.095, 0, 8.305164e-09, 0, -0.095, 0, -0.933, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Head/rig" unique_id=100370557]
 bones/0/name = "MCH-foot_ik.parent.L"

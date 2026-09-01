@@ -1,20 +1,20 @@
 extends Label3D
 
 var parent
-
+var WeightLeft = 5000
 @onready var area_3d: Area3D = $"../../../.."
 func _ready() -> void:
 	parent = area_3d.boxesInTruck
 
 
 func update():
-	var totalIncome = 0
-
+	
+	var totalWeight = 5000
 	
 	for i in parent:
 		#income calculations
 		print("I is = " + str(i))
-		totalIncome += i.GivenIncome
 
+		totalWeight -= i.GivenWeight
 		
-	text = "$" + str(totalIncome)# + "\n" + "Weight Capacity:" + str(totalWeight)
+	text = "Weight Capacity:" + str(totalWeight)

@@ -3,6 +3,7 @@ extends Area3D
 var remainingCapacity: float = 1.0
 var TotalScore: float = 0.0
 var truckTextUpdate
+var truckTextUpdate2
 @onready var truckVolume: float = getBoxVolume(self)
 var boxesInTruck:Array = []
 
@@ -22,8 +23,8 @@ func getBoxScore(node: Node3D) -> float:
 	return 0.0
 
 func _ready() -> void:
-	truckTextUpdate = get_child(2)
-
+	truckTextUpdate = find_child("Label3D")
+	truckTextUpdate2 = find_child("Label3D2")
 func _on_body_entered(body: Node3D) -> void:
 	
 	var boxVolume = getBoxVolume(body)
@@ -33,6 +34,7 @@ func _on_body_entered(body: Node3D) -> void:
 		
 	boxesInTruck.append(body)
 	truckTextUpdate.update()
+	truckTextUpdate2.update()
 	updateCapacity(-boxVolume / truckVolume, "entered")
 	updateScore(boxScore)
 func _on_body_exited(body: Node3D) -> void:

@@ -337,7 +337,7 @@ shadow_enabled = true
 environment = SubResource("Environment_7mycd")
 
 [node name="Node3D" parent="Environments" unique_id=1131489001 instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.99735, 3.4944005, -3.2604542)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -9.99735, 2.6108737, -3.2604542)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environments" unique_id=387206810]
 transform = Transform3D(30.337406, 0, 0, 0, 0.25765255, 0, 0, 0, 22.761772, 0, 0, 0)
