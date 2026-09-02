@@ -26,12 +26,18 @@ GlobalGrid="*uid://dj2r845vp1oqx"
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="Project_truckers"
+
+[global_group]
+
+boxes=""
+truck=""
 
 [input]
 

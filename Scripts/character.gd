@@ -11,7 +11,7 @@ const SENSITIVITY = 0.005
 @onready var cam = $Head/Camera3D
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
 @onready var rayCast: RayCast3D = $Head/Camera3D/RayCast3D
-
+@onready var finalScreen = $"Game Finish Screen"
 
 var pickedObject: Node3D = null
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
@@ -19,6 +19,12 @@ var holdingobject = false
 var collider # Stores whatever the raycast is currently looking at
 var boxTypeDetector: int
 var isFirstPress: bool = true
+var totalScore = 0
+var truck
+var boxes
+
+# Safety trigger flag to prevent infinite screen execution spam
+var level_completed: bool = false
 
 # Player Stats cache for picked up items
 var Name: String
@@ -34,8 +40,11 @@ var original_grid_pos: Vector3 = Vector3.ZERO # Tracks where an item came from
 
 ## player is a group so this class is referencable in other scripts
 func _ready():
+	truck = get_tree().get_first_node_in_group("truck")
+	
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	finalScreen.visible = false
 
 ## handles close, mouse movement
 func _unhandled_input(event):
@@ -109,6 +118,7 @@ func _input(event):
 
 func _process(_delta):
 	
+
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		interact_object.emit(collider)
@@ -150,7 +160,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0.0
 
 	move_and_slide()
-
 ## saves the object 
 func pick_up_object(object):
 
@@ -208,7 +217,6 @@ func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
 
 ## sets collision layer value
 func collisionSet():
-	
 	if pickedObject != null:
 		#Turns back on Collider
 		_toggleCollision(pickedObject, false)
@@ -236,3 +244,12 @@ func _toggleCollision(targetNode: Node, shouldDisable: bool) -> void:
 	# If collider is found disable it
 	if colliderNode != null:
 		colliderNode.set_deferred("disabled", shouldDisable)
+
+# gameEnding test
+func areThereStillBoxes() -> bool:
+	boxes = get_tree().get_nodes_in_group("boxes")
+	print(boxes.size())
+	if boxes.is_empty():
+		finalScreen.statsShow()
+		return false
+	return true

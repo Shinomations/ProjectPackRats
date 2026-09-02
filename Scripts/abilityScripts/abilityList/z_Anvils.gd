@@ -41,7 +41,7 @@ var canReroll:bool = true
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	player.interact_object.connect(_set_selected)
-	
+	add_to_group("boxes")
 	meshOutline.visible = false
 	
 	for child in get_children():

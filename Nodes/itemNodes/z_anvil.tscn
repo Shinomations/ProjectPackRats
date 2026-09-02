@@ -25,7 +25,7 @@ _surfaces = [{
 [node name="baseBox" type="CharacterBody3D" unique_id=1726660843]
 disable_mode = 2
 collision_layer = 4
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_16lcu")
 offset = Vector3(0.5, 0, 0.5)
 

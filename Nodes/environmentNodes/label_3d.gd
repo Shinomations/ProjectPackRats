@@ -12,6 +12,8 @@ func update():
 
 	
 	for i in parent:
+		if i == null:
+			continue
 		#income calculations
 		print("I is = " + str(i))
 		totalIncome += i.GivenIncome

@@ -358,157 +358,19 @@ transform = Transform3D(0.5655327, 0, 0, 0, 0.5655327, 0, 0, 0, 0.5655327, -8.51
 [node name="Moveables" type="Node" parent="." unique_id=1676812572]
 
 [node name="baseBox" parent="Moveables" unique_id=1053126355 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -31.848055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.494669, 3.309636, -15.50713)
 
 [node name="baseBox2" parent="Moveables" unique_id=1457221616 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -31.848055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0385447, 3.309636, -15.50713)
 
-[node name="baseBox3" parent="Moveables" unique_id=181561753 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -31.848055)
+[node name="baseBox3" parent="Moveables" unique_id=1427158387 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.956758, 3.309636, -15.50713)
 
-[node name="baseBox4" parent="Moveables" unique_id=198262772 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -30.086866)
+[node name="baseBox4" parent="Moveables" unique_id=584943338 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5006337, 3.309636, -15.50713)
 
-[node name="baseBox5" parent="Moveables" unique_id=696071182 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -30.086866)
-
-[node name="baseBox6" parent="Moveables" unique_id=2121858927 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -30.086866)
-
-[node name="baseBox7" parent="Moveables" unique_id=582065315 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -28.724697)
-
-[node name="baseBox8" parent="Moveables" unique_id=2055286469 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -28.724697)
-
-[node name="baseBox9" parent="Moveables" unique_id=1744806431 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -28.724697)
-
-[node name="baseBox10" parent="Moveables" unique_id=782800997 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -26.167353)
-
-[node name="baseBox11" parent="Moveables" unique_id=1664590094 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -26.167353)
-
-[node name="baseBox12" parent="Moveables" unique_id=913692249 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -26.167353)
-
-[node name="baseBox13" parent="Moveables" unique_id=502481337 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -24.406164)
-
-[node name="baseBox14" parent="Moveables" unique_id=1444143661 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -24.406164)
-
-[node name="baseBox15" parent="Moveables" unique_id=363560151 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -24.406164)
-
-[node name="baseBox16" parent="Moveables" unique_id=730370856 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -23.043995)
-
-[node name="baseBox17" parent="Moveables" unique_id=1424292162 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -23.043995)
-
-[node name="baseBox18" parent="Moveables" unique_id=507959537 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -23.043995)
-
-[node name="baseBox19" parent="Moveables" unique_id=1898642370 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -22.48581)
-
-[node name="baseBox20" parent="Moveables" unique_id=1735814919 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -22.48581)
-
-[node name="baseBox21" parent="Moveables" unique_id=1640499258 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -22.48581)
-
-[node name="baseBox22" parent="Moveables" unique_id=1322361966 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -20.72462)
-
-[node name="baseBox23" parent="Moveables" unique_id=972751064 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -20.72462)
-
-[node name="baseBox24" parent="Moveables" unique_id=892273881 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -20.72462)
-
-[node name="baseBox25" parent="Moveables" unique_id=239748716 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.375861, 3.309636, -19.362452)
-
-[node name="baseBox26" parent="Moveables" unique_id=1662698891 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8128986, 3.309636, -19.362452)
-
-[node name="baseBox27" parent="Moveables" unique_id=1788847518 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.516415, 3.309636, -19.362452)
-
-[node name="baseBox28" parent="Moveables" unique_id=533197953 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2619977, 3.309636, -32.265717)
-
-[node name="baseBox29" parent="Moveables" unique_id=20913097 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30096483, 3.309636, -32.265717)
-
-[node name="baseBox30" parent="Moveables" unique_id=1004377027 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5974483, 3.309636, -32.265717)
-
-[node name="baseBox31" parent="Moveables" unique_id=208704938 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2619977, 3.309636, -30.504526)
-
-[node name="baseBox32" parent="Moveables" unique_id=1702995255 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30096483, 3.309636, -30.504526)
-
-[node name="baseBox33" parent="Moveables" unique_id=405379308 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5974483, 3.309636, -30.504526)
-
-[node name="baseBox34" parent="Moveables" unique_id=605273523 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.262971, 3.309636, -28.269217)
-
-[node name="baseBox35" parent="Moveables" unique_id=1626755497 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8259335, 3.309636, -28.269217)
-
-[node name="baseBox36" parent="Moveables" unique_id=2085396375 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.122417, 3.309636, -28.269217)
-
-[node name="baseBox37" parent="Moveables" unique_id=2093009904 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.262971, 3.309636, -26.664198)
-
-[node name="baseBox38" parent="Moveables" unique_id=2099444430 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8259335, 3.309636, -26.664198)
-
-[node name="baseBox39" parent="Moveables" unique_id=2073230556 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.122417, 3.309636, -26.664198)
-
-[node name="baseBox40" parent="Moveables" unique_id=1186501075 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.262971, 3.309636, -25.313316)
-
-[node name="baseBox41" parent="Moveables" unique_id=1788502959 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8259335, 3.309636, -25.313316)
-
-[node name="baseBox42" parent="Moveables" unique_id=30321643 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.122417, 3.309636, -25.313316)
-
-[node name="baseBox43" parent="Moveables" unique_id=1493448640 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.262971, 3.309636, -23.708298)
-
-[node name="baseBox44" parent="Moveables" unique_id=582006243 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8259335, 3.309636, -23.708298)
-
-[node name="baseBox45" parent="Moveables" unique_id=1581249479 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.122417, 3.309636, -23.708298)
-
-[node name="baseBox46" parent="Moveables" unique_id=723993325 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.262971, 3.309636, -22.739666)
-
-[node name="baseBox47" parent="Moveables" unique_id=520975920 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8259335, 3.309636, -22.739666)
-
-[node name="baseBox48" parent="Moveables" unique_id=2054199197 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.122417, 3.309636, -22.739666)
-
-[node name="baseBox49" parent="Moveables" unique_id=2112379981 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.262971, 3.309636, -21.134647)
-
-[node name="baseBox50" parent="Moveables" unique_id=155741299 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8259335, 3.309636, -21.134647)
-
-[node name="baseBox51" parent="Moveables" unique_id=217155945 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.122417, 3.309636, -21.134647)
+[node name="baseBox5" parent="Moveables" unique_id=2031112573 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.494669, 3.309636, -13.11866)
 
 [node name="flatRatFile" parent="Moveables" unique_id=296991103 instance=ExtResource("4_tipki")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.176748, 1.7053087, -18.999561)

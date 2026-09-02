@@ -31,5 +31,6 @@ func spawn_without_preloading(scene_path: String, spawn_point: Vector3) -> void:
 		
 		instance.global_position = spawn_point
 		
+		
 	else:
 		push_error("Failed to load scene at path: " + scene_path)

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://vbcjky4lo36k"]
+
+[ext_resource type="Script" uid="uid://cna1budmjd3te" path="res://game_finish_screen.gd" id="1_h1v2v"]
+
+[node name="Game Finish Screen" type="Control" unique_id=1254809366]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h1v2v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=719135499]
+custom_maximum_size = Vector2(800, -1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1521586604]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1388621120]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 118
+text = "GOOD GAME"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1462413936]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "This is a placeHolder"
+fit_content = true
