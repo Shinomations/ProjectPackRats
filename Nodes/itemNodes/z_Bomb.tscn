@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4camo45mvr6t" path="res://Scripts/abilityScripts/abilityList/z_Bomb.gd" id="1_ntypx"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_m3sy7"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_u4plu"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_u4plu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 

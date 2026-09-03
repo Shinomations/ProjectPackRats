@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://761cxwcdllpt"]
 
 [ext_resource type="Script" uid="uid://dqcc20udub0ll" path="res://Scripts/abilityScripts/abilityList/z_Anvils.gd" id="1_16lcu"]
-[ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/crate.glb" id="2_ghi18"]
+[ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/Boxes/crate.glb" id="2_ghi18"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_rglkb"]
 [ext_resource type="Script" uid="uid://cwkfp6gvn5pbr" path="res://Nodes/itemNodes/thisBoxCantMove.gd" id="4_rglkb"]
 

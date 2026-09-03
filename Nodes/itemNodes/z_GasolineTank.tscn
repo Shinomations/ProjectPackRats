@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cv2yxa6sd2qpp"]
 
 [ext_resource type="Script" uid="uid://d6stjthyr2t" path="res://Scripts/abilityScripts/abilityList/z_GasolineTank.gd" id="1_suqdm"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_ondd3"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_ondd3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dn5i4b8rb8l3t"
-path="res://.godot/imported/fencetall.glb-135c30d745da77d8513098fe694746b0.scn"
+uid="uid://40mgijp3cjwd"
+path="res://.godot/imported/box.glb-5f7335260b58ca4cf6545751c14f267b.scn"
 
 [deps]
 
-source_file="res://models/props/fencetall/fencetall.glb"
-dest_files=["res://.godot/imported/fencetall.glb-135c30d745da77d8513098fe694746b0.scn"]
+source_file="res://models/Boxes/box.glb"
+dest_files=["res://.godot/imported/box.glb-5f7335260b58ca4cf6545751c14f267b.scn"]
 
 [params]
 
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

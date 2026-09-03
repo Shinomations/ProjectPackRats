@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbjn72ks0i2t3"]
 
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_bsvri"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_bsvri"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_iqen4"]
 [ext_resource type="Script" uid="uid://dgy05ttgix1b5" path="res://Scripts/abilityScripts/abilityList/z_Glassware.gd" id="3_iqen4"]
 
@@ -19,7 +19,7 @@ shader_parameter/outline_color = Color(0, 0, 0, 1)
 next_pass = SubResource("ShaderMaterial_w2ytf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8k8tf"]
-size = Vector3(1, 0.052612305, 1)
+size = Vector3(1, 0.12994385, 1)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1524988393]
 collision_layer = 4
@@ -38,16 +38,16 @@ mesh = SubResource("BoxMesh_78uto")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=729696703]
-transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0.058902856, 0)
+[node name="Area3D" type="Area3D" parent="CollisionShape3D" unique_id=729696703]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.059497833, 0)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1105937106]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47369385, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D/Area3D" unique_id=1105937106]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.5123596, 0)
 shape = SubResource("BoxShape3D_8k8tf")
 
 [node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_bsvri")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="CollisionShape3D/Area3D" to="." method="_on_area_3d_body_entered"]

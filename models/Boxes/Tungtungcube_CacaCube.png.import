@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dchpgfrogny6k"
-path.s3tc="res://.godot/imported/box_Untitled.png-ec9fec186fe4a93d9ebf01410edcbce1.s3tc.ctex"
+uid="uid://b11445bnlj85r"
+path.s3tc="res://.godot/imported/Tungtungcube_CacaCube.png-bc97b693e66f314f5d85259965d2a968.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d20d4e48c1779450148f729ea19e7240"
+"md5": "e510283b1b2021f604986049f2096136"
 }
 
 [deps]
 
-source_file="res://models/box_Untitled.png"
-dest_files=["res://.godot/imported/box_Untitled.png-ec9fec186fe4a93d9ebf01410edcbce1.s3tc.ctex"]
+source_file="res://models/Boxes/Tungtungcube_CacaCube.png"
+dest_files=["res://.godot/imported/Tungtungcube_CacaCube.png-bc97b693e66f314f5d85259965d2a968.s3tc.ctex"]
 
 [params]
 

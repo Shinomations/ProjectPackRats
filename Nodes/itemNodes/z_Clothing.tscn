@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ct2h4tx2ygo8g"]
 
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_78uto"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_w2ytf"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_w2ytf"]
 [ext_resource type="Script" uid="uid://bm8rgy0m1dyfx" path="res://Scripts/abilityScripts/abilityList/z_Clothing.gd" id="3_78uto"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]

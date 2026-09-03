@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bycwh0vvsysgt"]
 
 [ext_resource type="Script" uid="uid://bm8rgy0m1dyfx" path="res://Scripts/abilityScripts/abilityList/z_Clothing.gd" id="1_oae12"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_mblfu"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_mblfu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
