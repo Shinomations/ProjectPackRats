@@ -1,11 +1,8 @@
 extends CharacterBody3D
 
-
 #calling of children
 @onready var boxbasic1 = $CollisionShape3D
-@onready var meshOutline = $MeshInstance3D2
 @onready var area = $Area3D
-
 
 #Per box Stats
 var GivenName = "Box With Anvils"
@@ -19,7 +16,7 @@ var GivenHealth = 100
 var selected = false
 var player
 var outlineWidth = 0.05
-
+var uses = 0
 
 #box specific variables
 var bodies
@@ -38,18 +35,18 @@ var canBeMoved:bool = true
 var canMove:bool = true
 var canReroll:bool = true
 
+var isPickUpable:bool = true
+var usedAbility: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	player.interact_object.connect(_set_selected)
 	add_to_group("boxes")
-	meshOutline.visible = false
+	safe_margin = 0.0005
 	
 	for child in get_children():
 		child.position -= offset
 
 func _process(_delta):
 	
-	meshOutline.visible = selected and not player == get_parent()
 	
 	if selected:
 		boxbasic1.position.y = outlineWidth
@@ -60,34 +57,36 @@ func _process(_delta):
 	if GivenHealth <= 0:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
+	
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
 	else:
 		velocity.y = 0
-		
+		uses += 1
 	move_and_slide()
 
 
 func _set_selected(object):
+	
 	selected = self == object
 	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print(body)
-	if body == self or body.is_in_group("player"):
+
+	if uses >= 1 and usedAbility == true or body == self or body.is_in_group("player") or player.pickedObject == self:
 		return
-		
-	if player.pickedObject == self:
-		return
-	
+
+	uses -= 1
 	if "GivenName" in body:
 		if body.GivenName == "Box With Anvils":
 			return 
 			
-		
+
 		var dynamic_can_destroy = body.get("canBeDestroyed") if "canBeDestroyed" in body else true
 		
 		if dynamic_can_destroy:
@@ -95,8 +94,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 				body.Destroyer = self
 				if body.has_method("ability"):
 					body.ability()
+					
 			
 			body.queue_free()
+			usedAbility = true
 
 
 func get_rect():

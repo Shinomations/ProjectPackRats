@@ -1,28 +1,25 @@
-[gd_scene format=4 uid="uid://icmriptgv56u"]
+[gd_scene format=3 uid="uid://icmriptgv56u"]
 
 [ext_resource type="Script" uid="uid://dbqroj8cg2qbi" path="res://Scripts/abilityScripts/abilityList/z_Nails.gd" id="1_n5tul"]
 [ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/box.glb" id="2_fu26b"]
+[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_xogdt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n5tul"]
-size = Vector3(1.2561035, 0.84542847, 0.90374756)
+[sub_resource type="BoxMesh" id="BoxMesh_iqen4"]
+size = Vector3(0.8, 0.8, 0.8)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3mi5x"]
-_surfaces = [{
-"aabb": AABB(-0.5288675, -0.5288675, -0.5288675, 1.057735, 1.057735, 1.057735),
-"attribute_data": PackedByteArray("AAAAAAAAAACrqio/AAAAAKuqqj4AAAAAAACAPwAAAAAAAAAAAAAAP6uqKj8AAAA/q6qqPgAAAD8AAIA/AAAAP6uqqj4AAAAAAAAAAAAAAD+rqio/AAAAAKuqqj4AAAA/q6qqPgAAAD8AAAAAAACAP6uqKj8AAAA/q6qqPgAAgD+rqqo+AAAAP6uqKj8AAAA/q6oqPwAAAD8AAIA/AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AACAPwAAgD8AAIA/"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAAEAAIAAgAEAAYAAQAFAAMAAwAFAAcACAAMAAoACgAMAA4ACQANAAsACwANAA8AEAAUABIAEgAUABYAEQAVABMAEwAVABcA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("3GMHv9xjBz/cYwc/3GMHP9xjBz/cYwe/3GMHP9xjBz/cYwc/3GMHv9xjBz/cYwe/3GMHv9xjB7/cYwc/3GMHP9xjB7/cYwe/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwe/3GMHP9xjBz/cYwc/3GMHv9xjBz/cYwe/3GMHP9xjBz/cYwe/3GMHv9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwe/3GMHP9xjB7/cYwe/3GMHv9xjB7/cYwc/3GMHP9xjBz/cYwc/3GMHv9xjB7/cYwc/3GMHv9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHP9xjBz/cYwe/3GMHv9xjB7/cYwe/3GMHv9xjBz/cYwe/3GMHP9xjB7/cYwe//3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bsvri"]
+render_priority = 0
+shader = ExtResource("2_xogdt")
+shader_parameter/outline_width = 0.150000007125
+shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
-albedo_color = Color(0, 0, 0, 1)
+next_pass = SubResource("ShaderMaterial_bsvri")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5tul"]
+size = Vector3(1.2561035, 0.84542847, 0.90374756)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -36,6 +33,12 @@ offset = Vector3(1, 0, 1)
 unique_name_in_owner = true
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("BoxShape3D_tblqd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=935560228]
+transform = Transform3D(1.010101, 0, 0, 0, 1.010101, 0, 0, 0, 1.010101, 0, 0, 0)
+mesh = SubResource("BoxMesh_iqen4")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
 [node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_fu26b")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -55,10 +58,5 @@ shape = SubResource("BoxShape3D_n5tul")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D" unique_id=1842616038]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.026000977, -0.018539429, -0.003753662)
 shape = SubResource("BoxShape3D_n5tul")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=935560228]
-mesh = SubResource("ArrayMesh_3mi5x")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

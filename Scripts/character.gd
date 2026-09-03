@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-signal interact_object
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.005
@@ -70,70 +68,50 @@ func _unhandled_input(event):
 
 ## input handler
 func _input(event):
-
-	# interaction button -> left click
-	if event.is_action_pressed("interaction"):	
-
-		# if holding item 
+	#Check for click
+	if event.is_action_pressed("interaction"):
+		rayCast.force_raycast_update()
+		updateRaycastData()
+		
 		if pickedObject != null:
-
-			# Dynamic Grid System Drop Logic
 			if rayCast.is_colliding():
-			
-				# Block placement if the target grid coordinates are already occupied
 				if not GlobalGrid.is_cell_vacant(gridPos):
-					print("Cannot place: Grid position ", gridPos, " is occupied!")
-					return 
-				
-				# Finalize structural drop into grid space
+					return
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos
 				GlobalGrid.register_cell(gridPos, pickedObject)
-			
-			# Fallback drop if pointing completely out into the open sky
 			else:
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = box_carry_marker.global_position
-			
+				
 			collisionSet()
-		
-		# if not holding item	
-		else: 
-
-			# looking at nothing
+		else :
 			if collider == null:
-				return 
-
-			# if looking at something its a node & either a character or rigid
-			if collider is Node3D and (collider is CharacterBody3D or collider is RigidBody3D):
-
-				# saves x y z
-				var lifted_grid_pos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
+				return
 				
-				# if theres something there delete the thing
-				GlobalGrid.unregister_cell(lifted_grid_pos)
-				
-				# put in player hand
-				player.pick_up_object(collider)
+			if collider is CharacterBody3D or collider is RigidBody3D:
+				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
+				GlobalGrid.unregister_cell(liftBoxPos)
+				pick_up_object(collider)
 
 func _process(_delta):
-	
+	#update raycast
+	updateRaycastData()
 
+func updateRaycastData():
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
-		interact_object.emit(collider)
 		
 		if pickedObject != null:
 			cell_size = get_object_cell_size(pickedObject)
 			var collisionPoint = rayCast.get_collision_point()
 			var collisionNormal = rayCast.get_collision_normal()
 			
-			# Offsets position outwards by half its size so it rests perfectly on structural faces
 			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2.0))
 			gridPos = GlobalGrid.world_to_grid(targetPos, cell_size)
-	else: 
-		collider = null 
-		interact_object.emit(null)
+	else:
+		collider = null
+		
 
 func _physics_process(delta: float) -> void:
 	# Preview processing updates 
@@ -160,6 +138,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0.0
 
 	move_and_slide()
+
 ## saves the object 
 func pick_up_object(object):
 
@@ -167,8 +146,6 @@ func pick_up_object(object):
 		# 1. Disable collision shapes before updating parent links
 		_toggleCollision(object, true)
 		
-		collisionSet()
-
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
 		holdingobject = true

@@ -1,10 +1,7 @@
 extends CharacterBody3D
 
-
 # Called when the node enters the scene tree for the first time.
-
 @onready var boxbasic1 = $CollisionShape3D
-@onready var meshOutline = $MeshInstance3D
 
 var GivenName = "Bag with a BOMBS"
 var GivenWeight = 60
@@ -30,15 +27,13 @@ var materialCanChange:bool = true
 var canBeMoved:bool = true
 var canMove:bool = true
 var canReroll:bool = true
+
+var isPickUpable:bool = true
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	player.interact_object.connect(_set_selected)
 	add_to_group("boxes")
-	meshOutline.visible = false
 
 func _process(_delta):
-	
-	meshOutline.visible = selected and not player == get_parent()
 	
 	if selected:
 		boxbasic1.position.y = outlineWidth

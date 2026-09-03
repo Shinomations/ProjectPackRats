@@ -1,26 +1,30 @@
-[gd_scene format=4 uid="uid://761cxwcdllpt"]
+[gd_scene format=3 uid="uid://761cxwcdllpt"]
 
 [ext_resource type="Script" uid="uid://dqcc20udub0ll" path="res://Scripts/abilityScripts/abilityList/z_Anvils.gd" id="1_16lcu"]
 [ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/crate.glb" id="2_ghi18"]
+[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_rglkb"]
+[ext_resource type="Script" uid="uid://cwkfp6gvn5pbr" path="res://Nodes/itemNodes/thisBoxCantMove.gd" id="4_rglkb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_16lcu"]
 size = Vector3(2, 2, 2)
 
+[sub_resource type="BoxMesh" id="BoxMesh_hwta1"]
+size = Vector3(1.8, 1.8, 1.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wuok"]
+render_priority = 0
+shader = ExtResource("2_rglkb")
+shader_parameter/outline_width = 0.150000007125
+shader_parameter/outline_color = Color(0, 0, 0, 0.64705884)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
+next_pass = SubResource("ShaderMaterial_3wuok")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ghi18"]
 size = Vector3(1.9752808, 0.33184814, 1.9262695)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ghi18"]
-_surfaces = [{
-"aabb": AABB(-0.5288675, -0.5288675, -0.5288675, 1.057735, 1.057735, 1.057735),
-"attribute_data": PackedByteArray("AAAAAAAAAACrqio/AAAAAKuqqj4AAAAAAACAPwAAAAAAAAAAAAAAP6uqKj8AAAA/q6qqPgAAAD8AAIA/AAAAP6uqqj4AAAAAAAAAAAAAAD+rqio/AAAAAKuqqj4AAAA/q6qqPgAAAD8AAAAAAACAP6uqKj8AAAA/q6qqPgAAgD+rqqo+AAAAP6uqKj8AAAA/q6oqPwAAAD8AAIA/AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AACAPwAAgD8AAIA/"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAAEAAIAAgAEAAYAAQAFAAMAAwAFAAcACAAMAAoACgAMAA4ACQANAAsACwANAA8AEAAUABIAEgAUABYAEQAVABMAEwAVABcA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("3GMHv9xjBz/cYwc/3GMHP9xjBz/cYwe/3GMHP9xjBz/cYwc/3GMHv9xjBz/cYwe/3GMHv9xjB7/cYwc/3GMHP9xjB7/cYwe/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwe/3GMHP9xjBz/cYwc/3GMHv9xjBz/cYwe/3GMHP9xjBz/cYwe/3GMHv9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHv9xjB7/cYwe/3GMHP9xjB7/cYwe/3GMHv9xjB7/cYwc/3GMHP9xjBz/cYwc/3GMHv9xjB7/cYwc/3GMHv9xjBz/cYwc/3GMHP9xjB7/cYwc/3GMHP9xjBz/cYwe/3GMHv9xjB7/cYwe/3GMHv9xjBz/cYwe/3GMHP9xjB7/cYwe//3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
-}]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(1.7995605, 0.26293945, 1.7989502)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1726660843]
 disable_mode = 2
@@ -33,6 +37,11 @@ offset = Vector3(0.5, 0, 0.5)
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("BoxShape3D_16lcu")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=275118458]
+transform = Transform3D(0.9999994, 0, 0, 0, 0.9999994, 0, 0, 0, 0.9999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwta1")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
+
 [node name="crate" parent="." unique_id=585976142 instance=ExtResource("2_ghi18")]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1783129104]
@@ -44,9 +53,12 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0105896, -0.9853322, 0.011474609)
 shape = SubResource("BoxShape3D_ghi18")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=339859978]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("ArrayMesh_ghi18")
-skeleton = NodePath("")
+[node name="Area3D2" type="Area3D" parent="." unique_id=1758899265]
+script = ExtResource("4_rglkb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=2114785542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 1.1802459, 0.0010375977)
+shape = SubResource("BoxShape3D_hwta1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]
