@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6j62okapy0dg"
-path="res://.godot/imported/fence1_fence1.png-6409cc4b34c071519a5426d3ae786f80.ctex"
+uid="uid://ce3afbcv2ctdk"
+path.s3tc="res://.godot/imported/Tree1_tree1.png-a5d5a74be23ab8eb19d44adeb6ac68cd.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "d895dbdd44d5bca83f04c707c5a63069"
+"md5": "53f375fddbdf9471ca9279fe89d97554"
 }
 
 [deps]
 
-source_file="res://models/GridMap/fence1_fence1.png"
-dest_files=["res://.godot/imported/fence1_fence1.png-6409cc4b34c071519a5426d3ae786f80.ctex"]
+source_file="res://models/GridMap/Tree1_tree1.png"
+dest_files=["res://.godot/imported/Tree1_tree1.png-a5d5a74be23ab8eb19d44adeb6ac68cd.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://byw8jxqmgf4ds"
-path="res://.godot/imported/fence1.glb-9d3ad091d2c095f00892ee88f72a6068.scn"
+uid="uid://caq6x34jcm4fj"
+path="res://.godot/imported/Road1.glb-0422a1713bdbc8c105a19227a5f201da.scn"
 
 [deps]
 
-source_file="res://models/GridMap/fence1.glb"
-dest_files=["res://.godot/imported/fence1.glb-9d3ad091d2c095f00892ee88f72a6068.scn"]
+source_file="res://models/GridMap/Road1.glb"
+dest_files=["res://.godot/imported/Road1.glb-0422a1713bdbc8c105a19227a5f201da.scn"]
 
 [params]
 
