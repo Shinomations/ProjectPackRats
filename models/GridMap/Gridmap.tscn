@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bo5axx1gmggtg"]
+
+[ext_resource type="PackedScene" uid="uid://d051mda3o8cwi" path="res://models/GridMap/Concrete1.glb" id="1_27lpf"]
+[ext_resource type="PackedScene" uid="uid://ca1jgre58ai3q" path="res://models/GridMap/Concrete2.glb" id="2_7rs5b"]
+[ext_resource type="PackedScene" uid="uid://cev17vyllv25k" path="res://models/GridMap/Concrete3.glb" id="3_8wwfn"]
+[ext_resource type="PackedScene" uid="uid://byw8jxqmgf4ds" path="res://models/GridMap/fence1.glb" id="4_n7x1b"]
+[ext_resource type="PackedScene" uid="uid://b5ynijgf8sigq" path="res://models/GridMap/Grass1.glb" id="5_wd81b"]
+[ext_resource type="PackedScene" uid="uid://c0alwvkylt7i6" path="res://models/GridMap/Hedge1.glb" id="6_jcluw"]
+
+[node name="Gridmap" type="Node3D" unique_id=75623287]
+
+[node name="Concrete1" parent="." unique_id=1509446954 instance=ExtResource("1_27lpf")]
+
+[node name="Concrete2" parent="." unique_id=1158759962 instance=ExtResource("2_7rs5b")]
+
+[node name="Concrete3" parent="." unique_id=435722611 instance=ExtResource("3_8wwfn")]
+
+[node name="fence1" parent="." unique_id=201112142 instance=ExtResource("4_n7x1b")]
+
+[node name="Grass1" parent="." unique_id=1388688873 instance=ExtResource("5_wd81b")]
+
+[node name="Hedge1" parent="." unique_id=719691498 instance=ExtResource("6_jcluw")]

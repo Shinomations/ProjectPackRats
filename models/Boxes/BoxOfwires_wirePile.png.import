@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://snts2mkmc37q"
-path="res://.godot/imported/fence1_fence1.png-ff0400aacb658398da5d5e17b647b01a.ctex"
+uid="uid://db6vd5re4ggus"
+path.s3tc="res://.godot/imported/BoxOfwires_wirePile.png-bc79708c709644165a6dab82a2338edb.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "d895dbdd44d5bca83f04c707c5a63069"
+"md5": "d67830676142a8ffac70d046748426d4"
 }
 
 [deps]
 
-source_file="res://models/props/fencetall/fence1_fence1.png"
-dest_files=["res://.godot/imported/fence1_fence1.png-ff0400aacb658398da5d5e17b647b01a.ctex"]
+source_file="res://models/Boxes/BoxOfwires_wirePile.png"
+dest_files=["res://.godot/imported/BoxOfwires_wirePile.png-bc79708c709644165a6dab82a2338edb.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

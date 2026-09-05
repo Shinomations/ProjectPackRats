@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://snts2mkmc37q"
-path="res://.godot/imported/fence1_fence1.png-ff0400aacb658398da5d5e17b647b01a.ctex"
+uid="uid://l37mxkoocr3u"
+path.s3tc="res://.godot/imported/Grass1_PRGrass.png-99296c3abbe430f264179ebe65481e53.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "d895dbdd44d5bca83f04c707c5a63069"
+"md5": "2a55687b04fd9160dc340839d2382065"
 }
 
 [deps]
 
-source_file="res://models/props/fencetall/fence1_fence1.png"
-dest_files=["res://.godot/imported/fence1_fence1.png-ff0400aacb658398da5d5e17b647b01a.ctex"]
+source_file="res://models/GridMap/Grass1_PRGrass.png"
+dest_files=["res://.godot/imported/Grass1_PRGrass.png-99296c3abbe430f264179ebe65481e53.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

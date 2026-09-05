@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cbjn72ks0i2t3"]
+[gd_scene format=4 uid="uid://cbjn72ks0i2t3"]
 
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_bsvri"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_iqen4"]
+[ext_resource type="Texture2D" uid="uid://dwbjkfjes0nhl" path="res://models/Boxes/GlassBox_Untitled.png" id="3_bsvri"]
 [ext_resource type="Script" uid="uid://dgy05ttgix1b5" path="res://Scripts/abilityScripts/abilityList/z_Glassware.gd" id="3_iqen4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
@@ -20,6 +20,45 @@ next_pass = SubResource("ShaderMaterial_w2ytf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8k8tf"]
 size = Vector3(1, 0.12994385, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fwnp"]
+resource_name = "Glassware"
+cull_mode = 2
+albedo_texture = ExtResource("3_bsvri")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_thd4r"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Glassware",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ckwg0"]
+resource_name = "GlassBox_Cube_024"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/5//f//f/z//3/9//5//P/9f/z//nwAA/5//P/9fAAD/X////5//v/+f////X/+//x//f/9f/z//X/9//x//P/9f/3//n/8//5//f/9f/z//X/+//5//f/+f/7//X/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_1fwnp"),
+"name": "Glassware",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP///////////////wAA////vwAA//////+//////////78AAAAA////vwAAAAD//1TVAAD//wAAVNUAAP////9U1QAAAAAAAFTVAAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7///wAAAABU1f///////1TV/////wAAVNX//wAA//9U1QAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP///3//v/9//7//f/+//3//v/////////////////////9U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqir/v/+//7//v/+//7//v/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_thd4r")
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1524988393]
 collision_layer = 4
@@ -47,7 +86,9 @@ collision_mask = 4
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.5123596, 0)
 shape = SubResource("BoxShape3D_8k8tf")
 
-[node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_bsvri")]
+[node name="Cube_024" type="MeshInstance3D" parent="." unique_id=1323842026]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ckwg0")
+skeleton = NodePath("")
 
 [connection signal="body_entered" from="CollisionShape3D/Area3D" to="." method="_on_area_3d_body_entered"]

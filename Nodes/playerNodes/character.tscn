@@ -837,6 +837,12 @@ hit_back_faces = false
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6489047, -1.1748598)
 
+[node name="LeftHand" type="Node3D" parent="Head/Camera3D/boxCarryMarker" unique_id=1586794589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.0957104, 0.21611452)
+
+[node name="RightHand" type="Node3D" parent="Head/Camera3D/boxCarryMarker" unique_id=2086762916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.0957104, 0.21611452)
+
 [node name="rig" type="Node3D" parent="Head" unique_id=1465423726]
 transform = Transform3D(-0.095, 0, -8.305164e-09, 0, 0.095, 0, 8.305164e-09, 0, -0.095, 0, -0.933, 0)
 
@@ -2621,7 +2627,7 @@ settings/0/radius/value = 0.024
 settings/0/radius/damping_curve = null
 settings/0/stiffness/value = 4.0
 settings/0/stiffness/damping_curve = null
-settings/0/drag/value = 0.1
+settings/0/drag/value = 0.05
 settings/0/drag/damping_curve = null
 settings/0/gravity/value = 1.0
 settings/0/gravity/damping_curve = null
@@ -2664,7 +2670,7 @@ settings/0/radius/value = 0.024
 settings/0/radius/damping_curve = null
 settings/0/stiffness/value = 4.0
 settings/0/stiffness/damping_curve = null
-settings/0/drag/value = 0.1
+settings/0/drag/value = 0.05
 settings/0/drag/damping_curve = null
 settings/0/gravity/value = 1.0
 settings/0/gravity/damping_curve = null
@@ -2727,6 +2733,42 @@ position_offset = Vector3(0, -0.745, 0)
 rotation_offset = Quaternion(0, 0, 0, 1)
 radius = 1.0
 height = 8.0
+
+[node name="BoneAttachment3D" type="TwoBoneIK3D" parent="Head/rig/Skeleton3D" unique_id=1743854753]
+transform = Transform3D(-0.99510163, -0.035509262, -0.09225554, 0.02428856, -0.9924741, 0.12001914, -0.09582307, 0.11719055, 0.98847526, 0, 0, 0)
+setting_count = 1
+settings/0/target_node = NodePath("../../../Camera3D/boxCarryMarker/RightHand")
+settings/0/pole_node = NodePath("../RightArm")
+settings/0/root_bone_name = "DEF-upper_arm.R"
+settings/0/root_bone = 199
+settings/0/middle_bone_name = "DEF-forearm.R"
+settings/0/middle_bone = 201
+settings/0/pole_direction = 7
+settings/0/pole_direction_vector = Vector3(0, 0, 0)
+settings/0/end_bone_name = "DEF-hand.R"
+settings/0/end_bone = 203
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 5
+settings/0/end_bone/length = 1.0
+
+[node name="BoneAttachment3D2" type="TwoBoneIK3D" parent="Head/rig/Skeleton3D" unique_id=70869415]
+transform = Transform3D(-0.9951017, -0.035509087, -0.09225567, 0.024288446, -0.99247414, 0.1200192, -0.09582306, 0.117190555, 0.98847526, 0, 0, 0)
+setting_count = 1
+settings/0/target_node = NodePath("../../../Camera3D/boxCarryMarker/LeftHand")
+settings/0/pole_node = NodePath("../LeftArm")
+settings/0/root_bone_name = "DEF-upper_arm.L"
+settings/0/root_bone = 169
+settings/0/middle_bone_name = "DEF-forearm.L"
+settings/0/middle_bone = 171
+settings/0/pole_direction = 7
+settings/0/pole_direction_vector = Vector3(0, 0, 0)
+settings/0/end_bone_name = "DEF-hand.L"
+settings/0/end_bone = 173
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 5
+settings/0/end_bone/length = 1.0
 
 [node name="StatScreen" parent="." unique_id=1881396743 instance=ExtResource("4_43fmg")]
 

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjtnuolvtqc0w" path="res://maps/testmap1/testMapPR1_PRGrass.png" id="5_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://c85dt45ynln55" path="res://maps/testmap1/testMapPR1_Roadtile2.png" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://dnwred3q86v0i" path="res://models/props/fencetall/fencetall.tscn" id="7_o6xl0"]
+[ext_resource type="MeshLibrary" uid="uid://p4e3rlobxxqp" path="res://models/GridMap/Gridmeshes.tres" id="9_85g3d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_top_color = Color(0.01643492, 0.47359622, 0.72901493, 1)
@@ -954,3 +955,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -47.
 
 [node name="fencetall79" parent="testmap/fences/Node3D2" unique_id=2106720948 instance=ExtResource("7_o6xl0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -47.579937, 0.24197519, 44.311157)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1329582217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.947, -1.5, 0)
+mesh_library = ExtResource("9_85g3d")
+collision_layer = 7
+data = {
+"cells": PackedInt32Array(65535, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 655361, 65534, 65534, 524289, 65534, 2, 1, 2, 2, 131073, 65535, 2, 131072, 0, 2, 131072, 1, 2, 131072, 2, 65535, 131072, 2, 0, 131072, 2, 1, 131072, 65534, 65535, 131072, 65534, 0, 131072, 65534, 1, 131072, 65535, 65535, 131072, 0, 65535, 131072, 0, 0, 131072, 1, 0, 131072, 1, 1, 131072, 0, 1, 131072, 65535, 0, 131072, 65535, 1, 131072, 1, 65535, 131072, 65534, 3, 655364, 65535, 3, 655364, 0, 3, 655364, 1, 3, 655364, 2, 3, 655364, 3, 3, 655364, 3, 2, 655364, 3, 1, 655364, 3, 0, 655364, 3, 65535, 655364, 3, 65534, 655364, 3, 65533, 655364, 2, 65533, 655364, 1, 65533, 655364, 0, 65533, 655364, 65535, 65533, 655364, 65534, 65533, 655364, 65534, 65532, 655364, 65535, 65532, 655364, 0, 65532, 655364, 131071, 65533, 655365, 65537, 65533, 655365, 65539, 65533, 655365, 65539, 65534, 327685, 65539, 0, 327685, 65539, 2, 327685, 65537, 3, 5, 131071, 3, 5, 131070, 3, 65541, 131069, 65533, 65541)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
