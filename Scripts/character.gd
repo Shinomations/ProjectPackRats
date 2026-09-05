@@ -102,13 +102,17 @@ func updateRaycastData():
 	if rayCast.is_colliding():
 		collider = rayCast.get_collider()
 		
+		var collisionPoint = rayCast.get_collision_point()
+		var collisionNormal = rayCast.get_collision_normal()
+		
 		if pickedObject != null:
 			cell_size = get_object_cell_size(pickedObject)
-			var collisionPoint = rayCast.get_collision_point()
-			var collisionNormal = rayCast.get_collision_normal()
 			
 			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2.0))
 			gridPos = GlobalGrid.world_to_grid(targetPos, cell_size)
+		else:
+			var targetPos = collisionPoint - (collisionNormal * 0.1)
+			gridPos = GlobalGrid.world_to_grid(targetPos, GlobalGrid.DEFAULT_CELL_SIZE)
 	else:
 		collider = null
 		

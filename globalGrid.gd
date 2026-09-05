@@ -18,4 +18,9 @@ func register_cell(grid_pos: Vector3, object: Node) -> void:
 
 func unregister_cell(grid_pos: Vector3) -> void:
 	if occupied_cells.has(grid_pos):
+		var objectInCell = occupied_cells[grid_pos]
+		
+		if is_instance_valid(objectInCell) and not objectInCell.is_queued_for_deletion():
+			pass
+		
 		occupied_cells.erase(grid_pos)
