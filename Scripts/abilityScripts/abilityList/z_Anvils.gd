@@ -21,7 +21,7 @@ var uses = 0
 #box specific variables
 var bodies
 var gravity = 9.8
-@export var size: Vector2 = Vector2(2,2)
+@export var size: Vector2 = Vector2(1,1)
 @export var offset: Vector3 = Vector3.ZERO
 
 #Ability Specific editing

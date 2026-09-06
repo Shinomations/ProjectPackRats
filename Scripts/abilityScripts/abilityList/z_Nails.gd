@@ -17,7 +17,7 @@ var player
 var outlineWidth = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var BoxesNotToAffect: Array = []
-@export var size: Vector2 = Vector2(2,2)
+@export var size: Vector2 = Vector2(1,1)
 @export var offset: Vector3 = Vector3.ZERO
 #Ability Specific editing
 

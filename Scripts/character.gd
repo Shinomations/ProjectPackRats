@@ -75,11 +75,8 @@ func _input(event):
 		
 		if pickedObject != null:
 			if rayCast.is_colliding():
-				if not GlobalGrid.is_cell_vacant(gridPos):
-					return
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos
-				GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = box_carry_marker.global_position
@@ -90,8 +87,6 @@ func _input(event):
 				return
 				
 			if collider is CharacterBody3D or collider is RigidBody3D:
-				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
-				GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
 
 func _process(_delta):
