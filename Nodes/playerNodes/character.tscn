@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bpu5yin5rgwcw" path="res://models/RatPlayer/Chud_RatDude.png" id="3_8tt6j"]
 [ext_resource type="PackedScene" uid="uid://vbcjky4lo36k" path="res://game_finish_screen.tscn" id="4_34xvd"]
 [ext_resource type="PackedScene" uid="uid://bmg8q2yr6vsm3" path="res://Scripts/stat_screen.tscn" id="4_43fmg"]
+[ext_resource type="Texture2D" uid="uid://d3dyeyywpdrfc" path="res://Sprites & images/cursor-sprites/bubble.png" id="5_34xvd"]
+[ext_resource type="Script" uid="uid://bit085pcio7ej" path="res://Scripts/cursor.gd" id="5_cko0d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 radius = 0.3
@@ -2774,3 +2776,34 @@ settings/0/end_bone/length = 1.0
 [node name="StatScreen" parent="." unique_id=1881396743 instance=ExtResource("4_43fmg")]
 
 [node name="Game Finish Screen" parent="." unique_id=1254809366 instance=ExtResource("4_34xvd")]
+
+[node name="cursor" type="Control" parent="." unique_id=1979836219]
+propagate_maximum_size = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_cko0d")
+
+[node name="image" type="TextureRect" parent="cursor" unique_id=219130975]
+modulate = Color(1, 1, 1, 0.5294118)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+pivot_offset = Vector2(1.75, 1.75)
+texture = ExtResource("5_34xvd")
+expand_mode = 1
+stretch_mode = 4
