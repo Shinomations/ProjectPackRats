@@ -241,7 +241,6 @@ func _toggleCollision(targetNode: Node, shouldDisable: bool) -> void:
 # gameEnding test
 func areThereStillBoxes() -> bool:
 	boxes = get_tree().get_nodes_in_group("boxes")
-	print(boxes.size())
 	if boxes.is_empty():
 		finalScreen.statsShow()
 		return false

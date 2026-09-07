@@ -15,7 +15,7 @@ func update():
 		if i == null:
 			continue
 		#income calculations
-		print("I is = " + str(i))
+		
 		totalIncome += i.GivenIncome
 
 		

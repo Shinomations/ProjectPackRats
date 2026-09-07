@@ -72,9 +72,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			if not BoxesNotToAffect.has(body):
 				body.GivenHealth -= 25
 				BoxesNotToAffect.append(body)
-				print(BoxesNotToAffect)
 				if "Destroyer" in body and body.GivenHealth <= 0:
-					print("added")
 					body.Destroyer = self
 					body.ability()
 

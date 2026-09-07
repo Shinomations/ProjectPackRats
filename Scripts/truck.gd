@@ -69,11 +69,10 @@ func _on_body_exited(body: Node3D) -> void:
 	body.add_to_group("boxes")
 func updateCapacity(relativeChange: float, action: String) -> void:
 	remainingCapacity += relativeChange
-	print("Box %s! Took up %s%% of space." % [action, abs(relativeChange) * 100])
-	print("Remaining truck capacity: %s%%" % [remainingCapacity * 100])
+
 
 func updateScore(score: float) -> void:
 	TotalScore += score
 	
-	print(TotalScore)
+
 	

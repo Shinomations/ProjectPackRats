@@ -70,8 +70,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 	if not truck.boxesInTruck.has(self):
 		return
-	print(body.get_groups())
+	
 	if body.is_in_group("boxes"):
+		
 		boxesLeft -= 1
 		CountDownTimer += 1
 		GivenAbility = "Timer " + str(CountDownTimer) + ": Place " + str(boxesLeft) + " Units next to this one"

@@ -21,7 +21,7 @@ var uses = 0
 #box specific variables
 var bodies
 var gravity = 9.8
-@export var size: Vector2 = Vector2(1,1)
+@export var size: Vector2 = Vector2(1,2)
 @export var offset: Vector3 = Vector3.ZERO
 
 #Ability Specific editing
@@ -76,7 +76,7 @@ func _set_selected(object):
 	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body)
+	
 
 	if uses >= 1 and usedAbility == true or body == self or body.is_in_group("player") or player.pickedObject == self:
 		return

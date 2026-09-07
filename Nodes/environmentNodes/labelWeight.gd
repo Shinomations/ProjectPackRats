@@ -13,7 +13,7 @@ func update():
 	
 	for i in parent:
 		#income calculations
-		print("I is = " + str(i))
+		
 
 		totalWeight -= i.GivenWeight
 		

@@ -160,7 +160,7 @@ shadow_enabled = true
 environment = SubResource("Environment_7mycd")
 
 [node name="Node3D" parent="Environments" unique_id=1131489001 instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -9.99735, 3.3075, -3.2604542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.298031, 4.691485, -3.7484622)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environments" unique_id=387206810]
 transform = Transform3D(30.337404, 0, 0, 0, -1.126235e-08, -22.76177, 0, 0.25765252, -9.949486e-07, -37.494034, 2.7887802, 22.997534)
@@ -231,7 +231,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1433277434]
-transform = Transform3D(0.99984604, 0, -0.0145897595, 0, 0.9999762, 0, 0.014589951, 0, 0.9998329, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.99984586, 0, -0.014589758, 0, 0.9999762, 0, 0.014589949, 0, 0.99983275, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="Path3D/PathFollow3D" unique_id=500854348]

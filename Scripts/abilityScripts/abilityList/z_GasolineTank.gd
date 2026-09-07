@@ -1,28 +1,33 @@
 extends CharacterBody3D
 
-
-# Called when the node enters the scene tree for the first time.
-
+#calling of children
 @onready var boxbasic1 = $CollisionShape3D
-@onready var meshOutline = $MeshInstance3D
+@onready var viableSpots = $Areas
+#Per box Stats
+var boxesLeft
 
-var GivenName = "Clothing Bag"
-var GivenWeight = 20
-var GivenType = "Bag"
-var GivenIncome = 50
-var GivenAbility = "First Placement: Merge with a box/Furniture, it has +10 Income"
-var GivenHealth = 30
+var GivenName = "Gasoline Tank"
+var GivenWeight = 500
+var GivenType = "Plastic"
+var GivenIncome = 450
+var GivenAbility = "If this is completely covered \n Double this units Income and half its Weight"
+var GivenHealth = 250
 
-
-
+#all box variables
 var selected = false
 var player
+var truck
 var outlineWidth = 0.05
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@export var size: Vector2 = Vector2(2,2)
-@export var offset: Vector3 = Vector3.ZERO
-#Ability Specific editing
+var uses = 0
 
+#box specific variables
+var bodies
+var gravity = 9.8
+@export var size: Vector2 = Vector2(1,2)
+@export var offset: Vector3 = Vector3.ZERO
+
+var clearedAreas: Array = []
+#Ability Specific editing
 var canBeDestroyed: bool = true
 var incomeCanChange:bool = true
 var weightCanChange:bool = true
@@ -32,16 +37,19 @@ var materialCanChange:bool = true
 var canBeMoved:bool = true
 var canMove:bool = true
 var canReroll:bool = true
+
+var isPickUpable:bool = true
+var usedAbility: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	player.interact_object.connect(_set_selected)
+	truck = get_tree().get_first_node_in_group("truck")
+	add_to_group("boxes")
+	safe_margin = 0.0005
 	
-	meshOutline.visible = false
+	
+	boxesLeft = viableSpots.get_child_count()
 
 func _process(_delta):
-	
-	meshOutline.visible = selected and not player == get_parent()
-	
 	if selected:
 		boxbasic1.position.y = outlineWidth
 		player.boxTypeDetector = 1 
@@ -50,26 +58,66 @@ func _process(_delta):
 		
 	if GivenHealth <= 0:
 		self.queue_free()
-
-func _set_selected(object):
-	selected = self == object
+func _physics_process(delta: float) -> void:
 	
-
-func _physics_process(delta):
-	# Add the gravity to velocity each frame if not on the floor
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
 	else:
 		velocity.y = 0
-		
+		uses += 1
 	move_and_slide()
+	ability()
+func _set_selected(object):
 	
+	selected = self == object
 func get_rect():
 	var objectPosition = Vector2(
 		global_position.x - int(size.x / 2),
 		global_position.z - int(size.y / 2)
 	)
 	return Rect2(objectPosition, size)
+
+func ability():
+	if not truck.boxesInTruck.has(self):
+		return
+		
+	bodies = viableSpots.get_children()
+	
+	var filledSlotsCount = 0
+	var totalSlotsCount = 0
+	
+	for i in bodies:
+		if i is Area3D:
+			totalSlotsCount += 1
+			var Overlappers = i.get_overlapping_bodies()
+			
+			var slotIsOccupied = false
+			for body in Overlappers:
+				if body != player and body != self:
+					slotIsOccupied = true
+					break 
+			
+			if slotIsOccupied:
+				filledSlotsCount += 1
+
+	var newBoxesLeft = totalSlotsCount - filledSlotsCount
+	
+	if newBoxesLeft != boxesLeft:
+		boxesLeft = newBoxesLeft
+		print("Spots covered: " + str(filledSlotsCount) + "/" + str(totalSlotsCount))
+
+	if boxesLeft == 0 and not usedAbility:
+		GivenWeight /= 2
+		GivenIncome *= 2
+		usedAbility = true
+		print("ACHIEVED: Box is 100% surrounded and covered!")
+		
+	elif boxesLeft > 0 and usedAbility:
+		GivenWeight *= 2
+		GivenIncome /= 2
+		usedAbility = false
+		print("LOST COVERAGE: A spot was uncovered.")
