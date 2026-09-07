@@ -5,6 +5,8 @@ const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.005
 @onready var player: CharacterBody3D = $"."
 
+@onready var footsteps: AudioStreamPlayer3D = $CollisionShape3D/Footsteps
+
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
@@ -35,7 +37,8 @@ var health: int
 var cell_size: float = 1.0
 var gridPos: Vector3 = Vector3.ZERO
 var original_grid_pos: Vector3 = Vector3.ZERO # Tracks where an item came from
-
+var  GPU: GPUParticles3D = null
+## THIS IS FOR THE PLACE DOWN EFFECTS^^
 ## player is a group so this class is referencable in other scripts
 func _ready():
 	truck = get_tree().get_first_node_in_group("truck")
@@ -75,18 +78,25 @@ func _input(event):
 		
 		if pickedObject != null:
 			if rayCast.is_colliding():
+				if not GlobalGrid.is_cell_vacant(gridPos):
+					return
+				GPU.emitting = true	
+				
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos
+				GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = box_carry_marker.global_position
 				
 			collisionSet()
-		else :
+		else:
 			if collider == null:
 				return
 				
 			if collider is CharacterBody3D or collider is RigidBody3D:
+				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
+				GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
 
 func _process(_delta):
@@ -116,9 +126,11 @@ func _physics_process(delta: float) -> void:
 	# Preview processing updates 
 	if pickedObject != null and rayCast.is_colliding():
 		previewBox(gridPos)
+		
 	elif pickedObject != null:
+		
 		pickedObject.global_position = box_carry_marker.global_position
-	
+		
 	# Basic Player Physics
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -130,9 +142,12 @@ func _physics_process(delta: float) -> void:
 	var direction = (head.transform.basis * Vector3(inputDir.x, 0, inputDir.y))
 	
 	if direction:
+		#if (footsteps.playing == false):
+		#	footsteps.play()
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		#footsteps.stop()
 		velocity.x = 0.0
 		velocity.z = 0.0
 
@@ -177,6 +192,8 @@ func get_object_cell_size(obj: Node3D) -> float:
 	return GlobalGrid.DEFAULT_CELL_SIZE
 
 func previewBox(visualGridPos: Vector3):
+	GPU = pickedObject.find_child("GPUParticles3D")
+	
 	pickedObject.global_position = visualGridPos
 
 func find_allboxes(currentNode: Node, results: Array[Node]) -> void:

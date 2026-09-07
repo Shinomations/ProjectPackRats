@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_xogdt"]
 [ext_resource type="Texture2D" uid="uid://dcd6al2kmjima" path="res://models/Boxes/BoxOfNails_Untitled.png" id="3_xogdt"]
 [ext_resource type="Texture2D" uid="uid://4224yv2td1lx" path="res://models/Boxes/BoxOfNails_rust.png" id="4_xmihk"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="5_xmihk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -90,11 +91,44 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_voauh")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xjb08"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0.2, 0)
+damping_min = 0.1
+damping_max = 0.1
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l0uv"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("5_xmihk")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_dw0n1"]
+material = SubResource("StandardMaterial3D_6l0uv")
+size = Vector2(0.5, 0.5)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861]
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_n5tul")
-size = Vector2(1, 1)
 offset = Vector3(1, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
@@ -128,5 +162,15 @@ shape = SubResource("BoxShape3D_n5tul")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sh835")
 skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=423613863]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_xjb08")
+draw_pass_1 = SubResource("QuadMesh_dw0n1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

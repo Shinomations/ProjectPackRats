@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vbcjky4lo36k"]
 
 [ext_resource type="Script" uid="uid://cna1budmjd3te" path="res://game_finish_screen.gd" id="1_h1v2v"]
-[ext_resource type="Texture2D" uid="uid://t3ruowrlfscb" path="res://images (10).jpg" id="2_jy4jb"]
+[ext_resource type="Texture2D" uid="uid://t3ruowrlfscb" path="res://Sprites & images/images (10).jpg" id="2_jy4jb"]
 
 [node name="Game Finish Screen" type="Control" unique_id=1254809366]
 layout_mode = 3

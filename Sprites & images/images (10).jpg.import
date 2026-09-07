@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://65fed58cfu21"
-path="res://.godot/imported/tempLabel.png-f8bfa8ca014393e1ca2e1ba61471481b.ctex"
+uid="uid://t3ruowrlfscb"
+path="res://.godot/imported/images (10).jpg-7094e2e3d5297f380b5b85e7f7b758d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tempLabel.png"
-dest_files=["res://.godot/imported/tempLabel.png-f8bfa8ca014393e1ca2e1ba61471481b.ctex"]
+source_file="res://Sprites & images/images (10).jpg"
+dest_files=["res://.godot/imported/images (10).jpg-7094e2e3d5297f380b5b85e7f7b758d8.ctex"]
 
 [params]
 

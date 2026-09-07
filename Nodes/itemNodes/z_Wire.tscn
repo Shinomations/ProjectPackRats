@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wipnp7wpkdcr" path="res://models/Boxes/BoxOfwires_wire.png" id="3_ospbp"]
 [ext_resource type="Texture2D" uid="uid://db6vd5re4ggus" path="res://models/Boxes/BoxOfwires_wirePile.png" id="4_2mixf"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="5_ospbp"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="6_2mixf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -192,6 +193,40 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2j7wx")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2mixf"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0.2, 0)
+damping_min = 0.1
+damping_max = 0.1
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l0uv"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("6_2mixf")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_7n7js"]
+material = SubResource("StandardMaterial3D_6l0uv")
+size = Vector2(0.5, 0.5)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1407151246]
 collision_layer = 4
 collision_mask = 23
@@ -213,3 +248,25 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gbj7d")
 skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1792303643]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_2mixf")
+draw_pass_1 = SubResource("QuadMesh_7n7js")
+
+[node name="Placement" type="AudioStreamPlayer3D" parent="." unique_id=1693469827]
+
+[node name="DestroyParticles" type="GPUParticles3D" parent="." unique_id=1450996833]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_2mixf")
+draw_pass_1 = SubResource("QuadMesh_7n7js")

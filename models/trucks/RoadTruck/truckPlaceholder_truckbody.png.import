@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t3ruowrlfscb"
-path="res://.godot/imported/images (10).jpg-9cd2209ba94b1507fd323ca2172ecf36.ctex"
+uid="uid://dh7a7vyx5puga"
+path.s3tc="res://.godot/imported/truckPlaceholder_truckbody.png-22be62e2e8055c573f715af5ce771e02.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e4f0327346de78eeb19308051ca057fa"
 }
 
 [deps]
 
-source_file="res://images (10).jpg"
-dest_files=["res://.godot/imported/images (10).jpg-9cd2209ba94b1507fd323ca2172ecf36.ctex"]
+source_file="res://models/trucks/RoadTruck/truckPlaceholder_truckbody.png"
+dest_files=["res://.godot/imported/truckPlaceholder_truckbody.png-22be62e2e8055c573f715af5ce771e02.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_iqen4"]
 [ext_resource type="Texture2D" uid="uid://dwbjkfjes0nhl" path="res://models/Boxes/GlassBox_Untitled.png" id="3_bsvri"]
 [ext_resource type="Script" uid="uid://dgy05ttgix1b5" path="res://Scripts/abilityScripts/abilityList/z_Glassware.gd" id="3_iqen4"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_bsvri"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -60,6 +61,40 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_thd4r")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bsvri"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0.2, 0)
+damping_min = 0.1
+damping_max = 0.1
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3702k"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("4_bsvri")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ql5t0"]
+material = SubResource("StandardMaterial3D_3702k")
+size = Vector2(0.5, 0.5)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1524988393]
 collision_layer = 4
 collision_mask = 23
@@ -90,5 +125,15 @@ shape = SubResource("BoxShape3D_8k8tf")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ckwg0")
 skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1262626695]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_bsvri")
+draw_pass_1 = SubResource("QuadMesh_ql5t0")
 
 [connection signal="body_entered" from="CollisionShape3D/Area3D" to="." method="_on_area_3d_body_entered"]

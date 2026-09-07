@@ -9,7 +9,7 @@ var GivenName = "Box of Nails"
 var GivenWeight = 20
 var GivenType = "Cardboard"
 var GivenIncome = 200
-var GivenAbility = "Passive: Deal 10 Damage to all boxes directly adjacent to this by "
+var GivenAbility = "Passive: Deal 25 Damage to all boxes directly adjacent to this by "
 var GivenHealth = 10
 
 var selected = false
@@ -45,7 +45,11 @@ func _process(_delta):
 		boxbasic1.position.y = 0
 		
 	if GivenHealth <= 0:
+		var liftBoxPos = GlobalGrid.world_to_grid(self.global_position, 1)
+		GlobalGrid.unregister_cell(liftBoxPos)
 		self.queue_free()
+		
+		
 
 func _set_selected(object):
 	selected = self == object
@@ -66,7 +70,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self and body is CharacterBody3D or body is RigidBody3D:
 		if not body.is_in_group("player") and not player.pickedObject:
 			if not BoxesNotToAffect.has(body):
-				body.GivenHealth -= 10
+				body.GivenHealth -= 25
 				BoxesNotToAffect.append(body)
 				print(BoxesNotToAffect)
 				if "Destroyer" in body and body.GivenHealth <= 0:

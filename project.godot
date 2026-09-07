@@ -40,6 +40,7 @@ project/assembly_name="Project_truckers"
 
 boxes=""
 truck=""
+player=""
 
 [input]
 

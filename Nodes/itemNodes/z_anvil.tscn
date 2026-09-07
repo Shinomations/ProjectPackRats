@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://df3qqtqcdb0mr" path="res://models/Boxes/crate.glb" id="2_ghi18"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_rglkb"]
 [ext_resource type="Script" uid="uid://cwkfp6gvn5pbr" path="res://Nodes/itemNodes/thisBoxCantMove.gd" id="4_rglkb"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="5_7eqvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_16lcu"]
 size = Vector3(2, 2, 2)
@@ -26,7 +27,42 @@ size = Vector3(1.9752808, 0.33184814, 1.9262695)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
 size = Vector3(1.7995605, 0.26293945, 1.7989502)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7eqvs"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0.2, 0)
+damping_min = 0.1
+damping_max = 0.1
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krhdg"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("5_7eqvs")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_gisu1"]
+material = SubResource("StandardMaterial3D_krhdg")
+size = Vector2(0.5, 0.5)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1726660843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0.25)
 disable_mode = 2
 collision_layer = 4
 collision_mask = 23
@@ -58,6 +94,16 @@ script = ExtResource("4_rglkb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=2114785542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 1.1802459, 0.0010375977)
 shape = SubResource("BoxShape3D_hwta1")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1404473144]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_7eqvs")
+draw_pass_1 = SubResource("QuadMesh_gisu1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]
