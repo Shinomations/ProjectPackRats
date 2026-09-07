@@ -3,41 +3,33 @@
 [ext_resource type="Script" uid="uid://cm7rqw11n821g" path="res://Scripts/statsChange.gd" id="1_win1s"]
 [ext_resource type="Texture2D" uid="uid://cxn147i3p4in7" path="res://Sprites & images/CheesePage1.png" id="2_win1s"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_win1s"]
+texture = ExtResource("2_win1s")
+
 [node name="StatScreen" type="Control" unique_id=1881396743]
+custom_maximum_size = Vector2(1920, 1080)
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 script = ExtResource("1_win1s")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=886880311]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1691068695]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -262.0
-offset_top = 76.0
-offset_right = -47.0
-offset_bottom = 286.0
+offset_left = -400.0
+offset_bottom = 400.0
 grow_horizontal = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1122676216]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2" unique_id=1122676216]
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_styles/normal = SubResource("StyleBoxTexture_win1s")
 bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2110068035]
-z_index = -1
-texture_filter = 1
-layout_mode = 0
-offset_left = -292.0
-offset_right = -17.0
-offset_bottom = 725.0
-texture = ExtResource("2_win1s")
-stretch_mode = 4

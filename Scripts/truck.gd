@@ -41,6 +41,13 @@ func _on_body_entered(body: Node3D) -> void:
 	updateCapacity(-boxVolume / truckVolume, "entered")
 	updateScore(boxScore)
 	player.totalScore = TotalScore
+	
+	if body.is_in_group("boxes"):
+		for i in boxesInTruck:
+			if "CountDownTimer" in i:
+				i.CountDownTimer -= 1
+	
+	
 	if body.is_in_group("boxes"):
 		body.remove_from_group("boxes")
 		player.areThereStillBoxes()
