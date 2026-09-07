@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://bmg8q2yr6vsm3"]
 
 [ext_resource type="Script" uid="uid://cm7rqw11n821g" path="res://Scripts/statsChange.gd" id="1_win1s"]
-[ext_resource type="Texture2D" uid="uid://cxn147i3p4in7" path="res://Sprites & images/CheesePage1.png" id="2_win1s"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_win1s"]
-texture = ExtResource("2_win1s")
+[ext_resource type="Texture2D" uid="uid://n0c2wdpl05an" path="res://Sprites & images/CheesePageAdjusted.png" id="2_win1s"]
 
 [node name="StatScreen" type="Control" unique_id=1881396743]
 custom_maximum_size = Vector2(1920, 1080)
@@ -16,20 +13,43 @@ script = ExtResource("1_win1s")
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1691068695]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -400.0
-offset_bottom = 400.0
-grow_horizontal = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2" unique_id=1122676216]
+[node name="background" type="TextureRect" parent="MarginContainer2" unique_id=803795800]
+modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.86200005)
 layout_mode = 2
 offset_transform_enabled = true
+offset_transform_position = Vector2(53.975, 56.575)
+offset_transform_position_ratio = Vector2(-0.4, -0.32)
+offset_transform_scale = Vector2(0.232, 0.453)
+texture = ExtResource("2_win1s")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=181323816]
+modulate = Color(1.053091, 1.053091, 1.053091, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(61.21, 50.635)
+offset_transform_position_ratio = Vector2(-0.4, -0.32)
+offset_transform_scale = Vector2(0.232, 0.453)
+texture = ExtResource("2_win1s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=16642072]
+modulate = Color(1, 0.6582944, 0.4289456, 1)
+layout_mode = 0
+offset_left = 70.5
+offset_top = 121.0
+offset_right = 471.5
+offset_bottom = 485.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_styles/normal = SubResource("StyleBoxTexture_win1s")
-bbcode_enabled = true
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_colors/font_shadow_color = Color(0.5494742, 0.37302878, 0, 1)
+theme_override_constants/line_separation = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/mono_font_size = 18
+text = "HELLO
+rwfugigoqwkf"
