@@ -1,22 +1,30 @@
 extends CharacterBody3D
 
+#calling of children
 @onready var boxbasic1 = $CollisionShape3D
+@onready var area = $Area3D
 
-var GivenName = "Gasoline Tank"
-var GivenWeight = 30
-var GivenType = "Item"
-var GivenIncome = 120
-var GivenAbility = "When Damaged Twice: Destroy all adjacent Units and self"
-var GivenHealth = 20
+#Per box Stats
+var GivenName = "Clothing Bag"
+var GivenWeight = 20
+var GivenType = "Cushioned"
+var GivenIncome = 50
+var GivenAbility = "First Placement: merge with the unit below this one and give +50 income"
+var GivenHealth = 100
 
+#all box variables
 var selected = false
 var player
 var outlineWidth = 0.05
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@export var size: Vector2 = Vector2(1,1)
-@export var offset: Vector3 = Vector3.ZERO
-#Ability Specific editing
+var uses = 0
 
+#box specific variables
+var bodies
+var gravity = 9.8
+@export var size: Vector2 = Vector2(1,2)
+@export var offset: Vector3 = Vector3.ZERO
+
+#Ability Specific editing
 var canBeDestroyed: bool = true
 var incomeCanChange:bool = true
 var weightCanChange:bool = true
@@ -28,12 +36,17 @@ var canMove:bool = true
 var canReroll:bool = true
 
 var isPickUpable:bool = true
+var usedAbility: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	player.interact_object.connect(_set_selected)
 	add_to_group("boxes")
+	safe_margin = 0.0005
 	
+	for child in get_children():
+		child.position -= offset
+
 func _process(_delta):
+	
 	
 	if selected:
 		boxbasic1.position.y = outlineWidth
@@ -43,21 +56,22 @@ func _process(_delta):
 		
 	if GivenHealth <= 0:
 		self.queue_free()
-
-func _set_selected(object):
-	selected = self == object
+func _physics_process(delta: float) -> void:
 	
-func _physics_process(delta):
-	# Add the gravity to velocity each frame if not on the floor
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
 	else:
 		velocity.y = 0
-		
+		uses += 1
 	move_and_slide()
+
+func _set_selected(object):
+	
+	selected = self == object
 	
 func get_rect():
 	var objectPosition = Vector2(
@@ -65,3 +79,15 @@ func get_rect():
 		global_position.z - int(size.y / 2)
 	)
 	return Rect2(objectPosition, size)
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body == self or body.is_in_group("player") or player.pickedObject == self:
+		return
+	
+	if body.is_in_group("boxes"):
+		body.GivenIncome += (GivenIncome + 50)
+		body.GivenWeight += GivenWeight
+		body.GivenHealth += GivenHealth
+		queue_free()
+	pass # Replace with function body.

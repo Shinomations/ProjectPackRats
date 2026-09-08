@@ -231,7 +231,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1433277434]
-transform = Transform3D(0.99984586, 0, -0.014589758, 0, 0.9999762, 0, 0.014589949, 0, 0.99983275, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.99984574, 0, -0.014589756, 0, 0.9999762, 0, 0.014589947, 0, 0.99983263, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="Path3D/PathFollow3D" unique_id=500854348]
@@ -283,9 +283,6 @@ transform = Transform3D(4.0000954, -5.8769656e-13, -2.220446e-16, 2.3436114e-14,
 stream = ExtResource("10_choun")
 volume_db = 5.0
 max_distance = 40.0
-
-[node name="baseBox11" parent="Path3D/PathFollow3D" unique_id=311633821 instance=ExtResource("2_sugp2")]
-transform = Transform3D(0.99994105, 0, 0.014591335, 0, 1.0000236, 0, -0.014591526, 0, 0.99995416, 0.1107502, 0.38199055, 2.1254768)
 
 [connection signal="body_entered" from="Path3D/PathFollow3D/Cylinder_001/Area3D" to="Path3D/PathFollow3D/Cylinder_001/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/Cylinder_001/Area3D2" to="Path3D/PathFollow3D/Cylinder_001/Area3D2" method="_on_body_entered"]

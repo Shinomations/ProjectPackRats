@@ -47,9 +47,7 @@ func _on_body_entered(body: Node3D) -> void:
 			if "CountDownTimer" in i:
 				i.CountDownTimer -= 1
 	
-	
 	if body.is_in_group("boxes"):
-		body.remove_from_group("boxes")
 		player.areThereStillBoxes()
 	
 func _on_body_exited(body: Node3D) -> void:

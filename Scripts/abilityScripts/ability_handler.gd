@@ -7,7 +7,8 @@ var abilityList = [
 	"Nails",
 	"Tungstin",
 	"Bomb",
-	"GasolineTank" 
+	"GasolineTank",
+	"Clothing" 
 ]
 var chosen
 var player

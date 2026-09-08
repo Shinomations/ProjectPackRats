@@ -78,10 +78,9 @@ func _set_selected(object):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 
-	if uses >= 1 and usedAbility == true or body == self or body.is_in_group("player") or player.pickedObject == self:
+	if body == self or body.is_in_group("player") or player.pickedObject == self:
 		return
 
-	uses -= 1
 	if "GivenName" in body:
 		if body.GivenName == "Box With Anvils":
 			return 
