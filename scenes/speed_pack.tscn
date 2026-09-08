@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://paak568xd78o"]
+
+[ext_resource type="PackedScene" uid="uid://cysowteqssucw" path="res://models/speedPack.glb" id="1_eedl8"]
+
+[node name="speedPack" unique_id=452740013 instance=ExtResource("1_eedl8")]
+
+[node name="Marker3D" type="Marker3D" parent="." index="5" unique_id=400664369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.016212, 4.608089, 1.0526733)
