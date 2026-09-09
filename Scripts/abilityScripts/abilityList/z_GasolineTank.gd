@@ -19,7 +19,7 @@ var player
 var truck
 var outlineWidth = 0.05
 var uses = 0
-
+var height = 2
 #box specific variables
 var bodies
 var gravity = 9.8
@@ -82,6 +82,8 @@ func get_rect():
 	return Rect2(objectPosition, size)
 
 func ability():
+	if not truck:
+		return
 	if not truck.boxesInTruck.has(self):
 		return
 		

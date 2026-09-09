@@ -17,7 +17,7 @@ var selected = false
 var player
 var outlineWidth = 0.05
 var uses = 0
-
+var height = 1
 #box specific variables
 var bodies
 var gravity = 9.8

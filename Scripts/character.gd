@@ -10,6 +10,7 @@ const SENSITIVITY = 0.005
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
+@onready var box_carry_marker2: Marker3D = $Head/Camera3D/boxCarryMarker2
 @onready var rayCast: RayCast3D = $Head/Camera3D/RayCast3D
 @onready var finalScreen = $"Game Finish Screen"
 
@@ -22,7 +23,7 @@ var isFirstPress: bool = true
 var totalScore = 0
 var truck
 var boxes
-
+var FinalScore = 0
 # Safety trigger flag to prevent infinite screen execution spam
 var level_completed: bool = false
 
@@ -87,8 +88,11 @@ func _input(event):
 				GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
-				pickedObject.global_position = box_carry_marker.global_position
-				
+				if pickedObject.height == 1:
+					pickedObject.global_position = box_carry_marker.global_position
+				else:
+					pickedObject.global_position = box_carry_marker2.global_position
+
 			collisionSet()
 		else:
 			if collider == null:
@@ -128,8 +132,11 @@ func _physics_process(delta: float) -> void:
 		previewBox(gridPos)
 		
 	elif pickedObject != null:
-		
-		pickedObject.global_position = box_carry_marker.global_position
+		if pickedObject.height == 1:
+			pickedObject.global_position = box_carry_marker.global_position
+		else:
+			pickedObject.global_position = box_carry_marker2.global_position
+
 		
 	# Basic Player Physics
 	if not is_on_floor():
@@ -244,4 +251,10 @@ func areThereStillBoxes() -> bool:
 	if boxes.is_empty():
 		finalScreen.statsShow()
 		return false
+	else:
+		print("truck Multi before is: " + str(finalScreen.trucksMulti))
+		finalScreen.trucksMulti -= 1
+		print("truck Multi is: " + str(finalScreen.trucksMulti))
+		truck.remainingCapacity = 1.0
+		
 	return true

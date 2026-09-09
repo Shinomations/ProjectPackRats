@@ -850,6 +850,15 @@ transform = Transform3D(1.0278736, 0, 0, 0, 1, 0, 0, 0, 1, -0.5139368, 0, 0)
 [node name="RightHand" type="Node3D" parent="Head/Camera3D/boxCarryMarker" unique_id=2086762916]
 transform = Transform3D(1.0278736, 0, 0, 0, 1, 0, 0, 0, 1, 0.5139368, 0, 0)
 
+[node name="boxCarryMarker2" type="Marker3D" parent="Head/Camera3D" unique_id=233695420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.284126, -1.0629067)
+
+[node name="LeftHand" type="Node3D" parent="Head/Camera3D/boxCarryMarker2" unique_id=1609146288]
+transform = Transform3D(1.0278736, 0, 0, 0, 1, 0, 0, 0, 1, -0.5139368, 0, 0)
+
+[node name="RightHand" type="Node3D" parent="Head/Camera3D/boxCarryMarker2" unique_id=1913036125]
+transform = Transform3D(1.0278736, 0, 0, 0, 1, 0, 0, 0, 1, 0.5139368, 0, 0)
+
 [node name="rig" type="Node3D" parent="Head" unique_id=1465423726]
 transform = Transform3D(-0.095, 0, -8.305164e-09, 0, 0.095, 0, 8.305164e-09, 0, -0.095, 0, -0.933, 0)
 

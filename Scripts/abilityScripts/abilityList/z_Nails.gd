@@ -15,6 +15,8 @@ var GivenHealth = 10
 var selected = false
 var player
 var outlineWidth = 0.05
+var height = 1
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var BoxesNotToAffect: Array = []
 @export var size: Vector2 = Vector2(1,1)

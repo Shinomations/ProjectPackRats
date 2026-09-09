@@ -28,6 +28,7 @@ var canMove:bool = true
 var canReroll:bool = true
 
 var isPickUpable:bool = true
+var height = 1
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("boxes")

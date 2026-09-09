@@ -42,7 +42,9 @@ func _process(_delta: float) -> void:
 			"Material: " + player.material + "\n" +
 			"Income: " + str(player.Income) + "\n" +
 			"Health: " + str(player.health) + "\n" +
-			"Ability" +  "\n" + player.ability 
+			"Ability" +  "\n" + player.ability + "\n" +
+			"-----------------------------\n" +
+			"Overall Score:" + str(player.FinalScore) 
 		)
 	else:
 		wholeTab.visible = false

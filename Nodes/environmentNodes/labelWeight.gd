@@ -14,7 +14,7 @@ func update():
 	for i in parent:
 		#income calculations
 		
-
-		totalWeight -= i.GivenWeight
+		if is_instance_valid(i):
+			totalWeight -= i.GivenWeight
 		
 	text = "Weight Capacity:" + str(totalWeight)
