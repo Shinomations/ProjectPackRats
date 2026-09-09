@@ -353,7 +353,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.99984366, 0, -0.014589725, 0, 0.9999762, 0, 0.014589916, 0, 0.99983054, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998436, 0, -0.014589724, 0, 0.9999762, 0, 0.014589915, 0, 0.9998305, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -417,7 +417,7 @@ truck = NodePath("PathFollow3D/Area3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8000283, 0, 0)
 progress = 83.199974
 rotation_mode = 0
-tilt_enabled = false
+use_model_front = true
 
 [node name="Area3D" parent="Path3D/PathFollow3D" unique_id=1068427039 node_paths=PackedStringArray("LeavingPath") instance=ExtResource("3_sugp2")]
 LeavingPath = NodePath("../..")

@@ -4,6 +4,8 @@ var remainingCapacity: float = 1.0
 var TotalScore: float = 0.0
 var truckTextUpdate
 var truckTextUpdate2
+var boxVolume
+var boxScore 
 
 @onready var truckVolume: float = getBoxVolume(self)
 @export var LeavingPath: Path3D
@@ -33,8 +35,8 @@ func _ready() -> void:
 	
 func _on_body_entered(body: Node3D) -> void:
 	
-	var boxVolume = getBoxVolume(body)
-	var boxScore = getBoxScore(body)
+	boxVolume = getBoxVolume(body)
+	boxScore = getBoxScore(body)
 	if truckVolume <= 0.0 or boxVolume <= 0.0:
 		return
 		
@@ -57,11 +59,11 @@ func _on_body_entered(body: Node3D) -> void:
 	print(remainingCapacity)
 func _on_body_exited(body: Node3D) -> void:
 
-	var boxVolume = getBoxVolume(body)
-	var boxScore = getBoxScore(body)
+	boxVolume = getBoxVolume(body)
+	boxScore = getBoxScore(body)
 	if truckVolume <= 0.0 or boxVolume <= 0.0:
 		return
-	
+
 	if body in boxesInTruck:
 		boxesInTruck.erase(body)
 		truckTextUpdate.update()
