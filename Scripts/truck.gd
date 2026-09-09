@@ -1,6 +1,7 @@
 extends Area3D
 
 var remainingCapacity: float = 1.0
+@export var capacityNeededTooLeave = 0.15
 var TotalScore: float = 0.0
 var truckTextUpdate
 var truckTextUpdate2
@@ -53,8 +54,7 @@ func _on_body_entered(body: Node3D) -> void:
 				i.CountDownTimer -= 1
 	
 	
-	if remainingCapacity < 0.9 or truckTextUpdate2.WeightLeft <= 0 or get_overlapping_bodies().size() == get_tree().get_nodes_in_group("boxes").size():
-		player.areThereStillBoxes()
+	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or get_overlapping_bodies().size() == get_tree().get_nodes_in_group("boxes").size():
 		LeavingPath.loadingEnded()
 	print(remainingCapacity)
 func _on_body_exited(body: Node3D) -> void:
