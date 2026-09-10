@@ -10,6 +10,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 radius = 0.3
+height = 1.8757813
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wa5vi"]
 
@@ -818,6 +819,7 @@ floor_max_angle = 1.3089969
 script = ExtResource("1_umwsb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1517198120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037890613, 0)
 shape = SubResource("CapsuleShape3D_vu45j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1835946759]
