@@ -80,6 +80,3 @@ func updateCapacity(relativeChange: float, action: String) -> void:
 
 func updateScore(score: float) -> void:
 	TotalScore += score
-	
-
-	

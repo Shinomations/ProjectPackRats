@@ -263,6 +263,7 @@ func areThereStillBoxes() -> bool:
 		print("truck Multi before is: " + str(finalScreen.trucksMulti))
 		finalScreen.trucksMulti -= 1
 		print("truck Multi is: " + str(finalScreen.trucksMulti))
+		
 		truck.remainingCapacity = 1.0
 		
 	return true
