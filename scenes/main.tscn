@@ -186,8 +186,10 @@ shape = SubResource("BoxShape3D_0xm2m")
 [node name="baseBox" parent="Moveables" unique_id=1053126355 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.680546, 3.309636, -13.522539)
 
-[node name="flatRatFile" parent="Moveables" unique_id=296991103 instance=ExtResource("4_tipki")]
+[node name="flatRatFile" parent="Moveables" unique_id=296991103 node_paths=PackedStringArray("player") instance=ExtResource("4_tipki")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.176748, 1.7053087, -18.999561)
+talkingText = Array[String](["this is 0", "this is 1", "this is 2", "this is 3", "this is 4"])
+player = NodePath("../../CharacterBody3D")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1329582217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1.5, -0.5)
@@ -206,7 +208,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.99984354, 0, -0.014589723, 0, 0.9999762, 0, 0.014589915, 0, 0.9998304, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998431, 0, -0.014589718, 0, 0.9999762, 0, 0.0145899085, 0, 0.99983, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]

@@ -13,6 +13,7 @@ const SENSITIVITY = 0.005
 @onready var box_carry_marker2: Marker3D = $Head/Camera3D/boxCarryMarker2
 @onready var rayCast: RayCast3D = $Head/Camera3D/RayCast3D
 @onready var finalScreen = $"Game Finish Screen"
+@onready var npcChatBox = $TextBoxes
 
 var pickedObject: Node3D = null
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
@@ -23,6 +24,7 @@ var isFirstPress: bool = true
 var totalScore = 0
 var truck
 var boxes
+var client
 var FinalScore = 0
 # Safety trigger flag to prevent infinite screen execution spam
 var level_completed: bool = false
@@ -43,10 +45,12 @@ var  GPU: GPUParticles3D = null
 ## player is a group so this class is referencable in other scripts
 func _ready():
 	truck = get_tree().get_first_node_in_group("truck")
-	
+	client = get_tree().get_first_node_in_group("clients")
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	finalScreen.visible = false
+	npcChatBox.visible = false
+
 
 ## handles close, mouse movement
 func _unhandled_input(event):
@@ -102,7 +106,9 @@ func _input(event):
 				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
 				GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
-
+	if event.is_action_pressed("chat"):
+		client.revealChatter()
+		
 func _process(_delta):
 	#update raycast
 	updateRaycastData()

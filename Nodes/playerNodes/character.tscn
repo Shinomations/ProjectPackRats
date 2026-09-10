@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmg8q2yr6vsm3" path="res://Scripts/stat_screen.tscn" id="4_43fmg"]
 [ext_resource type="Texture2D" uid="uid://d3dyeyywpdrfc" path="res://Sprites & images/cursor-sprites/bubble.png" id="5_34xvd"]
 [ext_resource type="Script" uid="uid://bit085pcio7ej" path="res://Scripts/cursor.gd" id="5_cko0d"]
+[ext_resource type="PackedScene" uid="uid://bmmceopakuqws" path="res://text_boxes.tscn" id="7_ser6f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 radius = 0.3
@@ -2816,3 +2817,5 @@ pivot_offset = Vector2(1.75, 1.75)
 texture = ExtResource("5_34xvd")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="TextBoxes" parent="." unique_id=416406095 instance=ExtResource("7_ser6f")]

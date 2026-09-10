@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bc3lggrf0wc68"]
 
 [ext_resource type="PackedScene" uid="uid://cpe28dy050724" path="res://models/Clients/flatRatFile.glb" id="1_scr3q"]
+[ext_resource type="Script" uid="uid://cqeagd2155tbv" path="res://text_boxes.gd" id="2_niv1k"]
 
-[node name="flatRatFile" unique_id=296991103 instance=ExtResource("1_scr3q")]
+[node name="flatRatFile" unique_id=296991103 groups=["clients"] instance=ExtResource("1_scr3q")]
+script = ExtResource("2_niv1k")

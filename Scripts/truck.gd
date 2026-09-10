@@ -1,7 +1,7 @@
 extends Area3D
 
 var remainingCapacity: float = 1.0
-@export var capacityNeededTooLeave = 0.15
+@export var capacityNeededTooLeave = 0.999
 var TotalScore: float = 0.0
 var truckTextUpdate
 var truckTextUpdate2
