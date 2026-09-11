@@ -2,6 +2,63 @@
 
 [ext_resource type="PackedScene" uid="uid://cpe28dy050724" path="res://models/Clients/flatRatFile.glb" id="1_scr3q"]
 [ext_resource type="Script" uid="uid://cqeagd2155tbv" path="res://text_boxes.gd" id="2_niv1k"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="3_clbeb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nofty"]
+size = Vector3(1, 3.2754517, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pm2cj"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0.2, 0)
+damping_min = 0.1
+damping_max = 0.1
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwnbd"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("3_clbeb")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ioeol"]
+material = SubResource("StandardMaterial3D_lwnbd")
+size = Vector2(0.5, 0.5)
 
 [node name="flatRatFile" unique_id=296991103 groups=["clients"] instance=ExtResource("1_scr3q")]
+
+[node name="StaticBody3D" type="CharacterBody3D" parent="." index="2" unique_id=1107757679 groups=["clients"]]
+collision_layer = 32
 script = ExtResource("2_niv1k")
+talkingText = Array[String](["Balls said the queen"])
+textBoxDisappearSpeed = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=952329497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374115, 0)
+shape = SubResource("BoxShape3D_nofty")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="3" unique_id=1973856496]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_pm2cj")
+draw_pass_1 = SubResource("QuadMesh_ioeol")

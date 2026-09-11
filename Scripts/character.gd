@@ -27,6 +27,7 @@ var truck
 var boxes
 var client
 var FinalScore = 0
+var timeHeld = 0.0
 # Safety trigger flag to prevent infinite screen execution spam
 var level_completed: bool = false
 
@@ -81,9 +82,12 @@ func _input(event):
 	if event.is_action_pressed("interaction"):
 		rayCast.force_raycast_update()
 		updateRaycastData()
-		
+		if collider.is_in_group("clients"):
+			collider.revealChatter()
+			return
 		if pickedObject != null:
 			if rayCast.is_colliding():
+				
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
 				GPU.emitting = true	
@@ -93,9 +97,9 @@ func _input(event):
 				GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
-				if pickedObject.height == 1:
+				if pickedObject.height == 1 and pickedObject.is_in_group("boxes"):
 					pickedObject.global_position = box_carry_marker.global_position
-				else:
+				elif pickedObject.is_in_group("boxes"):
 					pickedObject.global_position = box_carry_marker2.global_position
 
 			collisionSet()
@@ -107,12 +111,16 @@ func _input(event):
 				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
 				GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
-	if event.is_action_pressed("chat"):
-		client.revealChatter()
+	
 		
+	if Input.is_action_pressed("rotateUp"):
+		rotateBoxesUp()
+	if Input.is_action_pressed("RotateSide"):
+		rotateBoxesSide()
 func _process(_delta):
 	#update raycast
 	updateRaycastData()
+	
 
 func updateRaycastData():
 	if rayCast.is_colliding():
@@ -138,7 +146,7 @@ func _physics_process(delta: float) -> void:
 	if pickedObject != null and rayCast.is_colliding():
 		previewBox(gridPos)
 		
-	elif pickedObject != null:
+	elif pickedObject != null and pickedObject.is_in_group("boxes"):
 		if pickedObject.height == 1:
 			pickedObject.global_position = box_carry_marker.global_position
 		else:
@@ -269,3 +277,10 @@ func areThereStillBoxes() -> bool:
 		truck.remainingCapacity = 1.0
 		
 	return true
+
+func rotateBoxesUp():
+	pickedObject.rotate_x(deg_to_rad(90))
+	
+func rotateBoxesSide():
+	pickedObject.rotate_z(deg_to_rad(90))
+	

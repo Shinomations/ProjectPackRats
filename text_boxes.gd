@@ -2,6 +2,8 @@ extends Node3D
 
 @export var talkingText: Array[String] = []
 @export var player: CharacterBody3D
+@export var textBoxDisappearSpeed: int
+
 var npcTextToEdit
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -14,7 +16,7 @@ func revealChatter():
 		return
 	for i in talkingText:
 		npcTextToEdit.text = i
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(textBoxDisappearSpeed).timeout
 		
 	player.npcChatBox.visible = false
 	
