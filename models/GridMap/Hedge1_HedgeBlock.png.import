@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnhu0yyewah81"
-path.s3tc="res://.godot/imported/Hedge1_HedgeBlock.png-49f1e903c3862a4d128e3574c3c9c94d.s3tc.ctex"
+path="res://.godot/imported/Hedge1_HedgeBlock.png-49f1e903c3862a4d128e3574c3c9c94d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "b3f270a0d07544c27d000ec7dff122ba"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Hedge1_HedgeBlock.png"
-dest_files=["res://.godot/imported/Hedge1_HedgeBlock.png-49f1e903c3862a4d128e3574c3c9c94d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hedge1_HedgeBlock.png-49f1e903c3862a4d128e3574c3c9c94d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

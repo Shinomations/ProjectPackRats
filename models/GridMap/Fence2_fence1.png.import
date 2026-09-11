@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clypbiasr1ogg"
-path.s3tc="res://.godot/imported/Fence2_fence1.png-467d1f739081ce442aa0637c58ad82d5.s3tc.ctex"
+path="res://.godot/imported/Fence2_fence1.png-467d1f739081ce442aa0637c58ad82d5.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "d895dbdd44d5bca83f04c707c5a63069"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Fence2_fence1.png"
-dest_files=["res://.godot/imported/Fence2_fence1.png-467d1f739081ce442aa0637c58ad82d5.s3tc.ctex"]
+dest_files=["res://.godot/imported/Fence2_fence1.png-467d1f739081ce442aa0637c58ad82d5.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

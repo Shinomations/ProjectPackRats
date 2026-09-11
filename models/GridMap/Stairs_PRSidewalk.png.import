@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csqhstx2a33iq"
-path.s3tc="res://.godot/imported/Stairs_PRSidewalk.png-f376d42b1b64e26447a245ac003bd359.s3tc.ctex"
+path="res://.godot/imported/Stairs_PRSidewalk.png-f376d42b1b64e26447a245ac003bd359.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "7b4c44eeca03b846ea62297131c2fb6e"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Stairs_PRSidewalk.png"
-dest_files=["res://.godot/imported/Stairs_PRSidewalk.png-f376d42b1b64e26447a245ac003bd359.s3tc.ctex"]
+dest_files=["res://.godot/imported/Stairs_PRSidewalk.png-f376d42b1b64e26447a245ac003bd359.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch0awi2e1puon"
-path.s3tc="res://.godot/imported/Road2_Roadtile3.png-ac7d7712c529891ea289d13aadc1a08f.s3tc.ctex"
+path="res://.godot/imported/Road2_Roadtile3.png-ac7d7712c529891ea289d13aadc1a08f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "d1fa42b466163a6273f5a2b45c667047"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Road2_Roadtile3.png"
-dest_files=["res://.godot/imported/Road2_Roadtile3.png-ac7d7712c529891ea289d13aadc1a08f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Road2_Roadtile3.png-ac7d7712c529891ea289d13aadc1a08f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

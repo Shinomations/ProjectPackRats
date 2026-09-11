@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0pap1gffgf4u"
-path.s3tc="res://.godot/imported/RoofWall1_Brick.png-bbc65933562ec415ac1d69a9837e7a38.s3tc.ctex"
+path="res://.godot/imported/RoofWall1_Brick.png-bbc65933562ec415ac1d69a9837e7a38.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "8d4ba05f8373f2a231bc608cce0c67ac"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/RoofWall1_Brick.png"
-dest_files=["res://.godot/imported/RoofWall1_Brick.png-bbc65933562ec415ac1d69a9837e7a38.s3tc.ctex"]
+dest_files=["res://.godot/imported/RoofWall1_Brick.png-bbc65933562ec415ac1d69a9837e7a38.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

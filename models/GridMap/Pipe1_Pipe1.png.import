@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds8pq1ukqxiyv"
-path="res://.godot/imported/BrickWallpaper_Brick.png-63e2cb54a0d1579951a9cf605a938b42.ctex"
+uid="uid://cr36d10lv72jk"
+path="res://.godot/imported/Pipe1_Pipe1.png-c25139397bbcd88966c283bb70b1afe7.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "8d4ba05f8373f2a231bc608cce0c67ac"
+"md5": "7f3fb79f0560db8d1c34a28e196c6ff5"
 }
 
 [deps]
 
-source_file="res://models/GridMap/BrickWallpaper_Brick.png"
-dest_files=["res://.godot/imported/BrickWallpaper_Brick.png-63e2cb54a0d1579951a9cf605a938b42.ctex"]
+source_file="res://models/GridMap/Pipe1_Pipe1.png"
+dest_files=["res://.godot/imported/Pipe1_Pipe1.png-c25139397bbcd88966c283bb70b1afe7.ctex"]
 
 [params]
 

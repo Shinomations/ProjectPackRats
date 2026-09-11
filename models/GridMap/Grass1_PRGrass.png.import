@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://l37mxkoocr3u"
-path.s3tc="res://.godot/imported/Grass1_PRGrass.png-99296c3abbe430f264179ebe65481e53.s3tc.ctex"
+path="res://.godot/imported/Grass1_PRGrass.png-99296c3abbe430f264179ebe65481e53.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "2a55687b04fd9160dc340839d2382065"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Grass1_PRGrass.png"
-dest_files=["res://.godot/imported/Grass1_PRGrass.png-99296c3abbe430f264179ebe65481e53.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grass1_PRGrass.png-99296c3abbe430f264179ebe65481e53.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8qmqyyb6bi2t"
-path.s3tc="res://.godot/imported/Tree1_Bark.png-d3caaa8a17b0de56a712663d5ef63f27.s3tc.ctex"
+path="res://.godot/imported/Tree1_Bark.png-d3caaa8a17b0de56a712663d5ef63f27.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f2a22c4b14abda82d84cecff34dbf7ee"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Tree1_Bark.png"
-dest_files=["res://.godot/imported/Tree1_Bark.png-d3caaa8a17b0de56a712663d5ef63f27.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tree1_Bark.png-d3caaa8a17b0de56a712663d5ef63f27.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

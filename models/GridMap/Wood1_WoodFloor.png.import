@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpyjv8b7mmwuv"
-path.s3tc="res://.godot/imported/Wood1_WoodFloor.png-1e23da15f3bfb2235cd964e739558309.s3tc.ctex"
+path="res://.godot/imported/Wood1_WoodFloor.png-1e23da15f3bfb2235cd964e739558309.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "463a5deec0980d5ef932dcf23d87651f"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/Wood1_WoodFloor.png"
-dest_files=["res://.godot/imported/Wood1_WoodFloor.png-1e23da15f3bfb2235cd964e739558309.s3tc.ctex"]
+dest_files=["res://.godot/imported/Wood1_WoodFloor.png-1e23da15f3bfb2235cd964e739558309.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

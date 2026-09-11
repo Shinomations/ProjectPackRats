@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1qhi35iux77o"
-path.s3tc="res://.godot/imported/StreetLight_Streetlight.png-d09f01335cbeea9a19edbd232a30e39a.s3tc.ctex"
+path="res://.godot/imported/StreetLight_Streetlight.png-d09f01335cbeea9a19edbd232a30e39a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "177222bbb050ab47577fc1cf73058efa"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/GridMap/StreetLight_Streetlight.png"
-dest_files=["res://.godot/imported/StreetLight_Streetlight.png-d09f01335cbeea9a19edbd232a30e39a.s3tc.ctex"]
+dest_files=["res://.godot/imported/StreetLight_Streetlight.png-d09f01335cbeea9a19edbd232a30e39a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
