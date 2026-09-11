@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjxu8tl1isr0g"
-path.s3tc="res://.godot/imported/RoofCorner1_Brick.png-5476add1236a31461b2fb1518c39fde2.s3tc.ctex"
+uid="uid://dknb32mavw3gw"
+path.s3tc="res://.godot/imported/CornerTrim1_Brick2.png-2e3ec243efb1772b8cc4b01e74bb34de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8d4ba05f8373f2a231bc608cce0c67ac"
+"md5": "49d9b492235d1f11e01fb3c0b5f13d51"
 }
 
 [deps]
 
-source_file="res://models/GridMap/RoofCorner1_Brick.png"
-dest_files=["res://.godot/imported/RoofCorner1_Brick.png-5476add1236a31461b2fb1518c39fde2.s3tc.ctex"]
+source_file="res://models/GridMap/CornerTrim1_Brick2.png"
+dest_files=["res://.godot/imported/CornerTrim1_Brick2.png-2e3ec243efb1772b8cc4b01e74bb34de.s3tc.ctex"]
 
 [params]
 

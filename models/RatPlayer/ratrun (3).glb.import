@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://barnotf8ehhpe"
-path="res://.godot/imported/RoofCorner1.glb-0fe426a2f9327e1e8f7b4426c42ef2d9.scn"
+uid="uid://bf3ldte0g11bu"
+path="res://.godot/imported/ratrun (3).glb-b1c1bde27619279a7f9ea9c0d713145b.scn"
 
 [deps]
 
-source_file="res://models/GridMap/RoofCorner1.glb"
-dest_files=["res://.godot/imported/RoofCorner1.glb-0fe426a2f9327e1e8f7b4426c42ef2d9.scn"]
+source_file="res://models/RatPlayer/ratrun (3).glb"
+dest_files=["res://.godot/imported/ratrun (3).glb-b1c1bde27619279a7f9ea9c0d713145b.scn"]
 
 [params]
 

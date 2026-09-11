@@ -6,6 +6,7 @@ const SENSITIVITY = 0.005
 @onready var player: CharacterBody3D = $"."
 
 @onready var footsteps: AudioStreamPlayer3D = $CollisionShape3D/Footsteps
+@onready var animation_tree: AnimationTree = $Head/rig/AnimationTree
 
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
@@ -153,7 +154,8 @@ func _physics_process(delta: float) -> void:
 
 	var inputDir := Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * Vector3(inputDir.x, 0, inputDir.y))
-	
+	var current_BP = animation_tree["parameters/BlendSpace2D/blend_position"]
+	animation_tree["parameters/BlendSpace2D/blend_position"] = Vector2(lerp(current_BP.x,inputDir.x, .1), lerp(current_BP.y,inputDir.y, .1))
 	if direction:
 		#if (footsteps.playing == false):
 		#	footsteps.play()
