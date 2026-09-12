@@ -1,26 +1,26 @@
 extends Node3D
 
-var abilityListTier1 = [
+@export var abilityListTier1 = [
 	"Nails",
 	"Clothing",
 	"SixShooter",
 	"ammobox",
 	"Beehive" 
 ]
-var abilityListTier2 = [
+@export var abilityListTier2 = [
 	"Tungstin",
 	"IED"
 ]
-var abilityListTier3 = [
+@export var abilityListTier3 = [
 	"Glassware",
 	"Wire",
 	"DoubleBarrel"
 ]
-var abilityListTier4 = [
+@export var abilityListTier4 = [
 	"GasolineTank",
 	"AWP"
 ]
-var abilityListTier5 = [
+@export var abilityListTier5 = [
 	"anvil",
 	"DrinkPallete"
 ]

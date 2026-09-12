@@ -4,3 +4,6 @@
 
 [node name="baseBox" type="Node3D" unique_id=1457221616]
 script = ExtResource("3_ietqa")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1874972839]
+gizmo_extents = 0.5

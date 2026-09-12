@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://biy31jpyjkojk"]
+
+[ext_resource type="Script" uid="uid://b486e2stl3u7i" path="res://Scripts/abilityScripts/abilityList/z_Tungstin.gd" id="1_0qavh"]
+[ext_resource type="PackedScene" uid="uid://cvvuamobyafta" path="res://models/Boxes/BBall.glb" id="2_0qavh"]
+[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_lnfy8"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_i1nml"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eri6h"]
+radius = 0.45
+
+[sub_resource type="SphereMesh" id="SphereMesh_dtb5d"]
+radius = 0.35
+height = 0.7
+radial_segments = 16
+rings = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xogdt"]
+render_priority = 0
+shader = ExtResource("2_lnfy8")
+shader_parameter/outline_width = 0.150000007125
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
+next_pass = SubResource("ShaderMaterial_xogdt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3fks1"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0.2, 0)
+damping_min = 0.1
+damping_max = 0.1
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w53v4"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("4_i1nml")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_itc4w"]
+material = SubResource("StandardMaterial3D_w53v4")
+size = Vector2(0.5, 0.5)
+
+[node name="baseBox" type="CharacterBody3D" unique_id=2007439779]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("1_0qavh")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="BBall" parent="." unique_id=749514071 instance=ExtResource("2_0qavh")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
+unique_name_in_owner = true
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+shape = SubResource("SphereShape3D_eri6h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=935560228]
+transform = Transform3D(1.010101, 0, 0, 0, 1.010101, 0, 0, 0, 1.010101, 0, 0, 0)
+mesh = SubResource("SphereMesh_dtb5d")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1756622313]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.73
+randomness = 0.07
+process_material = SubResource("ParticleProcessMaterial_3fks1")
+draw_pass_1 = SubResource("QuadMesh_itc4w")
