@@ -10,6 +10,7 @@ var GivenType = "Wooden"
 var GivenIncome = 500
 var GivenAbility = "Passive: destroy this when a box with more weight is placed above this one"
 var GivenHealth = 70
+var tier = 3
 
 var selected = false
 var player
@@ -36,7 +37,14 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("boxes")
 
+
 func _process(_delta):
+	if GivenWeight < 0:
+		gravity = -9.8
+		set_physics_process(true)
+	else:
+		gravity = 9.8
+	
 	if selected:
 		boxbasic1.position.y = outlineWidth
 		player.boxTypeDetector = 1 
@@ -50,15 +58,22 @@ func _set_selected(object):
 	selected = self == object
 	
 func _physics_process(delta):
-	# Add the gravity to velocity each frame if not on the floor
+		
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
-	if not is_on_floor():
+	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
-	else:
-		velocity.y = 0
 		
+	elif is_on_floor() and gravity > 0:
+		velocity.y = 0
+		set_physics_process(false)
+	
+	if gravity < 0 and not is_on_ceiling():
+		velocity.y -= gravity * delta
+	elif is_on_ceiling() and gravity < 0:
+		velocity.y = 0
+		set_physics_process(false)
 	move_and_slide()
 	
 func _on_area_3d_body_entered(body: Node3D) -> void:

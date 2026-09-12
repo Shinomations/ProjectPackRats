@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://ct2h4tx2ygo8g"]
+[gd_scene format=3 uid="uid://drjkac4dorvge"]
 
-[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_78uto"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_w2ytf"]
-[ext_resource type="Script" uid="uid://bimkbvabui6l4" path="res://Scripts/abilityScripts/abilityList/z_Clothing.gd" id="3_78uto"]
-[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_w2ytf"]
+[ext_resource type="Script" uid="uid://brrhwtxu5b6se" path="res://Scripts/abilityScripts/abilityList/z_ammobox.gd" id="1_racmu"]
+[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_807sp"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="3_irpfp"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_lkqyi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -12,7 +12,7 @@ size = Vector3(0.8, 0.8, 0.8)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3wuok"]
 render_priority = 0
-shader = ExtResource("2_78uto")
+shader = ExtResource("2_807sp")
 shader_parameter/outline_width = 0.150000007125
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
@@ -46,7 +46,7 @@ collision_bounce = 0.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l0uv"]
 transparency = 1
 albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
-albedo_texture = ExtResource("4_w2ytf")
+albedo_texture = ExtResource("4_lkqyi")
 metallic_specular = 0.0
 texture_filter = 0
 billboard_mode = 3
@@ -62,7 +62,7 @@ size = Vector2(0.5, 0.5)
 disable_mode = 1
 collision_layer = 4
 collision_mask = 23
-script = ExtResource("3_78uto")
+script = ExtResource("1_racmu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
@@ -73,7 +73,7 @@ shape = SubResource("BoxShape3D_tblqd")
 mesh = SubResource("BoxMesh_hwta1")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
 
-[node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_w2ytf")]
+[node name="box" parent="." unique_id=1745338181 instance=ExtResource("3_irpfp")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1809421967]

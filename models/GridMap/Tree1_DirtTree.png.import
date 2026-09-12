@@ -2,23 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://26qinnkuw30g"
-path="res://.godot/imported/Tree1_DirtTree.png-75ae4cc65e722ef5b34d8368d69d9e77.ctex"
+uid="uid://b5wtypo4lels5"
+path.s3tc="res://.godot/imported/Tree1_DirtTree.png-75ae4cc65e722ef5b34d8368d69d9e77.s3tc.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "95dd2620a522795ead8078f2352b0bfe"
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/GridMap/Tree1_DirtTree.png"
-dest_files=["res://.godot/imported/Tree1_DirtTree.png-75ae4cc65e722ef5b34d8368d69d9e77.ctex"]
+dest_files=["res://.godot/imported/Tree1_DirtTree.png-75ae4cc65e722ef5b34d8368d69d9e77.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

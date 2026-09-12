@@ -7,7 +7,7 @@ var truckTextUpdate
 var truckTextUpdate2
 var boxVolume
 var boxScore 
-
+var bodySelected
 @onready var truckVolume: float = getBoxVolume(self)
 @export var LeavingPath: Path3D
 var boxesInTruck:Array = []
@@ -35,7 +35,7 @@ func _ready() -> void:
 	
 	
 func _on_body_entered(body: Node3D) -> void:
-	
+	bodySelected = body
 	boxVolume = getBoxVolume(body)
 	boxScore = getBoxScore(body)
 	if truckVolume <= 0.0 or boxVolume <= 0.0:
@@ -48,13 +48,13 @@ func _on_body_entered(body: Node3D) -> void:
 	updateScore(boxScore)
 	player.totalScore = TotalScore
 	
-	if body.is_in_group("boxes"):
+	if body.has_method("TruckEnterAbilityability"):
 		for i in boxesInTruck:
-			if "CountDownTimer" in i:
-				i.CountDownTimer -= 1
-	
-	
-	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or get_overlapping_bodies().size() == get_tree().get_nodes_in_group("boxes").size():
+			if i.has_method("TruckEnterAbilityability"):
+				i.TruckEnterAbilityability()
+			await get_tree().create_timer(0.5).timeout
+	print("boxes in truck rn: " + str(boxesInTruck.size())," Boxes in world: " + str(get_tree().get_nodes_in_group("boxes").size()))
+	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
 		LeavingPath.loadingEnded()
 	print(remainingCapacity)
 func _on_body_exited(body: Node3D) -> void:

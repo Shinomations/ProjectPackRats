@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dvks0gv4ipukh"]
 
-[ext_resource type="Script" uid="uid://4camo45mvr6t" path="res://Scripts/abilityScripts/abilityList/z_Bomb.gd" id="1_ntypx"]
-[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_m3sy7"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_u4plu"]
-[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_m3sy7"]
+[ext_resource type="Script" uid="uid://4camo45mvr6t" path="res://Scripts/abilityScripts/abilityList/z_IED.gd" id="1_2wy45"]
+[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_swuib"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="3_7acul"]
+[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_yfqtq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -12,7 +12,7 @@ size = Vector3(0.8, 0.8, 0.8)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4plu"]
 render_priority = 0
-shader = ExtResource("2_m3sy7")
+shader = ExtResource("2_swuib")
 shader_parameter/outline_width = 0.150000007125
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
@@ -43,7 +43,7 @@ collision_bounce = 0.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j2kl"]
 transparency = 1
 albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
-albedo_texture = ExtResource("4_m3sy7")
+albedo_texture = ExtResource("4_yfqtq")
 metallic_specular = 0.0
 texture_filter = 0
 billboard_mode = 3
@@ -58,7 +58,7 @@ size = Vector2(0.5, 0.5)
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
 collision_layer = 4
 collision_mask = 23
-script = ExtResource("1_ntypx")
+script = ExtResource("1_2wy45")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
@@ -71,10 +71,11 @@ mesh = SubResource("BoxMesh_ntypx")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
-[node name="box" parent="CollisionShape3D/MeshInstance3D" unique_id=1745338181 instance=ExtResource("2_u4plu")]
+[node name="box" parent="CollisionShape3D/MeshInstance3D" unique_id=1745338181 instance=ExtResource("3_7acul")]
 transform = Transform3D(0.5000005, 0, 0, 0, 0.5000005, 0, 0, 0, 0.5000005, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=360825656]
+disable_mode = 1
 collision_layer = 4
 collision_mask = 20
 

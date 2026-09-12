@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://mvysgnvb53xb" path="res://models/GridMap/Trim2_Brick2.png" id="24_gj0rk"]
 [ext_resource type="Texture2D" uid="uid://dgwxmgmg372iy" path="res://models/GridMap/Concrete2_PRSidewalk.png" id="24_jnrls"]
 [ext_resource type="Texture2D" uid="uid://c7x41jrridd5b" path="res://models/GridMap/Concrete3_PRSidewalk.png" id="25_p6nub"]
-[ext_resource type="Texture2D" uid="uid://26qinnkuw30g" path="res://models/GridMap/Tree1_DirtTree.png" id="26_w4po3"]
+[ext_resource type="Texture2D" uid="uid://b5wtypo4lels5" path="res://models/GridMap/Tree1_DirtTree.png" id="26_w4po3"]
 [ext_resource type="Texture2D" uid="uid://c8qmqyyb6bi2t" path="res://models/GridMap/Tree1_Bark.png" id="27_s752g"]
 [ext_resource type="Texture2D" uid="uid://ce3afbcv2ctdk" path="res://models/GridMap/Tree1_tree1.png" id="28_llwyb"]
 [ext_resource type="Texture2D" uid="uid://clypbiasr1ogg" path="res://models/GridMap/Fence2_fence1.png" id="29_dlvmq"]

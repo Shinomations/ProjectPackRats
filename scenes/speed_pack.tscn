@@ -1,8 +1,31 @@
 [gd_scene format=3 uid="uid://paak568xd78o"]
 
 [ext_resource type="PackedScene" uid="uid://cysowteqssucw" path="res://models/speedPack.glb" id="1_eedl8"]
+[ext_resource type="Script" uid="uid://bpeksv035pgmw" path="res://scenes/speed_pack.gd" id="2_84sh4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(5.1918945, 1, 3.147583)
 
 [node name="speedPack" unique_id=452740013 instance=ExtResource("1_eedl8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Marker3D" type="Marker3D" parent="." index="5" unique_id=400664369]
+[node name="Cube_002" parent="." index="3" unique_id=381754357]
+transform = Transform3D(-6.280927e-08, 0, 0.3070053, 0, 0.14636874, 0, -1.4369086, 0, -1.3419627e-08, 0.027555823, -1.4589325, 1.0116799)
+
+[node name="Cube_003" parent="." index="4" unique_id=374862008]
+transform = Transform3D(-6.280927e-08, 0, 0.3070053, 0, 0.14636874, 0, -1.4369086, 0, -1.3419627e-08, 4.0069404, -1.4589325, 1.0116799)
+
+[node name="Area3D" type="Area3D" parent="." index="5" unique_id=2034334796 groups=["speedPack"]]
+script = ExtResource("2_84sh4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=209684403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0673585, 0, 1.0737915)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="ItemMarker3D" type="Marker3D" parent="Area3D" index="1" unique_id=400664369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.016212, 4.608089, 1.0526733)
+
+[node name="NotItemMarker3D" type="Marker3D" parent="Area3D" index="2" unique_id=862890563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.016212, 6.64306, -5.8698945)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

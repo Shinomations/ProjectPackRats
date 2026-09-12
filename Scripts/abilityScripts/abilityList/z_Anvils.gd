@@ -3,7 +3,7 @@ extends CharacterBody3D
 #calling of children
 @onready var boxbasic1 = $CollisionShape3D
 @onready var area = $Area3D
-
+@onready var globalLocal = $placementmarker
 #Per box Stats
 var GivenName = "Box With Anvils"
 var GivenWeight = 500
@@ -11,7 +11,7 @@ var GivenType = "Wooden"
 var GivenIncome = 1000
 var GivenAbility = "First Placement: Destroy everything underneath this (Not other Anvil boxes)"
 var GivenHealth = 100
-
+var tier = 5
 #all box variables
 var selected = false
 var player
@@ -21,6 +21,7 @@ var height = 2
 #box specific variables
 var bodies
 var gravity = 9.8
+
 @export var size: Vector2 = Vector2(1,2)
 @export var offset: Vector3 = Vector3.ZERO
 
@@ -45,8 +46,13 @@ func _ready():
 	for child in get_children():
 		child.position -= offset
 
+
 func _process(_delta):
-	
+	if GivenWeight < 0:
+		gravity = -9.8
+		set_physics_process(true)
+	else:
+		gravity = 9.8
 	
 	if selected:
 		boxbasic1.position.y = outlineWidth
@@ -57,16 +63,22 @@ func _process(_delta):
 	if GivenHealth <= 0:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
-	
+		
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
-	if not is_on_floor():
+	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
 		
-	else:
+	elif is_on_floor() and gravity > 0:
 		velocity.y = 0
-		uses += 1
+		set_physics_process(false)
+	
+	if gravity < 0 and not is_on_ceiling():
+		velocity.y -= gravity * delta
+	elif is_on_ceiling() and gravity < 0:
+		velocity.y = 0
+		set_physics_process(false)
 	move_and_slide()
 
 

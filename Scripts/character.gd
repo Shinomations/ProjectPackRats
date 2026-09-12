@@ -82,7 +82,7 @@ func _input(event):
 	if event.is_action_pressed("interaction"):
 		rayCast.force_raycast_update()
 		updateRaycastData()
-		if collider.is_in_group("clients"):
+		if collider != null and collider.is_in_group("clients"):
 			collider.revealChatter()
 			return
 		if pickedObject != null:
@@ -91,7 +91,7 @@ func _input(event):
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
 				GPU.emitting = true	
-				
+				pickedObject.set_physics_process(true)
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos
 				GlobalGrid.register_cell(gridPos, pickedObject)
@@ -101,6 +101,7 @@ func _input(event):
 					pickedObject.global_position = box_carry_marker.global_position
 				elif pickedObject.is_in_group("boxes"):
 					pickedObject.global_position = box_carry_marker2.global_position
+				
 
 			collisionSet()
 		else:
@@ -134,9 +135,11 @@ func updateRaycastData():
 			
 			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2.0))
 			gridPos = GlobalGrid.world_to_grid(targetPos, cell_size)
+			pickedObject.set_physics_process(true)
 		else:
 			var targetPos = collisionPoint - (collisionNormal * 0.1)
 			gridPos = GlobalGrid.world_to_grid(targetPos, GlobalGrid.DEFAULT_CELL_SIZE)
+			
 	else:
 		collider = null
 		

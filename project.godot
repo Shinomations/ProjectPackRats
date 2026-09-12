@@ -41,6 +41,8 @@ boxes=""
 truck=""
 player=""
 clients=""
+speedPack=""
+items=""
 
 [input]
 

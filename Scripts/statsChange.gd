@@ -3,13 +3,15 @@ extends Control
 @onready var UnitAbility = $RichTextLabel
 @onready var wholeTab = $"."
 var player: CharacterBody3D = null
-
+var speedpack
 
 var anim_time: float = 0.00
 var jitteramount: float = 0.03
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	speedpack = get_tree().get_first_node_in_group("speedPack")
+
 	wholeTab.visible = false
 	
 	
@@ -32,6 +34,7 @@ func _process(_delta: float) -> void:
 	# Backup check: If player group failed in _ready, try to find it now
 	if not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("player")
+		
 
 	# The validation check
 	if is_instance_valid(player) and is_instance_valid(player.pickedObject) and Input.is_action_pressed("Notes"):
@@ -44,7 +47,7 @@ func _process(_delta: float) -> void:
 			"Health: " + str(player.health) + "\n" +
 			"Ability" +  "\n" + player.ability + "\n" +
 			"-----------------------------\n" +
-			"Overall Score:" + str(player.FinalScore) 
+			"Overall Score:" + str(player.FinalScore)
 		)
 	else:
 		wholeTab.visible = false

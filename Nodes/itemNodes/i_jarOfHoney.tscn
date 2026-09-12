@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://brw6f55gde5nk"]
+
+[ext_resource type="Script" uid="uid://cfhanyj1nes4k" path="res://Nodes/itemNodes/i_jar_of_honey.gd" id="1_3ds0s"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hwta1"]
+radius = 0.28322554
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hwta1"]
+radius = 0.25
+height = 0.5
+radial_segments = 4
+
+[node name="Node3D" type="CharacterBody3D" unique_id=966918329 groups=["items"]]
+script = ExtResource("1_3ds0s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=164438750]
+shape = SubResource("SphereShape3D_hwta1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=400412416]
+mesh = SubResource("CapsuleMesh_hwta1")

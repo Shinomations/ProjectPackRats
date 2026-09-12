@@ -18,6 +18,8 @@ offset_bottom = 1080.0
 
 [node name="background" type="TextureRect" parent="MarginContainer2" unique_id=803795800]
 modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.86200005)
+propagate_maximum_size = true
+clip_contents = true
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(53.975, 56.575)
@@ -27,6 +29,8 @@ texture = ExtResource("2_win1s")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=181323816]
 modulate = Color(1.053091, 1.053091, 1.053091, 1)
+propagate_maximum_size = true
+clip_contents = true
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(61.21, 50.635)
@@ -35,21 +39,21 @@ offset_transform_scale = Vector2(0.232, 0.453)
 texture = ExtResource("2_win1s")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=16642072]
-modulate = Color(1, 0.6582944, 0.4289456, 1)
 layout_mode = 0
-offset_left = 70.5
-offset_top = 121.0
-offset_right = 471.5
-offset_bottom = 485.0
+offset_left = 67.0
+offset_top = 120.0
+offset_right = 479.5
+offset_bottom = 480.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.5494742, 0.37302878, 0, 1)
 theme_override_constants/line_separation = 0
 theme_override_constants/shadow_outline_size = 3
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 18
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 18
 theme_override_font_sizes/bold_italics_font_size = 18
 theme_override_font_sizes/italics_font_size = 18
 theme_override_font_sizes/mono_font_size = 18
 text = "HELLO
 rwfugigoqwkf"
+fit_content = true
+scroll_active = false

@@ -12,6 +12,7 @@ var GivenType = "Plastic"
 var GivenIncome = 450
 var GivenAbility = "If this is completely covered \n Double this units Income and half its Weight"
 var GivenHealth = 250
+var tier = 4
 
 #all box variables
 var selected = false
@@ -45,11 +46,17 @@ func _ready():
 	truck = get_tree().get_first_node_in_group("truck")
 	add_to_group("boxes")
 	safe_margin = 0.0005
-	
+
 	
 	boxesLeft = viableSpots.get_child_count()
 
 func _process(_delta):
+	if GivenWeight < 0:
+		gravity = -9.8
+		set_physics_process(true)
+	else:
+		gravity = 9.8
+	
 	if selected:
 		boxbasic1.position.y = outlineWidth
 		player.boxTypeDetector = 1 
@@ -59,18 +66,23 @@ func _process(_delta):
 	if GivenHealth <= 0:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
-	
+		
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
-	if not is_on_floor():
+	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
 		
-	else:
+	elif is_on_floor() and gravity > 0:
 		velocity.y = 0
-		uses += 1
+		set_physics_process(false)
+	
+	if gravity < 0 and not is_on_ceiling():
+		velocity.y -= gravity * delta
+	elif is_on_ceiling() and gravity < 0:
+		velocity.y = 0
+		set_physics_process(false)
 	move_and_slide()
-	ability()
 func _set_selected(object):
 	
 	selected = self == object

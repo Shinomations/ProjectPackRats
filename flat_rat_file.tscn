@@ -46,8 +46,8 @@ size = Vector2(0.5, 0.5)
 [node name="StaticBody3D" type="CharacterBody3D" parent="." index="2" unique_id=1107757679 groups=["clients"]]
 collision_layer = 32
 script = ExtResource("2_niv1k")
-talkingText = Array[String](["Balls said the queen"])
-textBoxDisappearSpeed = 3
+talkingText = Array[String](["Well hey there", "You must be the mover", "Ive got plenty of boxes inside", "but...", "No money to pay for another truck", "So please what ever you do", "Use as little extra trucks as possible", "and ill give you more for the one", "Cool?", "cool"])
+textBoxDisappearSpeed = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=952329497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374115, 0)

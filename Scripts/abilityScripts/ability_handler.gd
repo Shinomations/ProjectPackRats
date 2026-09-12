@@ -1,21 +1,37 @@
 extends Node3D
 
-var abilityList = [
-	"anvil",
+var abilityListTier1 = [
+	"Nails",
+	"Clothing",
+	"SixShooter",
+	"ammobox",
+	"Beehive" 
+]
+var abilityListTier2 = [
+	"Tungstin",
+	"IED"
+]
+var abilityListTier3 = [
 	"Glassware",
 	"Wire",
-	"Nails",
-	"Tungstin",
-	"Bomb",
+	"DoubleBarrel"
+]
+var abilityListTier4 = [
 	"GasolineTank",
-	"Clothing" 
+	"AWP"
+]
+var abilityListTier5 = [
+	"anvil",
+	"DrinkPallete"
 ]
 var chosen
 var player
-
+var randomTier = randi_range(1,5)
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	chosen = "res://Nodes/itemNodes/z_" + abilityList.pick_random() + ".tscn"
+	var ArrayArray = [abilityListTier1,abilityListTier1,abilityListTier1,abilityListTier1,abilityListTier1,abilityListTier2,abilityListTier2,abilityListTier2,abilityListTier2,abilityListTier3,abilityListTier3,abilityListTier3,abilityListTier4,abilityListTier4,abilityListTier5]
+	var randomArray = ArrayArray.pick_random()
+	chosen = "res://Nodes/itemNodes/z_" + randomArray.pick_random() + ".tscn"
 	print(chosen)
 	
 	var myLocation = self.global_position 
