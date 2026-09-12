@@ -86,11 +86,13 @@ shape = SubResource("BoxShape3D_ghi18")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1404473144]
 emitting = false
-amount = 15
+amount = 25
 lifetime = 1.5
 one_shot = true
-explosiveness = 0.73
-randomness = 0.07
+preprocess = 0.3
+speed_scale = 2.0
+explosiveness = 0.83
+randomness = 0.03
 process_material = SubResource("ParticleProcessMaterial_7eqvs")
 draw_pass_1 = SubResource("QuadMesh_gisu1")
 

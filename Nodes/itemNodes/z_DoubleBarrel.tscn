@@ -43,7 +43,7 @@ collision_mode = 1
 collision_friction = 0.2
 collision_bounce = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l0uv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n7js"]
 transparency = 1
 albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
 albedo_texture = ExtResource("4_urhu3")
@@ -55,7 +55,7 @@ particles_anim_v_frames = 3
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_e3ddh"]
-material = SubResource("StandardMaterial3D_6l0uv")
+material = SubResource("StandardMaterial3D_7n7js")
 size = Vector2(0.5, 0.5)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]

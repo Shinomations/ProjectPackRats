@@ -21,6 +21,7 @@ var height = 2
 #box specific variables
 var bodies
 var gravity = 9.8
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 @export var size: Vector2 = Vector2(1,2)
 @export var offset: Vector3 = Vector3.ZERO
@@ -69,8 +70,9 @@ func _physics_process(delta: float) -> void:
 		 
 	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
-		
+		gpu_particles_3d.emitting = false
 	elif is_on_floor() and gravity > 0:
+		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		set_physics_process(false)
 	

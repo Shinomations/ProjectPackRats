@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
 @onready var boxbasic1 = $CollisionShape3D
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 var timer = 1
 
@@ -68,8 +69,9 @@ func _physics_process(delta):
 		 
 	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
-		
+		gpu_particles_3d.emitting = false
 	elif is_on_floor() and gravity > 0:
+		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		set_physics_process(false)
 	

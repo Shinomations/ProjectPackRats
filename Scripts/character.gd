@@ -42,7 +42,7 @@ var health: int
 var cell_size: float = 1.0
 var gridPos: Vector3 = Vector3.ZERO
 var original_grid_pos: Vector3 = Vector3.ZERO # Tracks where an item came from
-var  GPU: GPUParticles3D = null
+#var  GPU: GPUParticles3D = null
 ## THIS IS FOR THE PLACE DOWN EFFECTS^^
 ## player is a group so this class is referencable in other scripts
 func _ready():
@@ -90,7 +90,7 @@ func _input(event):
 				
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
-				GPU.emitting = true	
+				#GPU.emitting = true	
 				pickedObject.set_physics_process(true)
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos
@@ -114,9 +114,9 @@ func _input(event):
 				pick_up_object(collider)
 	
 		
-	if Input.is_action_pressed("rotateUp"):
+	if Input.is_action_pressed("rotateUp") && holdingobject:
 		rotateBoxesUp()
-	if Input.is_action_pressed("RotateSide"):
+	if Input.is_action_pressed("RotateSide") && holdingobject:
 		rotateBoxesSide()
 func _process(_delta):
 	#update raycast
@@ -218,7 +218,7 @@ func get_object_cell_size(obj: Node3D) -> float:
 	return GlobalGrid.DEFAULT_CELL_SIZE
 
 func previewBox(visualGridPos: Vector3):
-	GPU = pickedObject.find_child("GPUParticles3D")
+	#GPU = pickedObject.find_child("GPUParticles3D")
 	
 	pickedObject.global_position = visualGridPos
 

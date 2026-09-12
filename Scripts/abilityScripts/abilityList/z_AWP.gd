@@ -1,4 +1,5 @@
 extends CharacterBody3D
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 #calling of children
 @onready var boxbasic1 = $CollisionShape3D
@@ -70,8 +71,9 @@ func _physics_process(delta: float) -> void:
 		 
 	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
-		
+		gpu_particles_3d.emitting = false
 	elif is_on_floor() and gravity > 0:
+		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		set_physics_process(false)
 	

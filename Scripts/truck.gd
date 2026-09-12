@@ -53,8 +53,8 @@ func _on_body_entered(body: Node3D) -> void:
 			if i.has_method("TruckEnterAbilityability"):
 				i.TruckEnterAbilityability()
 			await get_tree().create_timer(0.5).timeout
-	print("boxes in truck rn: " + str(boxesInTruck.size())," Boxes in world: " + str(get_tree().get_nodes_in_group("boxes").size()))
-	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
+	print("boxes in truck rn: " + str(boxesInTruck.size())," Boxes in world: " + str(get_tree().get_nodes_in_group("boxes").size() - 1))
+	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size() - 1:
 		LeavingPath.loadingEnded()
 	print(remainingCapacity)
 func _on_body_exited(body: Node3D) -> void:

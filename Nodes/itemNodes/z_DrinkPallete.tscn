@@ -10,7 +10,7 @@ size = Vector3(2, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
 size = Vector3(1, 12.651306, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ebpa1"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
 emission_shape_offset = Vector3(0, -0.46, 0)
 emission_shape_scale = Vector3(0.4, 0.1, 0.4)
 emission_shape = 3
@@ -18,18 +18,20 @@ emission_box_extents = Vector3(1, 1, 1)
 direction = Vector3(0, 0, 0)
 spread = 180.0
 flatness = 1.0
-initial_velocity_min = 2.0
-initial_velocity_max = 2.5
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
 gravity = Vector3(0, 0.2, 0)
-damping_min = 0.1
-damping_max = 0.1
+damping_min = 1.0
+damping_max = 2.0
+scale_min = 50.0
+scale_max = 50.0
 anim_speed_min = 0.9
 anim_speed_max = 1.1999999
 collision_mode = 1
 collision_friction = 0.2
 collision_bounce = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eqvs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n7js"]
 transparency = 1
 albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
 albedo_texture = ExtResource("3_tfy3b")
@@ -40,8 +42,8 @@ particles_anim_h_frames = 4
 particles_anim_v_frames = 3
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_u54m6"]
-material = SubResource("StandardMaterial3D_7eqvs")
+[sub_resource type="QuadMesh" id="QuadMesh_e3ddh"]
+material = SubResource("StandardMaterial3D_7n7js")
 size = Vector2(0.5, 0.5)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
@@ -67,13 +69,14 @@ shape = SubResource("BoxShape3D_hwta1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1137553721]
 emitting = false
-amount = 15
-lifetime = 1.5
+amount = 50
+lifetime = 3.0
 one_shot = true
-explosiveness = 0.73
+speed_scale = 3.99
+explosiveness = 1.0
 randomness = 0.07
-process_material = SubResource("ParticleProcessMaterial_ebpa1")
-draw_pass_1 = SubResource("QuadMesh_u54m6")
+process_material = SubResource("ParticleProcessMaterial_lx2ai")
+draw_pass_1 = SubResource("QuadMesh_e3ddh")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
