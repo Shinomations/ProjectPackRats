@@ -4,12 +4,12 @@ extends Node3D
 	"Nails",
 	"Clothing",
 	"SixShooter",
-	"ammobox",
-	"Beehive" 
+	"ammobox"
+	#"Beehive" 
 ]
 @export var abilityListTier2 = [
-	"Tungstin",
-	"IED"
+	"Tungstin"
+	#"IED"
 ]
 @export var abilityListTier3 = [
 	"Glassware",

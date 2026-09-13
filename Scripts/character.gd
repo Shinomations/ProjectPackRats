@@ -268,7 +268,7 @@ func _toggleCollision(targetNode: Node, shouldDisable: bool) -> void:
 func areThereStillBoxes() -> bool:
 	print("Doing the test")
 	boxes = get_tree().get_nodes_in_group("boxes")
-	print(boxes)
+	print(str(boxes))
 	if boxes.size() <= 0:
 		finalScreen.statsShow()
 		return false
