@@ -17,6 +17,7 @@ const SENSITIVITY = 0.005
 @onready var npcChatBox = $TextBoxes
 
 var pickedObject: Node3D = null
+#var marker: Marker3D = null
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
 var holdingobject = false
 var collider # Stores whatever the raycast is currently looking at
@@ -83,7 +84,8 @@ func _input(event):
 		rayCast.force_raycast_update()
 		updateRaycastData()
 		if collider != null and collider.is_in_group("clients"):
-			collider.revealChatter()
+			if(player.npcChatBox.visible == false):
+				collider.revealChatter()
 			return
 		if pickedObject != null:
 			if rayCast.is_colliding():
@@ -93,14 +95,13 @@ func _input(event):
 				#GPU.emitting = true	
 				pickedObject.set_physics_process(true)
 				pickedObject.reparent(get_tree().current_scene)
-				pickedObject.global_position = gridPos
+				pickedObject.global_position = gridPos + pickedObject["offset"]
 				GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
-				if pickedObject.height == 1 and pickedObject.is_in_group("boxes"):
-					pickedObject.global_position = box_carry_marker.global_position
-				elif pickedObject.is_in_group("boxes"):
-					pickedObject.global_position = box_carry_marker2.global_position
+				if pickedObject.is_in_group("boxes"):
+					pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
+
 				
 
 			collisionSet()
@@ -133,7 +134,7 @@ func updateRaycastData():
 		if pickedObject != null:
 			cell_size = get_object_cell_size(pickedObject)
 			
-			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2.0))
+			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2))
 			gridPos = GlobalGrid.world_to_grid(targetPos, cell_size)
 			pickedObject.set_physics_process(true)
 		else:
@@ -150,10 +151,9 @@ func _physics_process(delta: float) -> void:
 		previewBox(gridPos)
 		
 	elif pickedObject != null and pickedObject.is_in_group("boxes"):
-		if pickedObject.height == 1:
-			pickedObject.global_position = box_carry_marker.global_position
-		else:
-			pickedObject.global_position = box_carry_marker2.global_position
+
+		pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
+
 
 		
 	# Basic Player Physics
@@ -188,6 +188,7 @@ func pick_up_object(object):
 		
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
+		#marker = pickedObject.find_child("Marker3D")
 		holdingobject = true
 		var statsNode = null
 
@@ -220,8 +221,7 @@ func get_object_cell_size(obj: Node3D) -> float:
 func previewBox(visualGridPos: Vector3):
 	#GPU = pickedObject.find_child("GPUParticles3D")
 	
-	pickedObject.global_position = visualGridPos
-
+	pickedObject.global_position = visualGridPos + pickedObject["offset"]
 func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
 	if currentNode == player:
 		return
@@ -282,8 +282,10 @@ func areThereStillBoxes() -> bool:
 	return true
 
 func rotateBoxesUp():
-	pickedObject.rotate_x(deg_to_rad(90))
+	pickedObject.rotate_x(deg_to_rad(90)) 
+	pickedObject["offset"] = pickedObject["offset"].rotated(Vector3.LEFT, PI / 2)
 	
 func rotateBoxesSide():
-	pickedObject.rotate_z(deg_to_rad(90))
+	pickedObject.rotate_y(deg_to_rad(90))
+	pickedObject["offset"] = pickedObject["offset"].rotated(Vector3.UP, PI / 2)
 	

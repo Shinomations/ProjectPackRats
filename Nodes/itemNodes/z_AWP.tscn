@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_n870i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
+size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hwta1"]
 size = Vector3(0.8, 0.8, 0.8)
@@ -65,6 +66,7 @@ disable_mode = 1
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_dvhe5")
+offset = Vector3(0.5, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
@@ -102,6 +104,9 @@ draw_pass_1 = SubResource("QuadMesh_e3ddh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=549275493]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 1.5203679, 5.9604645e-08, 0.008664131)
 mesh = SubResource("PrismMesh_hwta1")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=872368157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

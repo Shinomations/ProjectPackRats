@@ -44,8 +44,7 @@ func _ready():
 	add_to_group("boxes")
 	safe_margin = 0.0005
 	
-	for child in get_children():
-		child.position -= offset
+
 
 
 func _process(_delta):

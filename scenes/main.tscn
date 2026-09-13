@@ -5,10 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/base_box.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bc3lggrf0wc68" path="res://flat_rat_file.tscn" id="4_tipki"]
 [ext_resource type="MeshLibrary" uid="uid://dhw5f32bj1wqx" path="res://models/GridMap/GridMesh5.tres" id="5_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://c2kkffo7m7ybs" path="res://Nodes/itemNodes/z_AWP.tscn" id="6_0ld40"]
 [ext_resource type="Script" uid="uid://bjq3rcdygf16h" path="res://scenes/path_3d.gd" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dh7a7vyx5puga" path="res://models/trucks/RoadTruck/truckPlaceholder_truckbody.png" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://b5g0x57yrowb3" path="res://Nodes/itemNodes/z_DoubleBarrel.tscn" id="7_gqmmt"]
 [ext_resource type="Script" uid="uid://dvwfaxeq4teu0" path="res://scenes/area_3d.gd" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://b320aprxv812b" path="res://Nodes/itemNodes/z_DrinkPallete.tscn" id="8_yc10j"]
 [ext_resource type="Script" uid="uid://6tkcl52rcn5o" path="res://scenes/area_3d_2.gd" id="9_choun"]
+[ext_resource type="PackedScene" uid="uid://761cxwcdllpt" path="res://Nodes/itemNodes/z_anvil.tscn" id="9_jscy8"]
 [ext_resource type="AudioStream" uid="uid://bcnbr2exx7esn" path="res://Sounds & music/Environment/435497__etcd_09__car-horn-honk.wav" id="10_choun"]
 [ext_resource type="AudioStream" uid="uid://0aqiwuxy0xcx" path="res://Sounds & music/Environment/269771__seth-m__car-idle.wav" id="10_ya4ey"]
 [ext_resource type="Script" uid="uid://bs357o122kmvj" path="res://Nodes/environmentNodes/truckPath.gd" id="12_eb6dy"]
@@ -273,14 +277,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.433869, 3.309636, -26.251
 [node name="baseBox4" parent="Moveables" unique_id=442278120 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.347764, 3.309636, -26.251163)
 
+[node name="baseBox6" parent="Moveables" unique_id=1941626801 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.347764, 3.309636, -10.251502)
+
 [node name="baseBox5" parent="Moveables" unique_id=653069077 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.409255, 3.309636, -25.115974)
 
-[node name="flatRatFile" parent="Moveables" unique_id=296991103 instance=ExtResource("4_tipki")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -16.477036, 1.8329256, -8.63029)
+[node name="flatRatFile" parent="Moveables" unique_id=296991103 node_paths=PackedStringArray("player") instance=ExtResource("4_tipki")]
+transform = Transform3D(0.53657144, 0, 0.5933727, 0, 0.8, 0, -0.5933727, 0, 0.53657144, -15.187791, 1.8329256, -8.27226)
+player = NodePath("../../CharacterBody3D")
 
 [node name="Basketball" parent="Moveables" unique_id=1791562658 instance=ExtResource("15_jkv2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.344176, 0.99075884, -38.35047)
+
+[node name="baseBox3" parent="Moveables" unique_id=1305476861 instance=ExtResource("6_0ld40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.198509, 1, -9.145573)
+
+[node name="baseBox7" parent="Moveables" unique_id=224258850 instance=ExtResource("7_gqmmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5582905, 1, -7.460125)
+
+[node name="baseBox8" parent="Moveables" unique_id=2058574765 instance=ExtResource("8_yc10j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4740143, 1, -9.271395)
+
+[node name="baseBox9" parent="Moveables" unique_id=1726660843 instance=ExtResource("9_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.651246, 0.68786025, -7.059579)
 
 [node name="RegGrid" type="GridMap" parent="." unique_id=1329582217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1.5, -0.5)
@@ -299,7 +319,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.9998357, 0, -0.0145896785, 0, 0.9999762, 0, 0.0145898005, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998351, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589791, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -360,7 +380,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.012621741, 0, -0.99983543, 0, 1, 0, 0.99983543, 0, -0.012621741, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621732, 0, -0.9998348, 0, 1, 0, 0.9998348, 0, -0.012621732, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true

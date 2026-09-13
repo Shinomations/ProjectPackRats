@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cpe28dy050724"
-path="res://.godot/imported/flatRatFile.glb-9a51106e95a0621e3630a4e6d0defcdb.scn"
+uid="uid://b3o7g30cgrkgg"
+path="res://.godot/imported/Cam.glb-c91020d60f147364a671aef31c4b2306.scn"
 
 [deps]
 
-source_file="res://models/Clients/flatRatFile.glb"
-dest_files=["res://.godot/imported/flatRatFile.glb-9a51106e95a0621e3630a4e6d0defcdb.scn"]
+source_file="res://models/Clients/cam/Cam.glb"
+dest_files=["res://.godot/imported/Cam.glb-c91020d60f147364a671aef31c4b2306.scn"]
 
 [params]
 
