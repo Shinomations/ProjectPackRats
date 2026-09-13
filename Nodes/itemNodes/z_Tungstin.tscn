@@ -4,7 +4,6 @@
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_3fks1"]
 [ext_resource type="Texture2D" uid="uid://b11445bnlj85r" path="res://models/Boxes/Tungtungcube_CacaCube.png" id="3_arxf3"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_3fks1"]
-[ext_resource type="AudioStream" uid="uid://j06x4kx471to" path="res://Sounds & music/Environment/Box 1.wav" id="5_w53v4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -131,7 +130,3 @@ explosiveness = 1.0
 randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=278948647]
-stream = ExtResource("5_w53v4")
-max_db = -4.0

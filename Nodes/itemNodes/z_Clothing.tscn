@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="2_w2ytf"]
 [ext_resource type="Script" uid="uid://bimkbvabui6l4" path="res://Scripts/abilityScripts/abilityList/z_Clothing.gd" id="3_78uto"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_w2ytf"]
-[ext_resource type="AudioStream" uid="uid://j06x4kx471to" path="res://Sounds & music/Environment/Box 1.wav" id="5_lx2ai"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -93,9 +92,5 @@ explosiveness = 1.0
 randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=328404847]
-stream = ExtResource("5_lx2ai")
-max_db = -4.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

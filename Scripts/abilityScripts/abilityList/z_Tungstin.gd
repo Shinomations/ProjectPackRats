@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var boxbasic1 = $CollisionShape3D
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 var GivenName = "Tungstin"
 var GivenWeight = 100
 var GivenType = "Metal"
@@ -75,7 +75,6 @@ func _physics_process(delta):
 		velocity.y = 0
 		set_physics_process(false)
 	move_and_slide()
-	audio.play()
 
 func get_rect():
 	var objectPosition = Vector2(

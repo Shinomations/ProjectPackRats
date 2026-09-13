@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://db6vd5re4ggus" path="res://models/Boxes/BoxOfwires_wirePile.png" id="4_2mixf"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="5_ospbp"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="6_2mixf"]
-[ext_resource type="AudioStream" uid="uid://j06x4kx471to" path="res://Sounds & music/Environment/Box 1.wav" id="7_7n7js"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -306,9 +305,7 @@ randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
 
-[node name="Placement" type="AudioStreamPlayer3D" parent="." unique_id=1052486570]
-stream = ExtResource("7_7n7js")
-max_db = -4.0
+[node name="Placement" type="AudioStreamPlayer3D" parent="." unique_id=1693469827]
 
 [node name="DestroyParticles" type="GPUParticles3D" parent="." unique_id=1450996833]
 emitting = false

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var boxbasic1 = $CollisionShape3D
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-@onready var audio: AudioStreamPlayer3D = $Placement
+
 var GivenName = "Box of Wires"
 var GivenWeight = 25
 var GivenType = "Cardboard"
@@ -58,7 +58,7 @@ func _set_selected(object):
 	
 
 func _physics_process(delta):
-	
+		
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		 
@@ -76,8 +76,9 @@ func _physics_process(delta):
 		velocity.y = 0
 		set_physics_process(false)
 	move_and_slide()
-	audio.play()
-
+	
+	
+	
 func ability() -> void:
 	Destroyer.GivenIncome *= 2
 	

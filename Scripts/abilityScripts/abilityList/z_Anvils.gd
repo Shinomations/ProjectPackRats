@@ -4,7 +4,6 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var area = $Area3D
 @onready var globalLocal = $placementmarker
-@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 #Per box Stats
 var GivenName = "Box With Anvils"
 var GivenWeight = 500
@@ -82,7 +81,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 		set_physics_process(false)
 	move_and_slide()
-	audio.play()
 
 
 func _set_selected(object):

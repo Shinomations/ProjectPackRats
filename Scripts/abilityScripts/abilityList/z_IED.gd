@@ -3,7 +3,7 @@ extends CharacterBody3D
 # Called when the node enters the scene tree for the first time.
 @onready var boxbasic1 = $CollisionShape3D
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 var timer = 1
 
 var GivenName = "IED"
@@ -81,7 +81,6 @@ func _physics_process(delta):
 		velocity.y = 0
 		set_physics_process(false)
 	move_and_slide()
-	audio.play()
 
 func get_rect():
 	var objectPosition = Vector2(
