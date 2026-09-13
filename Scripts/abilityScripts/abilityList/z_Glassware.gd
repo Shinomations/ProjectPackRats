@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var area = $CollisionShape3D/Area3D
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-
+@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 var GivenName = "Box of Glassware"
 var GivenWeight = 10
 var GivenType = "Wooden"
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		velocity.y = 0
 		set_physics_process(false)
 	move_and_slide()
-	
+	audio.play()
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self and body is CharacterBody3D or body is RigidBody3D:
 		if not body.is_in_group("player") and not player.pickedObject:
