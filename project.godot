@@ -44,6 +44,15 @@ clients=""
 speedPack=""
 items=""
 
+[importer_defaults]
+
+wavefront_obj={
+&"generate_lods": false
+}
+ArrayMesh={
+&"meshes/generate_lods": false
+}
+
 [input]
 
 left={
@@ -118,3 +127,4 @@ common/max_fps=0
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+mesh_lod/lod_change/threshold_pixels=0.0

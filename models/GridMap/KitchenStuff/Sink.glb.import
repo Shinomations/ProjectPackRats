@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://byw8jxqmgf4ds"
-path="res://.godot/imported/fence1.glb-9d3ad091d2c095f00892ee88f72a6068.scn"
+uid="uid://cx8h1wn8ganov"
+path="res://.godot/imported/Sink.glb-cd74856c5790393be075d9bea7f6d6cc.scn"
 
 [deps]
 
-source_file="res://models/GridMap/fence1.glb"
-dest_files=["res://.godot/imported/fence1.glb-9d3ad091d2c095f00892ee88f72a6068.scn"]
+source_file="res://models/GridMap/KitchenStuff/Sink.glb"
+dest_files=["res://.godot/imported/Sink.glb-cd74856c5790393be075d9bea7f6d6cc.scn"]
 
 [params]
 
@@ -39,7 +39,14 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:CounterSink_002": {
+"generate/physics": true,
+"physics/shape_type": 3
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1

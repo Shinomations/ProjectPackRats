@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6j62okapy0dg"
-path="res://.godot/imported/fence1_fence1.png-6409cc4b34c071519a5426d3ae786f80.ctex"
+uid="uid://g1jehiwrl32t"
+path.s3tc="res://.godot/imported/Counter2_Counter1.png-9d6b9a5309d16044b9afd043933f5619.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "d895dbdd44d5bca83f04c707c5a63069"
+"md5": "7691159ea645128c22c8b120e8749c3a"
 }
 
 [deps]
 
-source_file="res://models/GridMap/fence1_fence1.png"
-dest_files=["res://.godot/imported/fence1_fence1.png-6409cc4b34c071519a5426d3ae786f80.ctex"]
+source_file="res://models/GridMap/KitchenStuff/Counter2_Counter1.png"
+dest_files=["res://.godot/imported/Counter2_Counter1.png-9d6b9a5309d16044b9afd043933f5619.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -26,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

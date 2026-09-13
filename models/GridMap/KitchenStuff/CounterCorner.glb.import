@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://byw8jxqmgf4ds"
-path="res://.godot/imported/fence1.glb-9d3ad091d2c095f00892ee88f72a6068.scn"
+uid="uid://b68tv83xty1tg"
+path="res://.godot/imported/CounterCorner.glb-ffb89dacf64ea30147d006b88040a933.scn"
 
 [deps]
 
-source_file="res://models/GridMap/fence1.glb"
-dest_files=["res://.godot/imported/fence1.glb-9d3ad091d2c095f00892ee88f72a6068.scn"]
+source_file="res://models/GridMap/KitchenStuff/CounterCorner.glb"
+dest_files=["res://.godot/imported/CounterCorner.glb-ffb89dacf64ea30147d006b88040a933.scn"]
 
 [params]
 
