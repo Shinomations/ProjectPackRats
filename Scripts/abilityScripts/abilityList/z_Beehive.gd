@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 const honey = preload("res://Nodes/itemNodes/i_jarOfHoney.tscn")
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-
+@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 var GivenName = "Beehive"
 var GivenWeight = 45
 var GivenType = "Organic"
@@ -78,6 +78,7 @@ func _physics_process(delta):
 		velocity.y = 0
 		set_physics_process(false)
 	move_and_slide()
+	audio.play()
 
 func get_rect():
 	var objectPosition = Vector2(

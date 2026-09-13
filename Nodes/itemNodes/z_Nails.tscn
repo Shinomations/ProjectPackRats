@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dcd6al2kmjima" path="res://models/Boxes/BoxOfNails_Untitled.png" id="3_xogdt"]
 [ext_resource type="Texture2D" uid="uid://4224yv2td1lx" path="res://models/Boxes/BoxOfNails_rust.png" id="4_xmihk"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="5_xmihk"]
+[ext_resource type="AudioStream" uid="uid://j06x4kx471to" path="res://Sounds & music/Environment/Box 1.wav" id="6_xjb08"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
@@ -175,5 +176,9 @@ explosiveness = 1.0
 randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=882056736]
+stream = ExtResource("6_xjb08")
+max_db = -4.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

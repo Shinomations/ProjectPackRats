@@ -44,6 +44,7 @@ var cell_size: float = 1.0
 var gridPos: Vector3 = Vector3.ZERO
 var original_grid_pos: Vector3 = Vector3.ZERO # Tracks where an item came from
 #var  GPU: GPUParticles3D = null
+var playerAudio = AudioServer.get_bus_index("Master")
 ## THIS IS FOR THE PLACE DOWN EFFECTS^^
 ## player is a group so this class is referencable in other scripts
 func _ready():
@@ -53,6 +54,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	finalScreen.visible = false
 	npcChatBox.visible = false
+	AudioServer.set_bus_volume_db(playerAudio, -80.0)
+	
 
 
 ## handles close, mouse movement
@@ -76,6 +79,7 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
 		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-80), deg_to_rad(85))
+		AudioServer.set_bus_volume_db(playerAudio, -4.0)
 
 ## input handler
 func _input(event):
@@ -122,7 +126,7 @@ func _input(event):
 func _process(_delta):
 	#update raycast
 	updateRaycastData()
-	
+
 
 func updateRaycastData():
 	if rayCast.is_colliding():
@@ -168,12 +172,12 @@ func _physics_process(delta: float) -> void:
 	var current_BP = animation_tree["parameters/BlendSpace2D/blend_position"]
 	animation_tree["parameters/BlendSpace2D/blend_position"] = Vector2(lerp(current_BP.x,inputDir.x, .1), lerp(current_BP.y,inputDir.y, .1))
 	if direction:
-		#if (footsteps.playing == false):
-		#	footsteps.play()
+		if (footsteps.playing == false) and is_on_floor():
+			footsteps.play()
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
-		#footsteps.stop()
+		footsteps.stop()
 		velocity.x = 0.0
 		velocity.z = 0.0
 
