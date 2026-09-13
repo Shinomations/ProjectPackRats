@@ -272,25 +272,25 @@ collision_layer = 4
 collision_mask = 23
 script = ExtResource("3_3jm31")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580 groups=["boxes"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("BoxShape3D_tblqd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=55795272 groups=["boxes"]]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=55795272]
 transform = Transform3D(1.010101, 0, 0, 0, 1.010101, 0, 0, 0, 1.010101, 0, 0, 0)
 mesh = SubResource("BoxMesh_iqen4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
-[node name="Cube_028" type="MeshInstance3D" parent="." unique_id=637314085 groups=["boxes"]]
+[node name="Cube_028" type="MeshInstance3D" parent="." unique_id=637314085]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gbj7d")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=181660829 groups=["boxes"]]
+[node name="Area3D" type="Area3D" parent="." unique_id=181660829]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=206659249 groups=["boxes"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=206659249]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 shape = SubResource("BoxShape3D_hwta1")
 

@@ -96,7 +96,7 @@ func _input(event):
 				pickedObject.set_physics_process(true)
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos + pickedObject["offset"]
-				GlobalGrid.register_cell(gridPos, pickedObject)
+				#GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
 				if pickedObject.is_in_group("boxes"):
@@ -111,7 +111,7 @@ func _input(event):
 				
 			if collider is CharacterBody3D or collider is RigidBody3D:
 				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
-				GlobalGrid.unregister_cell(liftBoxPos)
+				#GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
 	
 		

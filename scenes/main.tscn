@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cxleafd5i6bci" path="res://Nodes/environmentNodes/truck.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://paak568xd78o" path="res://scenes/speed_pack.tscn" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://biy31jpyjkojk" path="res://Nodes/itemNodes/BBall.tscn" id="15_jkv2x"]
+[ext_resource type="Script" uid="uid://5f5yyj8cxpvi" path="res://scenes/killzone.gd" id="16_jbj1t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_top_color = Color(0.01643492, 0.47359622, 0.72901493, 1)
@@ -164,6 +165,9 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wv8iq"]
+size = Vector3(200, 10, 200)
+
 [node name="Main" type="Node3D" unique_id=1633370959]
 
 [node name="CharacterBody3D" parent="." unique_id=2059645712 instance=ExtResource("1_0wfyh")]
@@ -285,9 +289,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.433869, 3.309636, -26.251
 [node name="baseBox4" parent="Moveables" unique_id=442278120 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.347764, 3.309636, -26.251163)
 
-[node name="baseBox6" parent="Moveables" unique_id=1941626801 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.347764, 3.309636, -10.251502)
-
 [node name="baseBox5" parent="Moveables" unique_id=653069077 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.409255, 3.309636, -25.115974)
 
@@ -315,7 +316,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.9998349, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589788, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.99983454, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589784, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -376,7 +377,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.01262173, 0, -0.9998346, 0, 1, 0, 0.9998346, 0, -0.01262173, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621725, 0, -0.99983424, 0, 1, 0, 0.99983424, 0, -0.012621725, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true
@@ -402,5 +403,14 @@ metadata/_editor_floor_ = Vector3(-33, 13, 0)
 [node name="speedPack" parent="." unique_id=452740013 instance=ExtResource("14_a8y0u")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -1.0791181, 1.3026505, -3.6690583)
 
+[node name="Killzone" type="Area3D" parent="." unique_id=619054702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -76.31546, 0)
+script = ExtResource("16_jbj1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=480433021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.24834, 0)
+shape = SubResource("BoxShape3D_wv8iq")
+
 [connection signal="body_entered" from="PassingTruck/PathFollow3D/Cylinder_001/Area3D" to="PassingTruck/PathFollow3D/Cylinder_001/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="PassingTruck/PathFollow3D/Cylinder_001/Area3D2" to="PassingTruck/PathFollow3D/Cylinder_001/Area3D2" method="_on_body_entered"]
+[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
