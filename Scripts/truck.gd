@@ -56,7 +56,9 @@ func _on_body_entered(body: Node3D) -> void:
 	print("boxes in truck rn: " + str(boxesInTruck.size())," Boxes in world: " + str(get_tree().get_nodes_in_group("boxes").size() - 1))
 	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size() - 1:
 		LeavingPath.loadingEnded()
+	#	player.areThereStillBoxes()
 	print(remainingCapacity)
+	
 func _on_body_exited(body: Node3D) -> void:
 
 	boxVolume = getBoxVolume(body)

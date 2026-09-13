@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://biy31jpyjkojk"]
 
-[ext_resource type="Script" uid="uid://b486e2stl3u7i" path="res://Scripts/abilityScripts/abilityList/z_Tungstin.gd" id="1_0qavh"]
+[ext_resource type="Script" uid="uid://dx1iacj0ns0me" path="res://Nodes/itemNodes/Basketball.gd" id="1_0qavh"]
 [ext_resource type="PackedScene" uid="uid://cvvuamobyafta" path="res://models/Boxes/BBall.glb" id="2_0qavh"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_lnfy8"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_i1nml"]
@@ -63,6 +63,8 @@ size = Vector2(0.5, 0.5)
 disable_mode = 1
 collision_layer = 4
 collision_mask = 23
+slide_on_ceiling = false
+floor_stop_on_slope = false
 script = ExtResource("1_0qavh")
 
 [node name="BBall" parent="." unique_id=749514071 instance=ExtResource("2_0qavh")]

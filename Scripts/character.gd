@@ -99,7 +99,7 @@ func _input(event):
 				#GlobalGrid.register_cell(gridPos, pickedObject)
 			else:
 				pickedObject.reparent(get_tree().current_scene)
-				if pickedObject.is_in_group("boxes"):
+				if pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items"):
 					pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
 
 				
@@ -150,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	if pickedObject != null and rayCast.is_colliding():
 		previewBox(gridPos)
 		
-	elif pickedObject != null and pickedObject.is_in_group("boxes"):
+	elif pickedObject != null and (pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items")):
 
 		pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
 
