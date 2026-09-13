@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtcm70objcxe5" path="res://Scripts/abilityScripts/abilityList/z_SixShooter.gd" id="1_1qyrg"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_q331t"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="3_ecxfm"]
+[ext_resource type="PackedScene" uid="uid://bmgd8e6jx77st" path="res://models/Boxes/ssGunCase.glb" id="4_1qyrg"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_lq6uo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
@@ -73,9 +73,6 @@ shape = SubResource("BoxShape3D_tblqd")
 mesh = SubResource("BoxMesh_hwta1")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
 
-[node name="box" parent="." unique_id=1745338181 instance=ExtResource("3_ecxfm")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
 [node name="Area3D" type="Area3D" parent="." unique_id=1809421967]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=184316297]
@@ -91,6 +88,9 @@ explosiveness = 1.0
 randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
+
+[node name="ssGunCase" parent="." unique_id=1740225288 instance=ExtResource("4_1qyrg")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
