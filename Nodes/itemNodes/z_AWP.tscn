@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://c2kkffo7m7ybs"]
+[gd_scene load_steps=0 format=4 uid="uid://c2kkffo7m7ybs"]
 
 [ext_resource type="Script" uid="uid://bt11elgr6tal2" path="res://Scripts/abilityScripts/abilityList/z_AWP.gd" id="1_dvhe5"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_2d8xk"]

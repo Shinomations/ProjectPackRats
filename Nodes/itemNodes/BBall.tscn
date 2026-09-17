@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://biy31jpyjkojk"]
+[gd_scene load_steps=12 format=3 uid="uid://c7w7c64yfa53l"]
 
-[ext_resource type="Script" uid="uid://dx1iacj0ns0me" path="res://Nodes/itemNodes/Basketball.gd" id="1_0qavh"]
+[ext_resource type="Script" path="res://Nodes/itemNodes/Basketball.gd" id="1_0qavh"]
 [ext_resource type="PackedScene" uid="uid://cvvuamobyafta" path="res://models/Boxes/BBall.glb" id="2_0qavh"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_lnfy8"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_i1nml"]
@@ -18,7 +18,7 @@ rings = 8
 render_priority = 0
 shader = ExtResource("2_lnfy8")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_color = Color(0.22749251, 0.50787354, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 next_pass = SubResource("ShaderMaterial_xogdt")
@@ -59,7 +59,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_7n7js")
 size = Vector2(0.5, 0.5)
 
-[node name="baseBox" type="CharacterBody3D" unique_id=2007439779 groups=["items"]]
+[node name="baseBox" type="CharacterBody3D" groups=["items"]]
 disable_mode = 1
 collision_layer = 4
 collision_mask = 23
@@ -67,21 +67,21 @@ slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("1_0qavh")
 
-[node name="BBall" parent="." unique_id=749514071 instance=ExtResource("2_0qavh")]
+[node name="BBall" parent="." instance=ExtResource("2_0qavh")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("SphereShape3D_eri6h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=935560228]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 transform = Transform3D(1.010101, 0, 0, 0, 1.010101, 0, 0, 0, 1.010101, 0, 0, 0)
 mesh = SubResource("SphereMesh_dtb5d")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1756622313]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
 amount = 50
 lifetime = 3.0

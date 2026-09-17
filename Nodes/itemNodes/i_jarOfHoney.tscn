@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://brw6f55gde5nk"]
+[gd_scene load_steps=0 format=3 uid="uid://brw6f55gde5nk"]
 
 [ext_resource type="Script" uid="uid://cfhanyj1nes4k" path="res://Nodes/itemNodes/i_jar_of_honey.gd" id="1_3ds0s"]
 

@@ -81,8 +81,10 @@ func _unhandled_input(event):
 func _input(event):
 	#Check for click
 	if event.is_action_pressed("interaction"):
+
 		rayCast.force_raycast_update()
 		updateRaycastData()
+
 		if collider != null and collider.is_in_group("clients"):
 			if(player.npcChatBox.visible == false):
 				collider.revealChatter()
@@ -188,7 +190,7 @@ func pick_up_object(object):
 		
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
-		#marker = pickedObject.find_child("Marker3D")
+		# marker = pickedObject.find_child("Marker3D")
 		holdingobject = true
 		var statsNode = null
 
@@ -222,6 +224,7 @@ func previewBox(visualGridPos: Vector3):
 	#GPU = pickedObject.find_child("GPUParticles3D")
 	
 	pickedObject.global_position = visualGridPos + pickedObject["offset"]
+
 func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
 	if currentNode == player:
 		return

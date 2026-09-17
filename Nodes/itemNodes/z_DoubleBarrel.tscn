@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b5g0x57yrowb3"]
+[gd_scene load_steps=0 format=4 uid="uid://b5g0x57yrowb3"]
 
 [ext_resource type="Script" uid="uid://cb2af3sc6f1fh" path="res://Scripts/abilityScripts/abilityList/z_DoubleBarrel.gd" id="1_7lh4t"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_rpsnk"]

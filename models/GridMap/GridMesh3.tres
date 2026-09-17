@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" format=4 uid="uid://bpbcsfn78gx4a"]
+[gd_resource type="MeshLibrary" load_steps=0 format=4 uid="uid://bpbcsfn78gx4a"]
 
 [ext_resource type="Texture2D" uid="uid://cwv5cesm5ch46" path="res://models/GridMap/BrickWallpaper_CheesWallpaper.png" id="1_bmqq8"]
 [ext_resource type="Texture2D" uid="uid://ds8pq1ukqxiyv" path="res://models/GridMap/BrickWallpaper_Brick.png" id="2_5ulxs"]

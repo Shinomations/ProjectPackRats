@@ -26,7 +26,7 @@ func getBoxScore(node: Node3D) -> float:
 			var income = node.GivenIncome
 			return income
 	return 0.0
-
+	
 func _ready() -> void:
 	truckTextUpdate = find_child("Label3D")
 	truckTextUpdate2 = find_child("Label3D2")

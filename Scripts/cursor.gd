@@ -18,5 +18,9 @@ func _process(delta):
 	elif player.collider is CharacterBody3D or player.collider is RigidBody3D:
 		image.texture = hovering
 
+		# if player.collider has shader
+		# turn on 
+
+
 	else:
 		image.texture = normal

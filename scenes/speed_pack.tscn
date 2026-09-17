@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://paak568xd78o"]
+[gd_scene load_steps=0 format=3 uid="uid://paak568xd78o"]
 
 [ext_resource type="PackedScene" uid="uid://cysowteqssucw" path="res://models/speedPack.glb" id="1_eedl8"]
 [ext_resource type="Script" uid="uid://bpeksv035pgmw" path="res://scenes/speed_pack.gd" id="2_84sh4"]

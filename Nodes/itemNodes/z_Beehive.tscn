@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cuy6gnan3vm81"]
+[gd_scene load_steps=0 format=3 uid="uid://cuy6gnan3vm81"]
 
 [ext_resource type="Script" uid="uid://0wootwctnjdv" path="res://Scripts/abilityScripts/abilityList/z_Beehive.gd" id="1_mr6br"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_4x0gg"]
