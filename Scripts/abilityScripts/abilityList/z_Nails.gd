@@ -36,18 +36,19 @@ var canMove:bool = true
 var canReroll:bool = true
 
 var isPickUpable:bool = true
+var squashTween: Tween = null
+var splatted: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("boxes")
 
-	
+
 func _process(_delta):
 	if GivenWeight < 0:
 		gravity = -9.8
-		set_physics_process(true)
 	else:
 		gravity = 9.8
-		
+	
 	if selected:
 		boxbasic1.position.y = outlineWidth
 		player.boxTypeDetector = 1 
@@ -55,35 +56,43 @@ func _process(_delta):
 		boxbasic1.position.y = 0
 		
 	if GivenHealth <= 0:
-		var liftBoxPos = GlobalGrid.world_to_grid(self.global_position, 1)
-		GlobalGrid.unregister_cell(liftBoxPos)
 		self.queue_free()
-		
-		
-
-func _set_selected(object):
-	selected = self == object
+func _physics_process(delta: float) -> void:
 	
-
-func _physics_process(delta):
-		
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
+		move_and_slide()
+		return
 		 
 	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
-		gpu_particles_3d.emitting = false
+		splatted = false
+		if squashTween == null or not squashTween.is_running():
+			squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			squashTween.tween_property(self,"scale", Vector3(0.8,1.2,0.8), 1)
+			gpu_particles_3d.emitting = false
+		
 	elif is_on_floor() and gravity > 0:
-		gpu_particles_3d.emitting = true
+		if not splatted:
+			splatted = true
+			if squashTween:
+				squashTween.kill()
+			squashTween = create_tween()
+			squashTween.tween_property(self,"scale", Vector3(1.3,0.5,1.3), 0.1)
+			squashTween.tween_property(self,"scale", Vector3(1,1,1), 0.2)
+			gpu_particles_3d.emitting = true
 		velocity.y = 0
-		set_physics_process(false)
-	
+		
+
 	if gravity < 0 and not is_on_ceiling():
 		velocity.y -= gravity * delta
 	elif is_on_ceiling() and gravity < 0:
 		velocity.y = 0
-		set_physics_process(false)
 	move_and_slide()
+func _set_selected(object):
+	selected = self == object
+	
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self and body is CharacterBody3D or body is RigidBody3D:
 		if not body.is_in_group("player") and not player.pickedObject:

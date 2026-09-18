@@ -95,7 +95,7 @@ func _input(event):
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
 				#GPU.emitting = true	
-				pickedObject.set_physics_process(true)
+				#pickedObject.set_physics_process(true)
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos + pickedObject["offset"]
 				#GlobalGrid.register_cell(gridPos, pickedObject)
@@ -138,7 +138,7 @@ func updateRaycastData():
 			
 			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2))
 			gridPos = GlobalGrid.world_to_grid(targetPos, cell_size)
-			pickedObject.set_physics_process(true)
+			#pickedObject.set_physics_process(true)
 		else:
 			var targetPos = collisionPoint - (collisionNormal * 0.1)
 			gridPos = GlobalGrid.world_to_grid(targetPos, GlobalGrid.DEFAULT_CELL_SIZE)

@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bnfix51xqfnvq" path="res://Sounds & music/Music/packrats 1.mp3" id="2_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/base_box.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bc3lggrf0wc68" path="res://flat_rat_file.tscn" id="4_tipki"]
-[ext_resource type="MeshLibrary" uid="uid://dhw5f32bj1wqx" path="res://models/GridMap/GridMesh5.tres" id="5_a8y0u"]
+[ext_resource type="MeshLibrary" uid="uid://fxnior5cld4f" path="res://models/GridMap/GridMesh5.tres" id="5_a8y0u"]
 [ext_resource type="Script" uid="uid://bjq3rcdygf16h" path="res://scenes/path_3d.gd" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dh7a7vyx5puga" path="res://models/trucks/RoadTruck/truckPlaceholder_truckbody.png" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://dvwfaxeq4teu0" path="res://scenes/area_3d.gd" id="8_tipki"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://bs357o122kmvj" path="res://Nodes/environmentNodes/truckPath.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cxleafd5i6bci" path="res://Nodes/environmentNodes/truck.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://paak568xd78o" path="res://scenes/speed_pack.tscn" id="14_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://biy31jpyjkojk" path="res://Nodes/itemNodes/BBall.tscn" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://c7w7c64yfa53l" path="res://Nodes/itemNodes/BBall.tscn" id="15_jkv2x"]
 [ext_resource type="Script" uid="uid://5f5yyj8cxpvi" path="res://scenes/killzone.gd" id="16_jbj1t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
@@ -507,7 +507,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.9998313, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589736, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.99983126, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589735, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -568,7 +568,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.012621709, 0, -0.9998329, 0, 1, 0, 0.9998329, 0, -0.012621709, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621708, 0, -0.99983287, 0, 1, 0, 0.99983287, 0, -0.012621708, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true

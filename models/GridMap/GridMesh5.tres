@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=282 format=4 uid="uid://fxnior5cld4f"]
+[gd_resource type="MeshLibrary" format=4 uid="uid://fxnior5cld4f"]
 
 [ext_resource type="Texture2D" uid="uid://csqhstx2a33iq" path="res://models/GridMap/Stairs_PRSidewalk.png" id="1_jsjl7"]
 [ext_resource type="Texture2D" uid="uid://bf2hpw83mj2rj" path="res://models/GridMap/Window1_WindowEdging.png" id="2_iuw3r"]
