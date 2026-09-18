@@ -14,7 +14,6 @@ size = Vector3(0.8, 0.8, 0.8)
 render_priority = 0
 shader = ExtResource("2_3fks1")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 next_pass = SubResource("ShaderMaterial_xogdt")
@@ -98,6 +97,9 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_7n7js")
 size = Vector2(0.5, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fks1"]
+size = Vector3(0.5717163, 0.24023438, 0.6314392)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1791562658]
 disable_mode = 1
 collision_layer = 4
@@ -130,3 +132,13 @@ explosiveness = 1.0
 randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=1800538797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4466862, 0)
+disable_mode = 2
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=1887974839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06362915, 1.088557, -0.009048462)
+shape = SubResource("BoxShape3D_3fks1")

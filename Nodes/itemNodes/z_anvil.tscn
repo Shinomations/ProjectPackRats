@@ -15,7 +15,6 @@ size = Vector3(1.8, 1.8, 1.8)
 render_priority = 0
 shader = ExtResource("2_rglkb")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 0.64705884)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
 next_pass = SubResource("ShaderMaterial_3wuok")
@@ -56,6 +55,9 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_gisu1"]
 material = SubResource("StandardMaterial3D_rglkb")
 size = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(1, 0.24023438, 1)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1726660843 groups=["boxes"]]
 disable_mode = 1
@@ -101,5 +103,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49956757, -0.422495, 0.456
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=756275886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.5)
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=277312363]
+disable_mode = 2
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=865232794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.088557, 0)
+shape = SubResource("BoxShape3D_hwta1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

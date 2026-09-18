@@ -353,111 +353,84 @@ omni_attenuation = 0.398
 
 [node name="baseBox" parent="Moveables" unique_id=1053126355 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.904934, 2.5452023, -20.03878)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox2" parent="Moveables" unique_id=1457221616 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.904934, 3.6236959, -20.03878)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox3" parent="Moveables" unique_id=492600471 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 2.5452023, -20.03878)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox4" parent="Moveables" unique_id=1942584332 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 3.6236959, -20.03878)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox5" parent="Moveables" unique_id=1380026984 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 2.5452023, -20.03878)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox6" parent="Moveables" unique_id=426560468 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 3.6236959, -20.03878)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox7" parent="Moveables" unique_id=2019509706 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 2.5452023, -22.762148)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox8" parent="Moveables" unique_id=896619921 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 3.6236959, -22.762148)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox9" parent="Moveables" unique_id=1575094063 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 2.5452023, -22.762148)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox10" parent="Moveables" unique_id=1504277921 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 3.6236959, -22.762148)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox11" parent="Moveables" unique_id=69500358 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 2.5452023, -25.368248)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox20" parent="Moveables" unique_id=610206373 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9236693, 6.4224024, -26.46676)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox21" parent="Moveables" unique_id=1697922579 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9236693, 7.531003, -26.46676)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox22" parent="Moveables" unique_id=32347444 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6307526, 6.4224024, -26.46676)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox23" parent="Moveables" unique_id=1330980409 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6307526, 7.531003, -26.46676)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox24" parent="Moveables" unique_id=1761284130 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6307526, 6.4224024, -23.326097)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox25" parent="Moveables" unique_id=1682613431 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6307526, 7.531003, -23.326097)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox26" parent="Moveables" unique_id=2049184127 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6307526, 6.4224024, -21.637983)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox27" parent="Moveables" unique_id=8308614 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6307526, 7.531003, -21.637983)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox28" parent="Moveables" unique_id=573973586 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601977, 6.4224024, -23.326097)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox29" parent="Moveables" unique_id=658302868 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601977, 7.531003, -23.326097)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox30" parent="Moveables" unique_id=986084243 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601977, 6.4224024, -21.637983)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox31" parent="Moveables" unique_id=1230965875 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601977, 7.531003, -21.637983)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox32" parent="Moveables" unique_id=514442597 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601977, 6.4224024, -20.016739)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox33" parent="Moveables" unique_id=470066384 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601977, 7.531003, -20.016739)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox12" parent="Moveables" unique_id=376230148 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 3.6236959, -25.368248)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox13" parent="Moveables" unique_id=1245957220 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 2.5452023, -25.368248)
-abilityListTier5 = ["DrinkPallete"]
 
 [node name="baseBox14" parent="Moveables" unique_id=354795245 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 3.6236959, -25.368248)
@@ -507,7 +480,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.99983126, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589735, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998311, 0, -0.0145896785, 0, 0.9999762, 0, 0.0145897325, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -568,7 +541,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.012621708, 0, -0.99983287, 0, 1, 0, 0.99983287, 0, -0.012621708, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621705, 0, -0.9998327, 0, 1, 0, 0.9998327, 0, -0.012621705, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true

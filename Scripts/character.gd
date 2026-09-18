@@ -90,15 +90,14 @@ func _input(event):
 				collider.revealChatter()
 			return
 		if pickedObject != null:
+			
 			if rayCast.is_colliding():
 				
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
-				#GPU.emitting = true	
-				#pickedObject.set_physics_process(true)
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos + pickedObject["offset"]
-				#GlobalGrid.register_cell(gridPos, pickedObject)
+				
 			else:
 				pickedObject.reparent(get_tree().current_scene)
 				if pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items"):
@@ -111,7 +110,7 @@ func _input(event):
 			if collider == null:
 				return
 				
-			if collider is CharacterBody3D or collider is RigidBody3D:
+			if collider.is_in_group("boxes") and not collider.isPickUpable:
 				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
 				#GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
@@ -156,8 +155,6 @@ func _physics_process(delta: float) -> void:
 
 		pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
 
-
-		
 	# Basic Player Physics
 	if not is_on_floor():
 		velocity += get_gravity() * delta

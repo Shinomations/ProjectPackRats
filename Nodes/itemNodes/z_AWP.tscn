@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://c2kkffo7m7ybs"]
+[gd_scene format=4 uid="uid://c2kkffo7m7ybs"]
 
 [ext_resource type="Script" uid="uid://bt11elgr6tal2" path="res://Scripts/abilityScripts/abilityList/z_AWP.gd" id="1_dvhe5"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_2d8xk"]
@@ -15,7 +15,6 @@ size = Vector3(2.8, 0.8, 0.8)
 render_priority = 0
 shader = ExtResource("2_2d8xk")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
 next_pass = SubResource("ShaderMaterial_3wuok")

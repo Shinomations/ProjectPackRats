@@ -79,18 +79,16 @@ func _physics_process(delta: float) -> void:
 			squashTween.tween_property(self,"scale", Vector3(0.8,1.2,0.8), 1)
 			gpu_particles_3d.emitting = false
 		
-	elif is_on_floor() and gravity > 0:
-		if not splatted:
-			splatted = true
-			if squashTween:
-				squashTween.kill()
-			squashTween = create_tween()
-			squashTween.tween_property(self,"scale", Vector3(1.3,0.5,1.3), 0.1)
-			squashTween.tween_property(self,"scale", Vector3(1,1,1), 0.2)
-			gpu_particles_3d.emitting = true
+	elif is_on_floor() and gravity > 0 and not splatted:
+		splatted = true
+		if squashTween:
+			squashTween.kill()
+		squashTween = create_tween()
+		squashTween.tween_property(self,"scale", Vector3(1.3,0.5,1.3), 0.1)
+		squashTween.tween_property(self,"scale", Vector3(1,1,1), 0.2)
+		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		
-
 	if gravity < 0 and not is_on_ceiling():
 		velocity.y -= gravity * delta
 	elif is_on_ceiling() and gravity < 0:

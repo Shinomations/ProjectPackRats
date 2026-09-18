@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://drjkac4dorvge"]
+[gd_scene format=4 uid="uid://drjkac4dorvge"]
 
-[ext_resource type="Script" path="res://Scripts/abilityScripts/abilityList/z_ammobox.gd" id="1_racmu"]
+[ext_resource type="Script" uid="uid://brrhwtxu5b6se" path="res://Scripts/abilityScripts/abilityList/z_ammobox.gd" id="1_racmu"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_807sp"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_lkqyi"]
 [ext_resource type="Texture2D" uid="uid://dods2h0dwpaar" path="res://models/Boxes/ammo_ammo.png" id="4_racmu"]
@@ -97,28 +97,28 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l4rab")
 
-[node name="baseBox" type="CharacterBody3D" groups=["boxes"]]
+[node name="baseBox" type="CharacterBody3D" unique_id=949028379 groups=["boxes"]]
 disable_mode = 1
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_racmu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1402025842]
 unique_name_in_owner = true
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 shape = SubResource("BoxShape3D_tblqd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=143694067]
 mesh = SubResource("BoxMesh_hwta1")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=871908077]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016448975, -0.62737083, 0.023864746)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=134568750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01083523, 0.57227826, 0.023864746)
 shape = SubResource("BoxShape3D_hwta1")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1424436465]
 emitting = false
 amount = 50
 lifetime = 3.0
@@ -129,7 +129,7 @@ randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=1726486083]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6lcew")
 skeleton = NodePath("")
