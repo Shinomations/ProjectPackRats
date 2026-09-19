@@ -3,7 +3,7 @@ extends CharacterBody3D
 # Called when the node enters the scene tree for the first time.
 @onready var boxbasic1 = $CollisionShape3D
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-
+@onready var mesh2Animate = $Cube
 var timer = 1
 
 var GivenName = "IED"
@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(self,"scale", Vector3(0.8,1.2,0.8), 1)
+				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.4,0.7,0.4), 1)
 				gpu_particles_3d.emitting = false
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
@@ -82,8 +82,8 @@ func _physics_process(delta: float) -> void:
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(self,"scale", Vector3(1.3,0.5,1.3), 0.1)
-		squashTween.tween_property(self,"scale", Vector3(1,1,1), 0.2)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.75,0.25,.75), 0.1)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.5,0.5,0.5), 0.2)
 		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		

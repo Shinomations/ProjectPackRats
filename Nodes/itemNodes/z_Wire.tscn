@@ -16,7 +16,6 @@ size = Vector3(0.8, 0.8, 0.8)
 render_priority = 0
 shader = ExtResource("5_ospbp")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 next_pass = SubResource("ShaderMaterial_bsvri")

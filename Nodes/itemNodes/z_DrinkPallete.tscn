@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://b320aprxv812b"]
+[gd_scene format=4 uid="uid://b320aprxv812b"]
 
 [ext_resource type="Script" uid="uid://dxadlkeke2okt" path="res://Scripts/abilityScripts/abilityList/z_DrinkPallete.gd" id="1_sdmdp"]
 [ext_resource type="Texture2D" uid="uid://7jgttslupemr" path="res://models/Boxes/pallet_pallet.png" id="3_ebpa1"]
