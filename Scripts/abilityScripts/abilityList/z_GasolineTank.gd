@@ -69,6 +69,7 @@ func _process(_delta):
 		
 	if GivenHealth <= 0:
 		self.queue_free()
+	ability()
 func _physics_process(delta: float) -> void:
 	
 	if player.pickedObject == self:
@@ -117,7 +118,6 @@ func ability():
 		return
 		
 	bodies = viableSpots.get_children()
-	
 	var filledSlotsCount = 0
 	var totalSlotsCount = 0
 	

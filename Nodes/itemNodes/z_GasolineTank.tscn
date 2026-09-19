@@ -100,6 +100,7 @@ material = SubResource("StandardMaterial3D_7n7js")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(0.4553833, 0.15719986, 0.7548828)
 
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
@@ -142,60 +143,62 @@ draw_pass_1 = SubResource("QuadMesh_e3ddh")
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 
 [node name="Area3D20" type="Area3D" parent="Areas" unique_id=293470810]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, -0.23004213, 0.734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23004213, 0.734)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D20" unique_id=1533673792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0116882315, -0.08632094, -0.122558594)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D22" type="Area3D" parent="Areas" unique_id=1681207252]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, -0.75, -0.23004213, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, -0.23004213, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D22" unique_id=606112412]
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D23" type="Area3D" parent="Areas" unique_id=292739002]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0.75, -0.23004213, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, -0.23004213, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D23" unique_id=1143247247]
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D25" type="Area3D" parent="Areas" unique_id=1302879748]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, -0.23004213, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23004213, -0.75)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D25" unique_id=2033560920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.24174911)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D28" type="Area3D" parent="Areas" unique_id=1147011822]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0.19582105, 0.734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19582105, 0.734)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D28" unique_id=1198413063]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18798018, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18798018, -0.22043997)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D30" type="Area3D" parent="Areas" unique_id=1770588551]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, -0.75, 0.19582105, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.19582105, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D30" unique_id=1906340549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18798018, 0)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D31" type="Area3D" parent="Areas" unique_id=687217965]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0.75, 0.19582105, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.19582105, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D31" unique_id=536679125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18798018, 0)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D33" type="Area3D" parent="Areas" unique_id=1214239757]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0.19582105, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19582105, -0.75)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D33" unique_id=218216263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18798018, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18798018, 0.16826075)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="Area3D14" type="Area3D" parent="Areas" unique_id=230134161]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0.48061448, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48061448, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D14" unique_id=650910254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8259871, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14341468, 0)
 shape = SubResource("BoxShape3D_hwta1")

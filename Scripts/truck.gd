@@ -71,7 +71,7 @@ func _on_body_exited(body: Node3D) -> void:
 		truckTextUpdate.update()
 		truckTextUpdate2.update()
 	updateCapacity(boxVolume / truckVolume, "exited")
-	updateScore(-(boxScore))
+	updateScore((boxScore))
 	if body.is_in_group("player") or body.is_in_group("truck"):
 		return
 	

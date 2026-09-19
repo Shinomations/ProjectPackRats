@@ -121,7 +121,6 @@ func MergeAbility():
 	for i in shots:
 		rnd = surroundingBoxes.pick_random()
 		picked.append(rnd)
-		print(rnd.GivenName)
 	
 	for i in picked:
 		if shots > 0:
