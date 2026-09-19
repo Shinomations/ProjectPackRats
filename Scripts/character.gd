@@ -110,7 +110,7 @@ func _input(event):
 			if collider == null:
 				return
 				
-			if collider.is_in_group("boxes") and not collider.isPickUpable:
+			if collider.is_in_group("boxes") and collider.isPickUpable:
 				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
 				#GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
