@@ -9,6 +9,7 @@ layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+mouse_filter = 2
 script = ExtResource("1_win1s")
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1691068695]

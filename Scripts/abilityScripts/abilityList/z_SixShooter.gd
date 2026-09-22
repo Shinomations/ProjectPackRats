@@ -44,6 +44,9 @@ var isPickUpable:bool = true
 var usedAbility: bool = false
 var squashTween: Tween = null
 var splatted: bool = false
+
+var boxesAboveThis: Array[Node3D] = []
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("boxes")
@@ -54,7 +57,8 @@ func _ready():
 
 
 func _process(_delta):
-	
+	for i in boxesAboveThis:
+		CollectedWeight = i.GivenWeight + i.CollectedWeight
 	if GivenWeight < 0:
 		gravity = -9.8
 	else:
@@ -137,9 +141,10 @@ func MergeAbility():
 
 
 func _on_checker_body_entered(body: Node3D) -> void:
-	if body.is_in_group("boxes"):
-		CollectedWeight = body.GivenWeight + body.CollectedWeight
-
+	if body.is_in_group("boxes") and body != self:
+		boxesAboveThis.append(body)
 func _on_checker_body_exited(body: Node3D) -> void:
-	if body.is_in_group("boxes"):
+	if body.is_in_group("boxes") and boxesAboveThis.has(body):
+		boxesAboveThis.erase(body)
 		CollectedWeight -= body.GivenWeight + body.CollectedWeight
+		print(body.GivenName)

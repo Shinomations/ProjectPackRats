@@ -36,13 +36,17 @@ var canReroll:bool = true
 var isPickUpable:bool = true
 var squashTween: Tween = null
 var splatted: bool = false
+
+var boxesAboveThis: Array[Node3D] = []
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	add_to_group("boxes")
 
 
 func _process(_delta):
-	
+	for i in boxesAboveThis:
+		CollectedWeight = i.GivenWeight + i.CollectedWeight
 	if GivenWeight < 0:
 		gravity = -9.8
 	else:
