@@ -381,6 +381,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 2.5452023, -22.762
 [node name="baseBox10" parent="Moveables" unique_id=1504277921 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 3.6236959, -22.762148)
 
+[node name="baseBox14" parent="Moveables" unique_id=1269406698 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 5.035442, -8.544352)
+abilityListTier1 = ["ammobox"]
+abilityListTier2 = ["ammobox"]
+abilityListTier3 = ["ammobox"]
+abilityListTier4 = ["ammobox"]
+abilityListTier5 = ["ammobox"]
+
+[node name="baseBox15" parent="Moveables" unique_id=1591471606 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 4.000913, -8.544352)
+abilityListTier1 = ["SixShooter"]
+abilityListTier2 = ["SixShooter"]
+abilityListTier3 = ["SixShooter"]
+abilityListTier4 = ["SixShooter"]
+abilityListTier5 = ["SixShooter"]
+
+[node name="baseBox16" parent="Moveables" unique_id=1309832045 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 3.2093449, -8.544352)
+abilityListTier1 = ["DoubleBarrel"]
+abilityListTier2 = ["DoubleBarrel"]
+abilityListTier3 = ["DoubleBarrel"]
+abilityListTier4 = ["DoubleBarrel"]
+abilityListTier5 = ["DoubleBarrel"]
+
+[node name="baseBox17" parent="Moveables" unique_id=1257791389 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 2.2393613, -8.544352)
+abilityListTier1 = ["AWP"]
+abilityListTier2 = ["AWP"]
+abilityListTier3 = ["AWP"]
+abilityListTier4 = ["AWP"]
+abilityListTier5 = ["AWP"]
+
 [node name="flatRatFile" parent="Moveables" unique_id=296991103 node_paths=PackedStringArray("player") instance=ExtResource("4_tipki")]
 transform = Transform3D(0.53657144, 0, 0.5933727, 0, 0.8, 0, -0.5933727, 0, 0.53657144, -15.187791, 1.8329256, -8.27226)
 player = NodePath("../../CharacterBody3D")
@@ -405,7 +437,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.99983096, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589732, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.99983084, 0, -0.0145896785, 0, 0.9999762, 0, 0.01458973, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -466,7 +498,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.0126217045, 0, -0.9998326, 0, 1, 0, 0.9998326, 0, -0.0126217045, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621703, 0, -0.99983245, 0, 1, 0, 0.99983245, 0, -0.012621703, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true

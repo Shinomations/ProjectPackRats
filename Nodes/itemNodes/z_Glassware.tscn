@@ -10,17 +10,13 @@
 [sub_resource type="BoxMesh" id="BoxMesh_78uto"]
 size = Vector3(0.8, 0.8, 0.8)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2ytf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bsvri"]
 render_priority = 0
 shader = ExtResource("2_iqen4")
-shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.2950000140125
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
-next_pass = SubResource("ShaderMaterial_w2ytf")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8k8tf"]
-size = Vector3(1, 0.12994385, 1)
+next_pass = SubResource("ShaderMaterial_bsvri")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fwnp"]
 resource_name = "Glassware"
@@ -60,6 +56,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_thd4r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8k8tf"]
+size = Vector3(1, 0.12994385, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
 emission_shape_offset = Vector3(0, -0.46, 0)
@@ -114,6 +113,11 @@ mesh = SubResource("BoxMesh_78uto")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
+[node name="Cube_024" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" unique_id=1323842026]
+transform = Transform3D(0.5000001, 0, 0, 0, 0.5000001, 0, 0, 0, 0.5000001, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ckwg0")
+skeleton = NodePath("")
+
 [node name="Area3D" type="Area3D" parent="CollisionShape3D" unique_id=729696703]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.059497833, 0)
 collision_layer = 0
@@ -122,11 +126,6 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D/Area3D" unique_id=1105937106]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.5123596, 0)
 shape = SubResource("BoxShape3D_8k8tf")
-
-[node name="Cube_024" type="MeshInstance3D" parent="." unique_id=1323842026]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("ArrayMesh_ckwg0")
-skeleton = NodePath("")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1262626695]
 emitting = false

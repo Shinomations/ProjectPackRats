@@ -8,12 +8,12 @@ extends CharacterBody3D
 @onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
 #Per box Stats
 var GivenName = "Box With Anvils"
-var GivenWeight = 500
+var GivenWeight = 1000
 var GivenType = "Wooden"
 var GivenIncome = 1000
-var GivenAbility = "First Placement: Destroy everything underneath this (Not other Anvil boxes)"
-var GivenHealth = 100
-var tier = 5
+var GivenAbility = "No ability: Just REALLY HEAVY"
+var GivenHealth = 500
+var CollectedWeight = 0
 #all box variables
 var selected = false
 var player
@@ -61,7 +61,7 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
-	if GivenHealth <= 0:
+	if GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
 	
@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.4,0.7,0.4), 1)
+				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.7,1.1,0.7), 1)
 				gpu_particles_3d.emitting = false
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
@@ -84,8 +84,8 @@ func _physics_process(delta: float) -> void:
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.75,0.25,.75), 0.1)
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.5,0.5,0.5), 0.2)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1.3,0.5,1.3), 0.1)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1,1,1), 0.2)
 		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		
@@ -100,34 +100,17 @@ func _set_selected(object):
 	
 	selected = self == object
 	
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	
-
-	if body == self or body.is_in_group("player") or player.pickedObject == self:
-		return
-
-	if "GivenName" in body:
-		if body.GivenName == "Box With Anvils":
-			return 
-			
-
-		var dynamic_can_destroy = body.get("canBeDestroyed") if "canBeDestroyed" in body else true
-		
-		if dynamic_can_destroy:
-			if "Destroyer" in body:
-				body.Destroyer = self
-				if body.has_method("ability"):
-					body.ability()
-					
-			
-			body.queue_free()
-			usedAbility = true
-
-
 func get_rect():
 	var objectPosition = Vector2(
 		global_position.x - int(size.x / 2),
 		global_position.z - int(size.y / 2)
 	)
 	return Rect2(objectPosition, size)
+	
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("boxes"):
+		CollectedWeight = body.GivenWeight + body.CollectedWeight
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("boxes"):
+		CollectedWeight -= body.GivenWeight + body.CollectedWeight

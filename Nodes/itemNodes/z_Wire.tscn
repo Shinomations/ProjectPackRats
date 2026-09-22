@@ -193,6 +193,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2j7wx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(0.6631317, 0.15966797, 0.63305664)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
 emission_shape_offset = Vector3(0, -0.46, 0)
@@ -282,15 +283,15 @@ mesh = SubResource("BoxMesh_iqen4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
-[node name="Cube_028" type="MeshInstance3D" parent="." unique_id=637314085]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Cube_028" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" unique_id=637314085]
+transform = Transform3D(0.50000006, 0, 0, 0, 0.50000006, 0, 0, 0, 0.50000006, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gbj7d")
 skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=181660829]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=206659249]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.011141969, 0.6105066, -0.0019042939)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1792303643]
@@ -317,3 +318,4 @@ process_material = SubResource("ParticleProcessMaterial_2mixf")
 draw_pass_1 = SubResource("QuadMesh_7n7js")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -3,14 +3,14 @@ extends CharacterBody3D
 @onready var boxbasic1 = $CollisionShape3D
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 @onready var boxAboveDetector = $Area3D2
-@onready var mesh2Animate = $Cube
+@onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
 var GivenName = "Tungstin"
-var GivenWeight = 100
+var GivenWeight = 200
 var GivenType = "Metal"
-var GivenIncome = 250
+var GivenIncome = 200
 var GivenAbility = "Passive:This cant be destroyed"
-var GivenHealth = 50
-var tier = 2
+var GivenHealth = -100
+var CollectedWeight = 0
 
 var selected = false
 var player
@@ -53,8 +53,7 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
-	if GivenHealth <= 0:
-		self.queue_free()
+
 func _physics_process(delta: float) -> void:
 	
 	if player.pickedObject == self:
@@ -68,7 +67,7 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.4,0.7,0.4), 1)
+				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.7,1.1,0.7), 1)
 				gpu_particles_3d.emitting = false
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
@@ -76,8 +75,8 @@ func _physics_process(delta: float) -> void:
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.75,0.25,.75), 0.1)
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.5,0.5,0.5), 0.2)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1.3,0.5,1.3), 0.1)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1,1,1), 0.2)
 		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		
@@ -97,3 +96,13 @@ func get_rect():
 		global_position.z - int(size.y / 2)
 	)
 	return Rect2(objectPosition, size)
+
+
+func _on_area_3d_2_body_entered(body: Node3D) -> void:
+	if body.is_in_group("boxes"):
+		CollectedWeight = body.GivenWeight + body.CollectedWeight
+
+
+func _on_area_3d_2_body_exited(body: Node3D) -> void:
+	if body.is_in_group("boxes"):
+		CollectedWeight -= body.GivenWeight + body.CollectedWeight

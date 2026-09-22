@@ -4,7 +4,7 @@ extends CharacterBody3D
 #calling of children
 @onready var boxbasic1 = $CollisionShape3D
 @onready var area = $Area3D
-@onready var mesh2Animate = $Cube_001
+@onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
 var surroundingBoxes: Array = []
 var shots = 1
 #Per box Stats
@@ -14,7 +14,7 @@ var GivenType = "Plastic"
 var GivenIncome = 400
 var GivenAbility = "When Merged With: shoot 1 shot, all units infront of this get -100 weight"
 var GivenHealth = 300
-var tier = 4
+var CollectedWeight = 0
 
 #all box variables
 var selected = false
@@ -64,7 +64,7 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
-	if GivenHealth <= 0:
+	if GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
 	
@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.15,0.5,0.15), 1)
+				squashTween.tween_property(mesh2Animate,"scale", Vector3(1.7,1.1,0.7), 1)
 				gpu_particles_3d.emitting = false
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
@@ -87,8 +87,8 @@ func _physics_process(delta: float) -> void:
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.5,0.125,0.5), 0.1)
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.25,0.25,0.25), 0.2)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1.3,0.5,1.3), 0.1)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1,1,1), 0.2)
 		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		
@@ -121,3 +121,13 @@ func MergeAbility():
 		i.GivenWeight -= 100
 	surroundingBoxes = []
 	shots = 1
+
+
+func _on_checker_body_entered(body: Node3D) -> void:
+	if body.is_in_group("boxes"):
+		CollectedWeight = body.GivenWeight + body.CollectedWeight
+
+
+func _on_checker_body_exited(body: Node3D) -> void:
+	if body.is_in_group("boxes"):
+		CollectedWeight -= body.GivenWeight + body.CollectedWeight

@@ -14,7 +14,6 @@ size = Vector3(0.8, 0.8, 0.8)
 render_priority = 0
 shader = ExtResource("2_78uto")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
 next_pass = SubResource("ShaderMaterial_3wuok")
@@ -58,6 +57,9 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_7n7js")
 size = Vector2(0.5, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhy47"]
+size = Vector3(0.84106445, 0.07910156, 0.7915039)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
 disable_mode = 1
 collision_layer = 4
@@ -73,8 +75,8 @@ shape = SubResource("BoxShape3D_tblqd")
 mesh = SubResource("BoxMesh_hwta1")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
 
-[node name="box" parent="." unique_id=1745338181 instance=ExtResource("2_w2ytf")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="box" parent="CollisionShape3D/MeshInstance3D" unique_id=1745338181 instance=ExtResource("2_w2ytf")]
+transform = Transform3D(0.5050504, 0, 0, 0, 0.5050504, 0, 0, 0, 0.5050504, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1809421967]
 
@@ -93,4 +95,12 @@ randomness = 0.07
 process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
 
+[node name="checker" type="Area3D" parent="." unique_id=1007436718]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="checker" unique_id=1814921236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0059814453, 0.5632324, -0.0021972656)
+shape = SubResource("BoxShape3D_bhy47")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="checker" to="." method="_on_checker_body_entered"]
+[connection signal="body_exited" from="checker" to="." method="_on_checker_body_exited"]

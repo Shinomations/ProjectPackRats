@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://cuy6gnan3vm81"]
+[gd_scene format=3 uid="uid://cuy6gnan3vm81"]
 
 [ext_resource type="Script" uid="uid://0wootwctnjdv" path="res://Scripts/abilityScripts/abilityList/z_Beehive.gd" id="1_mr6br"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_4x0gg"]
@@ -14,7 +14,6 @@ size = Vector3(0.8, 0.8, 0.8)
 render_priority = 0
 shader = ExtResource("2_4x0gg")
 shader_parameter/outline_width = 0.150000007125
-shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
 next_pass = SubResource("ShaderMaterial_3wuok")
@@ -73,13 +72,13 @@ shape = SubResource("BoxShape3D_tblqd")
 mesh = SubResource("BoxMesh_hwta1")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
 
-[node name="box" parent="." unique_id=1745338181 instance=ExtResource("3_35tmy")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="box" parent="CollisionShape3D/MeshInstance3D" unique_id=1745338181 instance=ExtResource("3_35tmy")]
+transform = Transform3D(0.5050504, 0, 0, 0, 0.5050504, 0, 0, 0, 0.5050504, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1809421967]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=184316297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016448975, -0.62737083, 0.023864746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016448975, 0.57137847, 0.023864746)
 shape = SubResource("BoxShape3D_hwta1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=912978382]
@@ -94,3 +93,4 @@ process_material = SubResource("ParticleProcessMaterial_lx2ai")
 draw_pass_1 = SubResource("QuadMesh_e3ddh")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -19,45 +19,6 @@ shader_parameter/outline_width = 0.150000007125
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
 next_pass = SubResource("ShaderMaterial_3wuok")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1qyrg"]
-size = Vector3(7.7099853, 0.9, 0.9)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
-emission_shape_offset = Vector3(0, -0.46, 0)
-emission_shape_scale = Vector3(0.4, 0.1, 0.4)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(0, 0, 0)
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0.2, 0)
-damping_min = 1.0
-damping_max = 2.0
-scale_min = 50.0
-scale_max = 50.0
-anim_speed_min = 0.9
-anim_speed_max = 1.1999999
-collision_mode = 1
-collision_friction = 0.2
-collision_bounce = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n7js"]
-transparency = 1
-albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
-albedo_texture = ExtResource("4_n870i")
-metallic_specular = 0.0
-texture_filter = 0
-billboard_mode = 3
-particles_anim_h_frames = 4
-particles_anim_v_frames = 3
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_e3ddh"]
-material = SubResource("StandardMaterial3D_7n7js")
-size = Vector2(0.5, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouhss"]
 resource_name = "Material.001"
 cull_mode = 2
@@ -107,6 +68,48 @@ top_radius = 0.2
 bottom_radius = 0.2
 radial_segments = 8
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1qyrg"]
+size = Vector3(7.7099853, 0.9, 0.9)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
+emission_shape_offset = Vector3(0, -0.46, 0)
+emission_shape_scale = Vector3(0.4, 0.1, 0.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0.2, 0)
+damping_min = 1.0
+damping_max = 2.0
+scale_min = 50.0
+scale_max = 50.0
+anim_speed_min = 0.9
+anim_speed_max = 1.1999999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n7js"]
+transparency = 1
+albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
+albedo_texture = ExtResource("4_n870i")
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_e3ddh"]
+material = SubResource("StandardMaterial3D_7n7js")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(2.8618164, 0.0954895, 0.84814453)
+
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
 disable_mode = 1
 collision_layer = 4
@@ -123,6 +126,15 @@ shape = SubResource("BoxShape3D_tblqd")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=928754214]
 mesh = SubResource("BoxMesh_hwta1")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
+
+[node name="Cube_001" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" unique_id=1610958833]
+transform = Transform3D(0.24242422, 0, 0, 0, 0.24242422, 0, 0, 0, 0.24242422, 0, 0, 0)
+mesh = SubResource("ArrayMesh_v6hu8")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D/Cube_001" unique_id=242749618]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 5.8695555, 0, 0)
+mesh = SubResource("CylinderMesh_wv8iq")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1809421967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1773362, 0, 0)
@@ -147,14 +159,13 @@ draw_pass_1 = SubResource("QuadMesh_e3ddh")
 [node name="Marker3D" type="Marker3D" parent="." unique_id=872368157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
-[node name="Cube_001" type="MeshInstance3D" parent="." unique_id=1610958833]
-transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0, 0)
-mesh = SubResource("ArrayMesh_v6hu8")
-skeleton = NodePath("")
+[node name="Checker" type="Area3D" parent="." unique_id=2020904148]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube_001" unique_id=242749618]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 5.8695555, 0, 0)
-mesh = SubResource("CylinderMesh_wv8iq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checker" unique_id=1461218952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00024414063, 0.56663513, -0.0026855469)
+shape = SubResource("BoxShape3D_hwta1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Checker" to="." method="_on_checker_body_entered"]
+[connection signal="body_exited" from="Checker" to="." method="_on_checker_body_exited"]

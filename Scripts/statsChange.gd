@@ -48,8 +48,19 @@ func _process(_delta: float) -> void:
 			"Ability" +  "\n" + player.ability + "\n" +
 			"-----------------------------\n" +
 			"Overall Score:" + str(player.FinalScore)
+	)
+	elif player.rayCast.is_colliding() and player.collider.is_in_group("boxes") and Input.is_action_pressed("Notes"):
+		wholeTab.visible = true
+		UnitAbility.text = ( 
+			"Name: " + player.collider.GivenName + "\n" + 
+			"Weight: " + str(player.collider.GivenWeight) + "+ (" + str(player.collider.CollectedWeight) + ")" + "\n" + 
+			"Material: " + player.collider.GivenType + "\n" +
+			"Income: " + str(player.collider.GivenIncome) + "\n" +
+			"Health: " + str(player.collider.GivenHealth) + "\n" +
+			"Ability" +  "\n" + player.collider.GivenAbility + "\n" +
+			"-----------------------------\n" +
+			"Overall Score:" + str(player.FinalScore)
 		)
 	else:
 		wholeTab.visible = false
 		UnitAbility.text = ""
-	

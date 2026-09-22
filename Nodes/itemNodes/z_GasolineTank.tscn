@@ -121,9 +121,10 @@ mesh = SubResource("CylinderMesh_807sp")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_kkuiv")
 
-[node name="tank" type="Node3D" parent="CollisionShape3D" unique_id=1853568424]
+[node name="tank" type="Node3D" parent="CollisionShape3D/MeshInstance3D" unique_id=1853568424]
+transform = Transform3D(0.9900001, 0, 0, 0, 0.9900001, 0, 0, 0, 0.9900001, 0, 0, 0)
 
-[node name="Cylinder" type="MeshInstance3D" parent="CollisionShape3D/tank" unique_id=1530847733]
+[node name="Cylinder" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D/tank" unique_id=1530847733]
 transform = Transform3D(0.24999999, 0, 0, 0, 0.12499999, 0, 0, 0, 0.24999999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4gppo")
 skeleton = NodePath("")
@@ -202,3 +203,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48061448, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area3D14" unique_id=650910254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14341468, 0)
 shape = SubResource("BoxShape3D_hwta1")
+
+[connection signal="body_entered" from="Areas/Area3D14" to="." method="_on_area_3d_14_body_entered"]
+[connection signal="body_exited" from="Areas/Area3D14" to="." method="_on_area_3d_14_body_exited"]

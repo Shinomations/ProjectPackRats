@@ -10,9 +10,9 @@ var GivenName = "Ammo box"
 var GivenWeight = 10
 var GivenType = "plastic"
 var GivenIncome = 10
-var GivenAbility = "When this merges: activate the Merge ability a second time"
+var GivenAbility = "Merge this with the unit below this \n when this merges repeat the merge ability"
 var GivenHealth = 10
-var tier = 1
+var CollectedWeight = 0
 
 #all box variables
 var selected = false
@@ -62,7 +62,7 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
-	if GivenHealth <= 0:
+	if GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4:
 		self.queue_free()
 func _physics_process(delta: float) -> void:
 	
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.4,0.7,0.4), 1)
+				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.7,1.1,0.7), 1)
 				gpu_particles_3d.emitting = false
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
@@ -85,8 +85,8 @@ func _physics_process(delta: float) -> void:
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.75,0.25,.75), 0.1)
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(0.5,0.5,0.5), 0.2)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1.3,0.5,1.3), 0.1)
+		squashTween.tween_property(mesh2Animate,"scale", Vector3(1,1,1), 0.2)
 		gpu_particles_3d.emitting = true
 		velocity.y = 0
 		
@@ -113,10 +113,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		return
 	
 	if body.is_in_group("boxes"):
+		CollectedWeight = body.GivenWeight + body.CollectedWeight
 		if body.has_method("MergeAbility"):
 			body.MergeAbility()
 			await get_tree().create_timer(.2).timeout
 			body.MergeAbility()
 
 		queue_free()
-	pass # Replace with function body.

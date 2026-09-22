@@ -181,8 +181,8 @@ func _physics_process(delta: float) -> void:
 ## saves the object 
 func pick_up_object(object):
 
-	if not holdingobject:		
-		# 1. Disable collision shapes before updating parent links
+	if not holdingobject:
+		# Disable collision shapes before updating parent links
 		_toggleCollision(object, true)
 		
 		# save the holding object and marks the player as holding an object
