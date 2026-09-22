@@ -58,8 +58,10 @@ func _ready():
 	boxesLeft = viableSpots.get_child_count()
 
 func _process(_delta):
+	CollectedWeight = 0
 	for i in boxesAboveThis:
-		CollectedWeight = i.GivenWeight + i.CollectedWeight
+		CollectedWeight += i.GivenWeight + i.CollectedWeight
+
 	if GivenWeight < 0:
 		gravity = -9.8
 	else:
@@ -164,5 +166,4 @@ func _on_area_3d_14_body_entered(body: Node3D) -> void:
 func _on_area_3d_14_body_exited(body: Node3D) -> void:
 	if body.is_in_group("boxes") and boxesAboveThis.has(body):
 		boxesAboveThis.erase(body)
-		CollectedWeight -= body.GivenWeight + body.CollectedWeight
 		print(body.GivenName)
