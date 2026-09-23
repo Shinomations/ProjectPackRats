@@ -1,163 +1,24 @@
-[gd_scene format=4 uid="uid://b320aprxv812b"]
+[gd_scene format=3 uid="uid://b320aprxv812b"]
 
-[ext_resource type="Script" uid="uid://dxadlkeke2okt" path="res://Scripts/abilityScripts/abilityList/z_DrinkPallete.gd" id="1_sdmdp"]
-[ext_resource type="Texture2D" uid="uid://7jgttslupemr" path="res://models/Boxes/pallet_pallet.png" id="3_ebpa1"]
-[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="3_tfy3b"]
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_sdmdp"]
+[ext_resource type="Script" uid="uid://dxadlkeke2okt" path="res://Scripts/abilityScripts/abilityList/z_DrinkPallete.gd" id="2_ebpa1"]
+[ext_resource type="PackedScene" uid="uid://by8b10s744bvg" path="res://models/Boxes/pallet.glb" id="2_tfy3b"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
-size = Vector3(2, 1, 2)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hwta1"]
+height = 4.022461
+radius = 0.27392578
 
-[sub_resource type="BoxMesh" id="BoxMesh_tfy3b"]
-size = Vector3(3.1892579, 1.4613464, 3.2333848)
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_sdmdp")]
+script = ExtResource("2_ebpa1")
 
-[sub_resource type="Shader" id="Shader_ebpa1"]
-code = "shader_type spatial;
-render_mode unshaded, cull_front, depth_draw_always;
-uniform float outline_width : hint_range(0.0, 1.0) = 0.02;
+[node name="pallet" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=556464624 instance=ExtResource("2_tfy3b")]
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, 0.5, 0)
 
-void vertex() {
-    vec3 push_direction = sign(VERTEX);
-    VERTEX += push_direction * outline_width;
-}
+[node name="Area3D2" type="Area3D" parent="." index="3" unique_id=1284769906]
 
-void fragment() {
-    ALBEDO = vec3(0.0, 0.81, 0.94);
-}
-"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" index="0" unique_id=1381142605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4714036, 0)
+shape = SubResource("CylinderShape3D_hwta1")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u54m6"]
-render_priority = 0
-shader = SubResource("Shader_ebpa1")
-shader_parameter/outline_width = 0.350000016625
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g4ux"]
-next_pass = SubResource("ShaderMaterial_u54m6")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bb00x"]
-next_pass = SubResource("StandardMaterial3D_2g4ux")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxt58"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("3_ebpa1")
-roughness = 0.5
-texture_filter = 2
-metadata/_gltf_primary_texture_coord = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_ma5no"]
-_surfaces = [{
-"aabb": AABB(-2, -2, -2, 4, 1.9933674, 4),
-"format": 34896613377,
-"index_count": 84,
-"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwAEAAAABQADAAIABgAEAAMABgADAAUABAAGAAcABAAHAAAABgAFAAgABQACAAgABgAIAAcABwAJAAAAAAAJAAEACAAKAAcABwAKAAkAAgALAAgAAgABAAsACAALAAoACQAKAAwACwABAA0AAQAJAA4ACQAMAA4AAQAOAA0ACgAPAAwACgALAA8ADwAOAAwACwANAA8ADwANAA4A"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 16,
-"vertex_data": PackedByteArray("AABJXf//AAAJ90ldCfcAAP//SV3//wAA//8AAP//AAAAAAAA//8AAP//AAAAAAAAAAAAAAAAAAAAAEldAAAAAP//SV0AAAAA9QhJXQn3AAD1CEld9QgAAAn3SV31CAAA9Qj///UIAAAJ9///CfcAAPUI//8J9wAACff///UIAAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_fo7il"]
-resource_name = "pallet_Cube_001"
-_surfaces = [{
-"aabb": AABB(-2, -2, -2, 4, 1.9933674, 4),
-"attribute_data": PackedByteArray("WrT/f1q0egRatAAAWrSEe1q0/39atHoEWrQAAFq0hHtatP9/WrR6BFq0AABatIR7/3/+/wAA/3//f/9/AAD//1q0/39atHoEWrQAAFq0hHuYywAAWrT/f1q0AACYy/9/mMsAAFq0/39atAAAmMv/f5jLAABatP9/WrQAAJjL/3+YywAAWrT/f1q0AACYy/9/WrR6BM+LhHvPi3oEWrSEe1q0egTPi4R7z4t6BFq0hHtatHoEz4uEe8+LegRatIR7WrR6BM+LhHvPi3oEWrSEe4R7hHt6BHoEhHt6BHoEhHs="),
-"format": 34896613399,
-"index_count": 84,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUA"),
-"material": SubResource("StandardMaterial3D_pxt58"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 56,
-"vertex_data": PackedByteArray("AABJXf///78J90ldCff/v///SV3///+/9QhJXQn3/7///0ldAAD/v/UISV31CP+/AABJXQAA/78J90ld9Qj/v///SV3///+/CfdJXfUI/7///0ldAAD/vwn3SV0J9/+/AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNUAAEldAAD/v/UISV0J9/+/AABJXf///7/1CEld9Qj/v///AAD///+/AABJXf///7///0ld////vwAAAAD///+///8AAAAAVNX//0ld//9U1f//SV0AAFTV//8AAP//VNUAAAAAAAD/////SV0AAP//AABJXQAA/////wAAAAD//wAAAAD//1TVAABJXQAAVNUAAEld//9U1QAAAAAAAFTV9QhJXQn3VNX1CP//9QhU1fUI//8J91TV9QhJXfUIVNX1CEld9Qj//wn3///1CP//9Qj///UI//8J90ld9Qj//wn3SV31CFTVCff//wn3VNUJ9///9QhU1Qn3SV0J91TVCfdJXQn3/7/1CP//Cff/vwn3//8J9/+/9QhJXQn3/78J9///9QhU1fUI//8J91TV9Qj///UIVNUJ9///CfdU1f///3////9/////f////3////9/////f////3////9/////f////3////9/////f1VVVFVVVVRVVVVUVVVVVFX///9/////f////3////9//3//f/9//3//f/9//3//f6qqVFWpqlRVqqpUVamqVFX/P/+//z//v/8//7//P/+/VFWqqlVVqqpUVaqqVVWqqlRVqqpUVamqVFWqqlRVqar/v/8//7//P/8//7//v/8/qqpUVaqqVVWqqlRVqqpVVf9//3//f/9//3//f/9//39U1aoqVNWqKlTVqipU1aoq")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ma5no")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
-size = Vector3(1, 12.651306, 1)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
-emission_shape_offset = Vector3(0, -0.46, 0)
-emission_shape_scale = Vector3(0.4, 0.1, 0.4)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(0, 0, 0)
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0.2, 0)
-damping_min = 1.0
-damping_max = 2.0
-scale_min = 50.0
-scale_max = 50.0
-anim_speed_min = 0.9
-anim_speed_max = 1.1999999
-collision_mode = 1
-collision_friction = 0.2
-collision_bounce = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n7js"]
-transparency = 1
-albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
-albedo_texture = ExtResource("3_tfy3b")
-metallic_specular = 0.0
-texture_filter = 0
-billboard_mode = 3
-particles_anim_h_frames = 4
-particles_anim_v_frames = 3
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_e3ddh"]
-material = SubResource("StandardMaterial3D_7n7js")
-size = Vector2(0.5, 0.5)
-
-[node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 23
-script = ExtResource("1_sdmdp")
-offset = Vector3(0.5, 0, 0.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
-unique_name_in_owner = true
-transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
-shape = SubResource("BoxShape3D_tblqd")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1488171257]
-transform = Transform3D(0.51015186, 0, 0, 0, 0.51015186, 0, 0, 0, 0.51015186, 0.0030390555, -0.007055534, -0.0010768271)
-mesh = SubResource("BoxMesh_tfy3b")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_bb00x")
-
-[node name="Cube" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" unique_id=776917295]
-transform = Transform3D(0.99000025, 0, 0, 0, 0.99000025, 0, 0, 0, 0.99000025, -0.0059571587, 1.0038306, 0.002110797)
-mesh = SubResource("ArrayMesh_fo7il")
-skeleton = NodePath("")
-
-[node name="Area3D" type="Area3D" parent="." unique_id=1498032231]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74724984, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2033643006]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0146694, 0)
-shape = SubResource("BoxShape3D_hwta1")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1137553721]
-emitting = false
-amount = 50
-lifetime = 3.0
-one_shot = true
-speed_scale = 3.99
-explosiveness = 1.0
-randomness = 0.07
-process_material = SubResource("ParticleProcessMaterial_lx2ai")
-draw_pass_1 = SubResource("QuadMesh_e3ddh")
-
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1671746775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

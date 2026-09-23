@@ -1,78 +1,20 @@
-extends CharacterBody3D
+extends BaseBox
 
-#calling of children
-@onready var boxbasic1 = $CollisionShape3D
-@onready var area = $Area3D
-@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
-@onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
-var surroundingBoxes: Array = []
-var shots = 2
-var merger
-#Per box Stats
-var GivenName = "Double Barrel case"
-var GivenWeight = 200
-var GivenType = "Plastic"
-var GivenIncome = 250
-var GivenAbility = "When Merged With: shoot 2 times at adjacent units -50 weight to each"
-var GivenHealth = 50
-var CollectedWeight = 0
+var surroundingBoxes: Array[Node3D] = []
+var shots: int = 2
 
-#all box variables
-var selected = false
-var player
-var outlineWidth = 0.05
-var uses = 0
-var height = 1
-#box specific variables
-var bodies
-var gravity = 9.8
-@export var size: Vector2 = Vector2(1,2)
-@export var offset: Vector3 = Vector3.ZERO
-
-#Ability Specific editing
-var canBeDestroyed: bool = true
-var incomeCanChange:bool = true
-var weightCanChange:bool = true
-var healthCanChange:bool = true
-var abilityCanChange:bool = true
-var materialCanChange:bool = true
-var canBeMoved:bool = true
-var canMove:bool = true
-var canReroll:bool = true
-
-var isPickUpable:bool = true
-var usedAbility: bool = false
-var squashTween: Tween = null
-var splatted: bool = false
-
-var boxesAboveThis: Array[Node3D] = []
-
-func _ready():
-	player = get_tree().get_first_node_in_group("player")
-	add_to_group("boxes")
-	safe_margin = 0.0005
+func _init() -> void:
+	GivenName = "Ammo box"
+	GivenWeight = 10
+	GivenType = "Plastic"
+	GivenIncome = 20
+	GivenAbility = "This can Merge with the box Above it \n repeat its merge ability again"
+	GivenHealth = 30
+	height = 1
+	size = Vector2(1,1)
+	canBeDestroyed = true
 	
-func _process(_delta):
-	CollectedWeight = 0
-	for i in boxesAboveThis:
-		CollectedWeight += i.GivenWeight + i.CollectedWeight
-
-	if GivenWeight < 0:
-		gravity = -9.8
-	else:
-		gravity = 9.8
-
-
-	if selected:
-		boxbasic1.position.y = outlineWidth
-		player.boxTypeDetector = 1 
-	else:
-		boxbasic1.position.y = 0
-		
-	if GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4:
-		self.queue_free()
 func _physics_process(delta: float) -> void:
-	
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		move_and_slide()
@@ -102,25 +44,6 @@ func _physics_process(delta: float) -> void:
 	elif is_on_ceiling() and gravity < 0:
 		velocity.y = 0
 	move_and_slide()
-func _set_selected(object):
-	
-	selected = self == object
-	
-func get_rect():
-	var objectPosition = Vector2(
-		global_position.x - int(size.x / 2),
-		global_position.z - int(size.y / 2)
-	)
-	return Rect2(objectPosition, size)
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("boxes"):
-		surroundingBoxes.append(body)
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body.is_in_group("boxes"):
-		surroundingBoxes.erase(body)
-	
 func MergeAbility():
 	var rnd
 	var picked:Array = []
@@ -134,12 +57,3 @@ func MergeAbility():
 			shots -= 1
 	surroundingBoxes = []
 	shots = 2
-
-
-func _on_checker_body_entered(body: Node3D) -> void:
-	if body.is_in_group("boxes") and body != self:
-		boxesAboveThis.append(body)
-func _on_checker_body_exited(body: Node3D) -> void:
-	if body.is_in_group("boxes") and boxesAboveThis.has(body):
-		boxesAboveThis.erase(body)
-		print(body.GivenName)

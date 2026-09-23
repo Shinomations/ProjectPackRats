@@ -1,106 +1,23 @@
 [gd_scene format=3 uid="uid://dsrn2ipo4jvx"]
 
-[ext_resource type="Script" uid="uid://dtcm70objcxe5" path="res://Scripts/abilityScripts/abilityList/z_SixShooter.gd" id="1_1qyrg"]
-[ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_q331t"]
-[ext_resource type="PackedScene" uid="uid://bmgd8e6jx77st" path="res://models/Boxes/ssGunCase.glb" id="4_1qyrg"]
-[ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_lq6uo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_hwta1"]
-size = Vector3(0.8, 0.8, 0.8)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wuok"]
-render_priority = 0
-shader = ExtResource("2_q331t")
-shader_parameter/outline_width = 0.150000007125
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhy47"]
-next_pass = SubResource("ShaderMaterial_3wuok")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1qyrg"]
-size = Vector3(1.2, 1.2, 1.2)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx2ai"]
-emission_shape_offset = Vector3(0, -0.46, 0)
-emission_shape_scale = Vector3(0.4, 0.1, 0.4)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(0, 0, 0)
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0.2, 0)
-damping_min = 1.0
-damping_max = 2.0
-scale_min = 50.0
-scale_max = 50.0
-anim_speed_min = 0.9
-anim_speed_max = 1.1999999
-collision_mode = 1
-collision_friction = 0.2
-collision_bounce = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n7js"]
-transparency = 1
-albedo_color = Color(0.5721558, 0.5610267, 0.479549, 1)
-albedo_texture = ExtResource("4_lq6uo")
-metallic_specular = 0.0
-texture_filter = 0
-billboard_mode = 3
-particles_anim_h_frames = 4
-particles_anim_v_frames = 3
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_e3ddh"]
-material = SubResource("StandardMaterial3D_7n7js")
-size = Vector2(0.5, 0.5)
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_2ah38"]
+[ext_resource type="Script" uid="uid://dtcm70objcxe5" path="res://Scripts/abilityScripts/abilityList/z_SixShooter.gd" id="2_1qyrg"]
+[ext_resource type="PackedScene" uid="uid://bmgd8e6jx77st" path="res://models/Boxes/ssGunCase.glb" id="3_q331t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
-size = Vector3(0.7762451, 0.1864624, 0.7218323)
+size = Vector3(1.0658875, 1.06781, 1.0401001)
 
-[node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes"]]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 23
-script = ExtResource("1_1qyrg")
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_2ah38")]
+script = ExtResource("2_1qyrg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
-unique_name_in_owner = true
-transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
-shape = SubResource("BoxShape3D_tblqd")
+[node name="ssGunCase" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=317823979 instance=ExtResource("3_q331t")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=928754214]
-mesh = SubResource("BoxMesh_hwta1")
-surface_material_override/0 = SubResource("StandardMaterial3D_bhy47")
+[node name="Area3D2" type="Area3D" parent="." index="3" unique_id=1229661523]
 
-[node name="ssGunCase" parent="CollisionShape3D/MeshInstance3D" unique_id=1740225288 instance=ExtResource("4_1qyrg")]
-transform = Transform3D(0.25252524, 0, 0, 0, 0.25252524, 0, 0, 0, 0.25252524, 0, 0, 0)
-
-[node name="Area3D" type="Area3D" parent="." unique_id=1809421967]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=184316297]
-shape = SubResource("BoxShape3D_1qyrg")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=912978382]
-emitting = false
-amount = 50
-lifetime = 3.0
-one_shot = true
-speed_scale = 3.99
-explosiveness = 1.0
-randomness = 0.07
-process_material = SubResource("ParticleProcessMaterial_lx2ai")
-draw_pass_1 = SubResource("QuadMesh_e3ddh")
-
-[node name="checker" type="Area3D" parent="." unique_id=483792200]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="checker" unique_id=1177336879]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0028686523, 0.6156311, -0.011642456)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" index="0" unique_id=904995517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005722046, 0.0011291504, -0.0023498535)
 shape = SubResource("BoxShape3D_hwta1")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="body_entered" from="checker" to="." method="_on_checker_body_entered"]
-[connection signal="body_exited" from="checker" to="." method="_on_checker_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

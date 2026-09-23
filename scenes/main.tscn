@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bx2fot2sqqx1w" path="res://Nodes/playerNodes/character.tscn" id="1_0wfyh"]
 [ext_resource type="AudioStream" uid="uid://bnfix51xqfnvq" path="res://Sounds & music/Music/packrats 1.mp3" id="2_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/base_box.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/SpawnLocal.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bc3lggrf0wc68" path="res://flat_rat_file.tscn" id="4_tipki"]
 [ext_resource type="MeshLibrary" uid="uid://fxnior5cld4f" path="res://models/GridMap/GridMesh5.tres" id="5_a8y0u"]
 [ext_resource type="Script" uid="uid://bjq3rcdygf16h" path="res://scenes/path_3d.gd" id="6_o6xl0"]
@@ -351,74 +351,60 @@ omni_attenuation = 0.398
 
 [node name="Moveables" type="Node" parent="." unique_id=1676812572]
 
-[node name="baseBox" parent="Moveables" unique_id=1053126355 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.904934, 2.5452023, -20.03878)
-
-[node name="baseBox2" parent="Moveables" unique_id=1457221616 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.904934, 3.6236959, -20.03878)
-
-[node name="baseBox3" parent="Moveables" unique_id=492600471 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 2.5452023, -20.03878)
-
-[node name="baseBox4" parent="Moveables" unique_id=1942584332 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 3.6236959, -20.03878)
-
-[node name="baseBox5" parent="Moveables" unique_id=1380026984 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 2.5452023, -20.03878)
-
-[node name="baseBox6" parent="Moveables" unique_id=426560468 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 3.6236959, -20.03878)
-
-[node name="baseBox7" parent="Moveables" unique_id=2019509706 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 2.5452023, -22.762148)
-
-[node name="baseBox8" parent="Moveables" unique_id=896619921 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.322061, 3.6236959, -22.762148)
-
-[node name="baseBox9" parent="Moveables" unique_id=1575094063 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 2.5452023, -22.762148)
-
-[node name="baseBox10" parent="Moveables" unique_id=1504277921 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629898, 3.6236959, -22.762148)
-
-[node name="baseBox14" parent="Moveables" unique_id=1269406698 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 5.035442, -8.544352)
-abilityListTier1 = ["ammobox"]
-abilityListTier2 = ["ammobox"]
-abilityListTier3 = ["ammobox"]
-abilityListTier4 = ["ammobox"]
-abilityListTier5 = ["ammobox"]
-
-[node name="baseBox15" parent="Moveables" unique_id=1591471606 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 4.000913, -8.544352)
-abilityListTier1 = ["SixShooter"]
-abilityListTier2 = ["SixShooter"]
-abilityListTier3 = ["SixShooter"]
-abilityListTier4 = ["SixShooter"]
-abilityListTier5 = ["SixShooter"]
-
-[node name="baseBox16" parent="Moveables" unique_id=1309832045 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 3.2093449, -8.544352)
-abilityListTier1 = ["DoubleBarrel"]
-abilityListTier2 = ["DoubleBarrel"]
-abilityListTier3 = ["DoubleBarrel"]
-abilityListTier4 = ["DoubleBarrel"]
-abilityListTier5 = ["DoubleBarrel"]
-
-[node name="baseBox17" parent="Moveables" unique_id=1257791389 instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4174376, 2.2393613, -8.544352)
-abilityListTier1 = ["AWP"]
-abilityListTier2 = ["AWP"]
-abilityListTier3 = ["AWP"]
-abilityListTier4 = ["AWP"]
-abilityListTier5 = ["AWP"]
-
 [node name="flatRatFile" parent="Moveables" unique_id=296991103 node_paths=PackedStringArray("player") instance=ExtResource("4_tipki")]
 transform = Transform3D(0.53657144, 0, 0.5933727, 0, 0.8, 0, -0.5933727, 0, 0.53657144, -15.187791, 1.8329256, -8.27226)
 player = NodePath("../../CharacterBody3D")
 
 [node name="Basketball" parent="Moveables" unique_id=1791562658 instance=ExtResource("15_jkv2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.344176, 0.99075884, -38.35047)
+
+[node name="baseBox" parent="Moveables" unique_id=197679456 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.092699, 2.8595457, -4.9057827)
+
+[node name="baseBox2" parent="Moveables" unique_id=557948007 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.092699, 2.8595457, -3.6363852)
+
+[node name="baseBox3" parent="Moveables" unique_id=204910252 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.092699, 2.8595457, -2.5553453)
+
+[node name="baseBox4" parent="Moveables" unique_id=1383379334 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.092699, 2.8595457, -1.2859478)
+
+[node name="baseBox5" parent="Moveables" unique_id=1341672720 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6231856, 2.8595457, -4.9057827)
+
+[node name="baseBox6" parent="Moveables" unique_id=1252915362 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6231856, 2.8595457, -3.6363852)
+
+[node name="baseBox7" parent="Moveables" unique_id=1260553581 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6231856, 2.8595457, -2.5553453)
+
+[node name="baseBox8" parent="Moveables" unique_id=899764833 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6231856, 2.8595457, -1.2859478)
+
+[node name="baseBox9" parent="Moveables" unique_id=1300561241 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6263905, 2.8595457, -4.9057827)
+
+[node name="baseBox10" parent="Moveables" unique_id=1364019436 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6263905, 2.8595457, -3.6363852)
+
+[node name="baseBox11" parent="Moveables" unique_id=703698243 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6263905, 2.8595457, -2.5553453)
+
+[node name="baseBox12" parent="Moveables" unique_id=974008701 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6263905, 2.8595457, -1.2859478)
+
+[node name="baseBox13" parent="Moveables" unique_id=1501054673 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1568775, 2.8595457, -4.9057827)
+
+[node name="baseBox14" parent="Moveables" unique_id=447219621 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1568775, 2.8595457, -3.6363852)
+
+[node name="baseBox15" parent="Moveables" unique_id=1698804586 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1568775, 2.8595457, -2.5553453)
+
+[node name="baseBox16" parent="Moveables" unique_id=1505143906 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1568775, 2.8595457, -1.2859478)
 
 [node name="RegGrid" type="GridMap" parent="." unique_id=1329582217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1.5, -0.5)
@@ -437,7 +423,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.99983084, 0, -0.0145896785, 0, 0.9999762, 0, 0.01458973, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998306, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589726, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -498,7 +484,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.012621703, 0, -0.99983245, 0, 1, 0, 0.99983245, 0, -0.012621703, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.0126217, 0, -0.9998322, 0, 1, 0, 0.9998322, 0, -0.0126217, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true
