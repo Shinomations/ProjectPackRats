@@ -1,11 +1,11 @@
 extends BaseBox
 
 func _init() -> void:
-	GivenName = "Ammo box"
+	GivenName = "Bag of Clothes"
 	GivenWeight = 10
-	GivenType = "Plastic"
+	GivenType = "Cushion"
 	GivenIncome = 20
-	GivenAbility = "This can Merge with the box Above it \n repeat its merge ability again"
+	GivenAbility = "Merge with the box below this, it gains +50 income"
 	GivenHealth = 30
 	height = 1
 	size = Vector2(1,1)

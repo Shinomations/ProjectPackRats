@@ -8,11 +8,11 @@ var clearedAreas: Array = []
 var usedAbility
 
 func _init() -> void:
-	GivenName = "Ammo box"
-	GivenWeight = 10
-	GivenType = "Plastic"
-	GivenIncome = 20
-	GivenAbility = "This can Merge with the box Above it \n repeat its merge ability again"
+	GivenName = "Tank of Gas"
+	GivenWeight = 500
+	GivenType = "Liquid"
+	GivenIncome = 250
+	GivenAbility = "Passive: Completely cover this to half its Weight and Double its income"
 	GivenHealth = 30
 	height = 1
 	size = Vector2(1,1)

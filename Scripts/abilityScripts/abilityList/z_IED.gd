@@ -2,12 +2,12 @@ extends BaseBox
 var timer = 1
 
 func _init() -> void:
-	GivenName = "Ammo box"
-	GivenWeight = 10
-	GivenType = "Plastic"
-	GivenIncome = 20
-	GivenAbility = "This can Merge with the box Above it \n repeat its merge ability again"
-	GivenHealth = 30
+	GivenName = "IED"
+	GivenWeight = 75
+	GivenType = "Metal"
+	GivenIncome = 250
+	GivenAbility = "When Loaded: the next box you load gets destroyed"
+	GivenHealth = 100
 	height = 1
 	size = Vector2(1,1)
 	canBeDestroyed = true

@@ -3,12 +3,12 @@ var surroundingBoxes: Array = []
 var shots = 6
 
 func _init() -> void:
-	GivenName = "Ammo box"
-	GivenWeight = 10
+	GivenName = "Six Shooter Case"
+	GivenWeight = 75
 	GivenType = "Plastic"
-	GivenIncome = 20
-	GivenAbility = "This can Merge with the box Above it \n repeat its merge ability again"
-	GivenHealth = 30
+	GivenIncome = 100
+	GivenAbility = "When merged with: Fire 6 shots at adjacent boxes, each gets -10 weight"
+	GivenHealth = 50
 	height = 1
 	size = Vector2(1,1)
 	canBeDestroyed = true
@@ -25,10 +25,11 @@ func MergeAbility():
 	var rnd
 	var picked:Array = []
 	for i in shots:
-		rnd = surroundingBoxes.pick_random()
-		picked.append(rnd)
-		print(rnd.GivenName)
-	
+		if not surroundingBoxes.is_empty():
+			rnd = surroundingBoxes.pick_random()
+			picked.append(rnd)
+		else:
+			picked.append(self)
 	for i in picked:
 		if shots > 0:
 			i.GivenWeight -= 10

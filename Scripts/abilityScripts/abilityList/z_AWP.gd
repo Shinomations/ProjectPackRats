@@ -4,11 +4,11 @@ var surroundingBoxes: Array[Node3D] = []
 
 
 func _init() -> void:
-	GivenName = "Anvil"
-	GivenWeight = 1000
-	GivenType = "Wooden"
-	GivenIncome = 1000
-	GivenAbility = "This Heavy AF"
+	GivenName = "AWP"
+	GivenWeight = 375
+	GivenType = "Plastic"
+	GivenIncome = 450
+	GivenAbility = "When merged with: Shoot 1 shot infront of this, everything hit gets -100 weight"
 	GivenHealth = 500
 	height = 2
 	size = Vector2(2,2)

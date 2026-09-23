@@ -1,5 +1,7 @@
 extends Area3D
 
+@onready var weightRef = $NewTruck/TruckBody/Plane_002/Label3D2
+@onready var incomeRef = $NewTruck/TruckBody/Plane_001/Label3D
 var remainingCapacity: float = 1.0
 @export var capacityNeededTooLeave = 0.10
 var TotalScore: float = 0.0
@@ -76,7 +78,11 @@ func _on_body_exited(body: Node3D) -> void:
 		return
 	
 	print(remainingCapacity)
-func updateCapacity(relativeChange: float, action: String) -> void:
+func _process(_delta: float) -> void:
+	if weightRef.WeightLeft <= 0:
+		LeavingPath.loadingEnded()
+func updateCapacity(relativeChange: float, _action: String) -> void:
+	
 	remainingCapacity += relativeChange
 
 
