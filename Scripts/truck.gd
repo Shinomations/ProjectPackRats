@@ -14,7 +14,7 @@ var bodySelected
 @export var LeavingPath: Path3D
 var boxesInTruck:Array = []
 var player
-
+var somethingInFront
 func getBoxVolume(node: Node3D) -> float:
 	for child in node.get_children():
 		if child is CollisionShape3D and child.shape is BoxShape3D:
@@ -78,9 +78,7 @@ func _on_body_exited(body: Node3D) -> void:
 		return
 	
 	print(remainingCapacity)
-func _process(_delta: float) -> void:
-	if weightRef.WeightLeft <= 0:
-		LeavingPath.loadingEnded()
+
 func updateCapacity(relativeChange: float, _action: String) -> void:
 	
 	remainingCapacity += relativeChange
@@ -88,3 +86,16 @@ func updateCapacity(relativeChange: float, _action: String) -> void:
 
 func updateScore(score: float) -> void:
 	TotalScore += score
+
+
+func _on_your_gonna_hit_them_body_entered(body: Node3D) -> void:
+	print("bodies is this" + str(body))
+	if body != self and (body.is_in_group("boxes") or body.is_in_group("player")):
+		somethingInFront = true
+	else:
+		somethingInFront = false
+
+
+func _on_your_gonna_hit_them_body_exited(body: Node3D) -> void:
+	
+	LeavingPath.loadingEnded()

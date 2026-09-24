@@ -10,7 +10,7 @@ func _ready() -> void:
 func update():
 	
 	var totalWeight = 100
-	
+
 	for i in parent:
 		#income calculations
 		
@@ -18,3 +18,7 @@ func update():
 			totalWeight -= i.GivenWeight
 		
 	text = "Weight Capacity:" + str(totalWeight)
+	
+	WeightLeft = totalWeight
+	if WeightLeft <= 0:
+		area_3d.LeavingPath.loadingEnded()

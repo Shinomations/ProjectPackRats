@@ -1838,6 +1838,11 @@ animation = &"ChudSit"
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
 size = Vector3(1, 4.694336, 4.20166)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhy47"]
+size = Vector3(11.241211, 2.256836, 3.9383545)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwta1"]
+
 [node name="Area3D" type="Area3D" unique_id=1534882941 groups=["truck"]]
 collision_layer = 16
 collision_mask = 4
@@ -4995,5 +5000,18 @@ anim_player = NodePath("../AnimationPlayer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.843502, 0.7583008, -0.611084)
 shape = SubResource("BoxShape3D_hwta1")
 
+[node name="YOUR GONNA HIT THEM" type="Area3D" parent="." unique_id=553840608]
+collision_layer = 16
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="YOUR GONNA HIT THEM" unique_id=436808976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.438211, -3.231188, -0.6277666)
+shape = SubResource("BoxShape3D_bhy47")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="YOUR GONNA HIT THEM/CollisionShape3D" unique_id=350763145]
+mesh = SubResource("BoxMesh_hwta1")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="YOUR GONNA HIT THEM" to="." method="_on_your_gonna_hit_them_body_entered"]
+[connection signal="body_exited" from="YOUR GONNA HIT THEM" to="." method="_on_your_gonna_hit_them_body_exited"]

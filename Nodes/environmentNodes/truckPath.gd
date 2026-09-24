@@ -2,7 +2,14 @@ extends Path3D
 
 @export var path_follow_3d: PathFollow3D
 @export var truck: Area3D
+var tween: Tween
+var stopPosition = 0.4
+var hadToStop: bool = false
+		
 func loadingEnded():
+	if path_follow_3d:
+		path_follow_3d.progress_ratio = stopPosition
+	
 	truck.player.FinalScore += truck.player.totalScore
 	truck.remainingCapacity = 1.0
 	truck.player.totalScore = 0
@@ -19,11 +26,8 @@ func loadingEnded():
 			
 	truck.boxesInTruck.clear()
 	
-	var tween = create_tween()
-	tween.set_loops(1)
-	
-	tween.tween_property(path_follow_3d, "progress_ratio", 1.0, 3.0)
-	tween.tween_property(path_follow_3d, "progress_ratio", 0.4, 3.0)
+	tween = create_tween()
+	tween.tween_property(path_follow_3d, "progress_ratio", 1.4, 5.0)
 	
 	await tween.finished
 	
@@ -31,5 +35,7 @@ func loadingEnded():
 		truck.body_entered.connect(truck._on_body_entered)
 	if not truck.body_exited.is_connected(truck._on_body_exited):
 		truck.body_exited.connect(truck._on_body_exited)
+	
+	stopPosition = 0.4
 	
 	truck.player.areThereStillBoxes()
