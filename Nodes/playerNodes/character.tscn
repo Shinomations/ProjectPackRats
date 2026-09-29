@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=4 uid="uid://bx2fot2sqqx1w"]
+[gd_scene format=4 uid="uid://bx2fot2sqqx1w"]
 
 [ext_resource type="Script" uid="uid://btc2onsn5ii4" path="res://Scripts/character.gd" id="1_umwsb"]
 [ext_resource type="Texture2D" uid="uid://bqrqhlvbels8u" path="res://models/RatPlayer/ratrun (3)_RatDude.png" id="2_bpea0"]
-[ext_resource type="PackedScene" uid="uid://vbcjky4lo36k" path="res://game_finish_screen.tscn" id="4_34xvd"]
+[ext_resource type="PackedScene" uid="uid://vbcjky4lo36k" path="res://Nodes/playerNodes/game_finish_screen.tscn" id="4_34xvd"]
 [ext_resource type="PackedScene" uid="uid://bmg8q2yr6vsm3" path="res://Scripts/stat_screen.tscn" id="4_43fmg"]
 [ext_resource type="Texture2D" uid="uid://d3dyeyywpdrfc" path="res://Sprites & images/cursor-sprites/bubble.png" id="5_34xvd"]
 [ext_resource type="Script" uid="uid://bit085pcio7ej" path="res://Scripts/cursor.gd" id="5_cko0d"]
-[ext_resource type="PackedScene" path="res://text_boxes.tscn" id="7_ser6f"]
+[ext_resource type="PackedScene" uid="uid://bmmceopakuqws" path="res://Nodes/playerNodes/text_boxes.tscn" id="7_ser6f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 radius = 0.3

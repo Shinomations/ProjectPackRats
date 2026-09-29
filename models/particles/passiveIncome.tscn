@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bpvwubx7huqtp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwta1"]
+emission_shape_scale = Vector3(1.4, 1, 1.4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, 0)
+rotation_3d_max = Vector3(0, 360, 0)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0.51, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwf71"]
+albedo_color = Color(0.4, 1, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_3wuok"]
+material = SubResource("StandardMaterial3D_rwf71")
+text = "+"
+font_size = 40
+
+[node name="PassiveParticles" type="GPUParticles3D" unique_id=82377675]
+process_material = SubResource("ParticleProcessMaterial_hwta1")
+draw_pass_1 = SubResource("TextMesh_3wuok")

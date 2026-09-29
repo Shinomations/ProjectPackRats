@@ -10,6 +10,9 @@ radius = 0.27392578
 
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_sdmdp")]
 script = ExtResource("2_ebpa1")
+FallingSquash = Vector3(1.7, 1.1, 1.7)
+landingSquash = Vector3(2.3, 0.5, 2.3)
+EndSquash = Vector3(2, 1, 2)
 
 [node name="pallet" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=556464624 instance=ExtResource("2_tfy3b")]
 transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, 0.5, 0)

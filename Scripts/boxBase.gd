@@ -1,9 +1,22 @@
 extends CharacterBody3D
 class_name BaseBox
 
+#particle preloads
+var particleInstance
+@onready var particleParent = $Node3D
+@export var allParticles: Dictionary[String, PackedScene] = {
+	"Place": null,
+	"Destroyed": null,
+	"Income+": null,
+	"Passive Income+": null,
+	"Health+": null,
+	"Passive Health+": null,
+	"Weight+": null,
+	"Passive Weight+": null
+}
+
 #shared references
 @onready var boxbasic1 = $CollisionShape3D
-@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 @onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
 
 #overwritable by new box
@@ -13,7 +26,9 @@ var GivenType = "Cardboard"
 var GivenIncome = 0
 var GivenAbility = "What should this do"
 var GivenHealth = 100
-
+@export var FallingSquash: Vector3 = Vector3(0.7,1.1,0.7)
+@export var landingSquash: Vector3 = Vector3(1.3,0.5,1.3)
+@export var EndSquash: Vector3 = Vector3(1.0,1.0,1.0)
 #shared variables
 var CollectedWeight = 0
 var selected = false
@@ -41,8 +56,6 @@ var canMove:bool = true
 var canReroll:bool = true
 var isPickUpable:bool = true
 
-
-
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -51,9 +64,11 @@ func _ready():
 	add_to_group("boxes")
 func _process(_delta):
 	CollectedWeight = 0
+	
 	for i in boxesAboveThis:
 		CollectedWeight += i.GivenWeight + i.CollectedWeight
-
+	
+	
 	if GivenWeight < 0:
 		gravity = -9.8
 	else:
@@ -79,17 +94,17 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(mesh2Animate,"scale", Vector3(0.7,1.1,0.7), 1)
-				gpu_particles_3d.emitting = false
+				squashTween.tween_property(mesh2Animate,"scale", FallingSquash, 1)
+				
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
 		splatted = true
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(1.3,0.5,1.3), 0.1)
-		squashTween.tween_property(mesh2Animate,"scale", Vector3(1,1,1), 0.2)
-		gpu_particles_3d.emitting = true
+		squashTween.tween_property(mesh2Animate,"scale", landingSquash, 0.1)
+		squashTween.tween_property(mesh2Animate,"scale", EndSquash, 0.2)
+		emitParticles("Place",global_position)
 		velocity.y = 0
 		
 	if gravity < 0 and not is_on_ceiling():
@@ -115,3 +130,20 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("boxes") and boxesAboveThis.has(body):
 		boxesAboveThis.erase(body)
 		print(body.GivenName)
+
+func emitParticles(particleByName: String,startPosition: Vector3):
+	if not allParticles.has(particleByName) and not particleByName:
+		return
+		
+	var particleScene: PackedScene = allParticles[particleByName]
+	print(str(GivenName) + str(particleScene))
+	particleInstance = particleScene.instantiate()
+	
+	particleParent.add_child(particleInstance)
+	particleInstance.global_position = startPosition
+	
+	particleInstance.emitting = true
+	
+	if particleInstance.one_shot:
+		particleInstance.finished.connect(particleInstance.queue_free)
+	pass

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bc3lggrf0wc68"]
 
-[ext_resource type="Script" uid="uid://cqeagd2155tbv" path="res://text_boxes.gd" id="2_niv1k"]
+[ext_resource type="Script" uid="uid://cqeagd2155tbv" path="res://Scripts/text_boxes.gd" id="2_niv1k"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="3_clbeb"]
 [ext_resource type="Texture2D" uid="uid://c4m38fih0kgyi" path="res://models/Clients/cam/Cam_Cam.png" id="3_pm2cj"]
 

@@ -9,6 +9,7 @@ size = Vector3(0.30151367, 0.25097656, 0.33813477)
 
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_4k0vj")]
 script = ExtResource("1_suqdm")
+EndSquash = Vector3(1, 2, 1)
 
 [node name="MeshInstance3D" parent="CollisionShape3D" parent_id_path=PackedInt32Array(502075580) index="0" unique_id=935560228]
 transform = Transform3D(1.01, 0, 0, 0, 1, 0, 0, 0, 1.01, -0.004697898, 0.0013625097, -0.002663363)
