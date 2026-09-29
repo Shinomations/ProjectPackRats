@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bpvwubx7huqtp"]
 
+[ext_resource type="Texture2D" uid="uid://b86oqsjp5twea" path="res://Sprites & images/IncomeSymbol.png" id="1_mroab"]
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwta1"]
 emission_shape_scale = Vector3(1.4, 1, 1.4)
 emission_shape = 3
@@ -11,14 +13,21 @@ direction = Vector3(0, 0, 0)
 spread = 180.0
 gravity = Vector3(0, 0.51, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwf71"]
-albedo_color = Color(0.4, 1, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du3q7"]
+transparency = 1
+albedo_texture = ExtResource("1_mroab")
+emission_enabled = true
+emission = Color(0.6354687, 0.5861541, 0, 1)
+emission_energy_multiplier = 5.0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="TextMesh" id="TextMesh_3wuok"]
-material = SubResource("StandardMaterial3D_rwf71")
-text = "+"
-font_size = 40
+[sub_resource type="QuadMesh" id="QuadMesh_6hi53"]
+material = SubResource("StandardMaterial3D_du3q7")
+size = Vector2(0.5, 0.5)
 
 [node name="PassiveParticles" type="GPUParticles3D" unique_id=82377675]
 process_material = SubResource("ParticleProcessMaterial_hwta1")
-draw_pass_1 = SubResource("TextMesh_3wuok")
+draw_pass_1 = SubResource("QuadMesh_6hi53")

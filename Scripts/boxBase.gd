@@ -146,4 +146,10 @@ func emitParticles(particleByName: String,startPosition: Vector3):
 	
 	if particleInstance.one_shot:
 		particleInstance.finished.connect(particleInstance.queue_free)
+
+
+func incomeHandler(Passivness: int,Amount: int = 0):
+	if Passivness == 0:
+		GivenIncome += Amount
+		return
 	pass
