@@ -1847,6 +1847,7 @@ size = Vector3(11.241211, 2.256836, 3.9383545)
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_rnsmv")
+capacityNeededTooLeave = 0.9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1834553215]
 transform = Transform3D(0.9999991, 0, 0, 0, 0.9999991, 0, 0, 0, 0.9999991, -0.3168166, 0.84997475, -0.6339106)

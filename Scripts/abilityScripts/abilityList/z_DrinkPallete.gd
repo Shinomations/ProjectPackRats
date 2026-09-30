@@ -15,11 +15,10 @@ func _init() -> void:
 func _on_area_3d_2_body_entered(body: Node3D) -> void:
 	if body.is_in_group("boxes") and body != self:
 		boxesAboveThis.append(body)
-		body.GivenIncome += 100
+		body.incomeHandler(100,2)
 
 
 func _on_area_3d_2_body_exited(body: Node3D) -> void:
 	if body.is_in_group("boxes") and boxesAboveThis.has(body):
 		boxesAboveThis.erase(body)
-		print(body.GivenName)
-		body.GivenIncome -= 100
+		body.incomeHandler(-100,0)

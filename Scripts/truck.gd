@@ -3,7 +3,7 @@ extends Area3D
 @onready var weightRef = $NewTruck/TruckBody/Plane_002/Label3D2
 @onready var incomeRef = $NewTruck/TruckBody/Plane_001/Label3D
 var remainingCapacity: float = 1.0
-@export var capacityNeededTooLeave = 0.10
+@export var capacityNeededTooLeave = 0.90
 var TotalScore: float = 0.0
 var truckTextUpdate
 var truckTextUpdate2
@@ -32,9 +32,7 @@ func getBoxScore(node: Node3D) -> float:
 func _ready() -> void:
 	truckTextUpdate = find_child("Label3D")
 	truckTextUpdate2 = find_child("Label3D2")
-	player = get_tree().get_first_node_in_group("player")
-	print(LeavingPath)
-	
+	player = get_tree().get_first_node_in_group("player")	
 	
 func _on_body_entered(body: Node3D) -> void:
 	bodySelected = body
@@ -59,7 +57,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
 		LeavingPath.loadingEnded()
 	#	player.areThereStillBoxes()
-	print(remainingCapacity)
+
 	
 func _on_body_exited(body: Node3D) -> void:
 
@@ -77,7 +75,7 @@ func _on_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player") or body.is_in_group("truck"):
 		return
 	
-	print(remainingCapacity)
+
 
 func updateCapacity(relativeChange: float, _action: String) -> void:
 	
@@ -86,16 +84,3 @@ func updateCapacity(relativeChange: float, _action: String) -> void:
 
 func updateScore(score: float) -> void:
 	TotalScore += score
-
-
-func _on_your_gonna_hit_them_body_entered(body: Node3D) -> void:
-	print("bodies is this" + str(body))
-	if body != self and (body.is_in_group("boxes") or body.is_in_group("player")):
-		somethingInFront = true
-	else:
-		somethingInFront = false
-
-
-func _on_your_gonna_hit_them_body_exited(body: Node3D) -> void:
-	
-	LeavingPath.loadingEnded()

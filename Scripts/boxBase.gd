@@ -129,12 +129,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("boxes") and boxesAboveThis.has(body):
 		boxesAboveThis.erase(body)
-		print(body.GivenName)
 
 func emitParticles(particleByName: String,startPosition: Vector3):
 	if not allParticles.has(particleByName) and not particleByName:
+		print("doesnt have particle")
 		return
-		
+	particleInstance = null
 	var particleScene: PackedScene = allParticles[particleByName]
 	print(str(GivenName) + str(particleScene))
 	particleInstance = particleScene.instantiate()
@@ -148,8 +148,17 @@ func emitParticles(particleByName: String,startPosition: Vector3):
 		particleInstance.finished.connect(particleInstance.queue_free)
 
 
-func incomeHandler(Passivness: int,Amount: int = 0):
-	if Passivness == 0:
-		GivenIncome += Amount
+func incomeHandler(Amount: int = 0,Passiveness: int = 0):
+	#0 = off
+	#1 = 1 time permanent income
+	#2 = passive
+	if Passiveness == 1:
+		emitParticles("Income+",global_position)
+	elif Passiveness == 2:
+		emitParticles("Passive Income+",global_position)
+	elif Passiveness == 0:
+		if is_instance_valid(particleParent):
+			for i in particleParent.get_children():
+				i.queue_free()
 		return
-	pass
+	GivenIncome += Amount
