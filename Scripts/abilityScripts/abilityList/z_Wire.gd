@@ -14,5 +14,6 @@ func _init() -> void:
 	canBeDestroyed = true
 
 func ability() -> void:
-	Destroyer.GivenIncome *= 2
+	Destroyer.statHandler("Income",Destroyer.GivenIncome,1)
+
 	

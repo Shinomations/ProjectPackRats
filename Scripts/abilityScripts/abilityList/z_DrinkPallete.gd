@@ -21,4 +21,4 @@ func _on_area_3d_2_body_entered(body: Node3D) -> void:
 func _on_area_3d_2_body_exited(body: Node3D) -> void:
 	if body.is_in_group("boxes") and boxesAboveThis.has(body):
 		boxesAboveThis.erase(body)
-		body.statHandler("Income",-100,2)
+		body.statHandler("Income",-100,0)

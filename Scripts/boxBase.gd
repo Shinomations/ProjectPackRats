@@ -80,7 +80,7 @@ func _process(_delta):
 	else:
 		boxbasic1.position.y = 0
 		
-	if GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4:
+	if truck.boxesInTruck.has(self) and (GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4):
 		self.queue_free()
 func _physics_process(delta: float) -> void:
 	if player.pickedObject == self:
@@ -131,7 +131,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		boxesAboveThis.erase(body)
 
 func emitParticles(particleByName: String,startPosition: Vector3):
-	if particleByName == "" or not allParticles.has(particleByName):
+	if particleByName == "" or not allParticles.has(particleByName) and allParticles.find_key(null):
 		print("doesnt have particle")
 		return
 	particleInstance = null
