@@ -7,12 +7,12 @@ var particleInstance
 @export var allParticles: Dictionary[String, PackedScene] = {
 	"Place": null,
 	"Destroyed": null,
-	"Income+": null,
-	"Passive Income+": null,
-	"Health+": null,
-	"Passive Health+": null,
-	"Weight+": null,
-	"Passive Weight+": null
+	"Income": null,
+	"PIncome": null,
+	"Health": null,
+	"PHealth": null,
+	"Weight": null,
+	"PWeight": null
 }
 
 #shared references
@@ -131,12 +131,11 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		boxesAboveThis.erase(body)
 
 func emitParticles(particleByName: String,startPosition: Vector3):
-	if not allParticles.has(particleByName) and not particleByName:
+	if particleByName == "" or not allParticles.has(particleByName):
 		print("doesnt have particle")
 		return
 	particleInstance = null
 	var particleScene: PackedScene = allParticles[particleByName]
-	print(str(GivenName) + str(particleScene))
 	particleInstance = particleScene.instantiate()
 	
 	particleParent.add_child(particleInstance)
@@ -148,17 +147,33 @@ func emitParticles(particleByName: String,startPosition: Vector3):
 		particleInstance.finished.connect(particleInstance.queue_free)
 
 
-func incomeHandler(Amount: int = 0,Passiveness: int = 0):
+func statHandler(Stat2Change: String,Amount: int = 0,Passiveness: int = 0):
+	print_rich( "[color=green] Name: " + GivenName)
+	print_rich( "[color=green] Type: " + GivenType)
+	print_rich( "[color=green] Weight: " + str(GivenWeight))
+	print_rich( "[color=green] Income: " + str(GivenIncome))
+	print_rich( "[color=green] Health: " + str(GivenHealth))
+
 	#0 = off
 	#1 = 1 time permanent income
 	#2 = passive
 	if Passiveness == 1:
-		emitParticles("Income+",global_position)
+		emitParticles(Stat2Change,global_position)
 	elif Passiveness == 2:
-		emitParticles("Passive Income+",global_position)
+		emitParticles("P"+Stat2Change,global_position)
 	elif Passiveness == 0:
 		if is_instance_valid(particleParent):
 			for i in particleParent.get_children():
 				i.queue_free()
 		return
-	GivenIncome += Amount
+	var stat = "Given" + Stat2Change
+	print_rich( "[color=red] Changing stat is " + Stat2Change)
+	print_rich( "[color=red] Amount It should change is" + str(Amount))
+
+	set(stat,get(stat) + Amount)
+
+	print_rich( "[color=pink] Name: " + GivenName)
+	print_rich( "[color=pink] Type: " + GivenType)
+	print_rich( "[color=pink] Weight: " + str(GivenWeight))
+	print_rich( "[color=pink] Income: " + str(GivenIncome))
+	print_rich( "[color=pink] Health: " + str(GivenHealth))

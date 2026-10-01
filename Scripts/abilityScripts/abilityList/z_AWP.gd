@@ -27,5 +27,6 @@ func MergeAbility() -> void:
 	for i in surroundingBoxes:
 		if is_instance_valid(i) and "GivenWeight" in i:
 			i.GivenWeight -= 100
-			
+			i.statHandler("Weight",100,1)
+
 	surroundingBoxes.clear()

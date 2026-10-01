@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://brrhwtxu5b6se" path="res://Scripts/abilityScripts/abilityList/z_ammobox.gd" id="1_racmu"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_807sp"]
+[ext_resource type="PackedScene" uid="uid://ck5jqjjt53taq" path="res://models/particles/SimplePlacement.tscn" id="2_lkqyi"]
+[ext_resource type="PackedScene" uid="uid://foaxcnb5hech" path="res://models/particles/InstantIncome.tscn" id="3_nbewq"]
+[ext_resource type="PackedScene" uid="uid://bpvwubx7huqtp" path="res://models/particles/passiveIncome.tscn" id="4_5oa56"]
 [ext_resource type="Texture2D" uid="uid://mmr7kq5xl2jb" path="res://Sprites & images/breathing.png" id="4_lkqyi"]
 [ext_resource type="Texture2D" uid="uid://dods2h0dwpaar" path="res://models/Boxes/ammo_ammo.png" id="4_racmu"]
 
@@ -102,6 +105,16 @@ disable_mode = 1
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_racmu")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": ExtResource("3_nbewq"),
+"PHealth": null,
+"PIncome": ExtResource("4_5oa56"),
+"PWeight": null,
+"Place": ExtResource("2_lkqyi"),
+"Weight": null
+})
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1402025842]
 unique_name_in_owner = true

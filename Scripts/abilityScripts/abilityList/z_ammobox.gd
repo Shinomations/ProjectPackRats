@@ -12,14 +12,15 @@ func _init() -> void:
 	canBeDestroyed = true
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	super(body)
 	if body == self or body.is_in_group("player") or player.pickedObject == self:
 		return
-	
-	if body.is_in_group("boxes") and body != self and truck.boxesInTruck.has(self):
+	if body.is_in_group("boxes") and body != self:
 		boxesAboveThis.append(body)
+		body.statHandler("Income",20,1)
+
 		if body.has_method("MergeAbility"):
 			body.MergeAbility()
-			#body.incomeHandler(20,1)
 
 			await get_tree().create_timer(.2).timeout
 			body.MergeAbility()

@@ -53,13 +53,13 @@ func ability():
 		print("Spots covered: " + str(filledSlotsCount) + "/" + str(totalSlotsCount))
 
 	if boxesLeft == 0 and not usedAbility:
-		GivenWeight /= 2
-		GivenIncome *= 2
+		statHandler("Weight",-250,2)
+		statHandler("Weight",100,2)
 		usedAbility = true
 		print("ACHIEVED: Box is 100% surrounded and covered!")
 		
 	elif boxesLeft > 0 and usedAbility:
-		GivenWeight *= 2
-		GivenIncome /= 2
+		statHandler("Weight",250,0)
+		statHandler("Weight",-100,0)
 		usedAbility = false
 		print("LOST COVERAGE: A spot was uncovered.")

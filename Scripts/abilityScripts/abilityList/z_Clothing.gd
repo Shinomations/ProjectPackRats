@@ -18,6 +18,8 @@ func _on_area_3d_2_body_entered(body: Node3D) -> void:
 	if body.is_in_group("boxes"):
 		if body.has_method("MergeAbility"):
 			body.MergeAbility()
+			
+		body.statHandler("Income",20,1)
 		body.GivenIncome += (GivenIncome + 50)
 		body.GivenWeight += GivenWeight
 		body.GivenHealth += GivenHealth

@@ -28,5 +28,7 @@ func MergeAbility():
 		if shots > 0:
 			i.GivenWeight -= 50
 			shots -= 1
+			i.statHandler("Weight",50,1)
+
 	surroundingBoxes = []
 	shots = 2
