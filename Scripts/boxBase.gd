@@ -55,12 +55,12 @@ var canBeMoved:bool = true
 var canMove:bool = true
 var canReroll:bool = true
 var isPickUpable:bool = true
-
+var hasRun: bool = true
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
 	truck = get_tree().get_first_node_in_group("truck")
-
+	print(GivenName)
 	add_to_group("boxes")
 func _process(_delta):
 	CollectedWeight = 0

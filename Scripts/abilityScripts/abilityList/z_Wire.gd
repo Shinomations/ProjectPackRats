@@ -15,5 +15,3 @@ func _init() -> void:
 
 func ability() -> void:
 	Destroyer.statHandler("Income",Destroyer.GivenIncome,1)
-
-	

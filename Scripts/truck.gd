@@ -48,15 +48,17 @@ func _on_body_entered(body: Node3D) -> void:
 	updateScore(boxScore)
 	player.totalScore = TotalScore
 	
-	if body.has_method("TruckEnterAbilityability"):
-		for i in boxesInTruck:
-			if i.has_method("TruckEnterAbilityability"):
-				i.TruckEnterAbilityability()
-			await get_tree().create_timer(0.5).timeout
-	print("boxes in truck rn: " + str(boxesInTruck.size())," Boxes in world: " + str(get_tree().get_nodes_in_group("boxes").size()))
+	if body.has_method("WhenloadedAbility"):
+		body.WhenloadedAbility()
 	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
+		print("remainingCapacity is" + str(remainingCapacity))
+		print("capacityNeededTooLeave is" + str(capacityNeededTooLeave))
+		print("truckTextUpdate2.WeightLeft is" + str(truckTextUpdate2.WeightLeft))
+		print("boxesInTruck.size() is" + str(boxesInTruck.size()))
+		print("number of boxes in group is " + str(get_tree().get_nodes_in_group("boxes").size()))
+
 		LeavingPath.loadingEnded()
-	#	player.areThereStillBoxes()
+
 
 	
 func _on_body_exited(body: Node3D) -> void:

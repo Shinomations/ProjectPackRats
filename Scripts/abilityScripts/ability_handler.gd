@@ -5,10 +5,12 @@ extends Node3D
 	"Clothing",
 	"SixShooter",
 	"Ammo"
+	
 	#"Beehive" 
 ]
 @export var Tier2 = [
-	"Tungstin"
+	"Tungstin",
+	"AppleCrate"
 	#"IED"
 ]
 @export var Tier3 = [

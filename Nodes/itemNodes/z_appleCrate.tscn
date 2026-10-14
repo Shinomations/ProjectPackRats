@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dh75r1btoahee"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_n6pbp"]
+[ext_resource type="PackedScene" uid="uid://dhyjcewi6wep6" path="res://models/Boxes/appleCrate.glb" id="2_3xcj5"]
+[ext_resource type="Script" uid="uid://dmyj7bjwoibaj" path="res://Scripts/abilityScripts/abilityList/z_AppleCrate.gd" id="2_s53q6"]
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_n6pbp")]
+script = ExtResource("2_s53q6")
+
+[node name="appleCrate" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=1083037245 instance=ExtResource("2_3xcj5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
