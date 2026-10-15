@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://u3lru0xg5k7f"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_srbr3"]
+[ext_resource type="Script" uid="uid://dbgnqiu4djb3t" path="res://Scripts/abilityScripts/abilityList/z_RelicBox.gd" id="2_80g5k"]
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_srbr3")]
+script = ExtResource("2_80g5k")

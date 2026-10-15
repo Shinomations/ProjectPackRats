@@ -13,10 +13,9 @@ func _init() -> void:
 	size = Vector2(1,1)
 	canBeDestroyed = true
 
-func TruckEnterAbilityability():
+func otherBoxLoadedAbility():
 	
 	var honeySpawn = honey.instantiate()
 	
-	speedPack.itemMarker.add_child(honeySpawn)
-	get_tree().current_scene.add_child(honeySpawn)
+	honeySpawn.global_position = speedPack.itemMarker.global_position
 	

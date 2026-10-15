@@ -50,6 +50,11 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	if body.has_method("WhenloadedAbility"):
 		body.WhenloadedAbility()
+		
+	for i in boxesInTruck:
+		if i.has_method("otherBoxLoadedAbility"):
+			i.otherBoxLoadedAbility()
+		
 	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
 		print("remainingCapacity is" + str(remainingCapacity))
 		print("capacityNeededTooLeave is" + str(capacityNeededTooLeave))
