@@ -55,7 +55,7 @@ var canBeMoved:bool = true
 var canMove:bool = true
 var canReroll:bool = true
 var isPickUpable:bool = true
-var hasRun: bool = true
+var hasRun: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -136,6 +136,8 @@ func emitParticles(particleByName: String,startPosition: Vector3):
 		return
 	particleInstance = null
 	var particleScene: PackedScene = allParticles[particleByName]
+	if not particleScene:
+		return
 	particleInstance = particleScene.instantiate()
 	
 	particleParent.add_child(particleInstance)

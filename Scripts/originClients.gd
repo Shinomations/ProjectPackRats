@@ -1,7 +1,8 @@
 extends Node3D
+class_name Client
 
 @export var talkingText: Array[String] = []
-@export var player: CharacterBody3D
+
 @export var textBoxDisappearSpeed: int
 @onready var look_at_node: Node3D = $flatRatFile/LookAtNode
 @onready var animation_tree: AnimationTree = $flatRatFile/Cam/AnimationTree
@@ -11,8 +12,12 @@ var clientCounter: int = 0
 var clientsViableUnitsManager: Array[CharacterBody3D] = []
 var close = false
 var npcTextToEdit
+var player
+var truck
+var CompletedAbility: bool
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	truck = get_tree().get_first_node_in_group("truck")
 	npcTextToEdit = player.npcChatBox.get_child(1).get_child(0).get_child(0)
 	
 func _process(_delta: float) -> void:

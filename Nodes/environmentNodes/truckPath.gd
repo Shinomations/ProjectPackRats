@@ -5,15 +5,25 @@ extends Path3D
 var tween: Tween
 var stopPosition = 0.4
 var hadToStop: bool = false
-		
+var player
+var client
+
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
+	pass
 func loadingEnded():
+	if not client:
+		client = get_tree().get_first_node_in_group("clients")
+		
+	if client.has_method("beforeAbility"):
+		client.beforeAbility()
+	
 	if path_follow_3d:
 		path_follow_3d.progress_ratio = stopPosition
 	
-	truck.player.FinalScore += truck.player.totalScore
+	player.FinalScore += player.totalScore
 	truck.remainingCapacity = 1.0
-	truck.player.totalScore = 0
-	
+	player.totalScore = 0
 	if truck.body_entered.is_connected(truck._on_body_entered):
 		truck.body_entered.disconnect(truck._on_body_entered)
 	if truck.body_exited.is_connected(truck._on_body_exited):
@@ -38,4 +48,6 @@ func loadingEnded():
 	
 	stopPosition = 0.4
 	
-	truck.player.areThereStillBoxes()
+	player.areThereStillBoxes()
+	if client.has_method("afterAbility"):
+		client.afterAbility()

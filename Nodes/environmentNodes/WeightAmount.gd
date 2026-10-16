@@ -8,15 +8,13 @@ func _ready() -> void:
 
 
 func update():
-	
-
+	var weightInTruck = 5000
 
 	for i in parent:
-		#income calculations
-		
+		#weight calculations
 		if is_instance_valid(i):
-			WeightLeft -= i.GivenWeight
-
+			weightInTruck -= i.GivenWeight
+	WeightLeft = weightInTruck
 	text = "Weight Capacity:" + str(WeightLeft)
 	
 

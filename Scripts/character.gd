@@ -42,7 +42,8 @@ var health: int
 
 var cell_size: float = 1.0
 var gridPos: Vector3 = Vector3.ZERO
-var original_grid_pos: Vector3 = Vector3.ZERO # Tracks where an item came from
+var original_grid_pos: Vector3 = Vector3.ZERO
+var usedTruckCount: int = 0
 #var  GPU: GPUParticles3D = null
 ## THIS IS FOR THE PLACE DOWN EFFECTS^^
 ## player is a group so this class is referencable in other scripts
@@ -276,7 +277,8 @@ func areThereStillBoxes() -> bool:
 		print("truck Multi before is: " + str(finalScreen.trucksMulti))
 		finalScreen.trucksMulti -= 1
 		print("truck Multi is: " + str(finalScreen.trucksMulti))
-		
+		usedTruckCount += 1
+		client.afterAbility(usedTruckCount)
 		truck.remainingCapacity = 1.0
 		
 	return true

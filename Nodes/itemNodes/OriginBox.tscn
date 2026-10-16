@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://frl75j4uy5y7"]
 
-[ext_resource type="Script" uid="uid://dlw11w20cnhat" path="res://Scripts/boxBase.gd" id="1_r22hx"]
+[ext_resource type="Script" uid="uid://dlw11w20cnhat" path="res://Scripts/originBox.gd" id="1_r22hx"]
 [ext_resource type="PackedScene" uid="uid://ck5jqjjt53taq" path="res://models/particles/SimplePlacement.tscn" id="2_6firn"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="2_7qg7n"]
 [ext_resource type="PackedScene" uid="uid://foaxcnb5hech" path="res://models/particles/InstantIncome.tscn" id="3_xr7g6"]
