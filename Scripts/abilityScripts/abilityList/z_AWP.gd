@@ -11,7 +11,7 @@ func _init() -> void:
 	GivenAbility = "When merged with: Shoot 1 shot infront of this, everything hit gets -100 weight"
 	GivenHealth = 500
 	height = 2
-	size = Vector2(2,2)
+	size = Vector3(3,1,1)
 	canBeDestroyed = true
 	
 

@@ -9,7 +9,6 @@ func _init() -> void:
 	GivenAbility = "When Loaded: the next box you load gets destroyed"
 	GivenHealth = 100
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func TruckEnterAbilityability():

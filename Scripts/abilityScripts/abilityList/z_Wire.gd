@@ -10,7 +10,6 @@ func _init() -> void:
 	GivenAbility = "When Destroyed: Double the Income of the box that destroyed this"
 	GivenHealth = 40
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func ability() -> void:

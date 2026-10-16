@@ -10,7 +10,6 @@ func _init() -> void:
 	GivenAbility = "When another box is loaded: Add a honey clump to the speedpack"
 	GivenHealth = 75
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func otherBoxLoadedAbility():

@@ -8,7 +8,6 @@ func _init() -> void:
 	GivenAbility = "Merge with the box below this, it gains +50 income"
 	GivenHealth = 30
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func _on_area_3d_2_body_entered(body: Node3D) -> void:

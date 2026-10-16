@@ -10,7 +10,6 @@ func _init() -> void:
 	GivenAbility = "Deal 25 damage once to all units placed next to this"
 	GivenHealth = 55
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func _on_area_3d_2_body_entered(body: Node3D) -> void:

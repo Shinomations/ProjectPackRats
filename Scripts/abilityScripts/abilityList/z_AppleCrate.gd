@@ -8,7 +8,6 @@ func _init() -> void:
 	GivenAbility = "When Loaded: For each Organic Unit in the truck \n give this +10 Income and Health"
 	GivenHealth = 75
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 	
 func WhenloadedAbility():

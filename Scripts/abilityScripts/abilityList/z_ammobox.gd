@@ -8,7 +8,6 @@ func _init() -> void:
 	GivenAbility = "This can Merge with the box Above it \n repeat its merge ability again"
 	GivenHealth = 30
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

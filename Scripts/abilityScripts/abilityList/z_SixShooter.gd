@@ -10,7 +10,6 @@ func _init() -> void:
 	GivenAbility = "When merged with: Fire 6 shots at adjacent boxes, each gets -10 weight"
 	GivenHealth = 50
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 
 func _on_area_3d_2_body_entered(body: Node3D) -> void:

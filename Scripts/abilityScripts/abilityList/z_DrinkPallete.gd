@@ -8,7 +8,7 @@ func _init() -> void:
 	GivenAbility = "Passive: All boxes above this get +100 Income"
 	GivenHealth = 600
 	height = 1
-	size = Vector2(1,1)
+	size = Vector3(2,2,1)
 	canBeDestroyed = true
 	
 

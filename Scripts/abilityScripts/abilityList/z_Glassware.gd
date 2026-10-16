@@ -8,7 +8,6 @@ func _init() -> void:
 	GivenAbility = "If anything is placed above this, destroy this"
 	GivenHealth = 50
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = true
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != self and body is CharacterBody3D or body is RigidBody3D:

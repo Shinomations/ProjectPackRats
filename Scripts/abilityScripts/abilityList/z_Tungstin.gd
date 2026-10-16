@@ -6,7 +6,6 @@ func _init() -> void:
 	GivenType = "Metal"
 	GivenIncome = 100
 	GivenAbility = "Passive: This Cannot be destroyed"
-	GivenHealth = 999999
+	GivenHealth = 1
 	height = 1
-	size = Vector2(1,1)
 	canBeDestroyed = false
