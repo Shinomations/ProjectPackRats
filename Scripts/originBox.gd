@@ -12,7 +12,8 @@ var particleInstance
 	"Health": null,
 	"PHealth": null,
 	"Weight": null,
-	"PWeight": null
+	"PWeight": null,
+	"Use": null
 }
 
 #shared references
@@ -38,7 +39,7 @@ var truck
 var outlineWidth = 0.05
 var height = 1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@export var size: Vector3 = Vector3(1,1,1)
+@export var size: Vector3 = scale
 @export var offset: Vector3 = Vector3.ZERO
 var squashTween: Tween = null
 var splatted: bool = false
@@ -94,7 +95,7 @@ func _physics_process(delta: float) -> void:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(mesh2Animate,"scale", FallingSquash * size, 1)
+				squashTween.tween_property(self,"scale", FallingSquash * size, 1)
 				
 		
 	elif is_on_floor() and gravity > 0 and not splatted:
@@ -102,8 +103,8 @@ func _physics_process(delta: float) -> void:
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(mesh2Animate,"scale", landingSquash * size, 0.1)
-		squashTween.tween_property(mesh2Animate,"scale", EndSquash * size, 0.2)
+		squashTween.tween_property(self,"scale", landingSquash * size, 0.1)
+		squashTween.tween_property(self,"scale", EndSquash * size, 0.2)
 		emitParticles("Place",global_position)
 		velocity.y = 0
 		
@@ -114,6 +115,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 func _set_selected(object):
 	selected = self == object
+	
 	
 #func get_rect():
 	#var objectPosition = Vector2(

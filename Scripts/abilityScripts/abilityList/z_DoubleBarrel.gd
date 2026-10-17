@@ -11,7 +11,7 @@ func _init() -> void:
 	GivenAbility = "When Merge with: Shoot 2 shots at surrounding boxes give them -50 weight"
 	GivenHealth = 100
 	height = 1
-	size = Vector3(2,1,1)
+	size = Vector3(1,2,1)
 	canBeDestroyed = true
 	
 

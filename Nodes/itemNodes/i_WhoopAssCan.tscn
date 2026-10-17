@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://gdhr3cltmy1f"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_bwyxn"]
+[ext_resource type="PackedScene" uid="uid://foaxcnb5hech" path="res://models/particles/InstantIncome.tscn" id="2_f2ul3"]
+[ext_resource type="Script" uid="uid://iash6au5h1sp" path="res://Scripts/abilityScripts/abilityList/i_WhoopAssCan.gd" id="2_gmioo"]
+[ext_resource type="PackedScene" uid="uid://bpvwubx7huqtp" path="res://models/particles/passiveIncome.tscn" id="3_5dm83"]
+[ext_resource type="PackedScene" uid="uid://ck5jqjjt53taq" path="res://models/particles/SimplePlacement.tscn" id="4_r72io"]
+[ext_resource type="PackedScene" uid="uid://d0rdk7r5o41pm" path="res://models/particles/p_explode.tscn" id="6_5dm83"]
+[ext_resource type="PackedScene" uid="uid://b58cehg4orv18" path="res://models/Boxes/whoopass .glb" id="7_r72io"]
+
+[node name="baseBox" unique_id=1305476861 groups=["items"] instance=ExtResource("1_bwyxn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("2_gmioo")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": ExtResource("2_f2ul3"),
+"PHealth": null,
+"PIncome": ExtResource("3_5dm83"),
+"PWeight": null,
+"Place": ExtResource("4_r72io"),
+"Use": ExtResource("6_5dm83"),
+"Weight": null
+})
+
+[node name="whoopass " parent="." index="3" unique_id=612542715 instance=ExtResource("7_r72io")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

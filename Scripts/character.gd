@@ -27,6 +27,7 @@ var totalScore = 0
 var truck
 var boxes
 var client
+var speedpack
 var FinalScore = 0
 var timeHeld = 0.0
 # Safety trigger flag to prevent infinite screen execution spam
@@ -50,6 +51,7 @@ var usedTruckCount: int = 0
 func _ready():
 	truck = get_tree().get_first_node_in_group("truck")
 	client = get_tree().get_first_node_in_group("clients")
+	speedpack = get_tree().get_first_node_in_group("speedPack")
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	finalScreen.visible = false
@@ -93,7 +95,12 @@ func _input(event):
 		if pickedObject != null:
 			
 			if rayCast.is_colliding():
-				
+				print("dropping...")
+				if collider.is_in_group("speedPack"):
+					print("this should be working but it aint")
+					pickedObject.reparent(speedpack.itemMarker)
+					pickedObject.global_position = speedpack.itemMaker.global_position
+					return
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
 				pickedObject.reparent(get_tree().current_scene)
@@ -103,17 +110,13 @@ func _input(event):
 				pickedObject.reparent(get_tree().current_scene)
 				if pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items"):
 					pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
-
 				
-
 			collisionSet()
 		else:
 			if collider == null:
 				return
 				
 			if collider.is_in_group("boxes") and collider.isPickUpable:
-				var liftBoxPos = GlobalGrid.world_to_grid(collider.global_position, get_object_cell_size(collider))
-				#GlobalGrid.unregister_cell(liftBoxPos)
 				pick_up_object(collider)
 	
 		
@@ -121,6 +124,10 @@ func _input(event):
 		rotateBoxesUp()
 	if Input.is_action_pressed("RotateSide") && holdingobject:
 		rotateBoxesSide()
+		
+	if pickedObject != null and event.is_action_pressed("Use") and pickedObject.has_method("UseAbility"):
+		pickedObject.UseAbility()
+
 func _process(_delta):
 	#update raycast
 	updateRaycastData()
@@ -135,7 +142,6 @@ func updateRaycastData():
 		
 		if pickedObject != null:
 			cell_size = get_object_cell_size(pickedObject)
-			
 			var targetPos = collisionPoint + (collisionNormal * (cell_size / 2))
 			gridPos = GlobalGrid.world_to_grid(targetPos, cell_size)
 			#pickedObject.set_physics_process(true)
@@ -150,11 +156,12 @@ func updateRaycastData():
 func _physics_process(delta: float) -> void:
 	# Preview processing updates 
 	if pickedObject != null and rayCast.is_colliding():
+		
 		previewBox(gridPos)
 		
 	elif pickedObject != null and (pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items")):
-
 		pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
+		
 
 	# Basic Player Physics
 	if not is_on_floor():
@@ -185,9 +192,12 @@ func pick_up_object(object):
 	if not holdingobject:
 		# Disable collision shapes before updating parent links
 		_toggleCollision(object, true)
-		
+
+		object.scale = Vector3(object.scale.x / 2, object.scale.y / 2,object.scale.z / 2)
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
+		rayCast.add_exception(pickedObject)
+
 		# marker = pickedObject.find_child("Marker3D")
 		holdingobject = true
 		var statsNode = null
@@ -239,6 +249,8 @@ func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
 func collisionSet():
 	if pickedObject != null:
 		#Turns back on Collider
+		rayCast.remove_exception(pickedObject)
+		pickedObject.scale = Vector3(pickedObject.scale.x * 2, pickedObject.scale.y * 2,pickedObject.scale.z * 2)
 		_toggleCollision(pickedObject, false)
 		
 		pickedObject.set_collision_layer_value(1, true)

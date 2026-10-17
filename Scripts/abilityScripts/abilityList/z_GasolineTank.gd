@@ -15,7 +15,8 @@ func _init() -> void:
 	GivenAbility = "Passive: Completely cover this to half its Weight and Double its income"
 	GivenHealth = 30
 	height = 2
-	size = Vector3(1,1,2)
+	#length, height, width
+	size = Vector3(1,2,1)
 	canBeDestroyed = true
 	
 func _process(_delta):

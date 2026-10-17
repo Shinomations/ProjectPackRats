@@ -9,12 +9,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ntypx"]
-size = Vector3(0.5141846, 0.5181519, 0.49160156)
+size = Vector3(0.25, 0.25, 0.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4plu"]
 render_priority = 0
 shader = ExtResource("2_7qg7n")
-shader_parameter/outline_width = 0.2750000130625
+shader_parameter/outline_width = 0.400000019
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 next_pass = SubResource("ShaderMaterial_u4plu")
@@ -34,6 +34,7 @@ allParticles = Dictionary[String, PackedScene]({
 "PIncome": ExtResource("4_u17se"),
 "PWeight": null,
 "Place": ExtResource("2_6firn"),
+"Use": null,
 "Weight": null
 })
 
@@ -50,8 +51,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ietqa")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=360825656]
 disable_mode = 1
-collision_layer = 4
-collision_mask = 20
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1048805561]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.0054199174, 0.55810547, -0.013073735)

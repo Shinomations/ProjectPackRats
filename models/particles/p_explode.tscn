@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://d0rdk7r5o41pm"]
+
+[sub_resource type="Gradient" id="Gradient_c6bam"]
+offsets = PackedFloat32Array(0, 0.6742857, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.78039217, 0.039215688, 1, 0.30323282, 0.30323282, 0.30323282, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hyl82"]
+gradient = SubResource("Gradient_c6bam")
+
+[sub_resource type="Gradient" id="Gradient_vo8ke"]
+offsets = PackedFloat32Array(0, 0.771978, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.94509804, 0.8117647, 0, 1, 0.25565878, 0.25565878, 0.25565878, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rwf71"]
+gradient = SubResource("Gradient_vo8ke")
+
+[sub_resource type="Curve" id="Curve_wc6ln"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3wuok"]
+curve = SubResource("Curve_wc6ln")
+
+[sub_resource type="Curve" id="Curve_8vkm1"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.4831462), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g8x7q"]
+curve = SubResource("Curve_8vkm1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bhy47"]
+spread = 180.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_3wuok")
+scale_over_velocity_curve = SubResource("CurveTexture_g8x7q")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_rwf71")
+color_initial_ramp = SubResource("GradientTexture1D_hyl82")
+turbulence_initial_displacement_min = 1.490116e-06
+turbulence_initial_displacement_max = 100.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hwta1"]
+radius = 0.25
+height = 0.5
+radial_segments = 6
+rings = 6
+
+[sub_resource type="Skin" id="Skin_lttt5"]
+bind_count = 20
+bind/0/name = &""
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/1/name = &""
+bind/1/bone = -1
+bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/2/name = &""
+bind/2/bone = -1
+bind/2/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/3/name = &""
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/4/name = &""
+bind/4/bone = -1
+bind/4/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/5/name = &""
+bind/5/bone = -1
+bind/5/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/6/name = &""
+bind/6/bone = -1
+bind/6/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/7/name = &""
+bind/7/bone = -1
+bind/7/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/8/name = &""
+bind/8/bone = -1
+bind/8/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/9/name = &""
+bind/9/bone = -1
+bind/9/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/10/name = &""
+bind/10/bone = -1
+bind/10/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/11/name = &""
+bind/11/bone = -1
+bind/11/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/12/name = &""
+bind/12/bone = -1
+bind/12/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/13/name = &""
+bind/13/bone = -1
+bind/13/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/14/name = &""
+bind/14/bone = -1
+bind/14/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/15/name = &""
+bind/15/bone = -1
+bind/15/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/16/name = &""
+bind/16/bone = -1
+bind/16/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/17/name = &""
+bind/17/bone = -1
+bind/17/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/18/name = &""
+bind/18/bone = -1
+bind/18/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/19/name = &""
+bind/19/bone = -1
+bind/19/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="explode" type="GPUParticles3D" unique_id=615478956]
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bhy47")
+draw_pass_1 = SubResource("SphereMesh_hwta1")
+draw_skin = SubResource("Skin_lttt5")
