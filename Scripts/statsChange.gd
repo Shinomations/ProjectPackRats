@@ -6,7 +6,7 @@ var player: CharacterBody3D = null
 var speedpack
 
 var anim_time: float = 0.00
-var jitteramount: float = 0.03
+var jitteramount: float = 0.0
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -18,18 +18,18 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	# slightly jitters the text for cool animation
-	anim_time += _delta
-	
-	if anim_time >= jitteramount:
-		anim_time = 0.0
-		var offsetx: float = randf_range(-0.67, 0.67)
-		var offsety: float = randf_range(-0.67, 0.67)
-		
-		UnitAbility.position = Vector2(
-			70.0  + offsetx,
-			121.0 + offsety
-		)
-		
+	#anim_time += _delta
+	#
+	#if anim_time >= jitteramount:
+		#anim_time = 0.0
+		#var offsetx: float = randf_range(-0.67, 0.67)
+		#var offsety: float = randf_range(-0.67, 0.67)
+		#
+		#UnitAbility.position = Vector2(
+			#70.0  + offsetx,
+			#121.0 + offsety
+		#)
+		#
 		
 	# Backup check: If player group failed in _ready, try to find it now
 	if not is_instance_valid(player):
