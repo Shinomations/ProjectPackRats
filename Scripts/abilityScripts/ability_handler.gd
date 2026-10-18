@@ -27,7 +27,8 @@ extends Node3D
 ]
 @export var Tier5 = [
 	"anvil",
-	"DrinkPallete"
+	"DrinkPallete",
+	"MobsterCage"
 ]
 var chosen
 var player

@@ -1,12 +1,10 @@
 extends Area3D
 
-@onready var weightRef = $NewTruck/TruckBody/Plane_002/Label3D2
-@onready var incomeRef = $NewTruck/TruckBody/Plane_001/Label3D
+@onready var weightRef = $NewTruck/TruckBody/Plane_002/WeightLabel
+@onready var incomeRef = $NewTruck/TruckBody/Plane_001/incomeLabel
 var remainingCapacity: float = 1.0
-@export var capacityNeededTooLeave = 0.90
+@export var capacityNeededTooLeave = 0.0
 var TotalScore: float = 0.0
-var truckTextUpdate
-var truckTextUpdate2
 var boxVolume
 var boxScore 
 var bodySelected
@@ -19,6 +17,7 @@ func getBoxVolume(node: Node3D) -> float:
 	for child in node.get_children():
 		if child is CollisionShape3D and child.shape is BoxShape3D:
 			var realSize = child.shape.size * node.global_basis.get_scale()
+			print(realSize)
 			return realSize.x * realSize.y * realSize.z
 	return 0.0
 	
@@ -30,8 +29,7 @@ func getBoxScore(node: Node3D) -> float:
 	return 0.0
 	
 func _ready() -> void:
-	truckTextUpdate = find_child("Label3D")
-	truckTextUpdate2 = find_child("Label3D2")
+
 	player = get_tree().get_first_node_in_group("player")	
 	
 func _on_body_entered(body: Node3D) -> void:
@@ -42,8 +40,8 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 		
 	boxesInTruck.append(body)
-	truckTextUpdate.update()
-	truckTextUpdate2.update()
+	incomeRef.update()
+	weightRef.update()
 	updateCapacity(-boxVolume / truckVolume, "entered")
 	updateScore(boxScore)
 	player.totalScore = TotalScore
@@ -53,12 +51,14 @@ func _on_body_entered(body: Node3D) -> void:
 		
 	for i in boxesInTruck:
 		if i.has_method("otherBoxLoadedAbility"):
-			i.otherBoxLoadedAbility()
+			i.otherBoxLoadedAbility(body)
+		if "boxesAlreadyAdded" in i:
+			i.boxesAlreadyAdded.append(body)
 		
-	if remainingCapacity < capacityNeededTooLeave or truckTextUpdate2.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
+	if remainingCapacity < capacityNeededTooLeave or weightRef.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
 		print("remainingCapacity is" + str(remainingCapacity))
 		print("capacityNeededTooLeave is" + str(capacityNeededTooLeave))
-		print("truckTextUpdate2.WeightLeft is" + str(truckTextUpdate2.WeightLeft))
+		print("truckTextUpdate2.WeightLeft is" + str(weightRef.WeightLeft))
 		print("boxesInTruck.size() is" + str(boxesInTruck.size()))
 		print("number of boxes in group is " + str(get_tree().get_nodes_in_group("boxes").size()))
 
@@ -75,10 +75,10 @@ func _on_body_exited(body: Node3D) -> void:
 
 	if body in boxesInTruck:
 		boxesInTruck.erase(body)
-		truckTextUpdate.update()
-		truckTextUpdate2.update()
 	updateCapacity(boxVolume / truckVolume, "exited")
 	updateScore((boxScore))
+	incomeRef.update()
+	weightRef.update()
 	if body.is_in_group("player") or body.is_in_group("truck"):
 		return
 	

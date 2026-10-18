@@ -10,7 +10,7 @@ func _init() -> void:
 	height = 1
 	canBeDestroyed = true
 	
-func otherBoxLoadedAbility():
+func otherBoxLoadedAbility(_body):
 	var box2upgrade = truck.boxesInTruck.pick_random()
 	box2upgrade.GivenHealth += 50
 	pass

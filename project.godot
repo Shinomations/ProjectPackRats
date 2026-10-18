@@ -28,7 +28,6 @@ GlobalGrid="*uid://dj2r845vp1oqx"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -44,6 +43,7 @@ player=""
 clients=""
 speedPack=""
 items=""
+GlobalStats=""
 
 [importer_defaults]
 

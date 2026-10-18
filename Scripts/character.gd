@@ -96,11 +96,11 @@ func _input(event):
 			
 			if rayCast.is_colliding():
 				print("dropping...")
-				if collider.is_in_group("speedPack"):
-					print("this should be working but it aint")
-					pickedObject.reparent(speedpack.itemMarker)
-					pickedObject.global_position = speedpack.itemMaker.global_position
-					return
+				#if collider.is_in_group("speedPack"):
+					#print("this should be working but it aint")
+					#pickedObject.reparent(speedpack.itemMarker)
+					#pickedObject.global_position = speedpack.itemMaker.global_position
+					#return
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
 				pickedObject.reparent(get_tree().current_scene)
@@ -116,7 +116,8 @@ func _input(event):
 			if collider == null:
 				return
 				
-			if collider.is_in_group("boxes") and collider.isPickUpable:
+			if collider.is_in_group("boxes"):
+				
 				pick_up_object(collider)
 	
 		
@@ -189,10 +190,10 @@ func _physics_process(delta: float) -> void:
 ## saves the object 
 func pick_up_object(object):
 
-	if not holdingobject:
+	if not holdingobject and object.isPickUpable:
 		# Disable collision shapes before updating parent links
 		_toggleCollision(object, true)
-
+		
 		object.scale = Vector3(object.scale.x / 2, object.scale.y / 2,object.scale.z / 2)
 		# save the holding object and marks the player as holding an object
 		pickedObject = object

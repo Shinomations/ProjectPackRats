@@ -25,7 +25,6 @@ func _on_area_3d_2_body_entered(body: Node3D) -> void:
 		body.GivenHealth -= 10
 		alreadyHit.append(body)
 	
-
 func _on_area_3d_2_body_exited(body: Node3D) -> void:
 	if surroundingBooster.has(body):
 		surroundingBooster.erase(body)

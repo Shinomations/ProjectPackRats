@@ -1919,7 +1919,7 @@ skeleton = NodePath("")
 use_external_skeleton = true
 external_skeleton = NodePath("../../../../FatRat1/rig_002/Skeleton3D")
 
-[node name="Label3D" type="Label3D" parent="NewTruck/TruckBody/Plane_001" unique_id=330778671]
+[node name="incomeLabel" type="Label3D" parent="NewTruck/TruckBody/Plane_001" unique_id=330778671]
 transform = Transform3D(0, -2.37215, 0, -1.0368999e-07, 0, 2.37215, -2.37215, 0, -1.0368999e-07, -6.935104, 0, -0.42305613)
 pixel_size = 0.009
 text = "$
@@ -1936,7 +1936,7 @@ transform = Transform3D(0, 1.0538963, 0, -1.0538963, 0, 0, 0, 0, 1.0538963, 21.2
 mesh = SubResource("ArrayMesh_si7n8")
 skeleton = NodePath("")
 
-[node name="Label3D2" type="Label3D" parent="NewTruck/TruckBody/Plane_002" unique_id=238300469]
+[node name="WeightLabel" type="Label3D" parent="NewTruck/TruckBody/Plane_002" unique_id=238300469]
 transform = Transform3D(0, -2.37215, 0, -1.0368999e-07, 0, 2.37215, -2.37215, 0, -1.0368999e-07, 1.5279397, 0.96015775, -3.7536173)
 pixel_size = 0.004
 text = "Weight Capacity:

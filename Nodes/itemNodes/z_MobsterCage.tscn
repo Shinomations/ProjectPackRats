@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d1rwciwhrucbc"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_g2p8g"]
+[ext_resource type="Script" uid="uid://csgdmpr5fkvyu" path="res://Scripts/abilityScripts/abilityList/z_MobsterBox.gd" id="2_e3hh7"]
+[ext_resource type="PackedScene" uid="uid://cfs37prujmkcj" path="res://cage.glb" id="3_gm7yx"]
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_g2p8g")]
+script = ExtResource("2_e3hh7")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="cage" parent="." index="3" unique_id=1270590243 instance=ExtResource("3_gm7yx")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, -0.47222638, 0)

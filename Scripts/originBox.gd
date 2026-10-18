@@ -36,6 +36,7 @@ var selected = false
 var player
 var speedPack
 var truck
+var stats
 var outlineWidth = 0.05
 var height = 1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -61,6 +62,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
 	truck = get_tree().get_first_node_in_group("truck")
+	stats = get_tree().get_first_node_in_group("GlobalStats")
 	print(GivenName)
 	add_to_group("boxes")
 func _process(_delta):
@@ -82,6 +84,8 @@ func _process(_delta):
 		boxbasic1.position.y = 0
 		
 	if truck.boxesInTruck.has(self) and (GivenHealth <= 0 or CollectedWeight >= GivenWeight * 4):
+		stats.objectsDestroyed += 1
+		print(stats.objectsDestroyed)
 		self.queue_free()
 func _physics_process(delta: float) -> void:
 	if player.pickedObject == self:
@@ -126,11 +130,17 @@ func _set_selected(object):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("boxes") and body != self:
+		isPickUpable = false
 		boxesAboveThis.append(body)
+	
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("boxes") and boxesAboveThis.has(body):
 		boxesAboveThis.erase(body)
+
+	if boxesAboveThis.is_empty():
+		isPickUpable = true
+
 
 func emitParticles(particleByName: String,startPosition: Vector3):
 	if particleByName == "" or not allParticles.has(particleByName) and allParticles.find_key(null):
@@ -181,3 +191,6 @@ func statHandler(Stat2Change: String,Amount: int = 0,Passiveness: int = 0):
 	print_rich( "[color=pink] Weight: " + str(GivenWeight))
 	print_rich( "[color=pink] Income: " + str(GivenIncome))
 	print_rich( "[color=pink] Health: " + str(GivenHealth))
+
+func changeableAbility():
+	pass
