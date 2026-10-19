@@ -4,8 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_j2o78"]
 [ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="3_7acul"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nofty"]
+size = Vector3(1.2, 1.2, 1.2)
+
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_j2o78")]
 script = ExtResource("1_2wy45")
 
 [node name="box" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=997944423 instance=ExtResource("3_7acul")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Area3D2" type="Area3D" parent="." index="3" unique_id=1897527646]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" index="0" unique_id=2073075147]
+shape = SubResource("BoxShape3D_nofty")
+
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
