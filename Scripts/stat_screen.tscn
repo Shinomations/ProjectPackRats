@@ -1,8 +1,58 @@
 [gd_scene format=3 uid="uid://bmg8q2yr6vsm3"]
 
 [ext_resource type="Script" uid="uid://cm7rqw11n821g" path="res://Scripts/statsChange.gd" id="1_win1s"]
-[ext_resource type="Texture2D" uid="uid://n0c2wdpl05an" path="res://Sprites & images/CheesePageAdjusted.png" id="2_win1s"]
+[ext_resource type="Texture2D" uid="uid://cru8mq5jj555v" path="res://Sprites & images/cheesepagesfileSheet.png" id="2_ni11w"]
 [ext_resource type="FontFile" uid="uid://b3dalhr0c7g13" path="res://Fonts/PixelTactical-AWOx.ttf" id="3_ni11w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chc1i"]
+atlas = ExtResource("2_ni11w")
+region = Rect2(1, 0, 102, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mksxi"]
+atlas = ExtResource("2_ni11w")
+region = Rect2(103, 0, 102, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh7kx"]
+atlas = ExtResource("2_ni11w")
+region = Rect2(205, 0, 102, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g56rv"]
+atlas = ExtResource("2_ni11w")
+region = Rect2(307, 0, 102, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_och6a"]
+atlas = ExtResource("2_ni11w")
+region = Rect2(409, 0, 102, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy35v"]
+atlas = ExtResource("2_ni11w")
+region = Rect2(1, 0, 102, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwta1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chc1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mksxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh7kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g56rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_och6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy35v")
+}],
+"loop": 0,
+"name": &"PageFlip",
+"speed": 7.0
+}]
 
 [node name="StatScreen" type="Control" unique_id=1881396743]
 custom_maximum_size = Vector2(1920, 1080)
@@ -18,38 +68,28 @@ layout_mode = 1
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="background" type="TextureRect" parent="MarginContainer2" unique_id=803795800]
-modulate = Color(0.5370987, 0.5370987, 0.5370987, 0.86200005)
-propagate_maximum_size = true
-clip_contents = true
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(53.975, 56.575)
-offset_transform_position_ratio = Vector2(-0.4, -0.32)
-offset_transform_scale = Vector2(0.232, 0.453)
-texture = ExtResource("2_win1s")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=181323816]
-modulate = Color(1.053091, 1.053091, 1.053091, 1)
-propagate_maximum_size = true
-clip_contents = true
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(61.21, 50.635)
-offset_transform_position_ratio = Vector2(-0.4, -0.32)
-offset_transform_scale = Vector2(0.232, 0.453)
-texture = ExtResource("2_win1s")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer2" unique_id=1476057808]
+position = Vector2(-80, 160)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hwta1")
+animation = &"PageFlip"
+frame = 5
+frame_progress = 1.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=16642072]
 layout_mode = 0
-offset_left = 67.0
-offset_top = 123.0
-offset_right = 479.5
-offset_bottom = 483.0
+offset_left = 4.0000005
+offset_top = 14.0
+offset_right = 416.5
+offset_bottom = 374.0
+scale = Vector2(0.62179756, 0.85010505)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_separation = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("3_ni11w")
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 18
 theme_override_font_sizes/bold_italics_font_size = 18
 theme_override_font_sizes/italics_font_size = 18
