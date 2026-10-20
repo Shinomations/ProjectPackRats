@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d4naij2cmhixo"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_gdb3r"]
+[ext_resource type="Script" uid="uid://dkewknhfk13ki" path="res://Scripts/abilityScripts/abilityList/z_StinkyCheese.gd" id="2_7x3ut"]
+[ext_resource type="PackedScene" uid="uid://dq5j0ke142mxe" path="res://models/Boxes/cheeseWheel.glb" id="3_l1s0p"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ybxp7"]
+top_radius = 0.35546875
+bottom_radius = 0.35546875
+height = 0.18890381
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(1.3, 1.3, 1.3)
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_gdb3r")]
+script = ExtResource("2_7x3ut")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="MeshInstance3D" parent="CollisionShape3D" parent_id_path=PackedInt32Array(502075580) index="0" unique_id=935560228]
+transform = Transform3D(1.0101, 0, 0, 0, 1.0101, 0, 0, 0, 1.0101, -0.004697898, 0.057927858, -0.002663363)
+mesh = SubResource("CylinderMesh_ybxp7")
+
+[node name="cheeseWheel" parent="CollisionShape3D/MeshInstance3D" index="0" unique_id=1592271967 instance=ExtResource("3_l1s0p")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0, -0.05599975, 0)
+
+[node name="Area3D2" type="Area3D" parent="." index="3" unique_id=1957558226]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" index="0" unique_id=1061602273]
+shape = SubResource("BoxShape3D_hwta1")
+
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

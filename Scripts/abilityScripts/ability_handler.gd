@@ -12,8 +12,7 @@ extends Node3D
 @export var Tier2 = [
 	"Tungstin",
 	"AppleCrate",
-	"Cactus",
-	"IED"
+	"Cactus"
 ]
 @export var Tier3 = [
 	"Glassware",
@@ -23,7 +22,9 @@ extends Node3D
 ]
 @export var Tier4 = [
 	"GasolineTank",
-	"AWP"
+	"AWP",
+	"IED",
+	"StinkyCheese"
 ]
 @export var Tier5 = [
 	"anvil",

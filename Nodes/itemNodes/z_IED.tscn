@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4camo45mvr6t" path="res://Scripts/abilityScripts/abilityList/z_IED.gd" id="1_2wy45"]
 [ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_j2o78"]
-[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="3_7acul"]
+[ext_resource type="PackedScene" uid="uid://rerfap0wsu70" path="res://models/Boxes/ied.glb" id="3_oy2gv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nofty"]
 size = Vector3(1.3, 1.3, 1.3)
@@ -10,10 +10,12 @@ size = Vector3(1.3, 1.3, 1.3)
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_j2o78")]
 script = ExtResource("1_2wy45")
 
-[node name="box" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=997944423 instance=ExtResource("3_7acul")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="ied" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=1465585327 instance=ExtResource("3_oy2gv")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Area3D2" type="Area3D" parent="." index="3" unique_id=1897527646]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" index="0" unique_id=2073075147]
 shape = SubResource("BoxShape3D_nofty")
