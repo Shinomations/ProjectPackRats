@@ -12,28 +12,30 @@ func _init() -> void:
 	height = 1
 	canBeDestroyed = true
 
-func otherBoxLoadedAbility(_body):
+func otherBoxLoadedAbility(body):
+	await surroundingboxes.has(body)
 	if truck.boxesInTruck.has(self): 
-		if  timer >= 0:
+		if  timer >= 0 and body != self:
 			timer -= 1
 			GivenAbility = "Timer" + str(timer) + ": Place 2 indestructables next to this; else Destroy all boxes around this"
-			print("Boxes needed" + str(boxesNeeded))
+			print("Boxes needed" + str(surroundingboxes))
 		if timer == 0:
+			surroundingboxes.erase(self)
 			boxesNeeded = 2
 			for i in surroundingboxes:
 				if i.is_in_group("boxes") and not i.canBeDestroyed == true:
 					boxesNeeded -= 1
-					print("Boxes needed" + str(surroundingboxes.GivenName))
 			if boxesNeeded != 0:
 				for i in surroundingboxes:
 					if i.is_in_group("boxes") and i.canBeDestroyed == true:
 						i.queue_free()
+						queue_free()
 		
 
 
 
 func _on_area_3d_2_body_entered(body: Node3D) -> void:
-	if body != self:
+	if body.is_in_group("boxes"):
 		surroundingboxes.append(body)
 
 

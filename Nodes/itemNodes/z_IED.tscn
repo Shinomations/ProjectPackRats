@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="3_7acul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nofty"]
-size = Vector3(1.2, 1.2, 1.2)
+size = Vector3(1.3, 1.3, 1.3)
 
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_j2o78")]
 script = ExtResource("1_2wy45")

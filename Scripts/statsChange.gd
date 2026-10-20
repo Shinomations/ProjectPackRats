@@ -44,15 +44,15 @@ func handle_notes_activation() -> void:
 			"Ability\n" + player.ability + "\n" 
 		)
 		UnitAbility.visible = true
-
-	elif is_instance_valid(player) and player.rayCast.is_colliding() and is_instance_valid(player.collider) and player.collider.is_in_group("boxes"):
+	
+	elif is_instance_valid(player) and player.rayCast.is_colliding() and is_instance_valid(player.collider) and player.collider.is_in_group("boxes") and player.collider is CharacterBody3D:
 		if not notesOpen:
 			notesOpen = true
 			sprite.flip_h = false
 			sprite.play_backwards("PageFlip")
 			await slide(Vector2(195, startPos.y), Tween.TRANS_CUBIC)
 			
-		UnitAbility.text = ( 
+			UnitAbility.text = ( 
 			"Name: " + player.collider.GivenName + "\n" + 
 			"Weight: " + str(player.collider.GivenWeight) + "+ (" + str(player.collider.CollectedWeight) + ")" + "\n" + 
 			"Material: " + player.collider.GivenType + "\n" +
