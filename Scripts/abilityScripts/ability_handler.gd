@@ -2,6 +2,9 @@ extends Node3D
 @export var items = [
 	"WhoopAssCan"
 ]
+@export var Contains = [
+	"supplyDrop"
+]
 @export var Tier1 = [
 	"Nails",
 	"Clothing",
@@ -37,11 +40,13 @@ var randomTier = randi_range(1,5)
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	var ArrayArray = [items,items,items,items,items,Tier1,Tier1,Tier1,Tier1,Tier1,Tier2,Tier2,Tier2,Tier2,Tier3,Tier3,Tier3,Tier4,Tier4,Tier5]
+	var ArrayArray = [Contains,Contains,Contains,items,items,items,items,items,Tier1,Tier1,Tier1,Tier1,Tier1,Tier2,Tier2,Tier2,Tier2,Tier3,Tier3,Tier3,Tier4,Tier4,Tier5]
 	var randomArray = ArrayArray.pick_random()
 	
 	if randomArray == items:
 		chosen = "res://Nodes/itemNodes/i_" + randomArray.pick_random() + ".tscn"
+	elif randomArray == Contains:
+		chosen = "res://Nodes/itemNodes/c_" + randomArray.pick_random() + ".tscn"
 	else:
 		print(randomArray)
 		chosen = "res://Nodes/itemNodes/z_" + randomArray.pick_random() + ".tscn"

@@ -87,20 +87,22 @@ func _input(event):
 
 		rayCast.force_raycast_update()
 		updateRaycastData()
-
+		print(collider)
 		if collider != null and collider.is_in_group("clients"):
 			if(player.npcChatBox.visible == false):
 				collider.revealChatter()
 			return
+		var p = collider
+		print("colliding with " + str(p))
+		if collider != null and collider.is_in_group("container") and pickedObject != null and not event.is_action_pressed("2ndAction"):
+			collider.contain(pickedObject)
+			return
+		elif collider != null and collider.is_in_group("container") and pickedObject != null and not event.is_action_pressed("2ndAction"):
+			collider.take()
 		if pickedObject != null:
 			
 			if rayCast.is_colliding():
-				print("dropping...")
-				#if collider.is_in_group("speedPack"):
-					#print("this should be working but it aint")
-					#pickedObject.reparent(speedpack.itemMarker)
-					#pickedObject.global_position = speedpack.itemMaker.global_position
-					#return
+				
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
 				pickedObject.reparent(get_tree().current_scene)
@@ -111,7 +113,7 @@ func _input(event):
 				if pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items"):
 					pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
 				
-			collisionSet()
+			collisionSet(true)
 		else:
 			if collider == null:
 				return
@@ -247,8 +249,8 @@ func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
 		find_allboxes(child, results)
 
 ## sets collision layer value
-func collisionSet():
-	if pickedObject != null:
+func collisionSet(TurnOnCollision: bool):
+	if pickedObject != null and TurnOnCollision:
 		#Turns back on Collider
 		rayCast.remove_exception(pickedObject)
 		pickedObject.scale = Vector3(pickedObject.scale.x * 2, pickedObject.scale.y * 2,pickedObject.scale.z * 2)
@@ -258,6 +260,13 @@ func collisionSet():
 		pickedObject.set_collision_layer_value(3, true)
 		pickedObject = null
 		holdingobject = false
+	else:
+		#when placed into container
+		
+		rayCast.remove_exception(pickedObject)
+		pickedObject = null
+		holdingobject = false
+		
 
 ## Safely checks for and updates any internal CollisionShape3D component
 func _toggleCollision(targetNode: Node, shouldDisable: bool) -> void:
