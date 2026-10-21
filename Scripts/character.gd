@@ -82,6 +82,12 @@ func _unhandled_input(event):
 
 ## input handler
 func _input(event):
+	if event.is_action_pressed("2ndAction"):
+		rayCast.force_raycast_update()
+		updateRaycastData()
+		if collider != null and collider.is_in_group("container") and pickedObject == null:
+				collider.take()
+				return
 	#Check for click
 	if event.is_action_pressed("interaction"):
 
@@ -94,11 +100,10 @@ func _input(event):
 			return
 		var p = collider
 		print("colliding with " + str(p))
-		if collider != null and collider.is_in_group("container") and pickedObject != null and not event.is_action_pressed("2ndAction"):
+		if collider != null and collider.is_in_group("container") and pickedObject != null:
 			collider.contain(pickedObject)
 			return
-		elif collider != null and collider.is_in_group("container") and pickedObject != null and not event.is_action_pressed("2ndAction"):
-			collider.take()
+		
 		if pickedObject != null:
 			
 			if rayCast.is_colliding():
@@ -191,12 +196,14 @@ func _physics_process(delta: float) -> void:
 
 ## saves the object 
 func pick_up_object(object):
-
+	print(holdingobject)
+	print(object.isPickUpable)
 	if not holdingobject and object.isPickUpable:
+		print("got through the if statement")
 		# Disable collision shapes before updating parent links
 		_toggleCollision(object, true)
-		
-		object.scale = Vector3(object.scale.x / 2, object.scale.y / 2,object.scale.z / 2)
+		if object.scale == object.size:
+			object.scale = Vector3(object.scale.x / 2, object.scale.y / 2,object.scale.z / 2)
 		# save the holding object and marks the player as holding an object
 		pickedObject = object
 		rayCast.add_exception(pickedObject)
@@ -262,7 +269,8 @@ func collisionSet(TurnOnCollision: bool):
 		holdingobject = false
 	else:
 		#when placed into container
-		
+		pickedObject.set_collision_layer_value(1, true)
+		pickedObject.set_collision_layer_value(3, true)
 		rayCast.remove_exception(pickedObject)
 		pickedObject = null
 		holdingobject = false

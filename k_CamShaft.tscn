@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cr501w4y8suia"]
 
 [ext_resource type="PackedScene" uid="uid://bc3lggrf0wc68" path="res://models/originClient.tscn" id="1_s3onc"]
-[ext_resource type="Script" uid="uid://6l63fncybnap" path="res://c_camShaft.gd" id="2_lc7v1"]
+[ext_resource type="Script" uid="uid://6l63fncybnap" path="res://k_camShaft.gd" id="2_lc7v1"]
 
 [node name="StaticBody3D" unique_id=1107757679 instance=ExtResource("1_s3onc")]
 script = ExtResource("2_lc7v1")

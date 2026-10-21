@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://paak568xd78o" path="res://scenes/speed_pack.tscn" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c7w7c64yfa53l" path="res://Nodes/itemNodes/BBall.tscn" id="15_jkv2x"]
 [ext_resource type="Script" uid="uid://5f5yyj8cxpvi" path="res://scenes/killzone.gd" id="16_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://cr501w4y8suia" path="res://c_CamShaft.tscn" id="16_muem4"]
+[ext_resource type="PackedScene" uid="uid://cr501w4y8suia" path="res://k_CamShaft.tscn" id="16_muem4"]
 [ext_resource type="Script" uid="uid://ix1va1ipqc0u" path="res://scenes/global_stats_holder.gd" id="17_muem4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]

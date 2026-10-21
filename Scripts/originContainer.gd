@@ -64,6 +64,7 @@ var containedObjects: Array[CharacterBody3D] = []
 @onready var containerParent = $ContainerPositions
 var slotsToPutItemIn: int = 0
 var slotsFilled: bool = false
+var hasSomething: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -71,7 +72,7 @@ func _ready():
 	stats = get_tree().get_first_node_in_group("GlobalStats")
 	print(GivenName)
 	add_to_group("boxes")
-	slotsToPutItemIn = containerParent.get_child_count() - 1
+	slotsToPutItemIn = containerParent.get_child_count() - containerParent.get_child_count()
 func _process(_delta):
 	CollectedWeight = 0
 	
@@ -203,23 +204,35 @@ func changeableAbility():
 	pass
 
 func contain(body):
+	if body.is_in_group("container"):
+		return
+	hasSomething = true
+	print(slotsToPutItemIn)
 	var slot = containerParent.get_child(slotsToPutItemIn)
 	body.reparent(slot)
 	body.global_position = slot.global_position
 	body.scale = scale/2
+	
 	body.set_physics_process(false)
 	player.collisionSet(false)
-	
+
+	GivenHealth += body.GivenHealth
+	GivenIncome += body.GivenIncome
+	GivenWeight += body.GivenWeight
 	if containerParent.get_child_count() - 1 > slotsToPutItemIn:
 		slotsToPutItemIn += 1  
 		
 func take():
-	if slotsFilled or not player.pickedObject:
+	if slotsToPutItemIn >= 0 and (slotsFilled or player.pickedObject == null):
 		var objectToTakeOut
-		for i in containerParent.get_children():
-			if i.get_child_count() > 0:
-				objectToTakeOut = i.get_child(0)
-				break
+		objectToTakeOut = containerParent.get_child(slotsToPutItemIn - 1).get_child(0)
+		print(objectToTakeOut.GivenName)
+		slotsToPutItemIn -= 1
+		objectToTakeOut.isPickUpable = true
+		GivenHealth -= objectToTakeOut.GivenHealth
+		GivenIncome -= objectToTakeOut.GivenIncome
+		GivenWeight -= objectToTakeOut.GivenWeight
+		if slotsToPutItemIn == 0:
+			hasSomething = false
 		player.pick_up_object(objectToTakeOut)
-	else:
-		player.pick_up_object(self)
+			
