@@ -257,7 +257,9 @@ func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
 
 ## sets collision layer value
 func collisionSet(TurnOnCollision: bool):
-	if pickedObject != null and TurnOnCollision:
+	if pickedObject == null:
+		return
+	if TurnOnCollision:
 		#Turns back on Collider
 		rayCast.remove_exception(pickedObject)
 		pickedObject.scale = Vector3(pickedObject.scale.x * 2, pickedObject.scale.y * 2,pickedObject.scale.z * 2)

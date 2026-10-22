@@ -65,6 +65,7 @@ var containedObjects: Array[CharacterBody3D] = []
 var slotsToPutItemIn: int = 0
 var slotsFilled: bool = false
 var hasSomething: bool = false
+var selfref = self
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -73,6 +74,9 @@ func _ready():
 	print(GivenName)
 	add_to_group("boxes")
 	slotsToPutItemIn = containerParent.get_child_count() - containerParent.get_child_count()
+	
+	if selfref.has_method("randomized"):
+		selfref.randomized()
 func _process(_delta):
 	CollectedWeight = 0
 	
@@ -207,14 +211,20 @@ func contain(body):
 	if body.is_in_group("container"):
 		return
 	hasSomething = true
-	print(slotsToPutItemIn)
+	print("Available Slot is " + str(slotsToPutItemIn))
+	containedObjects.append(body)
 	var slot = containerParent.get_child(slotsToPutItemIn)
 	body.reparent(slot)
 	body.global_position = slot.global_position
-	body.scale = scale/2
+	body.scale = scale/3.3
 	
 	body.set_physics_process(false)
-	player.collisionSet(false)
+	body.set_collision_layer_value(1,false)
+	body.set_collision_layer_value(3,false)
+	player._toggleCollision(body, true)
+	
+	if player.pickedObject == body:
+		player.collisionSet(false)
 
 	GivenHealth += body.GivenHealth
 	GivenIncome += body.GivenIncome
@@ -223,15 +233,18 @@ func contain(body):
 		slotsToPutItemIn += 1  
 		
 func take():
-	if slotsToPutItemIn >= 0 and (slotsFilled or player.pickedObject == null):
+	if not containedObjects.is_empty() and slotsToPutItemIn >= 0 and (slotsFilled or player.pickedObject == null):
 		var objectToTakeOut
 		objectToTakeOut = containerParent.get_child(slotsToPutItemIn - 1).get_child(0)
-		print(objectToTakeOut.GivenName)
 		slotsToPutItemIn -= 1
 		objectToTakeOut.isPickUpable = true
+		objectToTakeOut.set_collision_layer_value(1,true)
+		objectToTakeOut.set_collision_layer_value(3,true)
 		GivenHealth -= objectToTakeOut.GivenHealth
 		GivenIncome -= objectToTakeOut.GivenIncome
 		GivenWeight -= objectToTakeOut.GivenWeight
+		objectToTakeOut.set_physics_process(true)
+		containedObjects.erase(objectToTakeOut)
 		if slotsToPutItemIn == 0:
 			hasSomething = false
 		player.pick_up_object(objectToTakeOut)
