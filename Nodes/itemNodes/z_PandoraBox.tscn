@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://iu3gj5p1jeiy"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_xwtcq"]
+[ext_resource type="Script" uid="uid://3d4gq5f0pshg" path="res://Scripts/abilityScripts/abilityList/z_Pandora.gd" id="2_4ynp3"]
+[ext_resource type="PackedScene" uid="uid://80l1bp5hio5c" path="res://models/Boxes/pandoraBox.glb" id="3_4ynp3"]
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_xwtcq")]
+script = ExtResource("2_4ynp3")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="pandoraBox" parent="." index="3" unique_id=1337187007 instance=ExtResource("3_4ynp3")]
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0, -0.19624501, 0)

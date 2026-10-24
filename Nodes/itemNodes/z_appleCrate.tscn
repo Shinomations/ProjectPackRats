@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_n6pbp"]
 [ext_resource type="PackedScene" uid="uid://dhyjcewi6wep6" path="res://models/Boxes/appleCrate.glb" id="2_3xcj5"]
-[ext_resource type="Script" uid="uid://dmyj7bjwoibaj" path="res://Scripts/abilityScripts/abilityList/z_AppleCrate.gd" id="2_s53q6"]
+[ext_resource type="Script" uid="uid://dmyj7bjwoibaj" path="res://Scripts/abilityScripts/abilityList/z_appleCrate.gd" id="2_s53q6"]
 
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_n6pbp")]
 script = ExtResource("2_s53q6")

@@ -21,7 +21,8 @@ extends Node3D
 	"Glassware",
 	"Wire",
 	"DoubleBarrel",
-	"RelicBox"
+	"RelicBox",
+	"PandoraBox"
 ]
 @export var Tier4 = [
 	"GasolineTank",

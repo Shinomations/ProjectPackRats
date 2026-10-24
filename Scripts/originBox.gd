@@ -58,6 +58,9 @@ var canMove:bool = true
 var canReroll:bool = true
 var isPickUpable:bool = true
 var hasRun: bool = false
+var isThrowable: bool = false
+var throwDirection: Vector3 = Vector3.ONE
+var velocityChanger: Vector3 = Vector3.ZERO
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -87,14 +90,22 @@ func _process(_delta):
 		stats.objectsDestroyed += 1
 		print(stats.objectsDestroyed)
 		self.queue_free()
+
 func _physics_process(delta: float) -> void:
 	if player.pickedObject == self:
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
-		 
+	
+	if not isThrowable:
+		velocityChanger.y -= gravity * delta
+		velocity = velocityChanger
+		move_and_slide()
+	
+	 
 	if not is_on_floor() and gravity > 0:
 		velocity.y -= gravity * delta
+		
 		if splatted:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
@@ -110,7 +121,8 @@ func _physics_process(delta: float) -> void:
 		squashTween.tween_property(self,"scale", landingSquash * size, 0.1)
 		squashTween.tween_property(self,"scale", EndSquash * size, 0.2)
 		emitParticles("Place",global_position)
-		velocity.y = 0
+		velocity = Vector3.ZERO
+		isThrowable = true
 		
 	if gravity < 0 and not is_on_ceiling():
 		velocity.y -= gravity * delta
@@ -193,4 +205,12 @@ func statHandler(Stat2Change: String,Amount: int = 0,Passiveness: int = 0):
 	print_rich( "[color=pink] Health: " + str(GivenHealth))
 
 func changeableAbility():
+	pass
+
+func throw(direction: Vector3, speed: float):
+	
+	throwDirection = direction
+	velocityChanger = direction.normalized() * speed
+	isThrowable = false
+	print(velocityChanger)
 	pass

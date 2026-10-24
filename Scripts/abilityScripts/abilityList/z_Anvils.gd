@@ -10,4 +10,3 @@ func _init() -> void:
 	height = 2
 	size = Vector3(2,2,2)
 	canBeDestroyed = true
-	

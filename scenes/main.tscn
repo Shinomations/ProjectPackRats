@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bx2fot2sqqx1w" path="res://Nodes/playerNodes/character.tscn" id="1_0wfyh"]
 [ext_resource type="AudioStream" uid="uid://bnfix51xqfnvq" path="res://Sounds & music/Music/packrats 1.mp3" id="2_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bj5rml2yql7e5" path="res://Nodes/itemNodes/SpawnLocal.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dkjhq4wi2bcce" path="res://z_bb.tscn" id="4_muem4"]
 [ext_resource type="MeshLibrary" uid="uid://fxnior5cld4f" path="res://models/GridMap/GridMesh5.tres" id="5_a8y0u"]
 [ext_resource type="Script" uid="uid://bjq3rcdygf16h" path="res://scenes/path_3d.gd" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dh7a7vyx5puga" path="res://models/trucks/RoadTruck/truckPlaceholder_truckbody.png" id="6_tefeu"]
@@ -13,7 +14,6 @@
 [ext_resource type="Script" uid="uid://bs357o122kmvj" path="res://Nodes/environmentNodes/truckPath.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cxleafd5i6bci" path="res://Nodes/environmentNodes/truck.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://paak568xd78o" path="res://scenes/speed_pack.tscn" id="14_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://c7w7c64yfa53l" path="res://Nodes/itemNodes/BBall.tscn" id="15_jkv2x"]
 [ext_resource type="Script" uid="uid://5f5yyj8cxpvi" path="res://scenes/killzone.gd" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://cr501w4y8suia" path="res://k_CamShaft.tscn" id="16_muem4"]
 [ext_resource type="Script" uid="uid://ix1va1ipqc0u" path="res://scenes/global_stats_holder.gd" id="17_muem4"]
@@ -352,9 +352,6 @@ omni_attenuation = 0.398
 
 [node name="Moveables" type="Node" parent="." unique_id=1676812572]
 
-[node name="Basketball" parent="Moveables" unique_id=1791562658 instance=ExtResource("15_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.344176, 0.99075884, -38.35047)
-
 [node name="SpawnLocal" parent="Moveables" unique_id=1721328369 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7783885, 2.4643488, -5.501483)
 Tier5 = ["anvil"]
@@ -547,6 +544,9 @@ Tier5 = ["anvil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.715893, 11.464349, -1.501483)
 Tier5 = ["anvil"]
 
+[node name="baseBox" parent="Moveables" unique_id=1305476861 instance=ExtResource("4_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -38)
+
 [node name="RegGrid" type="GridMap" parent="." unique_id=1329582217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1.5, -0.5)
 mesh_library = ExtResource("5_a8y0u")
@@ -564,7 +564,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.99982804, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589689, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998279, 0, -0.0145896785, 0, 0.9999762, 0, 0.014589687, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -625,7 +625,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.012621666, 0, -0.99982953, 0, 1, 0, 0.99982953, 0, -0.012621666, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621664, 0, -0.9998294, 0, 1, 0, 0.9998294, 0, -0.012621664, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true

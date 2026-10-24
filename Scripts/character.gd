@@ -7,7 +7,6 @@ const SENSITIVITY = 0.005
 
 @onready var footsteps: AudioStreamPlayer3D = $CollisionShape3D/Footsteps
 @onready var animation_tree: AnimationTree = $Head/rig/AnimationTree
-
 @onready var head = $Head
 @onready var cam = $Head/Camera3D
 @onready var box_carry_marker: Marker3D = $Head/Camera3D/boxCarryMarker
@@ -45,6 +44,8 @@ var cell_size: float = 1.0
 var gridPos: Vector3 = Vector3.ZERO
 var original_grid_pos: Vector3 = Vector3.ZERO
 var usedTruckCount: int = 0
+var holdTime: int = 125
+var throwSpeed: int = 0
 #var  GPU: GPUParticles3D = null
 ## THIS IS FOR THE PLACE DOWN EFFECTS^^
 ## player is a group so this class is referencable in other scripts
@@ -110,13 +111,16 @@ func _input(event):
 				
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
+				
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos + pickedObject["offset"]
+				
 				
 			else:
 				pickedObject.reparent(get_tree().current_scene)
 				if pickedObject.is_in_group("boxes") or pickedObject.is_in_group("items"):
 					pickedObject.global_position = box_carry_marker.global_position + pickedObject["offset"]
+					
 				
 			collisionSet(true)
 		else:
@@ -124,8 +128,8 @@ func _input(event):
 				return
 				
 			if collider.is_in_group("boxes"):
-				
 				pick_up_object(collider)
+				
 	
 		
 	if Input.is_action_pressed("rotateUp") && holdingobject:
@@ -136,10 +140,30 @@ func _input(event):
 	if pickedObject != null and event.is_action_pressed("Use") and pickedObject.has_method("UseAbility"):
 		pickedObject.UseAbility()
 
-func _process(_delta):
+func _process(delta):
 	#update raycast
 	updateRaycastData()
 	
+	if Input.is_action_pressed("throw") and pickedObject:
+		
+		
+		if throwSpeed == 0 or throwSpeed <= 100:
+			holdTime *= delta
+			throwSpeed += holdTime
+	elif Input.is_action_just_released("throw") and pickedObject:
+		var throwDirection = -cam.global_basis.z
+		pickedObject.reparent(get_tree().current_scene)
+		pickedObject.throw(throwDirection, throwSpeed/10)
+		collisionSet(true)
+		throwSpeed = 0
+	if Input.is_action_pressed("2ndAction") and collider and not collider.is_in_group("container"):
+		holdTime -= delta
+		print(holdTime)
+		if collider.is_in_group("boxes") and collider.has_method("ActivateAbility") and holdTime == 0:
+			collider.ActivateAbility()
+			
+	else:
+		holdTime = 125
 
 func updateRaycastData():
 	if rayCast.is_colliding():
@@ -239,8 +263,6 @@ func get_object_cell_size(obj: Node3D) -> float:
 	return GlobalGrid.DEFAULT_CELL_SIZE
 
 func previewBox(visualGridPos: Vector3):
-	#GPU = pickedObject.find_child("GPUParticles3D")
-	
 	pickedObject.global_position = visualGridPos + pickedObject["offset"]
 
 func find_allboxes(currentNode: Node, results: Array[Node]) -> void:
@@ -269,6 +291,7 @@ func collisionSet(TurnOnCollision: bool):
 		pickedObject.set_collision_layer_value(3, true)
 		pickedObject = null
 		holdingobject = false
+		
 	else:
 		#when placed into container
 		pickedObject.set_collision_layer_value(1, true)

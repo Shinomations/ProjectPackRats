@@ -13,6 +13,7 @@ var bodySelected
 var boxesInTruck:Array = []
 var player
 var somethingInFront
+var alreadyBeen: Array = []
 func getBoxVolume(node: Node3D) -> float:
 	for child in node.get_children():
 		if child is CollisionShape3D and child.shape is BoxShape3D:
@@ -50,10 +51,10 @@ func _on_body_entered(body: Node3D) -> void:
 		body.WhenloadedAbility()
 		
 	for i in boxesInTruck:
-		if i.has_method("otherBoxLoadedAbility"):
+		if i.has_method("otherBoxLoadedAbility") and not alreadyBeen.has(body):
 			i.otherBoxLoadedAbility(body)
-		if "boxesAlreadyAdded" in i:
-			i.boxesAlreadyAdded.append(body)
+			alreadyBeen.append(body)
+
 		
 	if remainingCapacity < capacityNeededTooLeave or weightRef.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():
 		print("remainingCapacity is" + str(remainingCapacity))

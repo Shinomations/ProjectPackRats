@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dkjhq4wi2bcce"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_xjy44"]
+[ext_resource type="Script" uid="uid://dbfwtiducscgl" path="res://Scripts/abilityScripts/abilityList/z_bb.gd" id="2_fcsym"]
+[ext_resource type="PackedScene" uid="uid://cvvuamobyafta" path="res://models/Boxes/BBall.glb" id="3_fr3r3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fr3r3"]
+radius = 0.3
+height = 0.6
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_xjy44")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+script = ExtResource("2_fcsym")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="MeshInstance3D" parent="CollisionShape3D" parent_id_path=PackedInt32Array(502075580) index="0" unique_id=935560228]
+mesh = SubResource("SphereMesh_fr3r3")
+
+[node name="BBall" parent="." index="3" unique_id=885657854 instance=ExtResource("3_fr3r3")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
