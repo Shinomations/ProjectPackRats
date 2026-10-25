@@ -61,6 +61,7 @@ var hasRun: bool = false
 var isThrowable: bool = false
 var throwDirection: Vector3 = Vector3.ONE
 var velocityChanger: Vector3 = Vector3.ZERO
+var floatingTime: int = 0
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -96,49 +97,51 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
-	
-	if not isThrowable:
-		velocityChanger.y -= gravity * delta
-		velocity = velocityChanger
-		move_and_slide()
-	
-	 
-	if not is_on_floor() and gravity > 0:
-		velocity.y -= gravity * delta
+
+	if not is_on_floor():
+		var applied_gravity = gravity
+		if velocityChanger.y < 0:
+			applied_gravity *= 2.0
 		
+		velocityChanger.y -= applied_gravity * delta
+		if gravity < 0 and is_on_ceiling():
+			velocityChanger.y = 0
+
+	velocity = velocityChanger
+	move_and_slide()
+
+	var hitFloor = is_on_floor()
+	if not hitFloor and velocityChanger.y < 0:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_normal().dot(Vector3.UP) > 0.7:
+				hitFloor = true
+				break
+
+	if not hitFloor and gravity > 0:
 		if splatted:
 			splatted = false
 			if squashTween == null or not squashTween.is_running():
 				squashTween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				squashTween.tween_property(self,"scale", FallingSquash * size, 1)
-				
-		
-	elif is_on_floor() and gravity > 0 and not splatted:
+				squashTween.tween_property(self, "scale", FallingSquash * size, 1.0)
+
+	elif hitFloor and gravity > 0 and not splatted:
 		splatted = true
+		floatingTime = 0
+		isThrowable = true
+		velocityChanger = Vector3.ZERO
+		velocity = Vector3.ZERO
+		
 		if squashTween and squashTween.is_running():
 			squashTween.kill()
 		squashTween = create_tween()
-		squashTween.tween_property(self,"scale", landingSquash * size, 0.1)
-		squashTween.tween_property(self,"scale", EndSquash * size, 0.2)
-		emitParticles("Place",global_position)
-		velocity = Vector3.ZERO
-		isThrowable = true
-		
-	if gravity < 0 and not is_on_ceiling():
-		velocity.y -= gravity * delta
-	elif is_on_ceiling() and gravity < 0:
-		velocity.y = 0
-	move_and_slide()
+		squashTween.tween_property(self, "scale", landingSquash * size, 0.1)
+		squashTween.tween_property(self, "scale", EndSquash * size, 0.2)
+		emitParticles("Place", global_position)
+
+
 func _set_selected(object):
 	selected = self == object
-	
-	
-#func get_rect():
-	#var objectPosition = Vector2(
-		#global_position.x - int(size.x / 2),
-		#global_position.z - int(size.y / 2)
-	#)
-	#return Rect2(objectPosition, size)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("boxes") and body != self:

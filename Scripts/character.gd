@@ -111,7 +111,6 @@ func _input(event):
 				
 				if not GlobalGrid.is_cell_vacant(gridPos):
 					return
-				
 				pickedObject.reparent(get_tree().current_scene)
 				pickedObject.global_position = gridPos + pickedObject["offset"]
 				
@@ -129,7 +128,7 @@ func _input(event):
 				
 			if collider.is_in_group("boxes"):
 				pick_up_object(collider)
-				
+
 	
 		
 	if Input.is_action_pressed("rotateUp") && holdingobject:

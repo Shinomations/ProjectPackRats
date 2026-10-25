@@ -30,6 +30,7 @@ func loadingEnded():
 		truck.body_exited.disconnect(truck._on_body_exited)
 	
 	for i in truck.boxesInTruck:
+		print(i)
 		if i.is_in_group("boxes"):
 			i.remove_from_group("boxes")
 			i.queue_free()
@@ -50,4 +51,4 @@ func loadingEnded():
 	
 	player.areThereStillBoxes()
 	if client.has_method("afterAbility"):
-		client.afterAbility()
+		client.afterAbility(7)

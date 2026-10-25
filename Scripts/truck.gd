@@ -11,6 +11,7 @@ var bodySelected
 @onready var truckVolume: float = getBoxVolume(self)
 @export var LeavingPath: Path3D
 var boxesInTruck:Array = []
+var boxesInTruckInContainer: Array = []
 var player
 var somethingInFront
 var alreadyBeen: Array = []
@@ -41,6 +42,9 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 		
 	boxesInTruck.append(body)
+	if body.is_in_group("container"):
+		for i in body.containedObjects:
+			boxesInTruckInContainer.append(i)
 	incomeRef.update()
 	weightRef.update()
 	updateCapacity(-boxVolume / truckVolume, "entered")
@@ -51,7 +55,7 @@ func _on_body_entered(body: Node3D) -> void:
 		body.WhenloadedAbility()
 		
 	for i in boxesInTruck:
-		if i.has_method("otherBoxLoadedAbility") and not alreadyBeen.has(body):
+		if i.has_method("otherBoxLoadedAbility") and not alreadyBeen.has(body) and not boxesInTruckInContainer.has(i):
 			i.otherBoxLoadedAbility(body)
 			alreadyBeen.append(body)
 

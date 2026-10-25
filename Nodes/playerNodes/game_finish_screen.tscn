@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://vbcjky4lo36k"]
 
 [ext_resource type="Script" uid="uid://cna1budmjd3te" path="res://Scripts/game_finish_screen.gd" id="1_h1v2v"]
-[ext_resource type="Texture2D" uid="uid://t3ruowrlfscb" path="res://Sprites & images/images (10).jpg" id="2_jy4jb"]
+[ext_resource type="Texture2D" uid="uid://ki6pel0n8cot" path="res://Sprites & images/pissTextBarAssets.png" id="2_efyn6"]
+[ext_resource type="FontFile" uid="uid://b3dalhr0c7g13" path="res://Fonts/PixelTactical-AWOx.ttf" id="3_e1xok"]
 
 [node name="Game Finish Screen" type="Control" unique_id=1254809366]
+custom_maximum_size = Vector2(1920, -1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,36 +15,48 @@ grow_vertical = 2
 script = ExtResource("1_h1v2v")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=719135499]
-custom_maximum_size = Vector2(800, -1)
+custom_maximum_size = Vector2(1920, -1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 252.73
-offset_right = -99.27026
-offset_bottom = 759.0
+offset_right = 243.80847
+offset_bottom = 854.7613
 grow_horizontal = 2
 scale = Vector2(0.8400006, 0.8400006)
 theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1521586604]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=1395113959]
+layout_mode = 2
+texture = ExtResource("2_efyn6")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect" unique_id=1027519992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 67
+theme_override_constants/margin_top = 41
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 67
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer" unique_id=1521586604]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1388621120]
+[node name="Label" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1388621120]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_e1xok")
 theme_override_font_sizes/font_size = 118
 text = "GOOD GAME"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1462413936]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1462413936]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 25
+theme_override_fonts/normal_font = ExtResource("3_e1xok")
+theme_override_font_sizes/normal_font_size = 45
 text = "This is a placeHolder"
 fit_content = true
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1932734961]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("2_jy4jb")
