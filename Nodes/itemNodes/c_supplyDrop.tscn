@@ -6,17 +6,7 @@
 
 [node name="baseBox" unique_id=1305476861 instance=ExtResource("1_85oe4")]
 script = ExtResource("2_27hsx")
-allParticles = Dictionary[String, PackedScene]({
-"Destroyed": null,
-"Health": null,
-"Income": null,
-"PHealth": null,
-"PIncome": null,
-"PWeight": null,
-"Place": null,
-"Use": null,
-"Weight": null
-})
+objectScaleAmount = Vector3(3, 3, 3)
 
 [node name="supplyDrop" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=2010888729 instance=ExtResource("3_60k2i")]
 transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)

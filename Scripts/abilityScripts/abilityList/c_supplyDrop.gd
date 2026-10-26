@@ -30,9 +30,11 @@ func spawn_without_preloading(scene_path: String) -> void:
 	
 	if loaded_scene:
 		var instance = loaded_scene.instantiate()
-		
 		add_child(instance)
-		instance.global_position = Vector3.ZERO
+		instance.global_position = Vector3(0.001,0.001,0.001)
+		
+		if "size" in instance:
+			instance.size = Vector3.ONE
 
 		contain(instance)
 		

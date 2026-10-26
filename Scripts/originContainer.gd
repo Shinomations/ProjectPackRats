@@ -15,7 +15,6 @@ var particleInstance
 	"PWeight": null,
 	"Use": null
 }
-
 #shared references
 @onready var boxbasic1 = $CollisionShape3D
 @onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
@@ -41,7 +40,7 @@ var outlineWidth = 0.05
 var height = 1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var size: Vector3 = scale
-@export var offset: Vector3 = Vector3.ZERO
+@export var offset: Vector3 = Vector3(0.001,0.001,0.001)
 var squashTween: Tween = null
 var splatted: bool = false
 var boxesAboveThis: Array[Node3D] = []
@@ -62,6 +61,7 @@ var isThrowable: bool = false
 var throwDirection: Vector3 = Vector3.ONE
 var velocityChanger: Vector3 = Vector3.ZERO
 var floatingTime: int = 0
+
 #container specific variables
 var containedObjects: Array[CharacterBody3D] = []
 @onready var containerParent = $ContainerPositions
@@ -69,7 +69,8 @@ var slotsToPutItemIn: int = 0
 var slotsFilled: bool = false
 var hasSomething: bool = false
 var selfref = self
-
+@export_file("*.tscn") var canHoldThesePaths: Array[String] = []
+@export var objectScaleAmount: Vector3
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	speedPack = get_tree().get_first_node_in_group("speedPack")
@@ -77,7 +78,7 @@ func _ready():
 	stats = get_tree().get_first_node_in_group("GlobalStats")
 	print(GivenName)
 	add_to_group("boxes")
-	slotsToPutItemIn = containerParent.get_child_count() - containerParent.get_child_count()
+	slotsToPutItemIn = 0
 	
 	if selfref.has_method("randomized"):
 		selfref.randomized()
@@ -219,15 +220,28 @@ func changeableAbility():
 	pass
 
 func contain(body):
-	if body.is_in_group("container"):
+	#Leave canHoldThesePaths empty to have it work with anything
+	#will always not allow containers unless put into canHoldThesePaths
+	
+	if not canHoldThesePaths.is_empty():
+		for i in canHoldThesePaths:
+			if ResourceUID.ensure_path(i) != body.scene_file_path:
+				print("doesnt match anything in array")
+				return
+	
+	elif body.is_in_group("container"):
+		print("Cannot contain container")
+		return
+	if slotsToPutItemIn >= containerParent.get_child_count() or slotsFilled:
 		return
 	hasSomething = true
-	print("Available Slot is " + str(slotsToPutItemIn))
 	containedObjects.append(body)
 	var slot = containerParent.get_child(slotsToPutItemIn)
 	body.reparent(slot)
 	body.global_position = slot.global_position
-	body.scale = scale/3.3
+	
+	body.scale = body.scale/objectScaleAmount
+	
 	
 	body.set_physics_process(false)
 	body.set_collision_layer_value(1,false)
@@ -240,9 +254,11 @@ func contain(body):
 	GivenHealth += body.GivenHealth
 	GivenIncome += body.GivenIncome
 	GivenWeight += body.GivenWeight
-	if containerParent.get_child_count() - 1 > slotsToPutItemIn:
-		slotsToPutItemIn += 1  
-		
+	
+	slotsToPutItemIn += 1  
+	
+	if slotsToPutItemIn == containerParent.get_child_count():
+		slotsFilled = true
 func take():
 	if not containedObjects.is_empty() and slotsToPutItemIn >= 0 and (slotsFilled or player.pickedObject == null):
 		var objectToTakeOut
@@ -256,6 +272,7 @@ func take():
 		GivenWeight -= objectToTakeOut.GivenWeight
 		objectToTakeOut.set_physics_process(true)
 		containedObjects.erase(objectToTakeOut)
+		slotsFilled = false
 		if slotsToPutItemIn == 0:
 			hasSomething = false
 		player.pick_up_object(objectToTakeOut)

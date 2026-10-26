@@ -41,8 +41,8 @@ var ability: String
 var health: int
 
 var cell_size: float = 1.0
-var gridPos: Vector3 = Vector3.ZERO
-var original_grid_pos: Vector3 = Vector3.ZERO
+var gridPos: Vector3 = Vector3(0.001,0.001,0.001)
+var original_grid_pos: Vector3 = Vector3(0.001,0.001,0.001)
 var usedTruckCount: int = 0
 var holdTime: int = 125
 var throwSpeed: int = 0
@@ -202,7 +202,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	var inputDir := Input.get_vector("left", "right", "up", "down")
-	var direction = (head.transform.basis * Vector3(inputDir.x, 0, inputDir.y))
+	var direction = (head.transform.basis * Vector3(inputDir.x, 0.001, inputDir.y))
 	var current_BP = animation_tree["parameters/BlendSpace2D/blend_position"]
 	animation_tree["parameters/BlendSpace2D/blend_position"] = Vector2(lerp(current_BP.x,inputDir.x, .1), lerp(current_BP.y,inputDir.y, .1))
 	if direction:
@@ -212,8 +212,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 	else:
 		#footsteps.stop()
-		velocity.x = 0.0
-		velocity.z = 0.0
+		velocity.x = 0.001
+		velocity.z = 0.001
 
 	move_and_slide()
 

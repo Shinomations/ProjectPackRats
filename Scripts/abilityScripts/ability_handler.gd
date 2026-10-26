@@ -3,7 +3,8 @@ extends Node3D
 	"WhoopAssCan"
 ]
 @export var Contains = [
-	"supplyDrop"
+	"supplyDrop",
+	"stackable"
 ]
 @export var Tier1 = [
 	"Nails",
@@ -38,20 +39,25 @@ extends Node3D
 var chosen
 var player
 var randomTier = randi_range(1,5)
-
+@export var makeRandom: bool
+@export var specificUnit: String
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	var ArrayArray = [Contains,Contains,Contains,items,items,items,items,items,Tier1,Tier1,Tier1,Tier1,Tier1,Tier2,Tier2,Tier2,Tier2,Tier3,Tier3,Tier3,Tier4,Tier4,Tier5]
-	var randomArray = ArrayArray.pick_random()
-	
-	if randomArray == items:
-		chosen = "res://Nodes/itemNodes/i_" + randomArray.pick_random() + ".tscn"
-	elif randomArray == Contains:
-		chosen = "res://Nodes/itemNodes/c_" + randomArray.pick_random() + ".tscn"
+	var randomArray
+	if makeRandom == true:
+		randomArray = ArrayArray.pick_random()
+		if randomArray == items:
+			chosen = "res://Nodes/itemNodes/i_" + randomArray.pick_random() + ".tscn"
+		elif randomArray == Contains:
+			chosen = "res://Nodes/itemNodes/c_" + randomArray.pick_random() + ".tscn"
+		else:
+			print(randomArray)
+			chosen = "res://Nodes/itemNodes/z_" + randomArray.pick_random() + ".tscn"
+			print(chosen)
 	else:
-		print(randomArray)
-		chosen = "res://Nodes/itemNodes/z_" + randomArray.pick_random() + ".tscn"
-		print(chosen)
+		chosen =  "res://Nodes/itemNodes/" + specificUnit + ".tscn"
+	
 	
 	var myLocation = self.global_position 
 	

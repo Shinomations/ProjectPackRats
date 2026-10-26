@@ -9,12 +9,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ntypx"]
-size = Vector3(0.25, 0.25, 0.25)
+size = Vector3(0.01, 0.01, 0.01)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4plu"]
 render_priority = 0
 shader = ExtResource("2_7qg7n")
-shader_parameter/outline_width = 0.400000019
+shader_parameter/outline_width = 0.5090000241775
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqa"]
 next_pass = SubResource("ShaderMaterial_u4plu")

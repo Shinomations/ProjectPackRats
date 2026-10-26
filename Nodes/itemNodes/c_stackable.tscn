@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cdjl20caph7rn"]
+
+[ext_resource type="PackedScene" uid="uid://c6a7prm0e2uij" path="res://Nodes/itemNodes/OriginContainer.tscn" id="1_eb1mj"]
+[ext_resource type="Script" uid="uid://cgwjn6revj0ki" path="res://Scripts/abilityScripts/abilityList/c_stackable.gd" id="2_qpxdk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhy47"]
+size = Vector3(1, 0.2290039, 1)
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_eb1mj")]
+script = ExtResource("2_qpxdk")
+canHoldThesePaths = Array[String](["uid://cdjl20caph7rn"])
+objectScaleAmount = Vector3(0.5, 0.5, 0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" parent_id_path=PackedInt32Array(935560228) index="0" unique_id=669054115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38549805, 0)
+mesh = SubResource("BoxMesh_bhy47")
+
+[node name="Marker3D" type="Marker3D" parent="ContainerPositions" parent_id_path=PackedInt32Array(1403902554) index="0" unique_id=1205126937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22006342, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="ContainerPositions" parent_id_path=PackedInt32Array(1403902554) index="1" unique_id=1292658030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48865336, 0)

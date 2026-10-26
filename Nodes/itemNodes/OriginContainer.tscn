@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://c6a7prm0e2uij"]
 
-[ext_resource type="Script" uid="uid://dlw11w20cnhat" path="res://Scripts/originBox.gd" id="1_1k08j"]
-[ext_resource type="PackedScene" uid="uid://foaxcnb5hech" path="res://models/particles/InstantIncome.tscn" id="2_o5cae"]
-[ext_resource type="PackedScene" uid="uid://bpvwubx7huqtp" path="res://models/particles/passiveIncome.tscn" id="3_44sud"]
-[ext_resource type="PackedScene" uid="uid://ck5jqjjt53taq" path="res://models/particles/SimplePlacement.tscn" id="4_dov41"]
+[ext_resource type="Script" uid="uid://dwfetr21lmxd6" path="res://Scripts/originContainer.gd" id="1_pxfwa"]
 [ext_resource type="Shader" uid="uid://dxbxsfjxbg16g" path="res://Nodes/itemNodes/y_BoxOutline.gdshader" id="5_7lntw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tblqd"]
@@ -25,18 +22,7 @@ size = Vector3(0.7307129, 0.06982422, 0.7407837)
 [node name="baseBox" type="CharacterBody3D" unique_id=1305476861 groups=["boxes", "container"]]
 collision_layer = 4
 collision_mask = 23
-script = ExtResource("1_1k08j")
-allParticles = Dictionary[String, PackedScene]({
-"Destroyed": null,
-"Health": null,
-"Income": ExtResource("2_o5cae"),
-"PHealth": null,
-"PIncome": ExtResource("3_44sud"),
-"PWeight": null,
-"Place": ExtResource("4_dov41"),
-"Use": null,
-"Weight": null
-})
+script = ExtResource("1_pxfwa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=502075580]
 unique_name_in_owner = true
