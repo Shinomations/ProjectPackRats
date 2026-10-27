@@ -16,7 +16,7 @@ transform = Transform3D(-6.280927e-08, 0, 0.3070053, 0, 0.14636874, 0, -1.436908
 [node name="Cube_003" parent="." index="4" unique_id=1132279530]
 transform = Transform3D(-6.280927e-08, 0, 0.3070053, 0, 0.14636874, 0, -1.4369086, 0, -1.3419627e-08, 4.0069404, -1.4589325, 1.0116799)
 
-[node name="Area3D" type="CharacterBody3D" parent="." index="5" unique_id=616723208 groups=["speedPack"]]
+[node name="Area3D" type="Area3D" parent="." index="5" unique_id=119963420]
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=209684403]
@@ -28,3 +28,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.016212, 4.608089, 1.0526733
 
 [node name="NotItemMarker3D" type="Marker3D" parent="Area3D" index="2" unique_id=862890563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.016212, 6.64306, -5.8698945)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

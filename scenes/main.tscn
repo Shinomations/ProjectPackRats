@@ -357,59 +357,51 @@ omni_attenuation = 0.398
 
 [node name="SpawnLocal" parent="Moveables" unique_id=1721328369 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7783885, 2.4643488, -5.501483)
-Tier5 = ["anvil"]
-makeRandom = true
-specificUnit = "c_stackable"
+specificUnit = "i_mushroom"
 
 [node name="SpawnLocal3" parent="Moveables" unique_id=1451628802 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7158933, 2.4643488, -5.501483)
-Tier5 = ["anvil"]
-makeRandom = true
-specificUnit = "c_stackable"
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal2" parent="Moveables" unique_id=1937544027 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778389, 2.4643488, -5.501483)
-Tier5 = ["anvil"]
 makeRandom = true
-specificUnit = "c_stackable"
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal4" parent="Moveables" unique_id=853027323 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.715893, 2.4643488, -5.501483)
-Tier5 = ["anvil"]
 makeRandom = true
-specificUnit = "c_stackable"
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal5" parent="Moveables" unique_id=1876430998 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7783885, 2.4643488, -3.501483)
-Tier5 = ["anvil"]
 makeRandom = true
-specificUnit = "c_stackable"
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal6" parent="Moveables" unique_id=850368288 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7158933, 2.4643488, -3.501483)
-Tier5 = ["anvil"]
 makeRandom = true
-specificUnit = "c_stackable"
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal7" parent="Moveables" unique_id=1647411068 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778389, 2.4643488, -3.501483)
-Tier5 = ["anvil"]
-specificUnit = "c_stackable"
+makeRandom = true
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal8" parent="Moveables" unique_id=766564394 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.715893, 2.4643488, -3.501483)
-Tier5 = ["anvil"]
-specificUnit = "c_stackable"
+makeRandom = true
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal9" parent="Moveables" unique_id=1997850174 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7783885, 2.4643488, -1.501483)
-Tier5 = ["anvil"]
-specificUnit = "c_stackable"
+makeRandom = true
+specificUnit = "z_iceCube"
 
 [node name="SpawnLocal10" parent="Moveables" unique_id=960941824 instance=ExtResource("2_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7158933, 2.4643488, -1.501483)
-Tier5 = ["anvil"]
-specificUnit = "c_stackable"
+makeRandom = true
+specificUnit = "z_iceCube"
 
 [node name="baseBox" parent="Moveables" unique_id=1305476861 instance=ExtResource("4_muem4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -38)
@@ -432,7 +424,7 @@ script = ExtResource("6_o6xl0")
 path_follow_3d = NodePath("PathFollow3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PassingTruck" unique_id=1433277434]
-transform = Transform3D(0.9998274, 0, -0.0145896785, 0, 0.9999762, 0, 0.0145896785, 0, 0.9998273, 26.159048, 1.65, 44.186157)
+transform = Transform3D(0.9998273, 0, -0.0145896785, 0, 0.9999762, 0, 0.0145896785, 0, 0.9998273, 26.159048, 1.65, 44.186157)
 v_offset = 1.65
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="PassingTruck/PathFollow3D" unique_id=500854348]
@@ -493,7 +485,7 @@ path_follow_3d = NodePath("PathFollow3D")
 truck = NodePath("PathFollow3D/Node3D/Area3D")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1344668755]
-transform = Transform3D(-0.012621658, 0, -0.9998289, 0, 1, 0, 0.9998289, 0, -0.012621658, -1.7461424, 0, 2.3561492)
+transform = Transform3D(-0.012621654, 0, -0.9998286, 0, 1, 0, 0.9998286, 0, -0.012621654, -1.7461424, 0, 2.3561492)
 progress = 76.768616
 rotation_mode = 1
 use_model_front = true

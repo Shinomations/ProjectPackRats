@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d0p1bbtflmtik"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_57gp1"]
+[ext_resource type="Script" uid="uid://be14p2sfx6n1o" path="res://Scripts/abilityScripts/abilityList/i_mushroom.gd" id="2_57gp1"]
+[ext_resource type="PackedScene" uid="uid://b6tvgw6qwmjmp" path="res://models/mushroom.glb" id="3_e7vja"]
+
+[node name="baseBox" unique_id=1305476861 groups=["items"] instance=ExtResource("1_57gp1")]
+script = ExtResource("2_57gp1")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="mushroom" parent="." index="3" unique_id=752471162 instance=ExtResource("3_e7vja")]
+transform = Transform3D(0.25, 0, 0, 0, 0.285, 0, 0, 0, 0.25, 0, -0.09354256, 0)

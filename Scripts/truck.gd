@@ -53,11 +53,15 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	if body.has_method("WhenloadedAbility"):
 		body.WhenloadedAbility()
-		
+	var NumberOfBoxesWithOLAbility:int = 0
 	for i in boxesInTruck:
-		if i.has_method("otherBoxLoadedAbility") and not alreadyBeen.has(body) and not boxesInTruckInContainer.has(i):
+		var boxTracking = str(i.get_instance_id()) + "_" + str(body.get_instance_id())
+		if i.has_method("otherBoxLoadedAbility") and not alreadyBeen.has(boxTracking) and not boxesInTruckInContainer.has(i):
+			NumberOfBoxesWithOLAbility += 1
 			i.otherBoxLoadedAbility(body)
-			alreadyBeen.append(body)
+			alreadyBeen.append(boxTracking)
+	print("Number Of Boxes With OL Ability is " + str(NumberOfBoxesWithOLAbility))
+	print(alreadyBeen.has(body))
 
 		
 	if remainingCapacity < capacityNeededTooLeave or weightRef.WeightLeft <= 0 or boxesInTruck.size() == get_tree().get_nodes_in_group("boxes").size():

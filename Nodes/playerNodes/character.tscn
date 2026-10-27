@@ -14,13 +14,6 @@ height = 1.8757813
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wa5vi"]
 
-[sub_resource type="Curve3D" id="Curve3D_lfq8n"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 2.5, -2.5, 0, 0, 0, 0, 2.5, 2.5, 0, 0, 0, 0, 0, -10),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a44jj"]
 resource_name = "rat.002"
 cull_mode = 2
@@ -915,10 +908,6 @@ transform = Transform3D(1.0278736, 0, 0, 0, 1, 0, 0, 0, 1, -0.5139368, 0, 0)
 
 [node name="RightHand" type="Node3D" parent="Head/Camera3D/boxCarryMarker2" unique_id=1687939679]
 transform = Transform3D(1.0278736, 0, 0, 0, 1, 0, 0, 0, 1, 0.5139368, 0, 0)
-
-[node name="Path3D" type="Path3D" parent="Head/Camera3D" unique_id=375076437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-curve = SubResource("Curve3D_lfq8n")
 
 [node name="rig" type="Node3D" parent="Head" unique_id=178535320]
 transform = Transform3D(-0.09300001, 0, 8.130319e-09, 0, 0.09300001, 0, -8.130319e-09, 0, -0.093, 0, -0.933, 0.14111465)

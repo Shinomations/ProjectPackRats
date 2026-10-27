@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhjdtvk58h7wj"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_xafwa"]
+[ext_resource type="PackedScene" uid="uid://cl5xfmugirwii" path="res://models/Boxes/iceCube.glb" id="2_cev83"]
+[ext_resource type="Script" uid="uid://cm6c0o6u16l0b" path="res://Scripts/abilityScripts/abilityList/z_iceCube.gd" id="2_g8pbe"]
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_xafwa")]
+script = ExtResource("2_g8pbe")
+
+[node name="iceCube" parent="CollisionShape3D" parent_id_path=PackedInt32Array(502075580) index="0" unique_id=2019611092 instance=ExtResource("2_cev83")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

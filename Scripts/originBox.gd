@@ -18,7 +18,6 @@ var particleInstance
 
 #shared references
 @onready var boxbasic1 = $CollisionShape3D
-@onready var mesh2Animate = $CollisionShape3D/MeshInstance3D
 
 #overwritable by new box
 var GivenName = "Generic box"
