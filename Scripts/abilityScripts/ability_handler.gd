@@ -14,10 +14,11 @@ extends Node3D
 	"Ammo": 25.0
 }
 @export var Tier2 = {
-	"Tungstin": 25.0,
-	"AppleCrate": 25.0,
-	"Cactus": 25.0,
-	"iceCube": 25.0
+	"Tungstin": 20.0,
+	"AppleCrate": 20.0,
+	"Cactus": 20.0,
+	"iceCube": 20.0,
+	"bones": 20.0
 }
 @export var Tier3 = {
 	"Glassware": 20.0,
@@ -27,15 +28,19 @@ extends Node3D
 	"PandoraBox": 20.0
 }
 @export var Tier4 = {
-	"GasolineTank": 25.0,
-	"AWP": 25.0,
-	"IED": 25.0,
-	"StinkyCheese": 25.0
+	"GasolineTank": 20.0,
+	"AWP": 20.0,
+	"IED": 20.0,
+	"StinkyCheese": 20.0,
+	"Beacon": 20.0
 }
 @export var Tier5 = {
 	"anvil": 70.0,
 	"DrinkPallete": 25.0,
 	"MobsterCage": 5.0
+}
+@export var Furniture = {
+	"couch": 100
 }
 var chosen
 var player
@@ -51,7 +56,8 @@ func _ready() -> void:
 		Tier2: 4.0,
 		Tier3: 3.0,
 		Tier4: 2.0,
-		Tier5: 1.0
+		Tier5: 1.0,
+		Furniture: 3.0
 	}
 	var beginRolling = rolling(ArrayArray)
 	
@@ -62,6 +68,8 @@ func _ready() -> void:
 			chosen = "res://Nodes/itemNodes/i_" + randomArray + ".tscn"
 		elif Contains.has(randomArray):
 			chosen = "res://Nodes/itemNodes/c_" + randomArray + ".tscn"
+		elif Furniture.has(randomArray):
+			chosen = "res://Nodes/itemNodes/f_" + randomArray + ".tscn"
 		else:
 			print(randomArray)
 			chosen = "res://Nodes/itemNodes/z_" + randomArray + ".tscn"

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cpe2sko2jtvwk"]
+
+[ext_resource type="PackedScene" uid="uid://olhbv2ovk4vg" path="res://Nodes/itemNodes/OriginFurniture.tscn" id="1_4w7os"]
+[ext_resource type="Script" uid="uid://tsohthwyg3qr" path="res://Scripts/abilityScripts/abilityList/f_couch.gd" id="2_gw2jh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwta1"]
+
+[node name="baseBox" unique_id=1305476861 node_paths=PackedStringArray("cam", "sittingPosition", "exitPosition") instance=ExtResource("1_4w7os")]
+script = ExtResource("2_gw2jh")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+size = Vector3(3, 1, 1)
+cam = NodePath("Node3D/Camera3D")
+sittingPosition = NodePath("Node3D/Marker3D")
+exitPosition = NodePath("Node3D/Marker3D2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" parent_id_path=PackedInt32Array(502075580) index="0" unique_id=1010769543]
+transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwta1")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="0" unique_id=999764495]
+transform = Transform3D(0.33333334, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1645957, 1.9338032)
+
+[node name="Marker3D" type="Marker3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="1" unique_id=667217124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3310175, -0.10378811)
+
+[node name="Marker3D2" type="Marker3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="2" unique_id=545008290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1631677, 1.9227425)

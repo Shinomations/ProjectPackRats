@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://su1gn3j53ka"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_ewmhc"]
+[ext_resource type="Script" uid="uid://bfdris1leo83g" path="res://Scripts/abilityScripts/abilityList/z_Beacon.gd" id="2_xaxcc"]
+[ext_resource type="PackedScene" uid="uid://cbllg1nt3pubq" path="res://models/Boxes/beacon.glb" id="3_wcjeh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwta1"]
+size = Vector3(0.2756195, 0.20214844, 0.28640747)
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_ewmhc")]
+script = ExtResource("2_xaxcc")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="beacon" parent="CollisionShape3D" parent_id_path=PackedInt32Array(502075580) index="0" unique_id=2138013245 instance=ExtResource("3_wcjeh")]
+transform = Transform3D(0.24242422, 0, 0, 0, 0.24242422, 0, 0, 0, 0.24242422, 0, 0, 0)
+
+[node name="b1" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="0" unique_id=1531799593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010289848, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b1" index="0" unique_id=812238387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b2" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="1" unique_id=818544509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010289848, -0.730747)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b2" index="0" unique_id=859037792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b3" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="2" unique_id=495567482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010289848, 0.7161731)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b3" index="0" unique_id=1852311150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b4" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="3" unique_id=338389057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.682145, 0.010289848, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b4" index="0" unique_id=1539456307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b5" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="4" unique_id=1994707805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.682145, 0.010289848, -0.730747)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b5" index="0" unique_id=646109561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b6" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="5" unique_id=689785373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.682145, 0.010289848, 0.7161731)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b6" index="0" unique_id=1749511616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b7" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="6" unique_id=928301745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7523327, 0.010289848, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b7" index="0" unique_id=1509526552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b8" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="7" unique_id=244920566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7523327, 0.010289848, -0.730747)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b8" index="0" unique_id=1430726234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[node name="b9" type="Area3D" parent="Node3D" parent_id_path=PackedInt32Array(1069960863) index="8" unique_id=244691706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7523327, 0.010289848, 0.7161731)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/b9" index="0" unique_id=1706246544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005393982, -0.6738996, 0.014602661)
+shape = SubResource("BoxShape3D_hwta1")
+
+[connection signal="body_entered" from="Node3D/b1" to="." method="_on_b_1_body_entered"]
+[connection signal="body_exited" from="Node3D/b1" to="." method="_on_b_1_body_exited"]
+[connection signal="body_entered" from="Node3D/b2" to="." method="_on_b_2_body_entered"]
+[connection signal="body_exited" from="Node3D/b2" to="." method="_on_b_2_body_exited"]
+[connection signal="body_entered" from="Node3D/b3" to="." method="_on_b_3_body_entered"]
+[connection signal="body_exited" from="Node3D/b3" to="." method="_on_b_3_body_exited"]
+[connection signal="body_entered" from="Node3D/b4" to="." method="_on_b_4_body_entered"]
+[connection signal="body_exited" from="Node3D/b4" to="." method="_on_b_4_body_exited"]
+[connection signal="body_entered" from="Node3D/b5" to="." method="_on_b_5_body_entered"]
+[connection signal="body_exited" from="Node3D/b5" to="." method="_on_b_5_body_exited"]
+[connection signal="body_entered" from="Node3D/b6" to="." method="_on_b_6_body_entered"]
+[connection signal="body_exited" from="Node3D/b6" to="." method="_on_b_6_body_exited"]
+[connection signal="body_entered" from="Node3D/b7" to="." method="_on_b_7_body_entered"]
+[connection signal="body_exited" from="Node3D/b7" to="." method="_on_b_7_body_exited"]
+[connection signal="body_entered" from="Node3D/b8" to="." method="_on_b_8_body_entered"]
+[connection signal="body_exited" from="Node3D/b8" to="." method="_on_b_8_body_exited"]
+[connection signal="body_entered" from="Node3D/b9" to="." method="_on_b_9_body_entered"]
+[connection signal="body_exited" from="Node3D/b9" to="." method="_on_b_9_body_exited"]

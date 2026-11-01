@@ -15,6 +15,7 @@ var boxesInTruckInContainer: Array = []
 var player
 var somethingInFront
 var alreadyBeen: Array = []
+var stats
 func getBoxVolume(node: Node3D) -> float:
 	for child in node.get_children():
 		if child is CollisionShape3D and child.shape is BoxShape3D:
@@ -31,8 +32,8 @@ func getBoxScore(node: Node3D) -> float:
 	return 0.0
 	
 func _ready() -> void:
-
-	player = get_tree().get_first_node_in_group("player")	
+	stats = get_tree().get_first_node_in_group("GlobalStats")
+	player = get_tree().get_first_node_in_group("player")
 	
 func _on_body_entered(body: Node3D) -> void:
 	bodySelected = body
@@ -54,6 +55,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("WhenloadedAbility"):
 		body.WhenloadedAbility()
 	var NumberOfBoxesWithOLAbility:int = 0
+	stats.objectsLoaded += 1
 	for i in boxesInTruck:
 		var boxTracking = str(i.get_instance_id()) + "_" + str(body.get_instance_id())
 		if i.has_method("otherBoxLoadedAbility") and not alreadyBeen.has(boxTracking) and not boxesInTruckInContainer.has(i):
@@ -88,6 +90,7 @@ func _on_body_exited(body: Node3D) -> void:
 	updateScore((boxScore))
 	incomeRef.update()
 	weightRef.update()
+	stats.objectsUnloaded += 1
 	if body.is_in_group("player") or body.is_in_group("truck"):
 		return
 	

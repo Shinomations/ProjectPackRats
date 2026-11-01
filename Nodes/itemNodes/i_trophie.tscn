@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c7nur8uwoleui"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_methk"]
+[ext_resource type="Script" uid="uid://cldx477otltdt" path="res://Scripts/abilityScripts/abilityList/i_trophie.gd" id="2_xmbuh"]
+[ext_resource type="PackedScene" uid="uid://c2dowyk1nskwf" path="res://models/Boxes/trophie.glb" id="3_vib28"]
+
+[node name="baseBox" unique_id=1305476861 groups=["items"] instance=ExtResource("1_methk")]
+script = ExtResource("2_xmbuh")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="trophie" parent="." index="3" unique_id=931538156 instance=ExtResource("3_vib28")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, -0.22471926, 0)

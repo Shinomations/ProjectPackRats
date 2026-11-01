@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ct63psb0l26p1"]
+
+[ext_resource type="PackedScene" uid="uid://frl75j4uy5y7" path="res://Nodes/itemNodes/OriginBox.tscn" id="1_dnovj"]
+[ext_resource type="Script" uid="uid://wqlhq0nrbaw" path="res://Scripts/abilityScripts/abilityList/z_bones.gd" id="2_4omsi"]
+[ext_resource type="PackedScene" uid="uid://v573mgvnppsv" path="res://models/Boxes/bone.glb" id="3_ca87b"]
+[ext_resource type="PackedScene" uid="uid://40mgijp3cjwd" path="res://models/Boxes/box.glb" id="4_pb5kk"]
+
+[node name="baseBox" unique_id=1305476861 instance=ExtResource("1_dnovj")]
+script = ExtResource("2_4omsi")
+allParticles = Dictionary[String, PackedScene]({
+"Destroyed": null,
+"Health": null,
+"Income": null,
+"PHealth": null,
+"PIncome": null,
+"PWeight": null,
+"Place": null,
+"Use": null,
+"Weight": null
+})
+
+[node name="bone" parent="." index="3" unique_id=1201526622 instance=ExtResource("3_ca87b")]
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
+
+[node name="box" parent="." index="4" unique_id=997944423 instance=ExtResource("4_pb5kk")]
+transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0, 0)

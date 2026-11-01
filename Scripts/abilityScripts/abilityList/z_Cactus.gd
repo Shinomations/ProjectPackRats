@@ -23,6 +23,8 @@ func _on_area_3d_2_body_entered(body: Node3D) -> void:
 	
 	for i in surroundingBooster:
 		body.GivenHealth -= 10
+		if i.has_method("WhenDamaged"):
+			i.WhenDamaged()
 		alreadyHit.append(body)
 	
 func _on_area_3d_2_body_exited(body: Node3D) -> void:

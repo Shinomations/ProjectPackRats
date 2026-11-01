@@ -21,3 +21,5 @@ func _on_area_3d_2_body_entered(body: Node3D) -> void:
 				if "Destroyer" in body and body.GivenHealth <= 0:
 					body.Destroyer = self
 					body.ability()
+				if body.has_method("WhenDamaged"):
+					body.WhenDamaged()

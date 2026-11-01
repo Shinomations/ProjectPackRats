@@ -26,6 +26,7 @@ var GivenType = "Cardboard"
 var GivenIncome = 0
 var GivenAbility = "What should this do"
 var GivenHealth = 100
+var baseIncome:int
 @export var FallingSquash: Vector3 = Vector3(0.7,1.1,0.7)
 @export var landingSquash: Vector3 = Vector3(1.3,0.5,1.3)
 @export var EndSquash: Vector3 = Vector3(1.0,1.0,1.0)
@@ -68,6 +69,7 @@ func _ready():
 	stats = get_tree().get_first_node_in_group("GlobalStats")
 	print(GivenName)
 	add_to_group("boxes")
+	baseIncome = GivenIncome
 func _process(_delta):
 	CollectedWeight = 0
 	

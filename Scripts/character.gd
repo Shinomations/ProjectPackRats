@@ -19,7 +19,7 @@ var pickedObject: Node3D = null
 #var marker: Marker3D = null
 var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity"))
 var holdingobject = false
-var collider # Stores whatever the raycast is currently looking at
+var collider 
 var boxTypeDetector: int
 var isFirstPress: bool = true
 var totalScore = 0
@@ -29,10 +29,10 @@ var client
 var speedpack
 var FinalScore = 0
 var timeHeld = 0.0
-# Safety trigger flag to prevent infinite screen execution spam
 var level_completed: bool = false
-
-# Player Stats cache for picked up items
+var canMove: bool = true
+var canPickUpBoxes: bool = true
+var canRotateBody: bool = true
 var Name: String
 var weight: int
 var material: String
@@ -76,7 +76,7 @@ func _unhandled_input(event):
 		isFirstPress = !isFirstPress
 		
 	# Movement look
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and canRotateBody:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		cam.rotate_x(-event.relative.y * SENSITIVITY)
 		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-80), deg_to_rad(85))
@@ -123,7 +123,7 @@ func _input(event):
 				
 			collisionSet(true)
 		else:
-			if collider == null:
+			if collider == null and canPickUpBoxes:
 				return
 				
 			if collider.is_in_group("boxes"):
@@ -135,8 +135,9 @@ func _input(event):
 		rotateBoxesUp()
 	if Input.is_action_pressed("RotateSide") && holdingobject:
 		rotateBoxesSide()
-		
-	if pickedObject != null and event.is_action_pressed("Use") and pickedObject.has_method("UseAbility"):
+	if collider and collider.is_in_group("Furniture") and collider.has_method("UseAbility") and event.is_action_pressed("Use") and pickedObject == null:
+		collider.UseAbility()
+	if pickedObject != null and event.is_action_pressed("Use") and pickedObject.has_method("UseAbility") and not pickedObject.is_in_group("Furniture"):
 		pickedObject.UseAbility()
 
 func _process(delta):
@@ -205,12 +206,12 @@ func _physics_process(delta: float) -> void:
 	var direction = (head.transform.basis * Vector3(inputDir.x, 0.001, inputDir.y))
 	var current_BP = animation_tree["parameters/BlendSpace2D/blend_position"]
 	animation_tree["parameters/BlendSpace2D/blend_position"] = Vector2(lerp(current_BP.x,inputDir.x, .1), lerp(current_BP.y,inputDir.y, .1))
-	if direction:
+	if direction and canMove:
 		#if (footsteps.playing == false):
 		#	footsteps.play()
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-	else:
+	elif canMove:
 		#footsteps.stop()
 		velocity.x = 0.001
 		velocity.z = 0.001
