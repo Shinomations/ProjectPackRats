@@ -144,13 +144,13 @@ func _process(delta):
 	#update raycast
 	updateRaycastData()
 	
-	if Input.is_action_pressed("throw") and pickedObject:
+	if Input.is_action_pressed("2ndAction") and pickedObject:
 		
 		
 		if throwSpeed == 0 or throwSpeed <= 100:
 			holdTime *= delta
 			throwSpeed += holdTime
-	elif Input.is_action_just_released("throw") and pickedObject:
+	elif Input.is_action_just_released("2ndAction") and pickedObject:
 		var throwDirection = -cam.global_basis.z
 		pickedObject.reparent(get_tree().current_scene)
 		pickedObject.throw(throwDirection, throwSpeed/10)

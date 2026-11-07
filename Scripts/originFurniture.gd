@@ -74,7 +74,7 @@ func _ready():
 	add_to_group("boxes")
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("exit") and cam.current:
+	if event.is_action_pressed("Use") and cam.current:
 		player.cam.make_current()
 		player.global_position = exitPosition.global_position + + Vector3(0.001,0.001,0.001)
 		player.canMove = true

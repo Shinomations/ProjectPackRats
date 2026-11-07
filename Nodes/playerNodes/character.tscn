@@ -878,6 +878,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1616128408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23149526, -0.25435755)
+near = 0.001
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=458005687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)

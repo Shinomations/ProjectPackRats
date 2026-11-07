@@ -2,9 +2,9 @@ extends Label3D
 
 var parent
 
-@onready var area_3d: Area3D = $".." #this grabs the parent of self, then its parent and so on
+@onready var truck = $".." #this grabs the parent of self, then its parent and so on
 func _ready() -> void:
-	parent = area_3d.boxesInTruck
+	parent = truck.boxesInTruck
 
 
 func update():
