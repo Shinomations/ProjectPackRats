@@ -16,6 +16,7 @@ var player
 var somethingInFront
 var alreadyBeen: Array = []
 var stats
+var isleaving: bool = false
 func getBoxVolume(node: Node3D) -> float:
 	for child in node.get_children():
 		if child is CollisionShape3D and child.shape is BoxShape3D:
@@ -43,7 +44,8 @@ func updateScore(score: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	
+	if isleaving:
+		return
 	bodySelected = body
 	boxVolume = getBoxVolume(body)
 	boxScore = getBoxScore(body)
@@ -54,7 +56,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	boxesInTruck.append(body)
 	if body.is_in_group("container"):
 		for i in body.containedObjects:
-			boxesInTruckInContainer.append(i)
+			boxesInTruck.append(i)
 	incomeRef.update()
 	weightRef.update()
 	updateCapacity(-boxVolume / truckVolume, "entered")
@@ -80,7 +82,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("truckTextUpdate2.WeightLeft is" + str(weightRef.WeightLeft))
 		print("boxesInTruck.size() is" + str(boxesInTruck.size()))
 		print("number of boxes in group is " + str(get_tree().get_nodes_in_group("boxes").size()))
-		LeavingPath.loadingEnded()
+		isleaving = true
+		await LeavingPath.loadingEnded()
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 

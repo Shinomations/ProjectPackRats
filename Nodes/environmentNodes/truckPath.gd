@@ -25,13 +25,17 @@ func loadingEnded():
 	player.FinalScore += player.totalScore
 	truck.remainingCapacity = 1.0
 	player.totalScore = 0
-	
-	for i in truck.boxesInTruck:
-		print(i)
-		if i.is_in_group("boxes"):
-			i.remove_from_group("boxes")
-			i.queue_free()
-			
+	while truck.boxesInTruck.size() > 0:
+		for i in truck.boxesInTruck:
+			print(i)
+			await get_tree().create_timer(0.3).timeout
+			if is_instance_valid(i) and i.is_in_group("boxes"):
+				i.emitParticles("income", global_position)
+
+				i.remove_from_group("boxes")
+				i.queue_free()
+		
+
 	truck.boxesInTruck.clear()
 	
 	tween = create_tween()
